@@ -143,22 +143,89 @@
     '<p class="text-ink/75">' + e(week.example.text) + "</p>"
   ) : "";
 
+  /* ---------- lesson notes (student + teacher reading) ---------- */
+  var notes = week.notes || null;
+  var notesCard = "";
+
+  function noteParas(arr) {
+    return (arr || []).map(function (p) { return "<p>" + e(p) + "</p>"; }).join("");
+  }
+  function noteBullets(arr, marker) {
+    return '<ul class="notes-list">' + (arr || []).map(function (x) {
+      return "<li>" + (marker ? '<span class="notes-mark" aria-hidden="true">' + marker + "</span>" : "") + "<span>" + e(x) + "</span></li>";
+    }).join("") + "</ul>";
+  }
+
+  if (notes && (notes.student || notes.teacher)) {
+    var st = notes.student || {};
+    var te = notes.teacher || {};
+
+    var studentPanel =
+      '<div class="notes-reading">' +
+        (st.idea && st.idea.length ? '<h3 class="notes-h">The big idea</h3>' + noteParas(st.idea) : "") +
+        (st.words && st.words.length
+          ? '<h3 class="notes-h">Words to know</h3><dl class="glossary">' +
+            st.words.map(function (w) {
+              return "<dt>" + e(w.term) + "</dt><dd>" + e(w.meaning) + "</dd>";
+            }).join("") + "</dl>"
+          : "") +
+        (st.remember && st.remember.length ? '<h3 class="notes-h">Remember</h3>' + noteBullets(st.remember, "✓") : "") +
+        (st.discuss && st.discuss.length
+          ? '<h3 class="notes-h">Talk about it</h3><ol class="notes-quiz">' +
+            st.discuss.map(function (q) { return "<li>" + e(q) + "</li>"; }).join("") + "</ol>"
+          : "") +
+      "</div>";
+
+    var teacherPanel =
+      '<div class="notes-reading">' +
+        (te.goal ? '<h3 class="notes-h">The one goal</h3><p>' + e(te.goal) + "</p>" : "") +
+        (te.script
+          ? '<div class="notes-script"><p class="notes-mini">How to explain it</p><p>' + e(te.script) + "</p></div>"
+          : "") +
+        (te.misconceptions && te.misconceptions.length
+          ? '<h3 class="notes-h">Misconceptions &amp; fixes</h3><div class="grid gap-2">' +
+            te.misconceptions.map(function (m) {
+              return '<div class="misc"><p class="misc-got">' + e(m.got) + '</p><p class="misc-fix">' + e(m.fix) + "</p></div>";
+            }).join("") + "</div>"
+          : "") +
+        (te.check && te.check.length ? '<h3 class="notes-h">Assessment check</h3>' + noteBullets(te.check, "☑") : "") +
+        (te.before && te.before.length ? '<h3 class="notes-h">Before class</h3>' + noteBullets(te.before, "▸") : "") +
+      "</div>";
+
+    notesCard =
+      '<section id="notes" class="card p-6 scroll-mt-24">' +
+        '<div class="flex flex-wrap items-center justify-between gap-3 mb-4">' +
+          '<h2 class="font-display text-2xl font-extrabold flex items-center gap-2 m-0"><span aria-hidden="true">📖</span> Lesson notes</h2>' +
+          '<button type="button" class="notes-print" data-print-notes>🖨 Print this note</button>' +
+        "</div>" +
+        '<div class="notes-tabs" role="tablist" aria-label="Lesson notes">' +
+          '<button type="button" role="tab" id="tab-student" aria-controls="panel-student" aria-selected="true" class="notes-tab">👩‍🎓 For students</button>' +
+          '<button type="button" role="tab" id="tab-teacher" aria-controls="panel-teacher" aria-selected="false" tabindex="-1" class="notes-tab">🍎 For the teacher</button>' +
+        "</div>" +
+        '<div id="panel-student" role="tabpanel" aria-labelledby="tab-student" class="notes-panel">' + studentPanel + "</div>" +
+        '<div id="panel-teacher" role="tabpanel" aria-labelledby="tab-teacher" class="notes-panel" hidden>' + teacherPanel + "</div>" +
+      "</section>";
+  }
+
   /* ---------- sidebar ---------- */
   var tocItems = [
-    ["learn", "What you'll learn"], ["demo", "Live demo"], ["blocks", "Block recipe"],
-    ["activity", "Activity"], ["project", "Mini-project"], ["stretch", "Stretch challenge"]
+    ["learn", "What you'll learn"]
   ];
+  if (week.notes) tocItems.push(["notes", "Lesson notes"]);
+  tocItems = tocItems.concat([
+    ["demo", "Live demo"], ["blocks", "Block recipe"],
+    ["activity", "Activity"], ["project", "Mini-project"], ["stretch", "Stretch challenge"]
+  ]);
   if (week.example) tocItems.push(["example", week.example.label]);
-  tocItems.push(["teacher", "Teacher notes"]);
+  tocItems.push(["teacher", "Teacher quick reference"]);
 
   var t = week.teacher || {};
   var teacherCard =
     '<div class="card p-6">' +
       '<details class="teacher" id="teacher" open>' +
-        '<summary><span aria-hidden="true">🍎</span> Teacher notes</summary>' +
+        '<summary><span aria-hidden="true">🍎</span> Teacher quick reference</summary>' +
         '<div class="teacher-body grid gap-4">' +
           (t.timing ? '<div><p class="text-xs font-extrabold uppercase tracking-wide text-orange-700/70 m-0">Timing</p><p class="text-sm font-bold text-ink/75 m-0">' + e(t.timing) + "</p></div>" : "") +
-          (t.prepare ? '<div><p class="text-xs font-extrabold uppercase tracking-wide text-orange-700/70 m-0">Before class</p><p class="text-sm text-ink/75 m-0">' + e(t.prepare) + "</p></div>" : "") +
           (t.errors && t.errors.length ? "<div><p class=\"text-xs font-extrabold uppercase tracking-wide text-orange-700/70 m-0\">Common bugs to expect</p><ul class=\"text-sm list-disc pl-5 mt-1 space-y-1 text-ink/75\">" + t.errors.map(function (x) { return "<li>" + e(x) + "</li>"; }).join("") + "</ul></div>" : "") +
           (t.support || t.extend ? '<div class="grid sm:grid-cols-2 gap-3">' +
             (t.support ? '<div class="rounded-xl bg-white/70 p-3"><p class="text-xs font-extrabold uppercase tracking-wide text-ink/50 m-0">Support</p><p class="text-sm text-ink/75 m-0">' + e(t.support) + "</p></div>" : "") +
@@ -194,7 +261,7 @@
     hero +
     '<div class="grid lg:grid-cols-3 gap-6 items-start">' +
       '<div class="lg:col-span-2 grid gap-6">' +
-        learnCard + demoCard + blocksCard + activityCard + miniCard + stretchCard + exampleCard +
+        learnCard + notesCard + demoCard + blocksCard + activityCard + miniCard + stretchCard + exampleCard +
       "</div>" +
       '<aside class="grid gap-6 lg:sticky lg:top-20">' +
         tocCard + teacherCard +
@@ -222,5 +289,55 @@
     }
   } else {
     demoMount.innerHTML = '<p class="text-sm text-ink/50">Demo coming soon.</p>';
+  }
+
+  /* ---------- lesson notes: tabs + print ---------- */
+  var tabs = Array.prototype.slice.call(document.querySelectorAll(".notes-tab"));
+  if (tabs.length) {
+    function selectTab(idx) {
+      tabs.forEach(function (tab, i) {
+        var on = i === idx;
+        tab.setAttribute("aria-selected", String(on));
+        tab.setAttribute("tabindex", on ? "0" : "-1");
+        var panel = document.getElementById(tab.getAttribute("aria-controls"));
+        if (panel) panel.hidden = !on;
+      });
+    }
+    tabs.forEach(function (tab, i) {
+      tab.addEventListener("click", function () { selectTab(i); });
+      tab.addEventListener("keydown", function (ev) {
+        if (ev.key !== "ArrowRight" && ev.key !== "ArrowLeft") return;
+        ev.preventDefault();
+        var next = (i + (ev.key === "ArrowRight" ? 1 : tabs.length - 1)) % tabs.length;
+        tabs[next].focus();
+        selectTab(next);
+      });
+    });
+    selectTab(0);
+  }
+
+  var printBtn = document.querySelector("[data-print-notes]");
+  if (printBtn) {
+    printBtn.addEventListener("click", function () {
+      var panel = document.querySelector(".notes-panel:not([hidden])");
+      if (!panel) return;
+      var wasTarget = document.querySelectorAll(".print-target");
+      Array.prototype.forEach.call(wasTarget, function (n) { n.classList.remove("print-target"); });
+      panel.classList.add("print-target");
+      document.body.classList.add("printing");
+
+      var finished = false;
+      function cleanup() {
+        if (finished) return;
+        finished = true;
+        document.body.classList.remove("printing");
+        panel.classList.remove("print-target");
+        window.removeEventListener("afterprint", cleanup);
+      }
+      window.addEventListener("afterprint", cleanup);
+      window.print();
+      // Safety net for browsers that never fire afterprint.
+      setTimeout(cleanup, 4000);
+    });
   }
 })();

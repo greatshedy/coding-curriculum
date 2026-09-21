@@ -852,7 +852,22 @@
       doc.classList.remove("hidden");
       d.setStatus("Document created — scroll down and press Print / Save as PDF (or print it).");
     });
-    d.button("Print", function () { window.print(); }, "secondary");
+    d.button("Print", function () {
+      if (doc.classList.contains("hidden")) { d.setStatus("Create your document first, then print it."); return; }
+      doc.classList.add("print-target");
+      document.body.classList.add("printing");
+      var finished = false;
+      function cleanup() {
+        if (finished) return;
+        finished = true;
+        document.body.classList.remove("printing");
+        doc.classList.remove("print-target");
+        window.removeEventListener("afterprint", cleanup);
+      }
+      window.addEventListener("afterprint", cleanup);
+      window.print();
+      setTimeout(cleanup, 4000);
+    }, "secondary");
 
     var below = h("div", { class: "grid gap-4" }, [form, doc]);
     d.controls.parentNode.appendChild(below);

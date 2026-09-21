@@ -50,7 +50,6 @@
       ],
       teacher: {
         timing: "5 min demo · 20 min build · 10 min free play · 10 min share",
-        prepare: "Have Scratch open on the projector before students arrive. Pre-load a finished example so they see the goal first.",
         errors: [
           "Blocks not connecting — the script must start with a hat block (rounded top).",
           "Nothing happens on click — they may be clicking the sprite instead of the green flag.",
@@ -59,6 +58,54 @@
         support: "Let them copy the example exactly, then change only the message text.",
         extend: "Introduce \"think\" blocks and a second sprite that answers back.",
         tip: "Ask every child to read their script out loud in order — it reinforces that code runs top to bottom."
+      },
+
+      notes: {
+        student: {
+          idea: [
+            "A computer does exactly what you tell it — nothing more, nothing less. It never guesses what you meant. So we give it instructions in a careful order, and that list of instructions is called code.",
+            "In Scratch you don't type code. You snap coloured blocks together like puzzle pieces, and each block is one instruction. When you press the green flag, Scratch follows your blocks from top to bottom, one at a time.",
+            "This week you meet the three parts of the screen you'll use every week: the Stage, where everything happens; the Sprite list, which shows who is in your project; and the Blocks palette, your box of instructions."
+          ],
+          words: [
+            { term: "Stage", meaning: "the big white area where your project runs — the screen everyone watches." },
+            { term: "Sprite", meaning: "a character or object in your project. The cat is a sprite." },
+            { term: "Block", meaning: "one instruction, shaped like a jigsaw piece." },
+            { term: "Script", meaning: "a stack of blocks clicked together, like a to-do list for the computer." },
+            { term: "Hat block", meaning: "a block with a curved top, such as 'when green flag clicked'. Hat blocks start scripts." },
+            { term: "Reporter block", meaning: "a block shaped like an oval that reports a value, such as your score or the mouse's x position." }
+          ],
+          remember: [
+            "Code runs from the top of the script to the bottom.",
+            "A script needs a hat block to start — the green flag is the most common one.",
+            "'say' shows a speech bubble; 'think' shows a thought bubble.",
+            "Nothing happens until an event starts the script."
+          ],
+          discuss: [
+            "What is a computer good at that a person is not?",
+            "Why do you think the order of the instructions matters so much?",
+            "What would you like your sprite to say to the class?"
+          ]
+        },
+        teacher: {
+          goal: "Get every student to their first small win: a sprite that speaks when the green flag is pressed. Confidence matters more than content this week.",
+          script: "Tell the class the computer is an extremely obedient robot with no imagination. If you say 'make me a sandwich' it will stare at you. You have to say: get the bread, get the butter, spread the butter. Order matters. Then show the same idea with blocks.",
+          misconceptions: [
+            { got: "Blocks just need to be near each other.", fix: "Blocks must click together — the bump of one locks into the notch of the next. Zoom in on the projector to show the join." },
+            { got: "Clicking the sprite should run the script.", fix: "Revisit hat blocks: something has to start the script. Point at the green flag." },
+            { got: "The sprite is broken because nothing happened.", fix: "Ask 'which hat block is at the top?' Nine times out of ten there isn't one." }
+          ],
+          check: [
+            "They can point to the Stage, the sprite list and the palette on their own screen.",
+            "Their script runs on the green flag and says something personal to them.",
+            "They can read their script out loud in order."
+          ],
+          before: [
+            "Open the finished Week 1 example on the projector before students arrive.",
+            "Check that every laptop can reach Scratch, or install the offline editor.",
+            "Write 'Stage · Sprite · Block · Script · Hat block' on the board."
+          ]
+        }
       }
     },
 
@@ -100,7 +147,6 @@
       ],
       teacher: {
         timing: "5 min demo · 25 min build · 10 min play · 10 min share",
-        prepare: "Turn on the x/y readout next to the sprite so coordinates are visible during the demo.",
         errors: [
           "Square comes out wonky — check all four turns are the same and the moves are equal.",
           "Sprite walks off the Stage — that's fine, demonstrate \"if on edge, bounce\" as a teaser.",
@@ -109,6 +155,53 @@
         support: "Give them the four move/turn values written on the board to copy.",
         extend: "Challenge them to draw a triangle (hint: three turns of 120°).",
         tip: "Walk to the corner of the room and have the class shout the coordinates of their own classroom \"grid\"."
+      },
+
+      notes: {
+        student: {
+          idea: [
+            "Imagine your classroom floor is a giant piece of graph paper. To tell a friend where to stand you could say 'four tiles right, three tiles up'. Scratch uses exactly the same idea.",
+            "The Stage is a grid and the middle is (0, 0). x tells you left and right: negative numbers go left, positive numbers go right. y tells you up and down: positive numbers go up, negative numbers go down. x runs from -240 to 240 and y runs from -180 to 180.",
+            "Two motion blocks do different jobs. 'go to x y' teleports a sprite instantly to a spot. 'move 10 steps' nudges it forward in whatever direction it is facing. Turn a sprite and then move it, and you can draw shapes."
+          ],
+          words: [
+            { term: "Coordinate", meaning: "a pair of numbers (x, y) that names one exact spot on the Stage." },
+            { term: "x position", meaning: "how far left or right the sprite is. Negative is left of the middle." },
+            { term: "y position", meaning: "how far up or down the sprite is. Positive is above the middle." },
+            { term: "Direction", meaning: "the way a sprite is facing, measured in degrees. 90 faces right, 0 faces up." },
+            { term: "Origin", meaning: "the middle of the Stage — the point (0, 0)." }
+          ],
+          remember: [
+            "The middle of the Stage is (0, 0).",
+            "'go to' is instant; 'move' slides.",
+            "A square needs four equal moves and four 90 degree turns.",
+            "Watch the x and y numbers change as the sprite moves."
+          ],
+          discuss: [
+            "Where on the Stage is x -240 y 180?",
+            "Why does a square need 90 degree turns and not 100 degree turns?",
+            "How could you make the sprite draw a bigger square?"
+          ]
+        },
+        teacher: {
+          goal: "Coordinates turn movement from lucky guessing into something students can aim. Get them comfortable reading the x and y numbers rather than memorising them.",
+          script: "Do it physically. Stand at the classroom door and ask the class to give you coordinates to walk to your desk — x first, then y. Then label the corners of the room as (-240, 180) and (240, -180). The grid stops being abstract very quickly.",
+          misconceptions: [
+            { got: "'move 10 steps' moves 10 tiles to the right.", fix: "It moves forward in the direction the sprite faces. Turn first, then move — demonstrate both." },
+            { got: "Negative numbers are 'wrong' numbers.", fix: "Draw a number line with 0 in the middle. Negative just means the other side of zero." },
+            { got: "A bigger y means lower down.", fix: "On the Stage y grows upwards, like a lift going up. Label the axis on the board." }
+          ],
+          check: [
+            "They can say where (0, -180) is without touching the mouse.",
+            "Their sprite draws a square with equal sides and matching turns.",
+            "They can explain the difference between 'go to' and 'move'."
+          ],
+          before: [
+            "Turn on the x and y readout next to the sprite in Scratch's Sprite pane.",
+            "Put a large coordinate grid on the board or the floor.",
+            "Prepare a deliberately wonky square so the class can debug it together."
+          ]
+        }
       }
     },
 
@@ -150,7 +243,6 @@
       ],
       teacher: {
         timing: "5 min demo · 20 min build · 5 min partner play · 15 min challenge",
-        prepare: "Remind students how to find the arrow keys on the \"when key pressed\" dropdown menu.",
         errors: [
           "Key events but the sprite doesn't move — they pressed the key while the sprite was not focused, or used the wrong key name.",
           "One script with four key blocks — each key needs its OWN hat block.",
@@ -159,6 +251,52 @@
         support: "Do left and right only, then add up and down.",
         extend: "Add a speed toggle, or a \"when space pressed\" that makes the sprite jump.",
         tip: "Play the demo live and let a student drive it — hands on the keyboard is the fastest way to teach events."
+      },
+
+      notes: {
+        student: {
+          idea: [
+            "A slideshow just plays. A game reacts. The difference is events: something happens, and your code answers it. Press an arrow key and a sprite moves. Click a sprite and it says 'Ouch!'.",
+            "Event blocks are the ones with rounded tops — hat blocks. 'when green flag clicked', 'when this sprite clicked' and 'when [key] pressed' all wait quietly until their moment arrives, then they run the script underneath them.",
+            "You can have many event scripts at once. One project can listen for the left arrow, the right arrow and a mouse click at the same time, and each script does its own job."
+          ],
+          words: [
+            { term: "Event", meaning: "something that happens which your code can react to — a click, a key press, the green flag." },
+            { term: "Input", meaning: "an action from the player, such as pressing a key or moving the mouse." },
+            { term: "Listener", meaning: "an event block that waits for its event to happen." },
+            { term: "Interactive", meaning: "a project the player can control, instead of just watching." }
+          ],
+          remember: [
+            "Every event needs its own hat block. Four keys means four hat blocks.",
+            "Event scripts only run when their event happens.",
+            "The green flag is the usual way to start a game.",
+            "Lots of scripts can be running at the same time."
+          ],
+          discuss: [
+            "What other things could count as an event in a game?",
+            "Why is it useful that several scripts can run at once?",
+            "What happens if you press a key the sprite is not listening for?"
+          ]
+        },
+        teacher: {
+          goal: "Events are the moment projects stop being demonstrations and start being playable. Aim for every student steering a sprite with all four arrow keys.",
+          script: "Ask a student to be a sprite. 'When I say jump, you jump.' Say it and they jump. Then say 'now you decide — raise your hand when you want to jump.' Point out that you just handed them control. That is what an event does.",
+          misconceptions: [
+            { got: "One 'when key pressed' block with four key changes inside.", fix: "Each key needs its own hat block. Show two separate stacks side by side on the projector." },
+            { got: "'change x by 100' seems like a reasonable speed.", fix: "Let them watch the sprite shoot off the Stage, then shrink it to 10. Discovery works better than instruction here." },
+            { got: "The key presses do nothing.", fix: "The Stage must be clicked first so the project has keyboard focus. Click the Stage, then press the key." }
+          ],
+          check: [
+            "The sprite moves in all four directions, with one script per key.",
+            "Clicking the sprite produces a reaction.",
+            "They can explain why nothing happens until a key is pressed."
+          ],
+          before: [
+            "Check how keyboard focus behaves in the browser version of Scratch you use.",
+            "Seat students in pairs: one drives the keyboard, one watches for the four hat blocks.",
+            "Prepare a broken example with one key block trying to do four movements."
+          ]
+        }
       }
     },
 
@@ -201,7 +339,6 @@
       ],
       teacher: {
         timing: "5 min demo · 20 min build · 10 min experiments · 10 min share",
-        prepare: "Show the same animation twice — once with copied blocks, once with a loop — and ask which is easier to fix.",
         errors: [
           "Sprite spins too fast to see — add a wait inside the loop.",
           "Nothing repeats — the loop is empty or the blocks are outside it.",
@@ -211,6 +348,53 @@
         support: "Start with \"repeat 10\" so there is a clear beginning and end.",
         extend: "Add a second ball with a different speed and compare them.",
         tip: "Use a physical action: everyone stands, and a \"repeat 4\" loop means clap 4 times. Loops are muscle memory."
+      },
+
+      notes: {
+        student: {
+          idea: [
+            "Copying the same block ten times is slow to build and horrible to fix. Loops solve that: you write the blocks once and tell Scratch how many times to repeat them.",
+            "'repeat 10' runs its blocks a set number of times and then stops. 'forever' runs them non-stop until you press the red stop sign. 'repeat until' keeps going until a condition becomes true.",
+            "Animation depends on loops. A ball that bounces forever is just one loop containing a move and a bounce. Add a tiny 'wait' inside the loop and the movement looks smooth instead of jumpy."
+          ],
+          words: [
+            { term: "Loop", meaning: "blocks that repeat." },
+            { term: "Repeat", meaning: "to do something again." },
+            { term: "Forever", meaning: "a loop that never stops on its own." },
+            { term: "Iteration", meaning: "one trip around a loop. Repeating 10 times is 10 iterations." },
+            { term: "Animation", meaning: "still pictures changing quickly until they look like movement." }
+          ],
+          remember: [
+            "'repeat' has a beginning and an end; 'forever' does not.",
+            "Blocks must go INSIDE the loop — dragging them underneath does nothing.",
+            "A small wait makes movement smooth and stops the project freezing.",
+            "Changing one number in a loop changes every single repeat."
+          ],
+          discuss: [
+            "What is the difference between 'repeat 4' and 'forever'?",
+            "Why does a forever loop with no wait make a project slow?",
+            "Which routine in your day is like a loop?"
+          ]
+        },
+        teacher: {
+          goal: "Students should feel the 'one change fixes everything' moment. Show a ten-block animation, replace it with a loop, then change one number and let them watch every repeat update.",
+          script: "Get everyone standing. A 'repeat 4' loop means clap four times. A 'forever' loop means keep clapping until I press the imaginary stop sign. Their arms will tire, which is exactly why we put waits inside loops.",
+          misconceptions: [
+            { got: "Blocks placed after the loop are inside it.", fix: "Point at the indent. The C-shape covers what is inside; anything below the arm is outside. Zoom in." },
+            { got: "A forever loop with no wait is fine.", fix: "Run it and let the project crawl, then add a 0.02 second wait and watch it glide." },
+            { got: "The sprite disappeared, so the project crashed.", fix: "It usually flew off the Stage. Add 'if on edge, bounce' inside the loop." }
+          ],
+          check: [
+            "Their ball bounces, keeps going and stays on the Stage.",
+            "They can say how many times a 'repeat 6' loop will run.",
+            "They can change the speed by editing one number."
+          ],
+          before: [
+            "Prepare two versions of one animation: copied blocks and a loop.",
+            "Point out the red stop sign — forever loops need a way to stop.",
+            "Have the bouncing ball script ready as a starter for anyone stuck."
+          ]
+        }
       }
     },
 
@@ -259,7 +443,6 @@
       ],
       teacher: {
         timing: "5 min demo · 25 min build · 10 min playtest · 10 min debug share",
-        prepare: "Be ready to show a game that is broken on purpose so the class can spot the missing condition.",
         errors: [
           "Coin passes through the player — the \"touching\" condition uses the wrong sprite name.",
           "Game over triggers immediately — the ground check is too high; lower the y value.",
@@ -269,6 +452,53 @@
         support: "Provide the falling-coin script as a saved starter and have them add only the player catch.",
         extend: "Add two coins, or an obstacle the player must avoid.",
         tip: "Act it out: \"If I am touching the ground, then I sit down.\" Physical if-statements make the logic click."
+      },
+
+      notes: {
+        student: {
+          idea: [
+            "Games are full of decisions. If the player touches the coin, collect it. If the coin hits the ground, the game is over. Code makes those decisions with an 'if' block.",
+            "'if [condition] then' runs its blocks only when the condition is true. The diamond-shaped slot holds the question — things like 'touching player?' or 'y position < -170'. If the answer is no, the blocks inside are skipped entirely.",
+            "'if ... else' gives you two paths: one for yes and one for no. That is how you make a character smile when you click a happy face and frown when you click a sad one."
+          ],
+          words: [
+            { term: "Condition", meaning: "a question that is either true or false, such as 'am I touching the edge?'" },
+            { term: "If / Else", meaning: "a block that chooses between two paths." },
+            { term: "Boolean", meaning: "a value that can only ever be true or false." },
+            { term: "Game over", meaning: "the moment play stops because the player lost." },
+            { term: "Respawn", meaning: "to appear again, usually back at the starting position." }
+          ],
+          remember: [
+            "Conditions are questions with yes or no answers.",
+            "Blocks inside 'if' only run when the condition is true.",
+            "Put the if-block INSIDE the loop, or it is only checked once.",
+            "Test your game over condition — do not just assume it works."
+          ],
+          discuss: [
+            "Give three if-then rules your game needs.",
+            "What would happen if the collision check ran only once?",
+            "How could you make the game get harder as it goes on?"
+          ]
+        },
+        teacher: {
+          goal: "Students should connect a spoken sentence — 'if the basket touches the coin...' — to the block shape. Conditionals are where a project starts to feel like a real game.",
+          script: "Act it out. 'If I am touching the ground, then I sit down.' Do it. Then 'if I am touching the ground, then I sit down, else I stand up.' Ask the class for new rules and act those out too. Physical if-statements make the diamond slot obvious.",
+          misconceptions: [
+            { got: "The coin falls straight through the player.", fix: "The condition names the wrong sprite, or the sprites are drawn very small. Check the dropdown name first, then the sprite size." },
+            { got: "Game over fires the moment the game starts.", fix: "The ground test uses a y value that is already true. Lower it to about -170 and check where the sprite really is." },
+            { got: "The condition never seems to be checked.", fix: "The if-block is sitting outside the forever loop." }
+          ],
+          check: [
+            "Catching the coin makes it respawn at the top.",
+            "Missing makes the game stop, reliably, every time.",
+            "They can read their if-block out loud as a sentence."
+          ],
+          before: [
+            "Prepare a deliberately broken game with no collision check for the class to diagnose.",
+            "Save the falling coin script as a starter for students who need support.",
+            "Write 'touching', 'y position' and 'greater than' on the board as condition examples."
+          ]
+        }
       }
     },
 
@@ -309,7 +539,6 @@
       ],
       teacher: {
         timing: "5 min demo · 25 min build · 10 min playtest · 10 min high-score challenge",
-        prepare: "Warn students that a variable must be set back to 0 on green flag, or the score keeps climbing.",
         errors: [
           "Score keeps counting after restart — missing \"set score to 0\".",
           "Score not visible — the checkbox next to the variable in the palette isn't ticked.",
@@ -319,6 +548,54 @@
         support: "Add score first; add lives only if they are ready.",
         extend: "Add a timer variable that counts up, or a level that increases every 5 points.",
         tip: "\"For all sprites\" vs \"for this sprite only\" is the question students ask most — demo it with two sprites having their own version of the same variable."
+      },
+
+      notes: {
+        student: {
+          idea: [
+            "A variable is a labelled box that remembers something. You give it a name, like 'score', and it holds a number. Later you can look inside it, add to it, or empty it and start again.",
+            "'set score to 0' puts a value into the box. 'change score by 1' adds to whatever is already in there. Tick the checkbox next to the variable's name and its value appears on the Stage so players can watch it climb.",
+            "Games run on variables: score, lives, level, timer, high score. When lives reach zero the game ends — that is simply a condition checking a variable."
+          ],
+          words: [
+            { term: "Variable", meaning: "a named box that stores a value, such as a number." },
+            { term: "Value", meaning: "whatever is inside the box right now." },
+            { term: "Score", meaning: "a variable that counts points." },
+            { term: "Lives", meaning: "a variable that counts how many chances are left." },
+            { term: "Initialise", meaning: "to set a variable to its starting value, usually when the green flag is clicked." }
+          ],
+          remember: [
+            "Always 'set score to 0' on the green flag, or the score carries on from last time.",
+            "'set' replaces the value; 'change' adds or subtracts.",
+            "A variable only shows on the Stage if its checkbox is ticked.",
+            "'For all sprites' means everyone shares one box."
+          ],
+          discuss: [
+            "Which numbers does your game need to remember?",
+            "Why does the score keep counting if you forget to reset it?",
+            "How would a high-score variable be different from a score variable?"
+          ]
+        },
+        teacher: {
+          goal: "Every student leaves with a working score that resets properly. The reset-to-zero habit is the single most important thing to teach this week.",
+          script: "Use a physical box or tin with a label. Put nothing inside and call it zero. Drop one counter in and say 'change by 1'. Tip it out and say 'set to 0'. Then label a second box 'lives' and repeat the whole thing.",
+          misconceptions: [
+            { got: "The score climbs forever, even across restarts.", fix: "There is no 'set score to 0' on the green flag. Make it the first block under the hat, in every project, every time." },
+            { got: "The score is not visible.", fix: "The checkbox beside the variable in the Blocks palette is not ticked." },
+            { got: "Lives go into negative numbers.", fix: "Add 'if lives < 1 then stop all' immediately after the lives change." },
+            { got: "Two sprites behave strangely with the same variable.", fix: "Explain 'for all sprites' versus 'for this sprite only'. Each sprite can have its own private copy." }
+          ],
+          check: [
+            "The score resets to 0 on every green flag press.",
+            "Catching a coin visibly adds 1 to the displayed score.",
+            "Losing all lives shows the final score and stops the game."
+          ],
+          before: [
+            "Bring a physical box or tin for the variable demonstration.",
+            "Have the Week 5 catch game saved so students extend it rather than rebuild it.",
+            "Decide whether you will teach 'for all sprites' or 'for this sprite only' this week."
+          ]
+        }
       }
     },
 
@@ -357,7 +634,6 @@
       ],
       teacher: {
         timing: "5 min demo · 25 min build · 10 min chain challenge · 10 min share",
-        prepare: "Create all the message names as a class first, so spelling is consistent — message names must match exactly.",
         errors: [
           "Nothing happens — the broadcast name doesn't match the receive name (even a capital letter counts).",
           "Two sprites both react when only one should — both have \"when I receive\" for the same message.",
@@ -366,6 +642,53 @@
         support: "Use just one message pair (one broadcast, one receive) to start.",
         extend: "Turn the dialogue into a mini scene with three or more exchanges.",
         tip: "This is the week to introduce pair programming: one student writes the broadcaster, the other writes the receiver."
+      },
+
+      notes: {
+        student: {
+          idea: [
+            "Big projects have lots of sprites doing different jobs. Instead of piling all the code into one sprite, each sprite looks after itself — and they talk to each other with messages.",
+            "'broadcast [message]' sends a message out into the project. Any sprite with a 'when I receive [message]' block for that exact name hears it and runs its script. It is a bit like a teacher calling a name across the room.",
+            "Broadcasts let one action trigger another: click a button, the button broadcasts, the light bulb switches on. Chain them together — A triggers B triggers C — and you can build whole scenes."
+          ],
+          words: [
+            { term: "Broadcast", meaning: "to send a message out to every sprite in the project." },
+            { term: "Message", meaning: "the name of the broadcast, such as 'turn_on'." },
+            { term: "Receive", meaning: "to hear a message and react to it." },
+            { term: "Coordination", meaning: "several sprites working together." },
+            { term: "Chain", meaning: "one message triggering another, which triggers another." }
+          ],
+          remember: [
+            "The broadcast name and the receive name must match exactly — spelling and capital letters.",
+            "One message can be heard by several sprites at once.",
+            "The sender does not need to know who is listening.",
+            "Messages keep each sprite's code short and easy to read."
+          ],
+          discuss: [
+            "Why is splitting code between sprites better than putting it all in one?",
+            "What happens if two sprites listen for the same message?",
+            "Design a chain of four messages for a scene of your own."
+          ]
+        },
+        teacher: {
+          goal: "Students see why splitting code across sprites is a good idea, and they experience the exact-match rule for message names.",
+          script: "Play a whisper game. One student receives a message and passes it on. Before you start, agree the message names as a class and write them on the board — agreeing the names is the real lesson here.",
+          misconceptions: [
+            { got: "Nothing happens at all.", fix: "The broadcast and receive names do not match. Compare them letter by letter; capital letters count." },
+            { got: "Two sprites react when only one should.", fix: "Both have a 'when I receive' for that message. Ask the class which sprite the message was really for." },
+            { got: "The message is sent but nobody hears it.", fix: "No receiver exists yet. Add the 'when I receive' hat block before testing." }
+          ],
+          check: [
+            "Clicking one sprite makes another sprite change.",
+            "The class can agree and reuse the same message names.",
+            "Their dialogue has at least two exchanges."
+          ],
+          before: [
+            "Write the class's agreed message names on the board before building.",
+            "Set up pair programming: one writes the broadcaster, the other the receiver.",
+            "Prepare the button-and-bulb example to demonstrate on the projector."
+          ]
+        }
       }
     },
 
@@ -409,7 +732,6 @@
       ],
       teacher: {
         timing: "5 min storyboarding · 10 min demo · 25 min build · 10 min screening",
-        prepare: "Print a simple 4-box storyboard template. Students sketch before they code and the projects are far stronger.",
         errors: [
           "Animation is jumpy — add \"wait 0.1 seconds\" inside the loop.",
           "Backdrop changes instantly at the start — add \"wait\" blocks between switches.",
@@ -418,6 +740,53 @@
         support: "Give a finished 3-line story with sprites already placed; they animate it.",
         extend: "Add a title screen, a second scene and a caption sprite with narration.",
         tip: "Hold a mini film festival at the end: lights off, projects on the projector, three cheers per film."
+      },
+
+      notes: {
+        student: {
+          idea: [
+            "Animation is a trick. Cartoons are just pictures shown one after another very quickly, and your eyes blend them into movement. In Scratch, each picture is a costume.",
+            "'next costume' moves a sprite to its next picture. Put it in a loop with a short wait and your sprite walks, flaps or spins. A backdrop does the same job for the whole scene: change it to move to a new place, or a new time of day.",
+            "A story is scenes in order. Decide what happens first, next and last, then let costumes, backdrops and 'say' blocks tell it. A simple cat-and-butterfly story is five lines long and about thirty seconds."
+          ],
+          words: [
+            { term: "Costume", meaning: "a picture a sprite can wear. Changing it changes how the sprite looks." },
+            { term: "Backdrop", meaning: "the background picture for the whole Stage." },
+            { term: "Frame", meaning: "one picture in an animation." },
+            { term: "Scene", meaning: "one part of a story, in one place." },
+            { term: "Animation", meaning: "pictures changing quickly until they look like movement." }
+          ],
+          remember: [
+            "Short waits between costumes make animation look smooth.",
+            "A sprite needs more than one costume before you can animate it.",
+            "Backdrops set the mood — night feels different from day.",
+            "Plan your scenes in order before you code them."
+          ],
+          discuss: [
+            "What makes animation look smooth instead of jerky?",
+            "How could the backdrop tell part of your story?",
+            "Which three scenes would your story need?"
+          ]
+        },
+        teacher: {
+          goal: "Students should plan before they animate. A four-box storyboard is the difference between a charming thirty-second story and a random walk across the Stage.",
+          script: "Flip a pad of sticky notes to show animation: draw a cat on four notes and flick through them. Ask the class why it looks like movement, then tell them Scratch's costumes do exactly the same thing.",
+          misconceptions: [
+            { got: "The animation looks jerky.", fix: "Add 'wait 0.1 seconds' inside the repeat loop. With no wait the costumes blur together." },
+            { got: "The sprite only has one costume.", fix: "Add costumes in the Costumes tab, or pick a sprite that already has several." },
+            { got: "The backdrop changes instantly before the story starts.", fix: "Add 'wait' blocks between backdrop switches so each scene has time to be seen." }
+          ],
+          check: [
+            "Their animation loops smoothly for at least a few seconds.",
+            "The story has a clear beginning, middle and end.",
+            "Backdrops change at the right moments."
+          ],
+          before: [
+            "Print a four-box storyboard sheet for every student.",
+            "Make sure students know how to add or upload a costume.",
+            "Book a projector and plan the film festival slot with the lights dimmed."
+          ]
+        }
       }
     },
 
@@ -462,7 +831,6 @@
       ],
       teacher: {
         timing: "10 min examples · 30 min planning · 10 min peer feedback · 5 min check-in",
-        prepare: "Show two example plans — one vague, one detailed — and discuss which would be easier to build from.",
         errors: [
           "Choosing an idea that's too big — help them cut it down to one strong feature.",
           "No plan for variables — ask \"What numbers does your game need to remember?\"",
@@ -471,6 +839,53 @@
         support: "Offer a half-filled template they complete rather than a blank page.",
         extend: "Ask for a paper prototype they can test with a partner before coding.",
         tip: "Collect the plans and skim them before Week 10 so you can pre-empt missing skills."
+      },
+
+      notes: {
+        student: {
+          idea: [
+            "Nobody builds a house by grabbing bricks and hoping for the best. You draw a plan first. Games and stories work the same way: a plan tells you what to build next and stops you getting lost halfway through.",
+            "Your plan needs four things: a list of sprites, a list of variables, at least three interactions or scenes, and pseudocode. Pseudocode is plain English that describes what the code will do, such as 'when the green flag is clicked, set score to 0'.",
+            "Pseudocode is powerful because you can write it before you know which blocks to use. If you can describe it in words, you can build it in Scratch."
+          ],
+          words: [
+            { term: "Design", meaning: "the plan for how something will work and look." },
+            { term: "Pseudocode", meaning: "plain English that describes code, without worrying about blocks." },
+            { term: "Storyboard", meaning: "a few sketches showing what happens in each scene." },
+            { term: "Flowchart", meaning: "a diagram of steps and decisions." },
+            { term: "Deliverable", meaning: "the thing you actually hand in or present." }
+          ],
+          remember: [
+            "Choose ONE idea you can finish, not three you cannot.",
+            "List the sprites and variables before you open Scratch.",
+            "Write pseudocode for the trickiest part of the project.",
+            "Ask a partner to read your plan back to you."
+          ],
+          discuss: [
+            "Which part of your plan is the hardest, and why?",
+            "What could you cut if you ran out of time?",
+            "How will you know your project is finished?"
+          ]
+        },
+        teacher: {
+          goal: "Get a realistic, written plan from every student. Vet the plans for size — the most common Week 10 failure is an idea that was never finishable.",
+          script: "Show two plans side by side: one that says 'a cool game about a dragon', and one that lists three sprites, two variables and four lines of pseudocode. Ask the class which one they would rather build from, and why.",
+          misconceptions: [
+            { got: "My idea is a whole adventure with five levels.", fix: "Help them circle one level. Offer the extras as stretch goals for Week 10." },
+            { got: "I do not need any variables.", fix: "Ask what numbers the game has to remember. Points, lives and time all need variables." },
+            { got: "I will plan as I go.", fix: "Insist on the sketch first. Five minutes of drawing saves an hour of undoing." }
+          ],
+          check: [
+            "The plan fits on one page and lists sprites, variables and interactions.",
+            "The pseudocode describes at least the trickiest section.",
+            "The student can explain what they will build in under a minute."
+          ],
+          before: [
+            "Print or share the one-page design document template from the Week 9 demo.",
+            "Skim the plans and note who may need extra support in Week 10.",
+            "Decide how students will save and back up their work."
+          ]
+        }
       }
     },
 
@@ -509,7 +924,6 @@
       ],
       teacher: {
         timing: "4 build periods + 1 showcase day · 2–3 min per student presentation",
-        prepare: "Create a class Scratch studio online so projects can be shared and commented on. Set up a 'Hall of Fame' wall.",
         errors: [
           "Student spends all week on visuals and doesn't finish the game logic — redirect to the plan's core feature first.",
           "Performance: too many forever loops with no waits makes projects lag.",
@@ -518,6 +932,53 @@
         support: "Let them present the working part of their plan, even if unfinished. Celebrate what runs.",
         extend: "Add a leaderboard, multiple levels, or an AI enemy — or help a classmate debug.",
         tip: "Use the rubric on this page for assessment and share it with students before they build so they know the targets."
+      },
+
+      notes: {
+        student: {
+          idea: [
+            "This is the week you make something of your own. Take your Week 9 plan and build it one piece at a time: sprites first, then movement, then interactions, then score, then polish.",
+            "Bugs are not failures. Every game you have ever loved shipped with bugs that somebody had to find and fix. Finding a bug is the first step towards fixing it, so a bug is actually progress.",
+            "Your presentation matters too. In about two minutes, say what your project is, show it running, tell us one clever thing you built, and say what you would add next."
+          ],
+          words: [
+            { term: "Debug", meaning: "to find and fix something that is not working." },
+            { term: "Test", meaning: "to try your project and check it behaves the way you expect." },
+            { term: "Iterate", meaning: "to improve your project step by step." },
+            { term: "Prototype", meaning: "an early version you can try out." },
+            { term: "Present", meaning: "to show and explain your work to an audience." }
+          ],
+          remember: [
+            "Get it working first; make it beautiful second.",
+            "Test after every change, not only at the end.",
+            "Playtest with a friend — you cannot see your own bugs.",
+            "Finished beats perfect."
+          ],
+          discuss: [
+            "What was the hardest part of your project?",
+            "What would you add if you had one more week?",
+            "Whose project surprised you, and why?"
+          ]
+        },
+        teacher: {
+          goal: "Every student should finish with something that runs and present it with confidence. Protect the showcase day for presenting rather than extra building.",
+          script: "Open the week with a famous bug story: the first real computer bug was a moth found trapped inside a machine. Then set the class rule for the week — every bug we find is a win. Celebrate them out loud.",
+          misconceptions: [
+            { got: "More time on visuals will fix a game that does not work.", fix: "Redirect to the core feature from the plan. Beautiful comes after working." },
+            { got: "I will test it all on Friday.", fix: "Build in a midweek playtest checkpoint with a partner, before the polish phase." },
+            { got: "My project is bad because it is unfinished.", fix: "Celebrate what runs. Present the working part and name the next step honestly." }
+          ],
+          check: [
+            "The project runs without major bugs and uses at least two or three ideas from earlier weeks.",
+            "The student can explain what their code does.",
+            "The presentation is clear and finishes in about two minutes."
+          ],
+          before: [
+            "Create the class Scratch studio so projects can be shared and commented on.",
+            "Set up the presentation space, the running order and a visible timer.",
+            "Share the showcase rubric with students before they start building."
+          ]
+        }
       }
     }
   ];

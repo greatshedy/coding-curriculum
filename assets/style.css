@@ -145,6 +145,114 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 }
 .skip-link:focus { left: 0; }
 
+/* ============================================================
+   Lesson notes (student / teacher reading tabs)
+   ============================================================ */
+[hidden] { display: none !important; }
+
+.notes-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  border-bottom: 2px solid rgba(31, 42, 68, 0.08);
+  margin-bottom: 1.1rem;
+}
+.notes-tab {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 800;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  padding: 0.55rem 0.9rem;
+  border-radius: 0.75rem 0.75rem 0 0;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+}
+.notes-tab:hover { background: rgba(76, 151, 255, 0.08); color: var(--ink); }
+.notes-tab[aria-selected="true"] {
+  color: var(--scratch-motion);
+  border-bottom-color: var(--scratch-motion);
+  background: rgba(76, 151, 255, 0.08);
+}
+
+.notes-print {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-radius: 0.8rem;
+  border: 1px solid rgba(31, 42, 68, 0.15);
+  background: #fff;
+  padding: 0.45rem 0.85rem;
+  font-family: inherit;
+  font-weight: 800;
+  font-size: 0.8rem;
+  color: var(--ink);
+  cursor: pointer;
+}
+.notes-print:hover { border-color: var(--scratch-motion); color: var(--scratch-motion); }
+
+.notes-reading {
+  max-width: 72ch;
+  font-size: 0.97rem;
+  line-height: 1.65;
+  color: #3a4560;
+}
+.notes-reading p { margin: 0 0 0.8rem; }
+.notes-h {
+  font-family: "Baloo 2", "Nunito", sans-serif;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--ink);
+  margin: 1.5rem 0 0.55rem;
+}
+.notes-h:first-child { margin-top: 0; }
+
+.glossary { margin: 0; }
+.glossary dt { font-weight: 800; color: var(--ink); margin-top: 0.65rem; }
+.glossary dd {
+  margin: 0.1rem 0 0;
+  padding-left: 0.9rem;
+  border-left: 3px solid rgba(76, 151, 255, 0.3);
+  color: var(--ink-soft);
+}
+
+.notes-list { list-style: none; margin: 0; padding: 0; }
+.notes-list li { display: flex; gap: 0.6rem; margin-bottom: 0.45rem; }
+.notes-mark { color: var(--scratch-motion); font-weight: 800; flex: 0 0 auto; }
+
+.notes-quiz { margin: 0; padding-left: 1.2rem; }
+.notes-quiz li { margin-bottom: 0.4rem; }
+
+.notes-script {
+  background: #f0f7ff;
+  border-left: 4px solid var(--scratch-motion);
+  border-radius: 0.9rem;
+  padding: 0.9rem 1rem;
+  margin: 0 0 1rem;
+}
+.notes-script p:last-child { margin-bottom: 0; }
+.notes-mini {
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--scratch-motion);
+  margin: 0 0 0.3rem;
+}
+
+.misc {
+  border: 1px solid rgba(31, 42, 68, 0.1);
+  border-radius: 0.9rem;
+  padding: 0.7rem 0.9rem;
+  background: #fff;
+}
+.misc-got { margin: 0; font-weight: 800; color: #b45309; font-size: 0.92rem; }
+.misc-got::before { content: "They think: "; }
+.misc-fix { margin: 0.25rem 0 0; color: #3a4560; font-size: 0.92rem; }
+.misc-fix::before { content: "Say: "; font-weight: 800; color: #15803d; }
+
 /* Print: useful for the Week 9 design document and the Week 10 rubric */
 @media print {
   nav, .no-print, footer { display: none !important; }
@@ -152,12 +260,20 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   .card { box-shadow: none !important; border: 1px solid #ccc !important; }
   details.teacher[open] .teacher-body { display: block; }
 
-  /* When a #print-area exists (Week 9), print only that area. */
-  body:has(#print-area:not(.hidden)) * { visibility: hidden; }
-  body:has(#print-area:not(.hidden)) #print-area,
-  body:has(#print-area:not(.hidden)) #print-area * { visibility: visible; }
-  body:has(#print-area:not(.hidden)) #print-area {
-    position: absolute; left: 0; top: 0; width: 100%;
-    border: 0 !important; padding: 0 !important; display: block !important;
+  /* When a specific region is being printed (lesson note or design doc),
+     print only that region. */
+  body.printing * { visibility: hidden !important; }
+  body.printing .print-target,
+  body.printing .print-target * { visibility: visible !important; }
+  body.printing .print-target {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    border: 0 !important;
+    padding: 0 !important;
+    display: block !important;
+    background: #fff !important;
   }
+  body.printing .notes-panel[hidden] { display: none !important; }
 }
