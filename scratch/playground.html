@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Block Playground — build a script and run it</title>
+<meta name="description" content="A mini Scratch on the page: click blocks to build a script, press Run, and watch a cat sprite follow your instructions." />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/style.css" />
+<link rel="stylesheet" href="../assets/scratch-blocks.css" />
+
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          display: ['"Baloo 2"', 'Nunito', 'sans-serif'],
+          sans: ['Nunito', 'ui-sans-serif', 'system-ui', 'sans-serif']
+        },
+        colors: {
+          ink: '#1f2a44', paper: '#f6f4ee', motion: '#4c97ff', looks: '#9966ff',
+          events: '#ffbf00', control: '#ffab19', sensing: '#5cb1d6', variables: '#ff8c1a'
+        }
+      }
+    }
+  };
+</script>
+
+<style>
+  /* ---- playground-only styles ---- */
+  #script-editor .sb { cursor: default; margin-bottom: 3px; }
+  #script-editor .sb + .sb { margin-top: 0; }
+  #script-editor .sb-ctrls {
+    display: inline-flex; gap: 0.25rem; margin-left: 0.6rem;
+    opacity: 0; transition: opacity 0.15s ease; vertical-align: middle;
+  }
+  #script-editor .sb:hover .sb-ctrls { opacity: 1; }
+  .sb-btn {
+    font-size: 0.68rem; font-weight: 800; line-height: 1;
+    border-radius: 0.4rem; padding: 0.22rem 0.4rem;
+    background: rgba(255, 255, 255, 0.3); color: inherit; border: 0; cursor: pointer;
+  }
+  .sb-btn:hover { background: rgba(255, 255, 255, 0.55); }
+  .sb--target { outline: 3px solid #2563eb; outline-offset: 2px; }
+  #script-editor .sb-inner { min-height: 1.4rem; }
+  .sb-placeholder { color: rgba(31, 42, 68, 0.35); font-size: 0.72rem; font-style: italic; font-weight: 700; padding: 0.2rem 0.4rem; }
+  .sb-input--num { width: 3.4rem; }
+  .sb-input--sel { font-size: 0.75rem; }
+  #palette .sb { cursor: pointer; }
+  #palette .sb:hover { filter: brightness(1.07); }
+  #palette .sb:active { transform: scale(0.97); }
+</style>
+</head>
+<body class="min-h-screen">
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<nav class="sticky top-0 z-50 bg-ink text-white shadow-lg no-print">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="flex items-center justify-between h-16">
+      <a href="../index.html" class="flex items-center gap-2 font-display text-xl">
+        <span class="grid place-items-center w-9 h-9 rounded-xl bg-motion text-lg">{"{}"}</span>
+        <span class="font-extrabold">CodeLab</span>
+      </a>
+      <div class="hidden md:flex items-center gap-1" data-nav-links>
+        <a href="../index.html" class="px-3 py-2 rounded-lg text-sm font-bold text-white/80 hover:text-white hover:bg-white/10">Curricula</a>
+        <a href="index.html" class="px-3 py-2 rounded-lg text-sm font-bold text-white/80 hover:text-white hover:bg-white/10">Course home</a>
+        <a href="playground.html" class="px-3 py-2 rounded-lg text-sm font-bold text-white/80 hover:text-white hover:bg-white/10">Playground</a>
+      </div>
+      <a href="week.html?w=1" class="hidden sm:inline-flex items-center gap-1.5 rounded-xl bg-events px-4 py-2 text-sm font-extrabold text-ink hover:brightness-105 transition">Lessons</a>
+    </div>
+  </div>
+</nav>
+
+<main id="main" class="max-w-6xl mx-auto px-4 py-8">
+
+  <header class="mb-6">
+    <h1 class="font-display text-3xl sm:text-4xl font-extrabold">🧱 Block Playground</h1>
+    <p class="text-ink/65 mt-2 max-w-3xl">
+      A mini Scratch that runs right here. Click a block on the left to add it to your script, change the numbers,
+      then press <strong>Run</strong> and watch the cat follow your instructions. It's the same idea as real Scratch —
+      a smaller set of blocks to practise with.
+    </p>
+  </header>
+
+  <div class="grid lg:grid-cols-2 gap-6 items-start">
+
+    <!-- ===================== LEFT: palette + editor ===================== -->
+    <div class="grid gap-6">
+
+      <section class="card p-5">
+        <div class="flex items-center justify-between mb-3">
+          <h2 class="font-display text-xl font-extrabold m-0">Blocks</h2>
+          <span class="text-xs font-bold text-ink/45">click to add</span>
+        </div>
+        <div id="palette" class="grid gap-4"></div>
+      </section>
+
+      <section class="card p-5">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+          <h2 class="font-display text-xl font-extrabold m-0">Your script</h2>
+          <span id="target-label" class="pill bg-motion/10 text-motion">new blocks go to: the bottom of the script</span>
+        </div>
+        <p class="text-xs text-ink/50 mb-3">Hover a block for its buttons: <strong>＋ inside</strong> adds blocks inside a loop, <strong>✕</strong> deletes it.</p>
+        <div id="script-editor" class="sb-panel min-h-[14rem]"></div>
+      </section>
+
+    </div>
+
+    <!-- ===================== RIGHT: stage ===================== -->
+    <div class="grid gap-6 lg:sticky lg:top-20">
+
+      <section class="card p-5">
+        <div class="flex items-center justify-between mb-3">
+          <h2 class="font-display text-xl font-extrabold m-0">Stage</h2>
+          <span id="run-state" class="pill bg-ink/5 text-ink/60">stopped</span>
+        </div>
+        <div class="rounded-2xl border-2 border-ink/10 overflow-hidden bg-white shadow-inner">
+          <canvas id="stage" width="480" height="360" class="block w-full h-auto bg-white" tabindex="0" aria-label="Playground stage"></canvas>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2 mt-4">
+          <button id="run-btn" type="button" class="inline-flex items-center gap-2 rounded-xl bg-green-600 px-4 py-2 text-sm font-extrabold text-white shadow-md shadow-green-600/30 hover:brightness-105 active:scale-[0.98] transition">▶ Run</button>
+          <button id="stop-btn" type="button" class="inline-flex items-center gap-2 rounded-xl bg-rose-500 px-4 py-2 text-sm font-extrabold text-white hover:brightness-105 active:scale-[0.98] transition">■ Stop</button>
+          <button id="reset-btn" type="button" class="inline-flex items-center gap-2 rounded-xl bg-white px-4 py-2 text-sm font-extrabold text-ink border border-ink/15 hover:border-motion/50 transition">↺ Reset sprite</button>
+          <button id="clear-btn" type="button" class="inline-flex items-center gap-2 rounded-xl bg-white px-4 py-2 text-sm font-extrabold text-ink border border-ink/15 hover:border-motion/50 transition">🗑 Clear script</button>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2 mt-3">
+          <label class="inline-flex items-center gap-2 text-sm font-bold text-ink/70">
+            <span>Load example:</span>
+            <select id="examples" class="rounded-lg border border-ink/15 px-3 py-1.5 text-sm font-semibold bg-white focus:border-motion outline-none">
+              <option value="">choose one…</option>
+              <option value="ball">Bouncing ball</option>
+              <option value="spin">Spinning cat</option>
+              <option value="hello">Say hello + move</option>
+              <option value="count">Count to 10 with a variable</option>
+            </select>
+          </label>
+        </div>
+
+        <p id="status" class="text-sm font-bold text-ink/60 mt-3 min-h-[1.25rem]">Pick a block and press Run.</p>
+      </section>
+
+      <section class="card p-5">
+        <h2 class="font-display text-lg font-extrabold m-0 mb-2">What works here</h2>
+        <ul class="text-sm text-ink/70 space-y-1 list-disc pl-5">
+          <li><strong>Green flag</strong> scripts run when you press Run.</li>
+          <li><strong>Key</strong> scripts run when you press that key (click the stage first).</li>
+          <li>Use <strong>wait</strong> inside <strong>forever</strong> loops so you can see what's happening.</li>
+          <li><strong>if on edge, bounce</strong> keeps your sprite on the Stage.</li>
+          <li>Variables show up on the Stage while the script runs.</li>
+        </ul>
+      </section>
+
+    </div>
+  </div>
+
+</main>
+
+<footer class="mt-10 border-t border-ink/10 py-10 no-print">
+  <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-ink/55">
+    <p class="font-bold">CodeLab Curriculum — Block Playground</p>
+    <a class="text-motion font-bold hover:underline" href="index.html">See all 10 weeks →</a>
+  </div>
+</footer>
+
+<script src="../assets/nav.js"></script>
+<script src="js/demos.js"></script>
+<script src="js/playground.js"></script>
+</body>
+</html>

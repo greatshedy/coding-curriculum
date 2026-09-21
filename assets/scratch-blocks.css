@@ -1,0 +1,127 @@
+/* ============================================================
+   scratch-blocks.css — CSS-drawn Scratch-style blocks
+   Renders the "recipe" next to each lesson demo so students
+   can copy the real blocks into Scratch.
+   ============================================================ */
+
+.sb-panel {
+  background: #ffffff;
+  border: 1px solid rgba(31, 42, 68, 0.08);
+  border-radius: 1rem;
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+.sb-stack {
+  margin-bottom: 1.5rem;
+  min-width: 12rem;
+}
+.sb-stack:last-child { margin-bottom: 0; }
+
+.sb {
+  position: relative;
+  display: block;
+  width: -moz-fit-content;
+  width: fit-content;
+  max-width: 100%;
+  color: #fff;
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  line-height: 1.3;
+  padding: 0.55rem 0.85rem;
+  border-radius: 6px;
+  background: #4c97ff;
+  box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.12);
+  white-space: normal;
+  word-break: break-word;
+}
+
+/* puzzle tab (top) and notch (bottom) */
+.sb::before,
+.sb::after {
+  content: "";
+  position: absolute;
+  left: 14px;
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: inherit;
+}
+.sb::before { top: -7px; }
+.sb::after { bottom: -7px; background: #ffffff; }
+
+/* stacked blocks overlap so the tab drops into the notch */
+.sb + .sb { margin-top: 3px; }
+
+/* hat blocks: rounded top, no tab */
+.sb--hat { border-radius: 18px 18px 6px 6px; padding-top: 0.75rem; }
+.sb--hat::before { display: none; }
+
+/* C-blocks (repeat / forever / if) */
+.sb--c { padding-bottom: 0.4rem; }
+.sb--c > .sb-inner {
+  margin: 0.4rem 0 0 0.9rem;
+  padding: 0.35rem 0 0.35rem 0.5rem;
+  border-left: 4px solid rgba(255, 255, 255, 0.35);
+  background: #ffffff;
+  border-radius: 0.35rem;
+  min-height: 1.6rem;
+}
+.sb--c > .sb-inner .sb { color: #fff; }
+.sb--c > .sb-else {
+  margin: 0.35rem 0 0.35rem 0.9rem;
+  font-weight: 800;
+  font-size: 0.78rem;
+  color: #fff;
+  opacity: 0.95;
+}
+.sb--c > .sb-inner--else { margin-top: 0.2rem; }
+/* inner blocks lose the bottom tab look against white gap */
+.sb-inner .sb::after { background: #ffffff; }
+
+/* inputs */
+.sb-input {
+  display: inline-block;
+  min-width: 2.2rem;
+  padding: 0.1rem 0.5rem;
+  margin: 0 0.15rem;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #1f2a44;
+  font-weight: 800;
+  text-align: center;
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+}
+.sb-input--text { text-align: left; min-width: 4rem; }
+
+/* category colours */
+.sb--motion    { background: #4c97ff; }
+.sb--looks     { background: #9966ff; }
+.sb--sound     { background: #cf63cf; }
+.sb--events    { background: #ffbf00; }
+.sb--control   { background: #ffab19; }
+.sb--sensing   { background: #5cb1d6; }
+.sb--operators { background: #59c059; }
+.sb--variables { background: #ff8c1a; }
+.sb--myblocks  { background: #ff6680; }
+
+/* pseudocode variant (Week 9/10 plans) */
+.sb--pseudo {
+  background: #ffffff;
+  color: #1f2a44;
+  border: 2px dashed rgba(31, 42, 68, 0.3);
+  font-style: italic;
+  box-shadow: none;
+}
+.sb--pseudo::before { display: none; }
+.sb--pseudo::after { background: #ffffff; }
+.sb--pseudo > .sb-inner {
+  background: #faf8f3;
+  border-left-color: rgba(31, 42, 68, 0.2);
+}
+
+/* tiny category legend */
+.sb-legend { display: flex; flex-wrap: wrap; gap: 0.4rem 0.9rem; font-size: 0.75rem; font-weight: 700; }
+.sb-legend span { display: inline-flex; align-items: center; gap: 0.35rem; color: #4a5570; }
+.sb-legend i { width: 0.85rem; height: 0.85rem; border-radius: 4px; display: inline-block; }

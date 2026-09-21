@@ -1,0 +1,163 @@
+/* ============================================================
+   CodeLab Curriculum — shared styles
+   Used by the hub, the Scratch overview and every lesson page.
+   ============================================================ */
+
+:root {
+  /* Scratch block palette (official-ish colors) */
+  --scratch-motion: #4c97ff;
+  --scratch-looks: #9966ff;
+  --scratch-sound: #cf63cf;
+  --scratch-events: #ffbf00;
+  --scratch-control: #ffab19;
+  --scratch-sensing: #5cb1d6;
+  --scratch-operators: #59c059;
+  --scratch-variables: #ff8c1a;
+  --scratch-myblocks: #ff6680;
+
+  --ink: #1f2a44;
+  --ink-soft: #4a5570;
+  --paper: #f6f4ee;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem; /* keeps anchored headings clear of the sticky nav */
+}
+
+body {
+  font-family: "Nunito", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--ink);
+  background-color: var(--paper);
+  background-image:
+    radial-gradient(circle at 12% 8%, rgba(76, 151, 255, 0.10), transparent 42%),
+    radial-gradient(circle at 88% 4%, rgba(153, 102, 255, 0.10), transparent 40%),
+    radial-gradient(circle at 50% 100%, rgba(255, 191, 0, 0.10), transparent 45%);
+  background-attachment: fixed;
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: "Baloo 2", "Nunito", ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: -0.01em;
+}
+
+/* ---------- Reusable pieces ---------- */
+
+.card {
+  background: #fff;
+  border: 1px solid rgba(31, 42, 68, 0.08);
+  border-radius: 1.25rem;
+  box-shadow: 0 10px 30px -18px rgba(31, 42, 68, 0.45);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 40px -20px rgba(31, 42, 68, 0.5);
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-radius: 999px;
+  padding: 0.2rem 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.prose-kid p { margin-bottom: 0.75rem; }
+.prose-kid ul { margin: 0.25rem 0 0.9rem; padding-left: 1.1rem; list-style: disc; }
+.prose-kid li { margin-bottom: 0.3rem; }
+
+/* Numbered "build steps" list */
+.steps { counter-reset: step; list-style: none; padding: 0; margin: 0; }
+.steps > li {
+  position: relative;
+  padding-left: 3rem;
+  padding-bottom: 1rem;
+  border-left: 2px dashed rgba(76, 151, 255, 0.35);
+  margin-left: 1rem;
+}
+.steps > li:last-child { border-left-color: transparent; padding-bottom: 0; }
+.steps > li::before {
+  counter-increment: step;
+  content: counter(step);
+  position: absolute;
+  left: -1rem;
+  top: -0.15rem;
+  width: 2rem;
+  height: 2rem;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--scratch-motion);
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.9rem;
+  box-shadow: 0 6px 14px -6px rgba(76, 151, 255, 0.8);
+}
+
+/* Collapsible teacher-notes box */
+details.teacher {
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 140, 26, 0.35);
+  background: #fff8ee;
+  overflow: hidden;
+}
+details.teacher > summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 0.85rem 1.1rem;
+  font-weight: 800;
+  color: #8a4b00;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+details.teacher > summary::-webkit-details-marker { display: none; }
+details.teacher > summary::after {
+  content: "+";
+  margin-left: auto;
+  font-size: 1.25rem;
+  line-height: 1;
+}
+details.teacher[open] > summary::after { content: "\2013"; }
+details.teacher .teacher-body { padding: 0 1.1rem 1.1rem; }
+
+/* Focus visibility for keyboard users */
+a:focus-visible, button:focus-visible, input:focus-visible {
+  outline: 3px solid var(--scratch-motion);
+  outline-offset: 2px;
+  border-radius: 0.5rem;
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: #fff;
+  padding: 0.5rem 0.9rem;
+  border-radius: 0 0 0.75rem 0;
+  z-index: 100;
+}
+.skip-link:focus { left: 0; }
+
+/* Print: useful for the Week 9 design document and the Week 10 rubric */
+@media print {
+  nav, .no-print, footer { display: none !important; }
+  body { background: #fff !important; background-image: none !important; }
+  .card { box-shadow: none !important; border: 1px solid #ccc !important; }
+  details.teacher[open] .teacher-body { display: block; }
+
+  /* When a #print-area exists (Week 9), print only that area. */
+  body:has(#print-area:not(.hidden)) * { visibility: hidden; }
+  body:has(#print-area:not(.hidden)) #print-area,
+  body:has(#print-area:not(.hidden)) #print-area * { visibility: visible; }
+  body:has(#print-area:not(.hidden)) #print-area {
+    position: absolute; left: 0; top: 0; width: 100%;
+    border: 0 !important; padding: 0 !important; display: block !important;
+  }
+}
