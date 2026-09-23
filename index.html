@@ -23,6 +23,7 @@
         colors: {
           ink: '#1f2a44',
           paper: '#f6f4ee',
+          js: '#f7df1e',
           motion: '#4c97ff',
           looks: '#9966ff',
           events: '#ffbf00',
@@ -92,8 +93,8 @@
     </div>
 
     <dl class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
-      <div class="card p-4"><dt class="text-3xl font-extrabold font-display text-motion">2</dt><dd class="text-sm font-bold text-ink/60">Courses</dd></div>
-      <div class="card p-4"><dt class="text-3xl font-extrabold font-display text-looks">20</dt><dd class="text-sm font-bold text-ink/60">Weeks of lessons</dd></div>
+      <div class="card p-4"><dt class="text-3xl font-extrabold font-display text-motion">3</dt><dd class="text-sm font-bold text-ink/60">Courses</dd></div>
+      <div class="card p-4"><dt class="text-3xl font-extrabold font-display text-looks">40+</dt><dd class="text-sm font-bold text-ink/60">Weeks of lessons</dd></div>
       <div class="card p-4"><dt class="text-3xl font-extrabold font-display text-control">20+</dt><dd class="text-sm font-bold text-ink/60">Runnable demos</dd></div>
       <div class="card p-4"><dt class="text-3xl font-extrabold font-display text-variables">5–18</dt><dd class="text-sm font-bold text-ink/60">Age range</dd></div>
     </dl>
@@ -132,18 +133,44 @@
         </div>
       </article>
 
-      <!-- JavaScript (live) -->
+      <!-- Introduction to Web Development (live) -->
+      <article class="card card-hover p-6 flex flex-col relative overflow-hidden">
+        <span class="pointer-events-none absolute right-6 bottom-4 grid place-items-center w-16 h-16 rounded-2xl bg-motion text-white text-xl font-black select-none" aria-hidden="true">{"{}"}</span>
+        <div class="relative">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="pill bg-events/20 text-yellow-800">Available now</span>
+            <span class="pill bg-ink/5 text-ink/70">JSS 1 &amp; JSS 2</span>
+          </div>
+          <h3 class="font-display text-2xl font-extrabold">Introduction to Web Development</h3>
+          <p class="mt-2 text-ink/70">
+            A three-term first course: HTML to build pages, CSS to style them, and a little JavaScript
+            to make them react. Every week ships a page students can run and change.
+          </p>
+          <ul class="mt-4 grid sm:grid-cols-2 gap-x-6 gap-y-2 text-sm font-semibold text-ink/75">
+            <li class="flex items-center gap-2"><span class="text-green-600">✓</span> 3 terms, 10 weeks each</li>
+            <li class="flex items-center gap-2"><span class="text-green-600">✓</span> Instructor guides &amp; handouts</li>
+            <li class="flex items-center gap-2"><span class="text-green-600">✓</span> Runnable HTML, CSS &amp; JS</li>
+            <li class="flex items-center gap-2"><span class="text-green-600">✓</span> Track A &amp; B assessments</li>
+          </ul>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="intro-webdev/index.html" class="inline-flex items-center gap-2 rounded-xl bg-motion px-5 py-2.5 font-extrabold text-white hover:brightness-105 transition">Open course</a>
+            <a href="intro-webdev/week.html?t=1&w=1" class="inline-flex items-center gap-2 rounded-xl bg-white px-5 py-2.5 font-extrabold text-ink border border-ink/10 hover:border-motion/40 transition">Jump to Term 1</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Web Development (live) -->
       <article class="card card-hover p-6 flex flex-col relative overflow-hidden">
         <span class="pointer-events-none absolute right-6 bottom-4 grid place-items-center w-16 h-16 rounded-2xl bg-js text-ink text-xl font-black select-none" aria-hidden="true">JS</span>
         <div class="relative">
           <div class="flex items-center gap-2 mb-3">
             <span class="pill bg-events/20 text-yellow-800">Available now</span>
-            <span class="pill bg-ink/5 text-ink/70">Junior &amp; Senior High</span>
+            <span class="pill bg-ink/5 text-ink/70">JSS 3, SS 1 &amp; SS 2</span>
           </div>
           <h3 class="font-display text-2xl font-extrabold">JavaScript: 10-Week Web Development</h3>
           <p class="mt-2 text-ink/70">
-            The full classroom package: instructor guides, student handouts, runnable code templates and assessments.
-            Variables, loops, functions and the DOM — ending in a presented mini-project.
+            The full classroom package for the senior years: instructor guides, student handouts, runnable
+            code templates and assessments — from first console.log() to a presented mini-project.
           </p>
           <ul class="mt-4 grid sm:grid-cols-2 gap-x-6 gap-y-2 text-sm font-semibold text-ink/75">
             <li class="flex items-center gap-2"><span class="text-green-600">✓</span> Instructor guides &amp; timings</li>
@@ -207,7 +234,7 @@
 <footer class="mt-8 border-t border-ink/10 py-10">
   <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-ink/55">
     <p class="font-bold">CodeLab Curriculum — built for the classroom.</p>
-    <p>Two courses, twenty weeks of lessons. <a class="text-motion font-bold hover:underline" href="#curricula">Pick a course →</a></p>
+    <p>Three courses, forty-plus weeks of lessons. <a class="text-motion font-bold hover:underline" href="#curricula">Pick a course →</a></p>
   </div>
 </footer>
 

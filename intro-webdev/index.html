@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Introduction to Web Development (JSS 1 &amp; JSS 2) — CodeLab</title>
+<meta name="description" content="A three-term introduction to web development for JSS 1 and JSS 2: HTML, CSS and a little JavaScript, with runnable pages." />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/style.css" />
+
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          display: ['"Baloo 2"', 'Nunito', 'sans-serif'],
+          sans: ['Nunito', 'ui-sans-serif', 'system-ui', 'sans-serif']
+        },
+        colors: {
+          ink: '#1f2a44', paper: '#f6f4ee', js: '#f7df1e', motion: '#4c97ff', looks: '#9966ff',
+          events: '#ffbf00', control: '#ffab19', sensing: '#5cb1d6', operators: '#59c059', variables: '#ff8c1a'
+        }
+      }
+    }
+  };
+</script>
+</head>
+<body class="min-h-screen">
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<nav class="sticky top-0 z-50 bg-ink text-white shadow-lg no-print">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="flex items-center justify-between h-16">
+      <a href="../index.html" class="flex items-center gap-2 font-display text-xl">
+        <span class="grid place-items-center w-9 h-9 rounded-xl bg-motion text-lg">{"{}"}</span>
+        <span class="font-extrabold">CodeLab</span>
+      </a>
+      <div class="hidden md:flex items-center gap-1" data-nav-links>
+        <a href="../index.html" class="px-3 py-2 rounded-lg text-sm font-bold text-white/80 hover:text-white hover:bg-white/10">Curricula</a>
+        <a href="index.html" class="px-3 py-2 rounded-lg text-sm font-bold text-white/80 hover:text-white hover:bg-white/10">Course home</a>
+        <a href="../webdev/playground.html" class="px-3 py-2 rounded-lg text-sm font-bold text-white/80 hover:text-white hover:bg-white/10">Code Playground</a>
+      </div>
+      <a href="week.html?t=1&w=1" class="hidden sm:inline-flex items-center gap-1.5 rounded-xl bg-motion px-4 py-2 text-sm font-extrabold text-white hover:brightness-105 transition">Start Term 1</a>
+    </div>
+  </div>
+</nav>
+
+<main id="main" class="max-w-6xl mx-auto px-4">
+
+  <header class="py-12">
+    <div class="flex flex-col md:flex-row md:items-center gap-6">
+      <div class="grid place-items-center w-24 h-24 rounded-3xl bg-motion text-white shadow-md text-3xl font-black shrink-0">{"{}"}</div>
+      <div>
+        <div class="flex flex-wrap gap-2 mb-3">
+          <span class="pill bg-events/25 text-yellow-900">Web Development</span>
+          <span class="pill bg-motion/15 text-motion">JSS 1 &amp; JSS 2</span>
+          <span class="pill bg-ink/5 text-ink/60">3 terms</span>
+          <span class="pill bg-looks/15 text-looks">Start from zero</span>
+        </div>
+        <h1 class="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight">Introduction to Web Development</h1>
+        <p class="mt-3 text-lg text-ink/70 max-w-3xl">
+          A friendly first course for JSS 1 and JSS 2. Build real pages with HTML, style them with CSS,
+          and add a little JavaScript — one week at a time, across three terms.
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <section id="terms" class="pb-16"></section>
+
+</main>
+
+<footer class="mt-8 border-t border-ink/10 py-10 no-print">
+  <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-ink/55">
+    <p class="font-bold">CodeLab Curriculum — Introduction to Web Development</p>
+    <a class="text-motion font-bold hover:underline" href="week.html?t=1&w=1">Start Term 1 →</a>
+  </div>
+</footer>
+
+<script src="../assets/nav.js"></script>
+<script src="js/data.js"></script>
+<script>
+  (function () {
+    "use strict";
+    var cur = window.INTRO_CURRICULUM;
+    if (!cur) return;
+    var host = document.getElementById("terms");
+    var tones = { motion: "#4c97ff", looks: "#9966ff", control: "#ffab19", events: "#ffbf00", sensing: "#5cb1d6", operators: "#59c059", variables: "#ff8c1a" };
+    host.innerHTML = cur.terms.map(function (term) {
+      var accent = tones[term.theme] || tones.motion;
+      var rows = term.weeks.map(function (wk, wi) {
+        return '<tr class="border-t border-ink/8 hover:bg-motion/5">' +
+          '<td class="p-3 align-top"><a href="week.html?t=' + term.n + "&w=" + (wi + 1) + '" class="inline-flex items-center gap-2 font-extrabold text-motion hover:underline"><span class="text-lg">' + wk.emoji + "</span>Week " + (wi + 1) + "</a></td>" +
+          '<td class="p-3 align-top font-extrabold text-ink/85"><a href="week.html?t=' + term.n + "&w=" + (wi + 1) + '" class="hover:text-motion">' + wk.title + "</a></td>" +
+          '<td class="p-3 align-top text-ink/70">' + wk.concept + "</td>" +
+          '<td class="p-3 align-top text-right"><a href="week.html?t=' + term.n + "&w=" + (wi + 1) + '" class="whitespace-nowrap rounded-lg bg-motion/10 text-motion font-extrabold px-3 py-1.5 hover:bg-motion/20">Open →</a></td>' +
+        "</tr>";
+      }).join("");
+      return '<section class="mb-10">' +
+        '<div class="flex items-center gap-3 mb-4">' +
+          '<span class="grid place-items-center w-10 h-10 rounded-2xl text-xl font-black" style="background:' + accent + '22;color:' + accent + '">' + term.n + "</span>" +
+          '<div><h2 class="font-display text-2xl font-extrabold m-0">Term ' + term.n + ": " + term.title + "</h2>" +
+          '<p class="text-sm text-ink/55 m-0">' + term.weeks.length + " weeks</p></div>" +
+        "</div>" +
+        '<div class="card overflow-x-auto"><table class="w-full text-left text-sm border-collapse">' +
+          '<thead><tr class="bg-ink/5 text-ink/55 text-xs uppercase tracking-wide">' +
+            '<th class="p-3 font-extrabold">Week</th><th class="p-3 font-extrabold">Topic</th><th class="p-3 font-extrabold">Learning focus</th><th class="p-3 font-extrabold sr-only">Open</th>' +
+          "</tr></thead><tbody>" + rows + "</tbody></table></div>" +
+      "</section>";
+    }).join("");
+  })();
+</script>
+</body>
+</html>

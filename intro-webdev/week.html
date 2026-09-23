@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Introduction to Web Development — Lesson</title>
+<meta name="description" content="A term-based introduction to web development for JSS 1 and JSS 2, with instructor guides, handouts, runnable code and assessments." />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/style.css" />
+<link rel="stylesheet" href="../assets/code.css" />
+
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          display: ['"Baloo 2"', 'Nunito', 'sans-serif'],
+          sans: ['Nunito', 'ui-sans-serif', 'system-ui', 'sans-serif']
+        },
+        colors: {
+          ink: '#1f2a44', paper: '#f6f4ee', js: '#f7df1e', motion: '#4c97ff', looks: '#9966ff',
+          events: '#ffbf00', control: '#ffab19', sensing: '#5cb1d6', operators: '#59c059', variables: '#ff8c1a'
+        }
+      }
+    }
+  };
+</script>
+</head>
+<body class="min-h-screen">
+
+<a href="#week-root" class="skip-link">Skip to content</a>
+
+<nav class="sticky top-0 z-50 bg-ink text-white shadow-lg no-print">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="flex items-center justify-between h-16">
+      <a href="../index.html" class="flex items-center gap-2 font-display text-xl">
+        <span class="grid place-items-center w-9 h-9 rounded-xl bg-motion text-lg">{"{}"}</span>
+        <span class="font-extrabold">CodeLab</span>
+      </a>
+      <div class="hidden md:flex items-center gap-1" data-nav-links>
+        <a href="../index.html" class="px-3 py-2 rounded-lg text-sm font-bold text-white/80 hover:text-white hover:bg-white/10">Curricula</a>
+        <a href="index.html" class="px-3 py-2 rounded-lg text-sm font-bold text-white/80 hover:text-white hover:bg-white/10">Course home</a>
+        <a href="../webdev/playground.html" class="px-3 py-2 rounded-lg text-sm font-bold text-white/80 hover:text-white hover:bg-white/10">Code Playground</a>
+      </div>
+      <div class="flex items-center gap-2">
+        <button id="prevTop" class="hidden sm:inline-flex items-center gap-1 rounded-xl bg-white/10 px-3 py-2 text-sm font-extrabold hover:bg-white/20 transition">← Prev</button>
+        <button id="nextTop" class="inline-flex items-center gap-1 rounded-xl bg-motion px-3 py-2 text-sm font-extrabold text-white hover:brightness-105 transition">Next →</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main id="week-root" class="max-w-6xl mx-auto px-4 py-8">
+  <p class="text-center text-ink/50 font-bold py-20">Loading lesson…</p>
+</main>
+
+<footer class="mt-10 border-t border-ink/10 py-10 no-print">
+  <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-ink/55">
+    <p class="font-bold">CodeLab Curriculum — Introduction to Web Development</p>
+    <a class="text-motion font-bold hover:underline" href="index.html">All terms →</a>
+  </div>
+</footer>
+
+<script src="../assets/nav.js"></script>
+<script src="../assets/tabs.js"></script>
+<script src="../assets/code-runner.js"></script>
+<script src="js/data.js"></script>
+<script src="js/config.js"></script>
+<script src="../assets/lesson-render.js"></script>
+</body>
+</html>
