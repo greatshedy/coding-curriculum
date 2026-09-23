@@ -177,15 +177,16 @@ renderer and 4-tab format.
 
 ## Scope & sequencing
 
-Phase 1 (this spec) covers the shared renderer + the full intro course. The implementation plan
-will sequence:
+Phase 1 (this spec) covers the shared renderer + the full intro course. Work is decomposed into
+plans that each produce working software; the first plan covers steps 1–3 below, and Terms 2–3 get
+follow-up content plans using the same week shape.
 
 1. Extract/refactor `assets/lesson-render.js` to be term-aware and config-driven; keep `webdev/`
    working.
 2. Build `intro-webdev/` shell (config, data skeleton, index, week page) + hub changes.
 3. Author **Term 1** (10 weeks of full content).
-4. Author **Term 2** (10 weeks).
-5. Author **Term 3** (10 weeks).
+4. Author **Term 2** (10 weeks) — follow-up plan.
+5. Author **Term 3** (10 weeks) — follow-up plan.
 
 Phase 2 (separate spec/plan): reshape `webdev/` into the senior term-based course.
 
