@@ -49,20 +49,36 @@
     { value: "blank", label: "Blank starter page" }
   ];
 
-  // One entry per week that ships a template.
-  cur.weeks.forEach(function (w) {
-    if (w.template) {
-      options.push({ value: "w" + w.n, label: "Week " + w.n + ": " + w.title + " — " + w.template.filename, code: w.template.code });
-    }
-    if (w.variants) {
-      Object.keys(w.variants).forEach(function (k) {
-        var v = w.variants[k];
-        if (v.template) {
-          options.push({ value: "w" + w.n + "-" + k, label: "Week " + w.n + " (" + v.name + ") — " + v.template.filename, code: v.template.code });
-        }
+  function addWeeks(prefix, list) {
+    (list || []).forEach(function (w) {
+      if (w.template) {
+        options.push({ value: prefix + "w" + w.n, label: prefix + "Week " + w.n + ": " + w.title + " — " + w.template.filename, code: w.template.code });
+      }
+      if (w.variants) {
+        Object.keys(w.variants).forEach(function (k) {
+          var v = w.variants[k];
+          if (v.template) {
+            options.push({ value: prefix + "w" + w.n + "-" + k, label: prefix + "Week " + w.n + " (" + v.name + ") — " + v.template.filename, code: v.template.code });
+          }
+        });
+      }
+    });
+  }
+
+  function collect(curriculum, prefix) {
+    if (!curriculum) return;
+    if (curriculum.terms && curriculum.terms.length) {
+      curriculum.terms.forEach(function (term, ti) {
+        addWeeks(prefix + "T" + (ti + 1) + " ", term.weeks);
       });
+    } else {
+      addWeeks(prefix, curriculum.weeks);
     }
-  });
+  }
+
+  // One entry per week that ships a template, across both courses.
+  collect(window.WEBDEV_CURRICULUM, "");
+  collect(window.INTRO_CURRICULUM, "Intro · ");
 
   options.forEach(function (o) {
     var opt = document.createElement("option");
