@@ -90,21 +90,22 @@
     var cur = window.INTRO_CURRICULUM;
     if (!cur) return;
     var host = document.getElementById("terms");
+    var esc = window.CL.escapeHtml;
     var tones = { motion: "#4c97ff", looks: "#9966ff", control: "#ffab19", events: "#ffbf00", sensing: "#5cb1d6", operators: "#59c059", variables: "#ff8c1a" };
     host.innerHTML = cur.terms.map(function (term) {
       var accent = tones[term.theme] || tones.motion;
       var rows = term.weeks.map(function (wk, wi) {
-        return '<tr class="border-t border-ink/8 hover:bg-motion/5">' +
-          '<td class="p-3 align-top"><a href="week.html?t=' + term.n + "&w=" + (wi + 1) + '" class="inline-flex items-center gap-2 font-extrabold text-motion hover:underline"><span class="text-lg">' + wk.emoji + "</span>Week " + (wi + 1) + "</a></td>" +
-          '<td class="p-3 align-top font-extrabold text-ink/85"><a href="week.html?t=' + term.n + "&w=" + (wi + 1) + '" class="hover:text-motion">' + wk.title + "</a></td>" +
-          '<td class="p-3 align-top text-ink/70">' + wk.concept + "</td>" +
-          '<td class="p-3 align-top text-right"><a href="week.html?t=' + term.n + "&w=" + (wi + 1) + '" class="whitespace-nowrap rounded-lg bg-motion/10 text-motion font-extrabold px-3 py-1.5 hover:bg-motion/20">Open →</a></td>' +
+        return '<tr class="border-t border-ink/10 hover:bg-motion/5">' +
+          '<td class="p-3 align-top"><a href="week.html?t=' + term.n + "&w=" + wk.n + '" class="inline-flex items-center gap-2 font-extrabold text-motion hover:underline"><span class="text-lg">' + wk.emoji + "</span>Week " + wk.n + "</a></td>" +
+          '<td class="p-3 align-top font-extrabold text-ink/85"><a href="week.html?t=' + term.n + "&w=" + wk.n + '" class="hover:text-motion">' + esc(wk.title) + "</a></td>" +
+          '<td class="p-3 align-top text-ink/70">' + esc(wk.concept) + "</td>" +
+          '<td class="p-3 align-top text-right"><a href="week.html?t=' + term.n + "&w=" + wk.n + '" class="whitespace-nowrap rounded-lg bg-motion/10 text-motion font-extrabold px-3 py-1.5 hover:bg-motion/20">Open →</a></td>" +
         "</tr>";
       }).join("");
       return '<section class="mb-10">' +
         '<div class="flex items-center gap-3 mb-4">' +
           '<span class="grid place-items-center w-10 h-10 rounded-2xl text-xl font-black" style="background:' + accent + '22;color:' + accent + '">' + term.n + "</span>" +
-          '<div><h2 class="font-display text-2xl font-extrabold m-0">Term ' + term.n + ": " + term.title + "</h2>" +
+          '<div><h2 class="font-display text-2xl font-extrabold m-0">Term ' + term.n + ": " + esc(term.title) + "</h2>" +
           '<p class="text-sm text-ink/55 m-0">' + term.weeks.length + " weeks</p></div>" +
         "</div>" +
         '<div class="card overflow-x-auto"><table class="w-full text-left text-sm border-collapse">' +

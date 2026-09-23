@@ -46,6 +46,17 @@
   var t = clamp(toInt(CL.qs("t"), 1), 1, terms.length);
   var term = terms[t - 1];
   var weeksInTerm = term.weeks || [];
+  if (!weeksInTerm.length) {
+    for (var fi2 = 0; fi2 < terms.length; fi2++) {
+      if (terms[fi2].weeks && terms[fi2].weeks.length) {
+        term = terms[fi2];
+        weeksInTerm = term.weeks;
+        t = fi2 + 1;
+        break;
+      }
+    }
+  }
+  if (!weeksInTerm.length) return;
   var w = clamp(toInt(CL.qs("w"), 1), 1, weeksInTerm.length || 1);
 
   var current = 0;
@@ -119,7 +130,10 @@
     var termBadge = term.title
       ? '<span class="pill" style="background:' + soft + ";color:" + accent + '">' + e(term.title) + "</span>"
       : "";
-    var trackBadge = week.tracks === "both" ? '<span class="pill bg-ink/5 text-ink/60">Track A &amp; B</span>' : "";
+    var trackBadge = "";
+    if (week.tracks) {
+      trackBadge = '<span class="pill bg-ink/5 text-ink/60">' + (week.tracks === "both" ? "Track A &amp; B" : "JHS &amp; SHS") + "</span>";
+    }
     return '<section class="mb-8">' +
       '<p class="text-sm font-bold text-ink/45 mb-3"><a class="hover:text-motion" href="' + indexHref + '">Course home</a> <span class="mx-1">/</span> Week ' + w + " of " + weeksInTerm.length + "</p>" +
       '<div class="flex flex-col sm:flex-row sm:items-center gap-4">' +
@@ -257,7 +271,7 @@
     var variant = variantKey && week.variants ? week.variants[variantKey] : null;
     var t = variant ? Object.assign({}, week, variant) : week;
     var objective = variant ? variant.objective : week.objective;
-    var assessment = [].concat(t.assessment || [], variant ? (week.assessment || []) : []);
+    var assessment = variant ? [].concat(variant.assessment || [], week.assessment || []) : [].concat(week.assessment || []);
 
     var tabs = [
       { id: "instructor", label: "🧑‍🏫 Instructor", html: instructorPanel(t, objective) },
@@ -334,7 +348,7 @@
         var on = wk === week;
         return '<a href="' + weekUrl(0, wi) + '" class="flex items-center gap-2 text-sm font-bold py-1 ' +
           (on ? "text-motion" : "text-ink/60 hover:text-motion") + '">' +
-          '<span class="w-6 text-center">' + wk.emoji + "</span>" + e(wk.title) + "</a>";
+          '<span class="w-6 text-center">' + wk.emoji + "</span>" + "Week " + (wi + 1) + ": " + e(wk.title) + "</a>";
       }).join("");
     }
     return terms.map(function (tm, ti) {

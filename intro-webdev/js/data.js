@@ -165,7 +165,8 @@
       ],
       commonMistakes: [
         "Forgetting the closing tag, for example opening a <p> and never writing </p>. The browser then treats the rest of the page as part of that paragraph. Show students how an opening and closing tag work as a pair.",
-        "Putting visible text inside <head>. Only information about the page goes in the head; anything you want to see on the screen must go inside the body."
+        "Putting visible text inside <head>. Only information about the page goes in the head; anything you want to see on the screen must go inside the body.",
+        "Nesting tags in the wrong order — for example, closing a tag before the one it is inside."
       ],
       handout: {
         sections: [
@@ -287,7 +288,8 @@
       ],
       commonMistakes: [
         "Using a heading only to make text big instead of to show importance. Pick the heading level by meaning first; size can be changed later with CSS.",
-        "Expecting comments to appear on the page. The browser ignores everything between <!-- and -->, so comments are only ever seen in the code."
+        "Expecting comments to appear on the page. The browser ignores everything between <!-- and -->, so comments are only ever seen in the code.",
+        "Using more than one <h1> on a page, which muddles the importance of the headings."
       ],
       handout: {
         sections: [
@@ -407,7 +409,8 @@
       ],
       commonMistakes: [
         "Putting text straight inside <ul> or <ol> instead of wrapping each item in an <li>. The browser will not make a proper list item without the <li> tag.",
-        "Nesting a list outside an <li>. A nested list must go inside the <li> it belongs to, otherwise the browser cannot tell which item it belongs to."
+        "Nesting a list outside an <li>. A nested list must go inside the <li> it belongs to, otherwise the browser cannot tell which item it belongs to.",
+        "Using an <ol> (numbered list) when the order of the items does not matter."
       ],
       handout: {
         sections: [
@@ -535,7 +538,8 @@
       ],
       commonMistakes: [
         "Using the wrong file path, so the image shows a broken icon instead of the picture. Check that the src exactly matches the file name and folder.",
-        "Writing <img>...</img>. The img tag is empty, so it has no closing tag — it ends with the > on the opening tag itself."
+        "Writing <img>...</img>. The img tag is empty, so it has no closing tag — it ends with the > on the opening tag itself.",
+        "Forgetting the alt text on an image, which makes the image unusable for screen-reader users."
       ],
       handout: {
         sections: [
@@ -732,8 +736,8 @@
 </html>`,
         tasks: [
           "Save the file as timetable.html and open it in a browser.",
-          "Fill the table so it has three columns of data.",
-          "Add a header row with <th> cells naming each column.",
+          "Fill in the data cells under each header.",
+          "Replace the placeholder subjects in the header row with your own.",
           "Add a fourth subject as a new <tr> row."
         ]
       },
@@ -1170,7 +1174,7 @@
           "Plan four sections on paper, then save this file as my_page.html.",
           "Build each section with its own heading and content.",
           "Wrap each section in a semantic tag such as <section> or <article>.",
-          "Add a <nav> with a link to each section using the section ids."
+          "Give each section an id attribute, then add a nav link that jumps to each section id."
         ]
       },
       assessment: [
