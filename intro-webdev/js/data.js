@@ -1385,16 +1385,1193 @@
   ];
 
   var term2 = [
-    week(1, "What is CSS?", "🎨", "looks", "CSS is the language that styles HTML. It controls colours, spacing and layout, and it can be added inline, internally or in an external file."),
-    week(2, "Selectors and the cascade", "🎯", "motion", "Selectors choose which elements to style. When rules compete, the cascade decides which one wins."),
-    week(3, "Colours and backgrounds", "🌈", "looks", "CSS colours can be written as names, hex codes or rgb values, and can be applied to text, borders and backgrounds."),
-    week(4, "Text and fonts", "✍️", "sensing", "Font family, size, weight and alignment control how text looks and how easy it is to read."),
-    week(5, "The box model", "📦", "control", "Every element is a box made of content, padding, border and margin. Understanding the box model is the key to spacing."),
-    week(6, "Sizing and spacing", "📐", "operators", "Widths, heights and display control how big elements are and whether they sit in a line or stack."),
-    week(7, "Layout with Flexbox", "↔️", "motion", "Flexbox arranges items in a row or column and spaces them neatly, which is how most modern layouts are built."),
-    week(8, "Styling links, lists and buttons", "🔘", "variables", "Links, lists and buttons can all be styled to match a design, including their hover and active states."),
-    week(9, "Responsive basics", "📱", "events", "Responsive design makes a page look good on phones and computers, using the viewport and media queries."),
-    week(10, "Project: style your page", "🌟", "looks", "Apply everything from this term to turn the About Me page into a designed, themed site.")
+    {
+      n: 1, title: "What is CSS?", emoji: "🎨", color: "looks", tracks: "both",
+      concept: "CSS is the language that styles HTML. It controls colours, spacing and layout, and it can be added inline, internally or in an external file.",
+      objective: "Students can explain what CSS is and add it to a page three different ways.",
+      teachingPoints: [
+        "A CSS rule has a selector, a property and a value: selector { property: value; }.",
+        "Inline CSS uses a style attribute on a tag; internal CSS uses a <style> block in the head; external CSS uses a <link> to a .css file.",
+        "For a whole project, external CSS keeps your code tidy, but internal CSS is fine for a single page."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo: first style", mins: 5 },
+        { label: "The three ways to add CSS", mins: 8 },
+        { label: "Activity", mins: 15 },
+        { label: "Share & wrap-up", mins: 4 }
+      ],
+      liveDemo: [
+        {
+          title: "Style your first heading",
+          filename: "first_style.html",
+          caption: "The <style> block lives in the head. Every rule has a selector, a property and a value — try changing the hex colour.",
+          code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    h1 { color: #4c97ff; }
+    p { font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>My styled page</h1>
+  <p>Change the colour and font-weight here, then press Run.</p>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Forgetting the semicolon at the end of each declaration, which makes the next rule break.",
+        "Putting the <style> block inside the <body>, where it still works but is messy.",
+        "Forgetting that the property name and value are separated by a colon, not an equals sign."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "A rule has three parts",
+            body: [
+              "Every CSS rule has a selector (which element it styles), a property (what it changes) and a value (how it changes it)."
+            ],
+            codes: [
+              { label: "rule.css", code: "h1 { color: #4c97ff; }" }
+            ]
+          },
+          {
+            h: "Three ways to add CSS",
+            body: [
+              "Inline goes in the tag, internal goes in a <style> block, external goes in a separate .css file linked from the head."
+            ],
+            list: [
+              "Inline",
+              "Internal",
+              "External"
+            ]
+          },
+          {
+            h: "Which way should you choose?",
+            body: [
+              "For one small page, internal CSS is easiest. For a real site, external CSS means you change the whole look from one file."
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "my_style.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    h1 { color: #ff8c1a; }
+    p { color: #1f2a44; }
+  </style>
+</head>
+<body>
+  <h1>Welcome to my page</h1>
+  <p>This paragraph is styled by internal CSS.</p>
+  <p>Add your own rules below.</p>
+</body>
+</html>`,
+        tasks: [
+          "Change the h1 colour to a colour you like.",
+          "Add a rule that makes the second paragraph italic.",
+          "Add a rule that gives the body a light background colour.",
+          "Explain to a partner which part of a rule is the selector, which is the property, and which is the value."
+        ]
+      },
+      assessment: [
+        {
+          track: "A", audience: "Both", title: "Peer pair-check", type: "checklist",
+          items: [
+            "The page still runs after editing",
+            "The new rules change the page",
+            "The student can point to the selector, property and value in a rule"
+          ]
+        },
+        {
+          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
+          questions: [
+            { prompt: "Question 1: What are the three parts of a CSS rule?", answer: "A selector, a property and a value." },
+            { prompt: "Question 2: Where does an internal <style> block live?", answer: "Inside the <head> of the page." },
+            { prompt: "Question 3: Write a rule that makes all <h1> elements blue.", answer: "h1 { color: blue; }" }
+          ]
+        }
+      ]
+    },
+    {
+      n: 2, title: "Selectors and the cascade", emoji: "🎯", color: "motion", tracks: "both",
+      concept: "Selectors choose which elements to style. When rules compete, the cascade decides which one wins.",
+      objective: "Students can target elements with type, class and id selectors, and predict which rule wins.",
+      teachingPoints: [
+        "A type selector targets every tag of that kind, e.g. p.",
+        "A class selector (.name) targets any element that carries class=\"name\"; an id selector (#name) targets the one element with that id.",
+        "When rules fight, id beats class and class beats type; if they are equal, the later rule wins."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo", mins: 5 },
+        { label: "Selectors", mins: 8 },
+        { label: "Activity", mins: 15 },
+        { label: "Share & wrap-up", mins: 4 }
+      ],
+      liveDemo: [
+        {
+          title: "Three kinds of selector",
+          filename: "selectors.html",
+          caption: "Type, class and id selectors. Notice the third paragraph: it has both class and id, and the id rule wins for its font weight.",
+          code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    p { color: #4c97ff; }
+    .highlight { background: #ffbf00; }
+    #special { font-weight: 800; }
+  </style>
+</head>
+<body>
+  <p>Every paragraph is blue.</p>
+  <p class="highlight">This one also has a highlight background.</p>
+  <p id="special" class="highlight">This one is bold too — id beats class.</p>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Writing a class selector without the dot (.highlight) or an id selector without the hash (#special).",
+        "Using an id for more than one element, which breaks the rule that ids are unique.",
+        "Believing the last rule always wins — specificity decides first."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Three ways to target elements",
+            body: [
+              "A type selector styles every tag of that kind. A class styles any element that carries that class. An id styles exactly one element."
+            ],
+            codes: [
+              { label: "selectors.css", code: "p { }  .highlight { }  #special { }" }
+            ]
+          },
+          {
+            h: "Class vs id",
+            body: [
+              "Use a class when you want the same styling in several places. Use an id when you want to reach one specific element, like the one your JavaScript needs."
+            ]
+          },
+          {
+            h: "The cascade",
+            body: [
+              "When two rules target the same element, id beats class, class beats type, and a later equal rule wins. The browser 'cascades' down the stylesheet."
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "selectors.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { font-family: sans-serif; }
+    h1 { color: #1f2a44; }
+    .alert { color: #b91c1c; }
+    #title { text-align: center; }
+  </style>
+</head>
+<body>
+  <h1 id="title">A page about selectors</h1>
+  <p>This paragraph uses the type selector p.</p>
+  <p class="alert">This one uses the class alert.</p>
+  <p class="alert">Another alert paragraph — classes can be reused.</p>
+</body>
+</html>`,
+        tasks: [
+          "Give one paragraph its own id and style it.",
+          "Add a third element that uses the alert class.",
+          "Write a rule that beats the h1 rule by using an id selector.",
+          "Explain to a partner when to use a class and when to use an id."
+        ]
+      },
+      assessment: [
+        {
+          track: "A", audience: "Both", title: "Peer pair-check", type: "checklist",
+          items: [
+            "Selectors target the right elements",
+            "The page runs without errors",
+            "The student can explain the cascade in their own words"
+          ]
+        },
+        {
+          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
+          questions: [
+            { prompt: "Question 1: Write the selector that styles every <p> element.", answer: "p" },
+            { prompt: "Question 2: Write the selector for an element with class=\"alert\".", answer: ".alert" },
+            { prompt: "Question 3: If an id rule and a type rule both target an <h1>, which one wins?", answer: "The id rule, because id has higher specificity." }
+          ]
+        }
+      ]
+    },
+    {
+      n: 3, title: "Colours and backgrounds", emoji: "🌈", color: "looks", tracks: "both",
+      concept: "CSS colours can be written as names, hex codes or rgb values, and can be applied to text, borders and backgrounds.",
+      objective: "Students can set text, border and background colours using names, hex codes and rgb.",
+      teachingPoints: [
+        "Colours have three spellings: names (red), hex codes (#ff0000) and rgb (rgb(255, 0, 0)).",
+        "color styles the text, background-color fills the area behind it, and border draws a line around an element.",
+        "Dark text on a light background is easiest to read."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo", mins: 5 },
+        { label: "Colours", mins: 8 },
+        { label: "Activity", mins: 15 },
+        { label: "Share & wrap-up", mins: 4 }
+      ],
+      liveDemo: [
+        {
+          title: "A colourful card",
+          filename: "colours.html",
+          caption: "The card has a white background, a blue border and an orange heading. Try hex codes like #9966ff.",
+          code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { background-color: #f6f4ee; }
+    .card {
+      background-color: #ffffff;
+      border: 3px solid #4c97ff;
+      padding: 16px;
+    }
+    .card h2 { color: #ff8c1a; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Colours everywhere</h2>
+    <p>Name, hex and rgb all describe the same kinds of colour.</p>
+  </div>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Forgetting the # in a hex code so the browser ignores it.",
+        "Writing hex codes with the wrong number of digits (#ff0 vs #ffff00).",
+        "Picking a text colour that is too similar to the background, so the page is hard to read."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Three ways to say a colour",
+            body: [
+              "A name is easy to remember (tomato), a hex code is six digits after a hash (#ff6347), and rgb lists the amount of red, green and blue (rgb(255, 99, 71)). All three can make the exact same colour."
+            ],
+            codes: [
+              { label: "colours.css", code: "color: tomato;  color: #ff6347;  color: rgb(255, 99, 71);" }
+            ]
+          },
+          {
+            h: "Text, background and border",
+            body: [
+              "color changes the text, background-color changes the area behind it, and border draws a line around the box."
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "my_colours.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { background-color: #eef2f7; }
+    h1 { color: #1f2a44; }
+    .card {
+      background-color: #ffffff;
+      border: 2px solid #59c059;
+      padding: 12px;
+    }
+  </style>
+</head>
+<body>
+  <h1>My colour page</h1>
+  <div class="card">
+    <p>Change the colours and borders of this card.</p>
+  </div>
+</body>
+</html>`,
+        tasks: [
+          "Change the heading to a hex colour you like.",
+          "Change the card border colour and make it thicker.",
+          "Give the card a background colour that is easy to read.",
+          "Add a second card with a different border colour."
+        ]
+      },
+      assessment: [
+        {
+          track: "A", audience: "Both", title: "Peer pair-check", type: "checklist",
+          items: [
+            "The page runs",
+            "The colours are readable",
+            "The student can name the three colour spellings"
+          ]
+        },
+        {
+          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
+          questions: [
+            { prompt: "Question 1: Which property changes the text colour?", answer: "color" },
+            { prompt: "Question 2: Write a rule that makes every <h1> red using a hex code.", answer: "h1 { color: #ff0000; }" },
+            { prompt: "Question 3: Name two ways to describe a colour in CSS.", answer: "Any two of: a name (red), a hex code (#ff0000), an rgb value (rgb(255, 0, 0))." }
+          ]
+        }
+      ]
+    },
+    {
+      n: 4, title: "Text and fonts", emoji: "✍️", color: "sensing", tracks: "both",
+      concept: "Font family, size, weight and alignment control how text looks and how easy it is to read.",
+      objective: "Students can control the look and readability of text with font and alignment properties.",
+      teachingPoints: [
+        "font-family picks the font, font-size sets its size, and font-weight makes it bold or normal.",
+        "text-align sets the alignment (left, center, right), and line-height controls spacing between lines.",
+        "Use only a couple of fonts on a page, and keep body text large enough to read easily."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo", mins: 5 },
+        { label: "Text styling", mins: 8 },
+        { label: "Activity", mins: 15 },
+        { label: "Share & wrap-up", mins: 4 }
+      ],
+      liveDemo: [
+        {
+          title: "Typing with style",
+          filename: "text.html",
+          caption: "font-family, font-size, font-weight, text-align and line-height control how text looks and reads.",
+          code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { font-family: "Segoe UI", Arial, sans-serif; font-size: 16px; line-height: 1.6; }
+    h1 { font-family: Georgia, serif; text-align: center; }
+    .note { font-weight: 700; color: #5cb1d6; }
+  </style>
+</head>
+<body>
+  <h1>Typography</h1>
+  <p>This body text is 16px with a comfortable line height.</p>
+  <p class="note">This note is bold and coloured.</p>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Using font-size to make something look like a heading instead of using a heading tag.",
+        "Setting body text so small it is hard to read.",
+        "Writing font-weight: bold and font-style: italic on the same element when only one is wanted."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Properties for text",
+            body: [
+              "font-family picks the font, font-size sets the size, font-weight makes text bold, font-style makes it italic, text-align moves it left, right or centre."
+            ],
+            codes: [
+              { label: "text.css", code: "p { font-family: Arial, sans-serif; font-size: 16px; }" }
+            ]
+          },
+          {
+            h: "Make it readable",
+            body: [
+              "A good page uses one or two fonts, keeps body text at least 14–16px, and leaves breathing room between lines with line-height."
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "my_text.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { font-family: Arial, sans-serif; font-size: 16px; }
+    h1 { text-align: center; }
+    .quote { font-style: italic; text-align: right; }
+  </style>
+</head>
+<body>
+  <h1>Text styling practice</h1>
+  <p>Adjust the size, weight and alignment of this text.</p>
+  <p class="quote">A small italic quote, aligned to the right.</p>
+</body>
+</html>`,
+        tasks: [
+          "Make the heading bold and change its font.",
+          "Change the body font-size to 18px and see how it feels.",
+          "Add a paragraph of centred text.",
+          "Add a line-height of 1.8 to the body rule."
+        ]
+      },
+      assessment: [
+        {
+          track: "A", audience: "Both", title: "Peer pair-check", type: "checklist",
+          items: [
+            "The page runs",
+            "The fonts and sizes match the task",
+            "The student can name two text properties"
+          ]
+        },
+        {
+          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
+          questions: [
+            { prompt: "Question 1: Which property changes the size of text?", answer: "font-size" },
+            { prompt: "Question 2: Which property would centre a paragraph?", answer: "text-align: center" },
+            { prompt: "Question 3: Why should you use a heading tag instead of a big font-size for a title?", answer: "Headings show importance and structure, not just size; they help readers and screen readers understand the page." }
+          ]
+        }
+      ]
+    },
+    {
+      n: 5, title: "The box model", emoji: "📦", color: "control", tracks: "both",
+      concept: "Every element is a box made of content, padding, border and margin. Understanding the box model is the key to spacing.",
+      objective: "Students can explain the four layers of the box model and use padding, border and margin to control spacing.",
+      teachingPoints: [
+        "Every element is a box with content, then padding, then a border, then margin outside it.",
+        "padding is space inside the border; margin is space outside the border.",
+        "A border draws the box's edge and takes up space."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo", mins: 5 },
+        { label: "The box model", mins: 8 },
+        { label: "Activity", mins: 15 },
+        { label: "Share & wrap-up", mins: 4 }
+      ],
+      liveDemo: [
+        {
+          title: "See the box model",
+          filename: "box.html",
+          caption: "Try changing padding and margin to feel the difference: padding grows the box from inside, margin moves it from outside.",
+          code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .box {
+      background: #ffffff;
+      border: 4px solid #ffab19;
+      padding: 20px;
+      margin: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    Content sits here, padding is space inside the border,
+    and margin pushes other boxes away.
+  </div>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Confusing padding and margin — padding is inside the border, margin is outside.",
+        "Forgetting that a border adds to the element's total size.",
+        "Writing padding: 10 without a unit (CSS needs px, rem, etc.)."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "The four layers",
+            body: [
+              "From the inside out: content, padding, border, margin. Padding keeps content away from the border; margin keeps the box away from its neighbours."
+            ],
+            codes: [
+              { label: "box.css", code: "padding: 20px;  border: 4px solid black;  margin: 30px;" }
+            ]
+          },
+          {
+            h: "Shorthand",
+            body: [
+              "You can write all four sides in one line: padding: 10px 20px sets 10px top/bottom and 20px left/right."
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "box_practice.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .card {
+      background: #ffffff;
+      border: 2px solid #4c97ff;
+      padding: 10px;
+      margin: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Card one</h2>
+    <p>Change the padding and margin to feel the box model.</p>
+  </div>
+  <div class="card">
+    <h2>Card two</h2>
+    <p>Notice how margin keeps these two cards apart.</p>
+  </div>
+</body>
+</html>`,
+        tasks: [
+          "Increase the padding of both cards and run it.",
+          "Increase the margin between the two cards.",
+          "Change the border to dashed and make it thicker.",
+          "Write a comment in the style block explaining the difference between padding and margin."
+        ]
+      },
+      assessment: [
+        {
+          track: "A", audience: "Both", title: "Peer pair-check", type: "checklist",
+          items: [
+            "Both cards render",
+            "Padding and margin changes show clearly",
+            "The student can explain the four layers"
+          ]
+        },
+        {
+          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
+          questions: [
+            { prompt: "Question 1: What are the four layers of the box model, inside to outside?", answer: "Content, padding, border, margin." },
+            { prompt: "Question 2: Which property is space INSIDE the border?", answer: "padding" },
+            { prompt: "Question 3: Which property is space OUTSIDE the border?", answer: "margin" }
+          ]
+        }
+      ]
+    },
+    {
+      n: 6, title: "Sizing and spacing", emoji: "📐", color: "operators", tracks: "both",
+      concept: "Widths, heights and display control how big elements are and whether they sit in a line or stack.",
+      objective: "Students can control the size of elements and how they sit next to each other with width, height and display.",
+      teachingPoints: [
+        "width and height set an element's size; max-width stops it growing too wide.",
+        "display: block makes an element take a full line; display: inline keeps it in the flow of text.",
+        "Use margin: 0 auto to centre a block element on the page."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo", mins: 5 },
+        { label: "Sizing & display", mins: 8 },
+        { label: "Activity", mins: 15 },
+        { label: "Share & wrap-up", mins: 4 }
+      ],
+      liveDemo: [
+        {
+          title: "Block and inline",
+          filename: "sizing.html",
+          caption: "A block takes a full line; inline-block elements flow next to each other. Change the width to see the block shrink.",
+          code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .wide { width: 80%; margin: 0 auto; background: #eef2f7; }
+    .pill { display: inline-block; background: #59c059; padding: 4px 10px; }
+  </style>
+</head>
+<body>
+  <div class="wide">
+    This block is 80% wide and centred.
+  </div>
+  <p>Here are some <span class="pill">inline pills</span> that sit <span class="pill">side by side</span>.</p>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Expecting an inline element to respect width and height (it does not — use inline-block or block).",
+        "Forgetting the unit on width.",
+        "Using a fixed pixel width when a percentage would survive different screens better."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Width and height",
+            body: [
+              "width sets how wide an element is, height sets how tall. max-width lets it shrink on small screens but never grow past a limit."
+            ]
+          },
+          {
+            h: "Block vs inline",
+            body: [
+              "A block element starts on a new line and fills the width. An inline element stays inside the text. inline-block gives you the middle ground: inline flow but block sizing."
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "sizing_practice.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .card { width: 60%; margin: 0 auto; border: 2px solid #5cb1d6; padding: 12px; }
+    .tag { display: inline-block; background: #ffbf00; padding: 2px 8px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Centred card</h2>
+    <p>This card is 60% wide and centred with margin: 0 auto.</p>
+  </div>
+  <p>Tags: <span class="tag">one</span> <span class="tag">two</span> <span class="tag">three</span></p>
+</body>
+</html>`,
+        tasks: [
+          "Change the card width to 90% and run it.",
+          "Centre a second card below the first.",
+          "Make the tags bigger by changing their padding.",
+          "Add a max-width to the card so it never exceeds 400px."
+        ]
+      },
+      assessment: [
+        {
+          track: "A", audience: "Both", title: "Peer pair-check", type: "checklist",
+          items: [
+            "The page runs",
+            "The card stays centred at both widths",
+            "The student can tell block from inline"
+          ]
+        },
+        {
+          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
+          questions: [
+            { prompt: "Question 1: Write the property that keeps an element from growing wider than 400px.", answer: "max-width: 400px" },
+            { prompt: "Question 2: What does margin: 0 auto do on a block element?", answer: "It centres the element horizontally." },
+            { prompt: "Question 3: True or false: an inline element respects width and height. Why?", answer: "False. Inline elements flow inside text and ignore width/height; use inline-block or block if you need sizing." }
+          ]
+        }
+      ]
+    },
+    {
+      n: 7, title: "Layout with Flexbox", emoji: "↔️", color: "motion", tracks: "both",
+      concept: "Flexbox arranges items in a row or column and spaces them neatly, which is how most modern layouts are built.",
+      objective: "Students can lay out items in a row or column with Flexbox and space them evenly.",
+      teachingPoints: [
+        "display: flex turns a container into a Flexbox; its children line up in a row by default.",
+        "flex-direction chooses row or column; gap adds space between children.",
+        "justify-content spaces the row (start, center, space-between); align-items lines children up crossways."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo", mins: 5 },
+        { label: "Flexbox", mins: 8 },
+        { label: "Activity", mins: 15 },
+        { label: "Share & wrap-up", mins: 4 }
+      ],
+      liveDemo: [
+        {
+          title: "A flex toolbar",
+          filename: "flex.html",
+          caption: "display: flex lays the two spans side by side; justify-content: space-between pushes them to the two ends.",
+          code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .toolbar {
+      display: flex;
+      justify-content: space-between;
+      background: #1f2a44;
+      color: #ffffff;
+      padding: 10px 16px;
+    }
+    .toolbar a { color: #ffffff; margin-right: 12px; }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <span>My Site</span>
+    <span><a href="#">Home</a><a href="#">About</a><a href="#">Contact</a></span>
+  </div>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Adding flex properties to the children instead of the container.",
+        "Confusing justify-content (main axis) with align-items (cross axis).",
+        "Forgetting display: flex, so the row never appears."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Turn a container into flex",
+            body: [
+              "Put display: flex on the parent. Its children line up in a row. flex-direction: column stacks them instead."
+            ],
+            codes: [
+              { label: "flex.css", code: ".parent { display: flex; gap: 12px; }" }
+            ]
+          },
+          {
+            h: "Spacing the row",
+            body: [
+              "justify-content: space-between pushes the first item to the start and the last to the end. center keeps them together in the middle. align-items: center lines them up vertically."
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "flex_practice.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { font-family: sans-serif; }
+    .row {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      background: #f6f4ee;
+      padding: 16px;
+    }
+    .box { background: #4c97ff; color: #fff; padding: 12px 20px; }
+  </style>
+</head>
+<body>
+  <h1>Flexbox practice</h1>
+  <div class="row">
+    <div class="box">One</div>
+    <div class="box">Two</div>
+    <div class="box">Three</div>
+  </div>
+</body>
+</html>`,
+        tasks: [
+          "Change justify-content to space-between and run it.",
+          "Change flex-direction to column and see the boxes stack.",
+          "Add a fourth box to the row.",
+          "Set align-items to center and give the boxes different heights."
+        ]
+      },
+      assessment: [
+        {
+          track: "A", audience: "Both", title: "Peer pair-check", type: "checklist",
+          items: [
+            "The row of boxes renders",
+            "Changing flex-direction changes the layout",
+            "The student can name justify-content and what it does"
+          ]
+        },
+        {
+          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
+          questions: [
+            { prompt: "Question 1: Which property turns a container into a Flexbox?", answer: "display: flex" },
+            { prompt: "Question 2: Which property pushes the first item to the start and the last to the end of a row?", answer: "justify-content: space-between" },
+            { prompt: "Question 3: Which property stacks flex children in a column?", answer: "flex-direction: column" }
+          ]
+        }
+      ]
+    },
+    {
+      n: 8, title: "Styling links, lists and buttons", emoji: "🔘", color: "variables", tracks: "both",
+      concept: "Links, lists and buttons can all be styled to match a design, including their hover and active states.",
+      objective: "Students can style interactive elements and their hover states.",
+      teachingPoints: [
+        "Links have states: a:link, a:hover, a:visited, a:active.",
+        "Lists can lose their bullets with list-style: none and gain padding and spacing.",
+        "Buttons can be styled like boxes, with a hover state that gives feedback."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo", mins: 5 },
+        { label: "Styling interactions", mins: 8 },
+        { label: "Activity", mins: 15 },
+        { label: "Share & wrap-up", mins: 4 }
+      ],
+      liveDemo: [
+        {
+          title: "Clickable styling",
+          filename: "interactions.html",
+          caption: "Hover the link and the button — the hover states change colour and add a line.",
+          code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    a { color: #4c97ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .btn {
+      background: #ff8c1a;
+      color: #fff;
+      padding: 8px 16px;
+      border: 0;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .btn:hover { background: #b45309; }
+    ul { list-style: none; padding: 0; }
+  </style>
+</head>
+<body>
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">About</a></li>
+  </ul>
+  <button class="btn">Hover me</button>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Styling a and wondering why hover does nothing (you must style a:hover, not a).",
+        "Forgetting border: 0 on a button so the browser's default border shows.",
+        "Leaving list bullets on a navigation menu by forgetting list-style: none."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Link states",
+            body: [
+              "A link has states: normal, hovered, visited and active. Style each one separately so users get feedback."
+            ],
+            codes: [
+              { label: "links.css", code: "a:hover { color: #b45309; }" }
+            ]
+          },
+          {
+            h: "Buttons",
+            body: [
+              "Style a button like a box: background, padding, border-radius and a hover colour. cursor: pointer tells users it is clickable."
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "interactions_practice.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { font-family: sans-serif; }
+    nav ul { list-style: none; display: flex; gap: 16px; padding: 0; }
+    nav a { color: #4c97ff; text-decoration: none; font-weight: 700; }
+    nav a:hover { color: #1f2a44; }
+    .btn {
+      background: #59c059; color: #fff; border: 0;
+      padding: 10px 18px; border-radius: 10px; cursor: pointer;
+    }
+    .btn:hover { background: #15803d; }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Projects</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+  <button class="btn">Press me</button>
+</body>
+</html>`,
+        tasks: [
+          "Make the links change colour when hovered.",
+          "Add a fourth link to the navigation.",
+          "Change the button hover colour.",
+          "Add padding to the nav list items so the menu breathes."
+        ]
+      },
+      assessment: [
+        {
+          track: "A", audience: "Both", title: "Peer pair-check", type: "checklist",
+          items: [
+            "Hovering the links changes their colour",
+            "The button has a visible hover state",
+            "The nav has no bullets"
+          ]
+        },
+        {
+          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
+          questions: [
+            { prompt: "Question 1: Which selector styles a link when the mouse is over it?", answer: "a:hover" },
+            { prompt: "Question 2: Which property removes the default list bullets?", answer: "list-style: none" },
+            { prompt: "Question 3: What does cursor: pointer do on a button?", answer: "It shows the pointer hand cursor so users know the button is clickable." }
+          ]
+        }
+      ]
+    },
+    {
+      n: 9, title: "Responsive basics", emoji: "📱", color: "events", tracks: "both",
+      concept: "Responsive design makes a page look good on phones and computers, using the viewport and media queries.",
+      objective: "Students can make a page adapt to small screens with the viewport tag and a media query.",
+      teachingPoints: [
+        "The viewport meta tag tells phones to use their real width.",
+        "A media query applies rules only when the screen matches a condition, e.g. @media (max-width: 600px).",
+        "Small screens usually want stacked, full-width content."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo", mins: 5 },
+        { label: "Responsive basics", mins: 8 },
+        { label: "Activity", mins: 15 },
+        { label: "Share & wrap-up", mins: 4 }
+      ],
+      liveDemo: [
+        {
+          title: "Shrink and stack",
+          filename: "responsive.html",
+          caption: "On a wide screen the boxes sit in a row; under 600px wide they stack. Drag the window narrow to see it.",
+          code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    .row { display: flex; gap: 12px; }
+    .box { flex: 1; background: #5cb1d6; padding: 20px; color: #fff; }
+    @media (max-width: 600px) {
+      .row { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <div class="row">
+    <div class="box">Box one</div>
+    <div class="box">Box two</div>
+    <div class="box">Box three</div>
+  </div>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Forgetting the viewport meta tag, so phones zoom the page out.",
+        "Writing a media query with no effect because the breakpoint never matches the screen width.",
+        "Putting the media query before the normal rules so the normal rules win anyway."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Tell phones your real width",
+            body: [
+              "Add the viewport meta tag to the head. Without it, a phone shrinks the whole page to fit."
+            ],
+            codes: [
+              { label: "index.html", code: "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />" }
+            ]
+          },
+          {
+            h: "Media queries",
+            body: [
+              "A media query wraps rules that only apply on certain screens. @media (max-width: 600px) applies its rules when the screen is 600px wide or less."
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "responsive_practice.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body { font-family: sans-serif; }
+    .cards { display: flex; gap: 12px; }
+    .card { flex: 1; border: 2px solid #4c97ff; padding: 12px; }
+    @media (max-width: 600px) {
+      .cards { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Responsive practice</h1>
+  <div class="cards">
+    <div class="card"><h2>Card one</h2><p>Text here.</p></div>
+    <div class="card"><h2>Card two</h2><p>Text here.</p></div>
+  </div>
+</body>
+</html>`,
+        tasks: [
+          "Resize the window and watch the cards stack under 600px.",
+          "Add a third card.",
+          "Change the breakpoint to 800px and test again.",
+          "Make the heading smaller on small screens with a media query."
+        ]
+      },
+      assessment: [
+        {
+          track: "A", audience: "Both", title: "Peer pair-check", type: "checklist",
+          items: [
+            "The cards stack on a narrow window",
+            "The viewport meta tag is present",
+            "The student can explain what the media query does"
+          ]
+        },
+        {
+          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
+          questions: [
+            { prompt: "Question 1: Which tag stops a phone from zooming the page out?", answer: "The viewport meta tag: <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />" },
+            { prompt: "Question 2: What does @media (max-width: 600px) mean?", answer: "Its rules apply when the screen is 600px wide or less." },
+            { prompt: "Question 3: Why stack cards on a small screen?", answer: "A narrow screen has little horizontal space; stacking keeps each item wide enough to read." }
+          ]
+        }
+      ]
+    },
+    {
+      n: 10, title: "Project: style your page", emoji: "🌟", color: "looks", tracks: "both",
+      concept: "Apply everything from this term to turn the About Me page into a designed, themed site.",
+      objective: "Students apply the term's CSS skills to design their About Me page from Term 1.",
+      teachingPoints: [
+        "Pick a colour theme (two or three colours) before styling.",
+        "Use the box model, Flexbox and hover states to make the page feel designed.",
+        "Test on a narrow window and add a media query so it works on phones."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Demo of a finished styled page", mins: 4 },
+        { label: "Build time", mins: 20 },
+        { label: "Present", mins: 5 },
+        { label: "Wrap-up", mins: 3 }
+      ],
+      liveDemo: [
+        {
+          title: "A styled About Me",
+          filename: "about_styled.html",
+          caption: "A complete, themed page using this term's skills: colours, the box model, Flexbox and a media query.",
+          code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body { font-family: sans-serif; background: #f6f4ee; margin: 0; }
+    header { background: #1f2a44; color: #fff; text-align: center; padding: 24px; }
+    main { max-width: 640px; margin: 0 auto; padding: 16px; }
+    .skills { display: flex; gap: 12px; justify-content: center; list-style: none; padding: 0; }
+    .skills li { background: #4c97ff; color: #fff; padding: 8px 14px; border-radius: 999px; }
+    a { color: #4c97ff; }
+    a:hover { color: #1f2a44; }
+    @media (max-width: 600px) {
+      .skills { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Hi, I'm Ada</h1>
+    <p>Student · builder · explorer</p>
+  </header>
+  <main>
+    <h2>About me</h2>
+    <p>A short introduction in my own words.</p>
+    <ul class="skills">
+      <li>Football</li>
+      <li>Drawing</li>
+      <li>Maths club</li>
+    </ul>
+    <p>Say hello: <a href="mailto:me@example.com">me@example.com</a></p>
+  </main>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Styling every element differently so the page has no coherent theme.",
+        "Forgetting the viewport meta tag so it looks bad on phones.",
+        "Leaving broken link or image references from Term 1."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Your style checklist",
+            list: [
+              "A colour theme (2–3 colours used consistently)",
+              "A styled header",
+              "Cards or sections using the box model",
+              "A Flexbox row somewhere",
+              "A hover state",
+              "A media query"
+            ]
+          },
+          {
+            h: "Presenting your page",
+            body: [
+              "Show your page, name your colour theme, and point to one thing you styled this term that you are proud of."
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "about_me_styled.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body { font-family: sans-serif; background: #f6f4ee; margin: 0; }
+    header { background: #1f2a44; color: #fff; text-align: center; padding: 20px; }
+    main { max-width: 640px; margin: 0 auto; padding: 16px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>My name</h1>
+    <p>A short tagline about you.</p>
+  </header>
+  <main>
+    <h2>About me</h2>
+    <p>Write your introduction here.</p>
+    <h2>Hobbies</h2>
+    <p>List and style your hobbies here.</p>
+  </main>
+</body>
+</html>`,
+        tasks: [
+          "Replace the header with your own name and tagline.",
+          "Style your hobbies as a Flexbox row of pill badges.",
+          "Add a hover state to a link.",
+          "Add a media query so the hobbies stack on a phone, then present your page."
+        ]
+      },
+      assessment: [
+        {
+          track: "A", audience: "Both", title: "Project showcase rubric", type: "rubric",
+          criteria: [
+            "Page runs without errors",
+            "A clear colour theme is used",
+            "The page uses the box model and Flexbox",
+            "A hover state and a media query are included",
+            "The student can present their page in their own words"
+          ]
+        },
+        {
+          track: "B", audience: "Both", title: "Design document — Styled About Me", type: "form",
+          intro: "Complete this before the showcase.",
+          fields: [
+            { label: "Your colour theme", hint: "Two or three colours and where you used them" },
+            { label: "Which box-model skills did you use?", lines: 2 },
+            { label: "Where did you use Flexbox?", lines: 2 },
+            { label: "What does your media query change?", lines: 2 }
+          ]
+        }
+      ]
+    }
   ];
 
   var term3 = [
