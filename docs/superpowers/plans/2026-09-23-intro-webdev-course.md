@@ -19,7 +19,7 @@
 - The intro course audience string is exactly `JSS 1 & JSS 2`.
 - Senior course (JSS 3 / SS 1 / SS 2) restructure is **out of scope** for this plan (phase 2).
 - Content quality bar: every authored week must have all fields shown in the Task 4 exemplar; no empty tabs.
-- Follow existing code style: IIFE-wrapped ES5, `"use strict"`, no added comments beyond the file header banners already used.
+- Follow existing code style: IIFE-wrapped ES5, `"use strict"`, and the same section-banner comment style already used in the renderer.
 
 ## File Structure
 
