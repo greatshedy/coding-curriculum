@@ -1298,7 +1298,7 @@ document.getElementById("box").style.backgroundColor = "blue";`
 
     // Change the box colour
     document.getElementById("box").style.backgroundColor = "green";
-  </script>
+  <\/script>
 </body>
 </html>`
         }
@@ -1329,7 +1329,7 @@ document.getElementById("box").style.backgroundColor = "blue";`
 `<h1 id="title">Old Title</h1>
 <script>
   document.getElementById("title").textContent = "New Title!";
-</script>` }
+<\/script>` }
             ],
             after: ["When this page loads, the heading changes from \"Old Title\" to \"New Title!\"."]
           },
@@ -1340,7 +1340,7 @@ document.getElementById("box").style.backgroundColor = "blue";`
 `<p id="message">Hello</p>
 <script>
   document.getElementById("message").textContent = "Goodbye!";
-</script>` }
+<\/script>` }
             ]
           },
           {
@@ -1354,7 +1354,7 @@ document.getElementById("box").style.backgroundColor = "blue";`
 
   // Change the width
   document.getElementById("box").style.width = "200px";
-</script>` }
+<\/script>` }
             ]
           }
         ]
@@ -1387,14 +1387,16 @@ document.getElementById("box").style.backgroundColor = "blue";`
 
     // CHALLENGE: Create a new div with an ID
     // and use JS to change its background colour and text
-  </script>
+  <\/script>
 </body>
 </html>`,
-        tasks: [
-          "Run the template and watch the heading and box change",
-          "Change the background colour to a colour of your choice",
-          "Add a new div with an ID and change its colour and text with JavaScript",
-          "Break the ID on purpose (a typo) and see what happens — then fix it"
+        core: [
+          "Run the template and watch the heading and box change.",
+          "Change the background colour to a colour of your choice.",
+          "Add a new div with an ID and change its colour and text with JavaScript."
+        ],
+        stretch: [
+          "Break the ID on purpose with a typo, see what happens, then fix it."
         ]
       },
       assessment: [
@@ -1417,7 +1419,7 @@ document.getElementById("box").style.backgroundColor = "blue";`
 `<h1 id="heading">Original</h1>
 <script>
   document.getElementById("heading").textContent = "Changed!";
-</script>`,
+<\/script>`,
               answer: "The heading on the page will read \"Changed!\" instead of \"Original\"."
             },
             {
@@ -2491,15 +2493,1466 @@ if (guess === secret) {
   unify(weeks[7]); weeks[7].n = 1;
   var term2 = [
     weeks[7],
-    stub(2, "Changing text, styles and classes", "✏️", "sensing", "Change an element's text, style and classes from JavaScript.", "Change what an element says and how it looks using textContent, style and classes."),
-    stub(3, "Creating and removing elements", "➕", "looks", "Add new elements and remove ones you no longer need.", "Build new elements in code and add or remove them from the page."),
-    stub(4, "Events: click, input, mouse, keyboard", "🖱️", "events", "Make the page respond to clicks, typing and key presses.", "Use event listeners to react to what the user does."),
-    stub(5, "Forms and validation", "📝", "variables", "Read form values and check what the user typed.", "Read values from a form and validate them before you use them."),
-    stub(6, "Event handling patterns, including delegation", "🧭", "sensing", "Handle events on many elements with one listener.", "Use event delegation so one listener can handle a whole group of elements."),
-    stub(7, "Timers and localStorage", "⏱️", "operators", "Run code on a schedule and save data in the browser.", "Use timers to run code later and localStorage to remember data."),
-    stub(8, "Modern syntax (arrow functions, template literals, destructuring, map/filter)", "✨", "motion", "Use modern JavaScript syntax to write cleaner code.", "Write shorter code with arrow functions, template literals, destructuring and array methods."),
-    stub(9, "Project: to-do app or calculator", "📋", "control", "Build and test a small interactive app.", "Combine the DOM, events and forms to build a small app."),
-    stub(10, "Revision, assessment, showcase", "🎉", "sensing", "Review Term 2 and showcase your work.", "Recap the term's ideas and present a project.")
+    {
+      n: 2, title: "Changing text, styles and classes", emoji: "✏️", color: "sensing", tracks: "both",
+      goal: "Change an element's text, style and classes from JavaScript.",
+      concept: "Change what an element says and how it looks using textContent, style and classes.",
+      objective: "Students can change an element's text, one style at a time and its CSS classes from JavaScript.",
+      teachingPoints: [
+        "textContent changes the text inside an element.",
+        "element.style.<prop> changes one style, written in camelCase (backgroundColor, not background-color).",
+        "classList.add, classList.remove and classList.toggle switch whole CSS classes — keep styles in CSS where you can."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo: change text, style and class", mins: 5 },
+        { label: "textContent, style and classList", mins: 8 },
+        { label: "Activity time", mins: 15 },
+        { label: "Share & wrap-up", mins: 4 }
+      ],
+      liveDemo: [
+        {
+          title: "Change the page with a button",
+          filename: "change.html",
+          caption: "Open the page and click the button: the heading text changes and a dark class is toggled on the body. Click again to switch the class off.",
+          code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 2: Change text, styles and classes</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    .dark { background-color: #1f2a44; color: #ffffff; }
+    #box { width: 120px; height: 120px; background-color: gold; margin-top: 12px; }
+  </style>
+</head>
+<body>
+  <h1 id="title">Hello, welcome!</h1>
+  <button id="changeBtn">Change the page</button>
+  <div id="box"></div>
+
+  <script>
+    var title = document.getElementById("title");
+
+    document.getElementById("changeBtn").addEventListener("click", function () {
+      // Change the text
+      title.textContent = "You changed the text!";
+
+      // Toggle a whole class instead of one style at a time
+      document.body.classList.toggle("dark");
+    });
+  <\/script>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Writing a CSS style in kebab-case. In JavaScript it is camelCase: use style.backgroundColor, not style.background-color.",
+        "Setting many individual styles in JavaScript when one CSS class would be tidier. Prefer classList.toggle and keep the styles in CSS.",
+        "A typo in the id. \"titel\" will never match \"title\", and getElementById returns null."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Change text",
+            body: ["textContent replaces everything inside an element with the text you give it."],
+            codes: [
+              { label: "change.html", code: `document.getElementById("title").textContent = "New title";` }
+            ]
+          },
+          {
+            h: "Change style (camelCase)",
+            body: ["Set one style directly on the element. CSS kebab-case becomes camelCase in JavaScript."],
+            codes: [
+              { code: `el.style.backgroundColor = "seagreen";\nel.style.fontSize = "28px";` }
+            ]
+          },
+          {
+            h: "Toggle a class",
+            body: ["Keep your styles in CSS, then switch a class on or off from JavaScript."],
+            codes: [
+              { code: `el.classList.toggle("dark");` }
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "change.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 2: Change text, styles and classes</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    .dark { background-color: #1f2a44; color: #ffffff; }
+    #box { width: 120px; height: 120px; background-color: gold; }
+  </style>
+</head>
+<body>
+  <h1 id="title">Change me</h1>
+  <button id="changeBtn">Go</button>
+  <div id="box"></div>
+
+  <script>
+    document.getElementById("changeBtn").addEventListener("click", function () {
+      // 1. Change the heading text with textContent
+      document.getElementById("title").textContent = "Changed!";
+
+      // 2. Change one style in camelCase
+      document.getElementById("box").style.backgroundColor = "seagreen";
+
+      // 3. Toggle a class on the page
+      document.body.classList.toggle("dark");
+    });
+  <\/script>
+</body>
+</html>`,
+        core: [
+          "Change the heading text to your own message with textContent.",
+          "Toggle the dark class on and off with classList.toggle().",
+          "Change the box colour using style.backgroundColor."
+        ],
+        stretch: [
+          "Toggle the dark class on the whole body so the whole page changes theme.",
+          "Add a second class called big to the heading and switch it on."
+        ]
+      },
+      assessment: [
+        {
+          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
+          questions: [
+            { prompt: "Question 1: Which property changes the text inside an element?", answer: "textContent." },
+            { prompt: "Question 2: How do you write the CSS property background-color as a JavaScript style property?", answer: "backgroundColor — it is camelCase, with no hyphen." },
+            { prompt: "Question 3: Which classList method adds a class if it is missing and removes it if it is already there?", answer: "classList.toggle()." }
+          ]
+        }
+      ]
+    },
+    {
+      n: 3, title: "Creating and removing elements", emoji: "➕", color: "looks", tracks: "both",
+      goal: "Add new elements and remove ones you no longer need.",
+      concept: "Build new elements in code and add or remove them from the page.",
+      objective: "Students can create an element, fill it, add it to the page and remove it again.",
+      teachingPoints: [
+        "document.createElement() makes a new element that is not on the page yet.",
+        "appendChild() puts an element inside a parent that is already on the page.",
+        "element.remove() takes an element off the page; fill text with textContent."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo: add and delete list items", mins: 5 },
+        { label: "createElement, appendChild and remove", mins: 8 },
+        { label: "Activity time", mins: 15 },
+        { label: "Share & wrap-up", mins: 4 }
+      ],
+      liveDemo: [
+        {
+          title: "A class list you can add to and delete from",
+          filename: "add_remove.html",
+          caption: "Every student becomes a new li built in JavaScript. The delete button uses the click events you will meet properly next week.",
+          code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 3: Creating and removing elements</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    li { margin: 6px 0; }
+    button { margin-left: 8px; }
+  </style>
+</head>
+<body>
+  <h1>My class list</h1>
+  <button id="addBtn">Add a student</button>
+  <ul id="list"></ul>
+
+  <script>
+    var students = ["Ada", "Chidi", "Amaka"];
+    var list = document.getElementById("list");
+
+    function addStudent(name) {
+      var item = document.createElement("li");
+      item.textContent = name;
+
+      var del = document.createElement("button");
+      del.textContent = "Delete";
+      del.addEventListener("click", function () {
+        item.remove();
+      });
+
+      item.appendChild(del);
+      list.appendChild(item);
+    }
+
+    students.forEach(function (name) {
+      addStudent(name);
+    });
+
+    document.getElementById("addBtn").addEventListener("click", function () {
+      addStudent("New student");
+    });
+  <\/script>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Creating an element but never appending it. If you do not call appendChild, the element exists only in memory and never appears on the page.",
+        "Removing the wrong element, for example removing a parent when you meant to remove one item.",
+        "Appending to the wrong parent, such as adding an li straight to the body instead of the ul."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Create, fill and append",
+            body: ["Create the element, set its text, then append it to a parent that is already on the page."],
+            list: [
+              "document.createElement(\"li\") makes the element but does not show it yet.",
+              "item.textContent = \"Ada\" fills it with text.",
+              "list.appendChild(item) adds it to the page."
+            ],
+            codes: [
+              { code: `var item = document.createElement("li");\nitem.textContent = "Ada";\nlist.appendChild(item);` }
+            ]
+          },
+          {
+            h: "Remove",
+            body: ["Call remove() on the element you want to take off the page."],
+            codes: [
+              { code: `item.remove();` }
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "add_remove.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 3: Add and remove list items</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    li { margin: 6px 0; }
+    button { margin-left: 8px; }
+  </style>
+</head>
+<body>
+  <h1>My to-do list</h1>
+  <button id="addBtn">Add an item</button>
+  <ul id="list"></ul>
+
+  <script>
+    var count = 0;
+    var list = document.getElementById("list");
+
+    function addItem() {
+      count = count + 1;
+
+      // 1. Create a new li
+      var item = document.createElement("li");
+      item.textContent = "Item " + count;
+
+      // 2. Create a Delete button for it
+      var del = document.createElement("button");
+      del.textContent = "Delete";
+      del.addEventListener("click", function () {
+        item.remove();
+      });
+      item.appendChild(del);
+
+      // 3. Append the li to the list
+      list.appendChild(item);
+    }
+
+    document.getElementById("addBtn").addEventListener("click", addItem);
+
+    // STRETCH: add a Clear all button that removes every item
+  <\/script>
+</body>
+</html>`,
+        core: [
+          "Click Add an item and watch each new li appear.",
+          "Give each item a Delete button that calls item.remove().",
+          "Remove one item and check the others stay."
+        ],
+        stretch: [
+          "Add a Clear all button that removes every item from the list.",
+          "Add an input so you can type the text for each new item."
+        ]
+      },
+      assessment: [
+        {
+          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
+          questions: [
+            { prompt: "Question 1: Which method creates a new element in memory?", answer: "document.createElement()." },
+            { prompt: "Question 2: Which method adds a created element to a parent on the page?", answer: "parent.appendChild(element)." },
+            { prompt: "Question 3: How do you remove an element from the page?", answer: "element.remove()." }
+          ]
+        }
+      ]
+    },
+    {
+      n: 4, title: "Events: click, input, mouse, keyboard", emoji: "🖱️", color: "events", tracks: "both",
+      goal: "Make the page respond to clicks, typing and key presses.",
+      concept: "Use event listeners to react to what the user does.",
+      objective: "Students can attach event listeners for clicks, typing, the mouse and the keyboard.",
+      teachingPoints: [
+        "addEventListener(type, handler) runs the handler when that event happens on the element.",
+        "Pass the handler without brackets — btn.addEventListener(\"click\", sayHi), not sayHi().",
+        "The event object carries the details: event.target is the element and event.key is the key pressed."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo: click and input", mins: 5 },
+        { label: "addEventListener and the event object", mins: 8 },
+        { label: "Activity time", mins: 15 },
+        { label: "Share & wrap-up", mins: 4 }
+      ],
+      liveDemo: [
+        {
+          title: "A click counter and a live echo",
+          filename: "events.html",
+          caption: "Click the button to count, then type in the box: the input event fires on every keystroke and the page updates as you type.",
+          code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 4: Events</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    #count { font-size: 40px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Click and type</h1>
+  <button id="clickBtn">Click me</button>
+  <p>You clicked <span id="count">0</span> times.</p>
+
+  <input id="nameInput" placeholder="Type your name" />
+  <p>Hello, <span id="echo">…</span></p>
+
+  <script>
+    var total = 0;
+
+    document.getElementById("clickBtn").addEventListener("click", function () {
+      total = total + 1;
+      document.getElementById("count").textContent = total;
+    });
+
+    document.getElementById("nameInput").addEventListener("input", function (event) {
+      document.getElementById("echo").textContent = event.target.value || "…";
+    });
+  <\/script>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Calling the handler with brackets. addEventListener(\"click\", sayHi) passes the function; sayHi() would run it once immediately and pass its result.",
+        "Listening on the wrong element, so the event never fires. Check that the id you attached to is the id in the HTML.",
+        "Using the change event when you want a live update. Use input so it fires on every keystroke."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Listening for events",
+            body: ["addEventListener takes the event name and the function to run when that event happens."],
+            codes: [
+              { code: `button.addEventListener("click", function () {\n  console.log("Clicked!");\n});` }
+            ]
+          },
+          {
+            h: "The event object",
+            body: ["The handler receives an event object with details about what happened."],
+            codes: [
+              { code: `input.addEventListener("keydown", function (event) {\n  console.log(event.key);     // the key that was pressed\n  console.log(event.target);  // the element it happened on\n});` }
+            ]
+          },
+          {
+            h: "input events",
+            body: ["Use the input event, not change, when you want to react while the user is still typing."],
+            codes: [
+              { code: `input.addEventListener("input", function (event) {\n  preview.textContent = event.target.value;\n});` }
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "events.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 4: Events practice</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    #count { font-size: 40px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Events practice</h1>
+  <button id="clickBtn">Click me</button>
+  <p>Count: <span id="count">0</span></p>
+
+  <input id="nameInput" placeholder="Type here" />
+  <p id="echo">…</p>
+
+  <script>
+    var total = 0;
+
+    // 1. A click counter
+    document.getElementById("clickBtn").addEventListener("click", function () {
+      total = total + 1;
+      document.getElementById("count").textContent = total;
+    });
+
+    // 2. Echo what the user types
+    document.getElementById("nameInput").addEventListener("input", function (event) {
+      document.getElementById("echo").textContent = event.target.value;
+    });
+
+    // 3. TODO: add a keydown listener that shows which key was pressed
+  <\/script>
+</body>
+</html>`,
+        core: [
+          "Make the click counter count up every time the button is clicked.",
+          "Echo the input value into the page as the user types.",
+          "Add a keydown listener that shows the last key pressed."
+        ],
+        stretch: [
+          "Add three colour buttons and change the page background from one handler.",
+          "Log the event type of every event you listen for."
+        ]
+      },
+      assessment: [
+        {
+          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
+          questions: [
+            { prompt: "Question 1: Which method attaches a handler to an event?", answer: "addEventListener()." },
+            { prompt: "Question 2: Why do you write the handler without brackets?", answer: "Without brackets you pass the function itself, so it runs later when the event happens. With brackets it would run straight away." },
+            { prompt: "Question 3: Which event fires on every keystroke as the user types?", answer: "the input event." }
+          ]
+        }
+      ]
+    },
+    {
+      n: 5, title: "Forms and validation", emoji: "📝", color: "variables", tracks: "both",
+      goal: "Read form values and check what the user typed.",
+      concept: "Read values from a form and validate them before you use them.",
+      objective: "Students can read form values, stop the default submit and validate the input before accepting it.",
+      teachingPoints: [
+        "Read the text a user typed with input.value.",
+        "Handle the form's submit event and call event.preventDefault() to stop the page reloading.",
+        "Validate one rule at a time (not empty, then a valid @) and show a clear message."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo: a sign-up form", mins: 5 },
+        { label: "value, preventDefault and validation", mins: 8 },
+        { label: "Activity time", mins: 15 },
+        { label: "Share & wrap-up", mins: 4 }
+      ],
+      liveDemo: [
+        {
+          title: "A sign-up form with validation",
+          filename: "validate.html",
+          caption: "Press Sign up with an empty name, then with an email that has no @, then with both filled in. The page never reloads because of preventDefault.",
+          code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 5: Forms and validation</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    .error { color: #b00020; }
+    .ok { color: #1b7f3b; }
+  </style>
+</head>
+<body>
+  <h1>Sign up</h1>
+  <form id="signup">
+    <p><label>Name<br /><input id="name" /></label></p>
+    <p><label>Email<br /><input id="email" /></label></p>
+    <button type="submit">Sign up</button>
+  </form>
+  <p id="message"></p>
+
+  <script>
+    var form = document.getElementById("signup");
+    var message = document.getElementById("message");
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      var name = document.getElementById("name").value;
+      var email = document.getElementById("email").value;
+
+      if (name === "") {
+        message.className = "error";
+        message.textContent = "Please type your name.";
+        return;
+      }
+
+      if (email.indexOf("@") === -1) {
+        message.className = "error";
+        message.textContent = "Please type a valid email with an @.";
+        return;
+      }
+
+      message.className = "ok";
+      message.textContent = "Thank you, " + name + "!";
+    });
+  <\/script>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Reading input.value on page load, before the user has typed anything. Read the value inside the submit handler, when the user has finished typing.",
+        "Forgetting event.preventDefault(), so the browser reloads the page and your message disappears.",
+        "Showing every error at once. Check one rule, show one message, and return before checking the next."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Read the value",
+            body: ["Every input has a value property holding the text the user typed."],
+            codes: [
+              { code: `var name = document.getElementById("name").value;` }
+            ]
+          },
+          {
+            h: "Validate one rule at a time",
+            body: ["Check the first rule and return early; only when one rule passes do you check the next."],
+            codes: [
+              { code: `if (name === "") {\n  showError("Please type your name.");\n  return;\n}` }
+            ]
+          },
+          {
+            h: "preventDefault",
+            body: ["A form tries to reload the page when it is submitted. Stop it with preventDefault."],
+            codes: [
+              { code: `form.addEventListener("submit", function (event) {\n  event.preventDefault();\n  // now validate safely\n});` }
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "validate.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 5: Validate a form</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    .error { color: #b00020; }
+    .ok { color: #1b7f3b; }
+  </style>
+</head>
+<body>
+  <h1>Sign up</h1>
+  <form id="signup">
+    <p><label>Name<br /><input id="name" /></label></p>
+    <p><label>Email<br /><input id="email" /></label></p>
+    <button type="submit">Sign up</button>
+  </form>
+  <p id="message"></p>
+
+  <script>
+    document.getElementById("signup").addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      var name = document.getElementById("name").value;
+      var email = document.getElementById("email").value;
+      var message = document.getElementById("message");
+
+      // 1. TODO: if the name is empty, show an error and return
+
+      // 2. TODO: if the email has no "@", show an error and return
+
+      // 3. TODO: otherwise show a success message with the name
+    });
+  <\/script>
+</body>
+</html>`,
+        core: [
+          "Stop the page reloading with event.preventDefault().",
+          "Show an error when the name is empty.",
+          "Show an error when the email has no @, and a success message when both are valid."
+        ],
+        stretch: [
+          "Also check that the name is at least three characters long.",
+          "Disable the sign-up button until both fields have something in them."
+        ]
+      },
+      assessment: [
+        {
+          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
+          questions: [
+            { prompt: "Question 1: Which property holds the text a user typed into an input?", answer: "input.value." },
+            { prompt: "Question 2: Why call event.preventDefault() in a submit handler?", answer: "To stop the browser reloading the page (its default behaviour) so your JavaScript can handle the form." },
+            { prompt: "Question 3: Why show one error at a time?", answer: "It is clearer for the user: they fix the first problem, then see the next, instead of facing a wall of errors." }
+          ]
+        }
+      ]
+    },
+    {
+      n: 6, title: "Event handling patterns, including delegation", emoji: "🧭", color: "sensing", tracks: "both",
+      goal: "Handle events on many elements with one listener.",
+      concept: "Use event delegation so one listener can handle a whole group of elements.",
+      objective: "Students can handle events on many elements with one listener using event delegation and closest().",
+      teachingPoints: [
+        "One listener on a parent can handle events from all its children — that is event delegation.",
+        "event.target is the element that was actually clicked; closest() walks up to a matching ancestor.",
+        "Delegation keeps code short and still works for items added later."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo: one handler, many items", mins: 5 },
+        { label: "Delegation and closest()", mins: 8 },
+        { label: "Activity time", mins: 15 },
+        { label: "Share & wrap-up", mins: 4 }
+      ],
+      liveDemo: [
+        {
+          title: "One click handler for the whole list",
+          filename: "delegation.html",
+          caption: "Click any team to mark it done. Add a team and click it too: the same single listener on the ul handles items that did not exist when the page loaded.",
+          code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 6: Event delegation</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    li { padding: 6px; cursor: pointer; }
+    li.done { text-decoration: line-through; color: #888; }
+  </style>
+</head>
+<body>
+  <h1>Teams</h1>
+  <ul id="list">
+    <li>Super Eagles</li>
+    <li>Enyimba</li>
+    <li>Kano Pillars</li>
+  </ul>
+  <button id="addBtn">Add a team</button>
+
+  <script>
+    var list = document.getElementById("list");
+
+    // ONE listener on the parent handles every item, now and in the future
+    list.addEventListener("click", function (event) {
+      var item = event.target.closest("li");
+      if (!item) return;
+      item.classList.toggle("done");
+    });
+
+    document.getElementById("addBtn").addEventListener("click", function () {
+      var item = document.createElement("li");
+      item.textContent = "New team";
+      list.appendChild(item);
+    });
+  <\/script>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Adding a listener to every item instead of the parent. The parent listener is shorter and automatically covers new items.",
+        "Forgetting that event.target can be a child of the item. Use event.target.closest(\"li\") to find the item itself.",
+        "Attaching the listener to the parent before the parent exists. Put the script after the HTML, as always."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "One handler, many items",
+            body: ["Put a single listener on the parent. Events from the children bubble up to it."],
+            codes: [
+              { code: `list.addEventListener("click", function (event) {\n  var item = event.target.closest("li");\n  if (item) item.classList.toggle("done");\n});` }
+            ]
+          },
+          {
+            h: "closest()",
+            body: ["event.target is the exact element that was clicked. closest() walks up the page to the nearest ancestor that matches a selector."],
+            codes: [
+              { code: `event.target.closest("li");\nevent.target.closest("button.delete");` }
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "delegation.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 6: Event delegation</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    li { padding: 6px; cursor: pointer; }
+    li.done { text-decoration: line-through; color: #888; }
+    li button { margin-left: 8px; }
+  </style>
+</head>
+<body>
+  <h1>Teams</h1>
+  <ul id="list">
+    <li>Super Eagles <button class="delete">Delete</button></li>
+    <li>Enyimba <button class="delete">Delete</button></li>
+    <li>Kano Pillars <button class="delete">Delete</button></li>
+  </ul>
+  <button id="addBtn">Add a team</button>
+
+  <script>
+    var list = document.getElementById("list");
+
+    // CORE: one listener on the parent handles every item
+    list.addEventListener("click", function (event) {
+      var item = event.target.closest("li");
+      if (!item) return;
+      item.classList.toggle("done");
+
+      // STRETCH: also handle the Delete button inside each item
+      // if (event.target.classList.contains("delete")) {
+      //   item.remove();
+      // }
+    });
+
+    // STRETCH: add a new item and check the same handler works on it
+    document.getElementById("addBtn").addEventListener("click", function () {
+      var item = document.createElement("li");
+      item.textContent = "New team ";
+      var del = document.createElement("button");
+      del.className = "delete";
+      del.textContent = "Delete";
+      item.appendChild(del);
+      list.appendChild(item);
+    });
+  <\/script>
+</body>
+</html>`,
+        core: [
+          "Add one click listener on the ul, not on each li.",
+          "Use event.target.closest(\"li\") to find the clicked item and toggle the done class on it."
+        ],
+        stretch: [
+          "Uncomment the code that removes an item when its Delete button is clicked.",
+          "Add new items and confirm the same parent handler still works on them."
+        ]
+      },
+      assessment: [
+        {
+          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
+          questions: [
+            { prompt: "Question 1: What is event delegation?", answer: "Attaching one listener to a parent element and letting it handle events that bubble up from its children." },
+            { prompt: "Question 2: Why is delegation good for lists?", answer: "One listener covers every item, including items added later, so you write less code and do not rebind on each new item." },
+            { prompt: "Question 3: Which method finds the ancestor element that matches a selector?", answer: "closest()." }
+          ]
+        }
+      ]
+    },
+    {
+      n: 7, title: "Timers and localStorage", emoji: "⏱️", color: "operators", tracks: "both",
+      goal: "Run code on a schedule and save data in the browser.",
+      concept: "Use timers to run code later and localStorage to remember data.",
+      objective: "Students can run code on a timer and save and load data with localStorage.",
+      teachingPoints: [
+        "setTimeout runs once; setInterval repeats every N milliseconds — keep the id so you can clearInterval it.",
+        "localStorage.setItem(key, value) saves and getItem(key) reads back; values are always strings.",
+        "Save arrays and objects by turning them into text with JSON.stringify and back with JSON.parse."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo: a countdown and saved data", mins: 5 },
+        { label: "setInterval, clearInterval and localStorage", mins: 8 },
+        { label: "Activity time", mins: 15 },
+        { label: "Share & wrap-up", mins: 4 }
+      ],
+      liveDemo: [
+        {
+          title: "A countdown and a remembered name",
+          filename: "timer_store.html",
+          caption: "Start the countdown and stop it part-way. Type a name and Save, then reload the page: the name is read back from localStorage.",
+          code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 7: Timers and localStorage</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    #count { font-size: 40px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Countdown</h1>
+  <p id="count">10</p>
+  <button id="startBtn">Start</button>
+  <button id="stopBtn">Stop</button>
+
+  <h2>Your name is remembered</h2>
+  <input id="nameInput" placeholder="Type your name" />
+  <button id="saveBtn">Save</button>
+  <p id="saved"></p>
+
+  <script>
+    var seconds = 10;
+    var timerId = null;
+
+    document.getElementById("startBtn").addEventListener("click", function () {
+      if (timerId !== null) return; // already running
+      timerId = setInterval(function () {
+        seconds = seconds - 1;
+        document.getElementById("count").textContent = seconds;
+        if (seconds <= 0) {
+          clearInterval(timerId);
+          timerId = null;
+          document.getElementById("count").textContent = "Time up!";
+        }
+      }, 1000); // 1000 milliseconds = 1 second
+    });
+
+    document.getElementById("stopBtn").addEventListener("click", function () {
+      clearInterval(timerId);
+      timerId = null;
+    });
+
+    document.getElementById("saveBtn").addEventListener("click", function () {
+      var name = document.getElementById("nameInput").value;
+      localStorage.setItem("savedName", name);
+      showSaved();
+    });
+
+    function showSaved() {
+      var name = localStorage.getItem("savedName");
+      document.getElementById("saved").textContent = name ? "Hello again, " + name + "!" : "";
+    }
+
+    showSaved(); // read the value back when the page loads
+  <\/script>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Mixing up milliseconds and seconds. setInterval wants milliseconds, so one second is 1000, not 1.",
+        "Losing the interval id. Keep the value setInterval returns in a variable so you can pass it to clearInterval.",
+        "Forgetting that localStorage stores strings. Numbers and objects come back as text unless you convert them."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Timers",
+            body: ["setTimeout runs once after a delay; setInterval repeats until you stop it. Times are in milliseconds, so 1000 is one second."],
+            codes: [
+              { code: `setTimeout(function () {\n  console.log("One second later");\n}, 1000);\n\nvar id = setInterval(tick, 1000);\nclearInterval(id);` }
+            ]
+          },
+          {
+            h: "Saving data",
+            body: ["localStorage keeps data in the browser. Everything is stored as a string."],
+            codes: [
+              { code: `localStorage.setItem("name", "Ada");\nvar name = localStorage.getItem("name");` }
+            ]
+          },
+          {
+            h: "Saving an array",
+            body: ["Turn an array into JSON text to save it, and parse the text to get the array back."],
+            codes: [
+              { code: `var teams = ["Super Eagles", "Enyimba"];\nlocalStorage.setItem("teams", JSON.stringify(teams));\n\nvar saved = JSON.parse(localStorage.getItem("teams"));` }
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "timer_store.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 7: Timers and localStorage</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    #count { font-size: 40px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Countdown</h1>
+  <p id="count">10</p>
+  <button id="startBtn">Start</button>
+  <button id="stopBtn">Stop</button>
+
+  <h2>Save your name</h2>
+  <input id="nameInput" placeholder="Type your name" />
+  <button id="saveBtn">Save</button>
+  <p id="saved"></p>
+  <p id="note"></p>
+
+  <script>
+    var seconds = 10;
+    var timerId = null;
+
+    // 1. TODO: start the countdown with setInterval (1000 ms = 1 second)
+    //    when it reaches 0, stop it with clearInterval
+
+    // 2. TODO: stop the countdown with clearInterval when Stop is clicked
+
+    // 3. TODO: save the input value with localStorage.setItem,
+    //    then read it back with getItem and show it in #saved
+  <\/script>
+</body>
+</html>`,
+        core: [
+          "Build the countdown so it starts at 10 and goes down once per second.",
+          "Stop the countdown with the Stop button using clearInterval.",
+          "Save a name with localStorage.setItem and read it back with getItem."
+        ],
+        stretch: [
+          "Save a list of names as an array, using JSON.stringify to store it and JSON.parse to read it back.",
+          "Show a small \"Saved!\" note for a moment after saving."
+        ]
+      },
+      assessment: [
+        {
+          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
+          questions: [
+            { prompt: "Question 1: Which timer repeats, and which one runs once?", answer: "setInterval repeats; setTimeout runs once." },
+            { prompt: "Question 2: How do you stop a repeating timer?", answer: "Save the id that setInterval returns, then call clearInterval(id)." },
+            { prompt: "Question 3: How do you save an array in localStorage?", answer: "Turn it into a string with JSON.stringify, store the string, and use JSON.parse when you read it back." }
+          ]
+        }
+      ]
+    },
+    {
+      n: 8, title: "Modern syntax (arrow functions, template literals, destructuring, map/filter)", emoji: "✨", color: "motion", tracks: "both",
+      goal: "Use modern JavaScript syntax to write cleaner code.",
+      concept: "Write shorter code with arrow functions, template literals, destructuring and array methods.",
+      objective: "Students can use arrow functions, template literals, destructuring and map/filter to write cleaner code.",
+      teachingPoints: [
+        "An arrow function is a shorter way to write a function: (x) => x + 1.",
+        "Template literals use backticks and ${...} to drop values into a string.",
+        "Destructuring pulls values out of objects and arrays; map and filter always return a new array."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo: refactor older code", mins: 5 },
+        { label: "Arrows, template literals, destructuring, map/filter", mins: 8 },
+        { label: "Activity time", mins: 15 },
+        { label: "Share & wrap-up", mins: 4 }
+      ],
+      liveDemo: [
+        {
+          title: "Refactoring old code with modern syntax",
+          filename: "modern.html",
+          caption: "The same job as last week, written shorter: an arrow function, destructuring in the parameter, filter and a template literal.",
+          code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 8: Modern syntax</title>
+</head>
+<body>
+  <h1>Students who passed</h1>
+  <ul id="list"></ul>
+
+  <script>
+    var students = [
+      { name: "Ada", score: 82 },
+      { name: "Chidi", score: 58 },
+      { name: "Amaka", score: 91 },
+      { name: "Tunde", score: 47 }
+    ];
+
+    // Old way: students.filter(function (student) { return student.score >= 60; })
+    var passed = students.filter((student) => student.score >= 60);
+
+    var list = document.getElementById("list");
+
+    // Destructuring in the parameter, and a template literal
+    passed.forEach(({ name, score }) => {
+      var item = document.createElement("li");
+      item.textContent = \`\${name} scored \${score}\`;
+      list.appendChild(item);
+    });
+  <\/script>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Using an arrow function where this matters. Arrow functions do not have their own this, which will trip you up later with classes.",
+        "Forgetting backticks. Template literals use `Hi ${name}` with backticks, not quotes.",
+        "Thinking filter changes the original array. filter and map return a new array; the original is left alone."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Arrow functions",
+            body: ["An arrow function is a shorter way to write a function. When the body is a single expression, the return is implicit."],
+            codes: [
+              { code: `var double = (n) => n * 2;\nvar add = (a, b) => a + b;` }
+            ]
+          },
+          {
+            h: "Template literals",
+            body: ["Use backticks and ${...} to drop values into a string without a pile of + signs and quotes."],
+            codes: [
+              { code: "var name = \"Ada\";\nvar greeting = `Hello, ${name}!`;" }
+            ]
+          },
+          {
+            h: "map and filter",
+            body: ["map changes every item and returns a new array; filter keeps the items that pass a test."],
+            codes: [
+              { code: `var nums = [5, 12, 18, 3];\nvar big = nums.filter(n => n > 10);\nvar doubled = nums.map(n => n * 2);` }
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "modern.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 8: Modern syntax</title>
+</head>
+<body>
+  <h1>Modern syntax</h1>
+  <ul id="list"></ul>
+
+  <script>
+    var student = { name: "Ada", score: 82 };
+    var scores = [45, 82, 58, 91, 47];
+
+    // 1. TODO: rewrite this function as an arrow function
+    var double = function (n) {
+      return n * 2;
+    };
+
+    // 2. TODO: build this message with a template literal
+    var message = "Student: " + student.name;
+
+    // 3. TODO: filter the scores to keep only those 60 and above
+    var passed = scores.filter(function (n) {
+      return n >= 60;
+    });
+
+    console.log(double(5));
+    console.log(message);
+    console.log(passed);
+  <\/script>
+</body>
+</html>`,
+        core: [
+          "Rewrite the double function as an arrow function.",
+          "Build the message with a template literal using backticks and ${...}.",
+          "Filter the scores so only those 60 and above remain."
+        ],
+        stretch: [
+          "Use map to turn the scores into strings like \"Score: 82\".",
+          "Destructure name and score from the student object."
+        ]
+      },
+      assessment: [
+        {
+          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
+          questions: [
+            { prompt: "Question 1: Write the arrow-function form of function (x) { return x + 1; }.", answer: "(x) => x + 1" },
+            { prompt: "Question 2: What characters wrap a template literal?", answer: "Backticks: `Hi ${name}`." },
+            { prompt: "Question 3: Does filter change the original array?", answer: "No. filter returns a new array; the original is unchanged." }
+          ]
+        }
+      ]
+    },
+    {
+      n: 9, title: "Project: to-do app or calculator", emoji: "📋", color: "control", tracks: "both",
+      goal: "Build and test a small interactive app.",
+      concept: "Combine the DOM, events and forms to build a small app.",
+      objective: "Students build a small interactive app using the DOM, events and a state variable.",
+      teachingPoints: [
+        "Keep the app's data in a state variable — one source of truth.",
+        "Render the page from the state every time the state changes.",
+        "Handle add and remove, and test edge cases such as an empty input."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo: the to-do app", mins: 4 },
+        { label: "Build time", mins: 20 },
+        { label: "Present", mins: 5 },
+        { label: "Wrap-up", mins: 3 }
+      ],
+      liveDemo: [
+        {
+          title: "A to-do app with add, done and delete",
+          filename: "app.html",
+          caption: "Add a task, click a task to mark it done, and click Delete to remove it. Every change updates the array and re-renders the list from the state.",
+          code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 9: To-do app</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; max-width: 420px; }
+    li { padding: 6px; cursor: pointer; }
+    li.done { text-decoration: line-through; color: #888; }
+    li button { margin-left: 8px; }
+  </style>
+</head>
+<body>
+  <h1>My To-Do List</h1>
+  <input id="taskInput" placeholder="Add a task" />
+  <button id="addBtn">Add</button>
+  <p id="count"></p>
+  <ul id="list"></ul>
+
+  <script>
+    var tasks = [
+      { text: "Buy garri", done: false },
+      { text: "Pay 500 Naira for data", done: false },
+      { text: "Finish maths homework", done: true }
+    ];
+    var list = document.getElementById("list");
+
+    function render() {
+      list.innerHTML = "";
+      tasks.forEach(function (task, index) {
+        var item = document.createElement("li");
+        item.textContent = task.text;
+        if (task.done) item.classList.add("done");
+
+        var del = document.createElement("button");
+        del.textContent = "Delete";
+        del.addEventListener("click", function (event) {
+          event.stopPropagation();
+          tasks.splice(index, 1);
+          render();
+        });
+
+        item.appendChild(del);
+        item.addEventListener("click", function () {
+          task.done = !task.done;
+          render();
+        });
+
+        list.appendChild(item);
+      });
+      document.getElementById("count").textContent = tasks.length + " task(s)";
+    }
+
+    document.getElementById("addBtn").addEventListener("click", function () {
+      var input = document.getElementById("taskInput");
+      var text = input.value.trim();
+      if (text === "") return;
+      tasks.push({ text: text, done: false });
+      input.value = "";
+      render();
+    });
+
+    render();
+  <\/script>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Changing the state but not redrawing. If you do not call render() after a change, the page still shows the old data.",
+        "Duplicated handlers. Re-rendering replaces the items, so attach handlers inside render and not again somewhere else.",
+        "Ignoring empty input. Trim the text and return early, or you add blank rows."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Plan the app",
+            body: ["Decide the data, the page and the actions before you write any code."],
+            list: [
+              "State: what does one task look like? { text, done }",
+              "Page: an input, an Add button and a ul.",
+              "Actions: add, mark done, delete.",
+              "Redraw the list every time the state changes."
+            ]
+          },
+          {
+            h: "Render from state",
+            body: ["One function redraws the whole list from the tasks array, so the page always matches the data."],
+            codes: [
+              { code: `function render() {\n  list.innerHTML = "";\n  tasks.forEach(function (task) {\n    // build an li from task and append it\n  });\n}` }
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "app.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 9: My to-do app</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; max-width: 420px; }
+    li { padding: 6px; }
+    li.done { text-decoration: line-through; color: #888; }
+  </style>
+</head>
+<body>
+  <h1>My To-Do List</h1>
+  <input id="taskInput" placeholder="Add a task" />
+  <button id="addBtn">Add</button>
+  <p id="count"></p>
+  <ul id="list"></ul>
+
+  <script>
+    // STATE: the single source of truth
+    var tasks = [];
+
+    var list = document.getElementById("list");
+    var input = document.getElementById("taskInput");
+
+    function render() {
+      list.innerHTML = "";
+      tasks.forEach(function (task, index) {
+        var item = document.createElement("li");
+        item.textContent = task.text;
+        if (task.done) item.classList.add("done");
+
+        item.addEventListener("click", function () {
+          // TODO: flip task.done and render again
+        });
+
+        var del = document.createElement("button");
+        del.textContent = "Delete";
+        del.addEventListener("click", function (event) {
+          event.stopPropagation();
+          // TODO: remove this task and render again
+        });
+
+        item.appendChild(del);
+        list.appendChild(item);
+      });
+      // TODO: show the task count
+    }
+
+    document.getElementById("addBtn").addEventListener("click", function () {
+      var text = input.value.trim();
+      if (text === "") return;
+      // TODO: push a new task { text: text, done: false }, clear the input and render
+    });
+
+    render();
+  <\/script>
+</body>
+</html>`,
+        core: [
+          "Add a task: push it to the tasks array, clear the input and render again.",
+          "Click a task to mark it done: flip task.done and render.",
+          "Click Delete to remove a task from the array and render."
+        ],
+        stretch: [
+          "Save the tasks in localStorage with JSON.stringify, and load them back when the page starts.",
+          "Show a task count, for example \"3 tasks\"."
+        ]
+      },
+      assessment: [
+        {
+          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
+          questions: [
+            { prompt: "Question 1: Why keep the app's data in a tasks array instead of only drawing it on the page?", answer: "The array is the source of truth; the page is drawn from it. Changing the array and rendering keeps the page and the data in step." },
+            { prompt: "Question 2: After you change the state, what must you do so the page shows it?", answer: "Call render() again to redraw the page from the state." },
+            { prompt: "Question 3: Why check for an empty input before adding a task?", answer: "To avoid adding blank rows. Trim the text and return early if it is empty." },
+            { prompt: "Question 4: How do you save an array of tasks in localStorage?", answer: "localStorage.setItem(\"tasks\", JSON.stringify(tasks)), then JSON.parse when reading it back." }
+          ]
+        },
+        {
+          track: "A", audience: "Both", title: "App checklist", type: "checklist",
+          items: [
+            "The app runs without errors.",
+            "It reacts to the user's input (add, click, delete).",
+            "It keeps its data in a state variable and renders from it.",
+            "The student can explain one of their event handlers."
+          ]
+        }
+      ]
+    },
+    {
+      n: 10, title: "Revision, assessment, showcase", emoji: "🎉", color: "sensing", tracks: "both",
+      goal: "Review Term 2 and showcase your work.",
+      concept: "Recap the term's ideas and present a project.",
+      objective: "Students revise Term 2 and present a small piece of work they can explain.",
+      teachingPoints: [
+        "Revise the DOM, events, forms, timers, localStorage and modern syntax.",
+        "Present your work and explain one line of your own code.",
+        "Reflect on what you would build next."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Term 2 revision", mins: 8 },
+        { label: "Presentations", mins: 18 },
+        { label: "Feedback", mins: 4 },
+        { label: "Wrap-up", mins: 2 }
+      ],
+      liveDemo: [
+        {
+          title: "A page that uses delegation, a class toggle and localStorage",
+          filename: "recap_dom.html",
+          caption: "One page bringing the term together: a parent listener marks clicked items, a button toggles a class on the body, and a value is saved and read back with localStorage.",
+          code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 10: DOM recap</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    .dark { background-color: #1f2a44; color: #ffffff; }
+    li.clicked { font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Term 2 recap</h1>
+  <button id="themeBtn">Toggle theme</button>
+  <ul id="list">
+    <li>DOM</li>
+    <li>Events</li>
+    <li>Forms</li>
+    <li>Timers</li>
+    <li>localStorage</li>
+  </ul>
+
+  <h2>Saved value</h2>
+  <input id="noteInput" placeholder="Type a note" />
+  <button id="saveBtn">Save</button>
+  <p id="saved"></p>
+
+  <script>
+    // Delegation: one handler marks any clicked item
+    document.getElementById("list").addEventListener("click", function (event) {
+      var item = event.target.closest("li");
+      if (item) item.classList.toggle("clicked");
+    });
+
+    // Class toggle on the body
+    document.getElementById("themeBtn").addEventListener("click", function () {
+      document.body.classList.toggle("dark");
+    });
+
+    // Save and read a value with localStorage
+    document.getElementById("saveBtn").addEventListener("click", function () {
+      localStorage.setItem("term2note", document.getElementById("noteInput").value);
+      showNote();
+    });
+
+    function showNote() {
+      var note = localStorage.getItem("term2note");
+      document.getElementById("saved").textContent = note ? "Saved: " + note : "Nothing saved yet.";
+    }
+
+    showNote();
+  <\/script>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Not testing before presenting, so an error shows up in front of the class. Run it once more before you present.",
+        "Being unable to explain a line of your own code. Read each handler aloud and say what it does.",
+        "Skipping the live demo. A running example is the strongest part of the presentation."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Term 2 recap",
+            body: ["Check that you can do each of these before the showcase:"],
+            list: [
+              "Find an element and change its text, style or classes",
+              "Create, add and remove elements",
+              "Listen for clicks, input and key events",
+              "Read form values and validate with preventDefault",
+              "Use event delegation with one handler on a parent",
+              "Run timers and save data in localStorage",
+              "Use arrow functions, template literals, map and filter"
+            ]
+          },
+          {
+            h: "Presentation script",
+            body: ["Use these prompts to plan what you will say as you present:"],
+            list: [
+              "Introduce your project in one sentence.",
+              "Show it running and point out one thing that works well.",
+              "Explain one event handler in your own words.",
+              "Name one challenge you met and how you solved it.",
+              "Say what you would add next if you had more time."
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "recap_dom.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 10: Term 2 recap</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    .dark { background-color: #1f2a44; color: #ffffff; }
+    li.clicked { font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Fix me</h1>
+  <button id="themeBtn">Toggle theme</button>
+  <ul id="list">
+    <li>DOM</li>
+    <li>Events</li>
+    <li>Forms</li>
+  </ul>
+  <input id="noteInput" placeholder="Type a note" />
+  <button id="saveBtn">Save</button>
+  <p id="saved"></p>
+
+  <script>
+    // BUG: this runs immediately instead of when the button is clicked
+    document.getElementById("themeBtn").addEventListener("click", document.body.classList.toggle("dark"));
+
+    // This listener is fine — use it to check your delegation
+    document.getElementById("list").addEventListener("click", function (event) {
+      var item = event.target.closest("li");
+      if (item) item.classList.toggle("clicked");
+    });
+
+    document.getElementById("saveBtn").addEventListener("click", function () {
+      // TODO: save the input value with localStorage.setItem,
+      // then read it back with getItem and show it in #saved
+    });
+  <\/script>
+</body>
+</html>`,
+        core: [
+          "Fix the broken handler: pass a function to addEventListener instead of calling the toggle now.",
+          "Toggle the dark class on the body when the button is clicked.",
+          "Save the input value with localStorage and show it in #saved."
+        ],
+        stretch: [
+          "Refactor the filter/loop in your project to use map or filter.",
+          "Load your saved value when the page starts and show it right away."
+        ]
+      },
+      assessment: [
+        {
+          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
+          questions: [
+            { prompt: "Question 1: What does addEventListener do?", answer: "It attaches a function that runs when the given event happens on that element." },
+            { prompt: "Question 2: What is event delegation and why is it useful?", answer: "One listener on a parent handles events from its children; it works for items added later and keeps the code short." },
+            { prompt: "Question 3: Why call event.preventDefault() in a form submit handler?", answer: "To stop the page reloading so your JavaScript can validate and handle the form." },
+            { prompt: "Question 4: What does setInterval do, and how do you stop it?", answer: "It repeats a function every N milliseconds; save the id it returns and call clearInterval(id)." },
+            { prompt: "Question 5: What is the difference between filter and map?", answer: "filter keeps the items that pass a test; map changes every item. Both return a new array." }
+          ]
+        }
+      ]
+    }
   ];
 
   // --- Term 3: Modern JavaScript and Real-World Apps ---
