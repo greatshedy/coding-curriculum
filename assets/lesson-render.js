@@ -1,11 +1,17 @@
 /* ============================================================
    lesson-render.js — shared, term-aware lesson renderer.
-   Builds a lesson page from window.COURSE_CONFIG.data.
+   Builds one lesson page from window.COURSE_CONFIG.data.
    The lesson comes from the URL: week.html?t=3&w=4
-   If the data has no `terms`, a flat `weeks` array is treated as
-   one implicit term, so single-course pages keep working.
-   Four tabs: Instructor guide · Student handout · Code template ·
-   Assessment. Code templates and examples are runnable.
+
+   Students and teachers share the same page. The lesson is a
+   single spine — Read · Run · Build · Check — and a page-level
+   "Teacher mode" switch reveals the teacher layer in place:
+   the briefing (objective, teaching points, timing, common
+   mistakes) and the assessment answer keys. Nothing is split
+   into a separate student or teacher tab.
+
+   If the data has no `terms`, a flat `weeks` array is treated
+   as one implicit term, so single-course pages keep working.
    ============================================================ */
 (function () {
   "use strict";
@@ -67,6 +73,7 @@
   var accent = PALETTE[week.color] || PALETTE.motion;
   var soft = accent + "22";
   document.documentElement.style.setProperty("--tab-accent", accent);
+  document.documentElement.classList.add("has-lesson-bar");
 
   document.title = "Week " + w + ": " + week.title + " — " + (cur.title || "Course");
 
@@ -90,6 +97,35 @@
     else { nextTop.textContent = "Back to course"; nextTop.addEventListener("click", function () { window.location.href = indexHref; }); }
   }
 
+  /* ---------- teacher lens ---------- */
+  var LENS_KEY = "codelab:teacher-mode";
+  var teacherOn = false;
+  try { teacherOn = window.localStorage.getItem(LENS_KEY) === "1"; } catch (err) { teacherOn = false; }
+
+  function syncLens() {
+    document.documentElement.classList.toggle("teacher-mode", teacherOn);
+    Array.prototype.forEach.call(document.querySelectorAll("[data-teacher-toggle]"), function (btn) {
+      btn.setAttribute("aria-checked", String(teacherOn));
+      var label = btn.querySelector(".lens-switch-label");
+      if (label) label.textContent = teacherOn ? "Teacher mode: on" : "Teacher mode";
+    });
+  }
+
+  document.addEventListener("click", function (ev) {
+    var btn = ev.target && ev.target.closest ? ev.target.closest("[data-teacher-toggle]") : null;
+    if (!btn) return;
+    teacherOn = !teacherOn;
+    try { window.localStorage.setItem(LENS_KEY, teacherOn ? "1" : "0"); } catch (err) { /* ignore */ }
+    syncLens();
+  });
+
+  function teacherToggleHtml() {
+    return '<button type="button" class="lens-switch" role="switch" aria-checked="' + teacherOn + '" data-teacher-toggle>' +
+      '<span class="lens-switch-track" aria-hidden="true"><span class="lens-switch-thumb"></span></span>' +
+      '<span class="lens-switch-label">' + (teacherOn ? "Teacher mode: on" : "Teacher mode") + "</span>" +
+    "</button>";
+  }
+
   /* ---------- helpers ---------- */
   function list(arr, marker, cls) {
     return '<ul class="notes-list ' + (cls || "") + '">' + (arr || []).map(function (x) {
@@ -99,10 +135,18 @@
   function paras(arr) {
     return (arr || []).map(function (p) { return "<p>" + e(p) + "</p>"; }).join("");
   }
-  function sectionTitle(emoji, title, extra) {
-    return '<h2 class="font-display text-2xl font-extrabold flex items-center gap-2 mb-3">' +
-      '<span aria-hidden="true">' + emoji + "</span>" + e(title) +
-      (extra ? '<span class="ml-1 text-sm font-bold text-ink/40">' + e(extra) + "</span>" : "") + "</h2>";
+  function sec(id, emoji, title, sub, bodyHtml, actions, cls) {
+    return '<section class="lesson-sec' + (cls ? " " + cls : "") + '" id="sec-' + id + '">' +
+      '<div class="lesson-sec-head">' +
+        '<span class="lesson-sec-emoji" aria-hidden="true">' + emoji + "</span>" +
+        "<div>" +
+          '<h2 class="lesson-sec-title">' + e(title) + "</h2>" +
+          (sub ? '<p class="lesson-sec-sub">' + e(sub) + "</p>" : "") +
+        "</div>" +
+        (actions ? '<div class="lesson-sec-head-actions no-print">' + actions + "</div>" : "") +
+      "</div>" +
+      bodyHtml +
+    "</section>";
   }
 
   /* ---------- code placeholders ---------- */
@@ -148,41 +192,46 @@
           '<h1 class="font-display text-3xl sm:text-4xl font-extrabold">' + e(week.title) + "</h1>" +
           (week.goal ? '<p class="mt-3 flex items-start gap-2 rounded-xl bg-ink/5 px-3 py-2 text-sm font-bold text-ink/80 max-w-2xl"><span aria-hidden="true">🎯</span><span><span class="text-ink/45 uppercase tracking-wide text-xs font-extrabold mr-1">Goal:</span>' + e(week.goal) + "</span></p>" : "") +
           '<p class="text-ink/65 max-w-2xl mt-2">' + e(week.concept || "") + "</p>" +
+          '<p class="mt-4"><span class="lens-hint"><span aria-hidden="true">🔎</span><span>Everyone sees this lesson. Flip on <strong>Teacher mode</strong> for the briefing, timing and answer keys.</span></span></p>' +
         "</div>" +
       "</div>" +
     "</section>";
   }
 
-  /* ---------- tab 1: instructor guide ---------- */
-  function instructorPanel(t, objective) {
+  /* ---------- teacher layer: briefing ---------- */
+  function teacherBriefing(t, objective) {
+    var obj = objective || t.objective || "";
+    var tp = t.teachingPoints || [];
     var timing = t.timing || [];
-    var maxMin = timing.reduce(function (m, x) { return Math.max(m, x.mins); }, 1);
+    var mistakes = t.commonMistakes || [];
+    if (!obj && !tp.length && !timing.length && !mistakes.length) return "";
+
+    var maxMin = timing.reduce(function (m, x) { return Math.max(m, x.mins || 0); }, 1);
     var timingHtml = timing.map(function (x) {
       return '<div class="timing-row"><span class="t-label">' + e(x.label) + '</span><span class="t-mins">' + x.mins + " min</span>" +
-        '<span class="t-bar"><i style="width:' + Math.round((x.mins / maxMin) * 100) + '%"></i></span></div>';
+        '<span class="t-bar"><i style="width:' + Math.round(((x.mins || 0) / maxMin) * 100) + '%"></i></span></div>';
     }).join("");
 
-    var demos = (t.liveDemo || []).map(function (d) {
-      return '<div class="grid gap-2"><h3 class="notes-h" style="margin-top:0">' + e(d.title) + "</h3>" +
-        snippetSlot({ code: d.code, filename: d.filename, caption: d.caption }) + "</div>";
-    }).join("");
+    function card(title, inner) {
+      return '<div class="tbp-card"><h3>' + e(title) + "</h3>" + inner + "</div>";
+    }
+    var inner =
+      (obj ? card("Objective", '<p>' + e(obj) + "</p>") : "") +
+      (tp.length ? card("Key teaching points", list(tp, "▸")) : "") +
+      (timing.length ? card("Timing", '<div class="timing">' + timingHtml + "</div>") : "") +
+      (mistakes.length ? card("Common mistakes", list(mistakes, "!")) : "");
 
-    return '<div class="grid gap-6">' +
-      '<div>' +
-        sectionTitle("🎯", "Objective") +
-        '<p class="notes-reading">' + e(objective || "") + "</p>" +
+    return '<div class="teacher-only">' +
+      '<div class="teacher-briefing">' +
+        '<div class="teacher-briefing-head"><span aria-hidden="true">🧑‍🏫</span><span>Teacher briefing</span><span class="teacher-chip">Visible in Teacher mode</span></div>' +
+        '<p class="tbp-intro">Plan before class: the objective, what to emphasise, a suggested timing and the mistakes to watch for.</p>' +
+        '<div class="tbp-grid">' + inner + "</div>" +
       "</div>" +
-      '<div class="grid md:grid-cols-2 gap-6">' +
-        "<div>" + sectionTitle("💡", "Key teaching points") + list(t.teachingPoints, "▸") + "</div>" +
-        "<div>" + sectionTitle("⏱️", "Timing") + '<div class="timing">' + timingHtml + "</div></div>" +
-      "</div>" +
-      (demos ? "<div>" + sectionTitle("▶️", "Live-code demo", "run it in front of the class") + '<div class="grid gap-4">' + demos + "</div></div>" : "") +
-      "<div>" + sectionTitle("⚠️", "Common mistakes") + list(t.commonMistakes, "!") + "</div>" +
     "</div>";
   }
 
-  /* ---------- tab 2: student handout ---------- */
-  function handoutPanel(t) {
+  /* ---------- Read ---------- */
+  function readPanel(t) {
     var sections = ((t.handout || {}).sections || []).map(function (s) {
       var out = '<section class="mb-7">';
       out += '<h3 class="notes-h" style="margin-top:0">' + e(s.h) +
@@ -198,18 +247,26 @@
       if (s.after) out += paras(s.after);
       return out + "</section>";
     }).join("");
-    var goalHtml = t.goal
-      ? '<div class="notes-script"><p class="notes-mini">Goal for this week</p><p>' + e(t.goal) + "</p></div>"
-      : "";
-    return '<div>' + goalHtml + sections + "</div>";
+    return sections;
   }
 
-  /* ---------- tab 3: code template ---------- */
-  function templatePanel(t) {
-    if (!t.template) return '<p class="text-ink/50">No template for this week.</p>';
-    var steps = function (arr) {
+  /* ---------- Run it ---------- */
+  function runPanel(t) {
+    var demos = t.liveDemo || [];
+    if (!demos.length) return "";
+    return '<p class="teacher-only tbp-note">Run each example live first, then let students change it and run it themselves.</p>' +
+      '<div class="grid gap-4">' + demos.map(function (d) {
+        return '<div><h3 class="notes-h" style="margin-top:0">' + e(d.title) + "</h3>" +
+          snippetSlot({ code: d.code, filename: d.filename, caption: d.caption }) + "</div>";
+      }).join("") + "</div>";
+  }
+
+  /* ---------- Build it ---------- */
+  function buildPanel(t) {
+    if (!t.template) return "";
+    function steps(arr) {
       return '<ol class="steps">' + (arr || []).map(function (x) { return "<li><span class='text-ink/80'>" + e(x) + "</span></li>"; }).join("") + "</ol>";
-    };
+    }
     var tasksHtml;
     if (t.template.core) {
       tasksHtml = '<p class="notes-mini">Core tasks — everyone</p>' + steps(t.template.core) +
@@ -219,18 +276,16 @@
     } else {
       tasksHtml = steps(t.template.tasks);
     }
-    return "<div class=\"grid gap-5\">" +
-      "<div>" + sectionTitle("🧑‍💻", "Code template", "edit and run it") +
-        '<p class="notes-reading m-0">This is the starter file for the week. Edit it, press <strong>Run</strong>, and watch the result and the console update. Then follow the tasks below.</p>' +
-      "</div>" +
+    return '<div class="grid gap-5">' +
+      '<p class="notes-reading m-0">This is the starter file for the week. Edit it, press <strong>Run</strong>, and watch the preview and console update. Then follow the tasks below.</p>' +
       editorSlot({ code: t.template.code, filename: t.template.filename }) +
-      '<div>' + sectionTitle("🛠️", "What to do") + tasksHtml + "</div>" +
+      '<div><h3 class="notes-h" style="margin-top:0">What to do</h3>' + tasksHtml + "</div>" +
     "</div>";
   }
 
-  /* ---------- tab 4: assessment ---------- */
-  function assessmentPanel(blocks) {
-    if (!blocks.length) return '<p class="text-ink/50">No assessment for this week.</p>';
+  /* ---------- Check ---------- */
+  function checkPanel(blocks) {
+    if (!blocks.length) return "";
     return '<div class="grid gap-6">' + blocks.map(function (b) {
       var badge = '<span class="track-badge" style="background:' + soft + ";color:" + accent + '">Track ' + e(b.track || "") + "</span>" +
         (b.audience ? ' <span class="track-badge bg-ink/5 text-ink/60">' + e(b.audience) + "</span>" : "");
@@ -249,7 +304,9 @@
             '<p class="q-prompt">' + e(q.prompt) + "</p>" +
             (q.body ? '<p class="q-body">' + e(q.body) + "</p>" : "") +
             (q.code ? '<pre class="codeblock">' + e(q.code) + "</pre>" : "") +
-            (q.answer ? '<details class="quiz-answer"><summary>Show answer (teacher)</summary><div class="answer-body">' + e(q.answer).replace(/\n/g, "<br>") + "</div></details>" : "") +
+            (q.answer
+              ? '<div class="teacher-only"><p class="quiz-answer-label">Answer key</p><div class="answer-body">' + e(q.answer).replace(/\n/g, "<br>") + "</div></div>"
+              : "") +
           "</div>";
         }).join("") + "</div>";
       }
@@ -267,7 +324,7 @@
 
       if (b.type === "rubric") {
         out += '<div class="mt-3 overflow-x-auto"><table class="rubric-table"><thead><tr>' +
-          '<th>Criteria</th><th>Yes</th><th>Somewhat</th><th>No</th></tr></thead><tbody>' +
+          "<th>Criteria</th><th>Yes</th><th>Somewhat</th><th>No</th></tr></thead><tbody>" +
           (b.criteria || []).map(function (c) {
             return "<tr><td>" + e(c) + "</td><td></td><td></td><td></td></tr>";
           }).join("") + "</tbody></table></div>";
@@ -277,8 +334,8 @@
     }).join("") + "</div>";
   }
 
-  /* ---------- build the whole tabbed body ---------- */
-  function buildBody(container, variantKey) {
+  /* ---------- render one variant of the lesson ---------- */
+  function renderLesson(variantKey) {
     snippetSpecs = [];
     editorSpecs = [];
 
@@ -287,55 +344,49 @@
     var objective = variant ? variant.objective : week.objective;
     var assessment = variant ? [].concat(variant.assessment || [], week.assessment || []) : [].concat(week.assessment || []);
 
-    var tabs = [
-      { id: "instructor", label: "🧑‍🏫 Instructor", html: instructorPanel(t, objective) },
-      { id: "handout", label: "📄 Handout", html: handoutPanel(t) },
-      { id: "template", label: "🧑‍💻 Code", html: templatePanel(t) },
-      { id: "assessment", label: "✅ Assessment", html: assessmentPanel(assessment) }
-    ];
+    var anchors = [];
+    var parts = [];
 
-    var nav = '<div class="tablist grow basis-80" role="tablist" aria-label="Lesson sections">' + tabs.map(function (x, i) {
-      return '<button type="button" role="tab" id="tab-' + x.id + '" aria-controls="panel-' + x.id + '" aria-selected="' + (i === 0) + '" tabindex="' + (i === 0 ? "0" : "-1") + '">' + x.label + "</button>";
-    }).join("") + "</div>";
+    var brief = teacherBriefing(t, objective);
+    if (brief) { anchors.push({ id: "sec-briefing", label: "Briefing", emoji: "🧑‍🏫" }); parts.push(sec("briefing", "🧑‍🏫", "Before class", "", brief, "", "teacher-only")); }
 
-    var panels = tabs.map(function (x, i) {
-      return '<div id="panel-' + x.id + '" role="tabpanel" aria-labelledby="tab-' + x.id + '" class="tabpanel' + (x.id === "handout" ? " notes-reading" : "") + '"' + (i === 0 ? "" : " hidden") + ">" + x.html + "</div>";
-    }).join("");
+    var read = readPanel(t);
+    var printBtn = '<button type="button" class="notes-print" data-print-handout>🖨 Print handout</button>';
+    if (read) { anchors.push({ id: "sec-read", label: "Read", emoji: "📖" }); parts.push(sec("read", "📖", "Read", "The idea, explained.", read, printBtn)); }
 
-    var printBtn = '<button type="button" class="notes-print" data-print-handout>🖨 Print this handout</button>';
+    var run = runPanel(t);
+    if (run) { anchors.push({ id: "sec-run", label: "Run it", emoji: "▶️" }); parts.push(sec("run", "▶️", "Run it", "Press Run and watch the idea happen.", run)); }
 
-    container.innerHTML =
-      '<div class="flex flex-wrap items-end gap-3">' + nav + printBtn + "</div>" +
-      '<div class="tabpanels">' + panels + "</div>";
+    var build = buildPanel(t);
+    if (build) { anchors.push({ id: "sec-build", label: "Build it", emoji: "🧱" }); parts.push(sec("build", "🧱", "Build it", "Follow the tasks and make it yours.", build)); }
 
-    var tabButtons = Array.prototype.slice.call(container.querySelectorAll('[role="tab"]'));
-    function select(i) {
-      tabButtons.forEach(function (btn, j) {
-        var on = i === j;
-        btn.setAttribute("aria-selected", String(on));
-        btn.setAttribute("tabindex", on ? "0" : "-1");
-        var panel = document.getElementById(btn.getAttribute("aria-controls"));
-        if (panel) panel.hidden = !on;
-      });
+    var check = checkPanel(assessment);
+    if (check) { anchors.push({ id: "sec-check", label: "Check", emoji: "✅" }); parts.push(sec("check", "✅", "Check your work", "", check)); }
+
+    var bar = document.getElementById("lesson-bar");
+    if (bar) {
+      bar.innerHTML =
+        '<div class="lesson-bar no-print">' +
+          '<div class="lesson-bar-inner">' +
+            (anchors.length
+              ? '<nav class="lesson-jump" aria-label="On this page">' + anchors.map(function (a) {
+                  return '<a href="#' + a.id + '"><span aria-hidden="true">' + a.emoji + "</span>" + e(a.label) + "</a>";
+                }).join("") + "</nav>"
+              : "") +
+            teacherToggleHtml() +
+          "</div>" +
+        "</div>";
     }
-    tabButtons.forEach(function (btn, i) {
-      btn.addEventListener("click", function () { select(i); });
-      btn.addEventListener("keydown", function (ev) {
-        if (ev.key !== "ArrowRight" && ev.key !== "ArrowLeft") return;
-        ev.preventDefault();
-        var next = (i + (ev.key === "ArrowRight" ? 1 : tabButtons.length - 1)) % tabButtons.length;
-        tabButtons[next].focus();
-        select(next);
-      });
-    });
-    select(0);
 
-    mountCode(container);
+    var bodyEl = document.getElementById("lesson-body");
+    if (!bodyEl) return;
+    bodyEl.innerHTML = parts.join("");
+    mountCode(bodyEl);
 
-    var pb = container.querySelector("[data-print-handout]");
+    var pb = bodyEl.querySelector("[data-print-handout]");
     if (pb) {
       pb.addEventListener("click", function () {
-        var panel = document.getElementById("panel-handout");
+        var panel = document.getElementById("sec-read");
         if (!panel) return;
         Array.prototype.forEach.call(document.querySelectorAll(".print-target"), function (x) { x.classList.remove("print-target"); });
         panel.classList.add("print-target");
@@ -353,6 +404,8 @@
         setTimeout(cleanup, 4000);
       });
     }
+
+    syncLens();
   }
 
   /* ---------- sidebar ---------- */
@@ -416,22 +469,22 @@
   root.innerHTML =
     heroHtml() +
     variantBar +
+    '<div id="lesson-bar"></div>' +
     '<div class="grid lg:grid-cols-3 gap-6 items-start">' +
-      '<div class="lg:col-span-2 grid gap-6"><div class="card p-6" id="lesson-body"></div></div>' +
-      '<aside class="grid gap-6 lg:sticky lg:top-20">' +
+      '<div class="lg:col-span-2"><div class="card p-6" id="lesson-body"></div></div>' +
+      '<aside class="grid gap-6 lg:sticky lg:top-24">' +
         '<div class="card p-6"><p class="text-xs font-extrabold uppercase tracking-wide text-ink/45 mb-3">All weeks</p><nav class="grid gap-0.5">' + weekList() + "</nav></div>" +
         tracksCard +
       "</aside>" +
     "</div>" +
     bottomNav;
 
-  var bodyEl = document.getElementById("lesson-body");
   var currentVariant = week.variants ? Object.keys(week.variants)[0] : null;
   var projectEl = document.getElementById("variant-project");
 
   function renderVariant(key) {
     currentVariant = key;
-    buildBody(bodyEl, key);
+    renderLesson(key);
     if (projectEl && key) projectEl.textContent = week.variants[key].project || "";
     Array.prototype.forEach.call(root.querySelectorAll(".variant-btn"), function (btn) {
       btn.classList.toggle("is-active", btn.getAttribute("data-variant") === key);
@@ -444,6 +497,6 @@
     });
     renderVariant(currentVariant);
   } else {
-    buildBody(bodyEl, null);
+    renderLesson(null);
   }
 })();

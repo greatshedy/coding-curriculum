@@ -277,3 +277,212 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   }
   body.printing .notes-panel[hidden] { display: none !important; }
 }
+
+/* ============================================================
+   Audience lens — one lesson page, two views.
+   Everyone reads the same lesson. Teacher mode reveals the
+   briefing (objective, teaching points, timing, common mistakes)
+   and the assessment answer keys, in place.
+   ============================================================ */
+.teacher-only { display: none !important; }
+html.teacher-mode .teacher-only { display: block !important; }
+
+.tbp-note {
+  margin: 0 0 0.75rem;
+  padding: 0.55rem 0.8rem;
+  border-radius: 0.8rem;
+  background: rgba(255, 140, 26, 0.12);
+  border: 1px dashed rgba(255, 140, 26, 0.45);
+  color: #8a4b00;
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+/* Teacher briefing card */
+.teacher-briefing {
+  border: 1px solid rgba(255, 140, 26, 0.4);
+  background: linear-gradient(180deg, #fff8ee 0%, #fffdf9 100%);
+  border-radius: 1.25rem;
+  padding: 1.1rem 1.25rem 1.25rem;
+  box-shadow: 0 10px 30px -18px rgba(31, 42, 68, 0.35);
+}
+.teacher-briefing-head {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: "Baloo 2", "Nunito", ui-sans-serif, system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: #8a4b00;
+}
+.teacher-chip {
+  margin-left: auto;
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: rgba(255, 140, 26, 0.18);
+  color: #8a4b00;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+}
+.tbp-intro {
+  margin: 0.35rem 0 0;
+  font-size: 0.86rem;
+  color: #8a6a3a;
+  font-weight: 600;
+}
+.tbp-grid { display: grid; gap: 0.85rem; margin-top: 1rem; }
+@media (min-width: 720px) {
+  .tbp-grid { grid-template-columns: 1fr 1fr; }
+}
+.tbp-card {
+  background: #fff;
+  border: 1px solid rgba(255, 140, 26, 0.24);
+  border-radius: 0.9rem;
+  padding: 0.8rem 0.95rem;
+}
+.tbp-card > h3 {
+  font-family: "Nunito", ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #b45309;
+  margin: 0 0 0.5rem;
+}
+.tbp-card p { margin: 0; color: #3a4560; font-size: 0.92rem; line-height: 1.55; }
+
+/* Sticky lesson spine */
+.lesson-bar { position: sticky; top: 4rem; z-index: 40; margin-bottom: 1.6rem; }
+.lesson-bar-inner {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  background: rgba(255, 255, 255, 0.93);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(31, 42, 68, 0.08);
+  border-radius: 1rem;
+  padding: 0.4rem 0.5rem;
+  box-shadow: 0 8px 24px -18px rgba(31, 42, 68, 0.6);
+  transition: box-shadow 0.18s ease, border-color 0.18s ease;
+}
+html.teacher-mode .lesson-bar-inner {
+  border-color: rgba(255, 140, 26, 0.5);
+  box-shadow: 0 0 0 2px rgba(255, 140, 26, 0.16), 0 8px 24px -18px rgba(31, 42, 68, 0.6);
+}
+.lesson-jump { display: flex; gap: 0.12rem; flex-wrap: wrap; }
+.lesson-jump a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--ink-soft);
+  padding: 0.4rem 0.62rem;
+  border-radius: 0.7rem;
+  text-decoration: none;
+}
+.lesson-jump a:hover { background: rgba(76, 151, 255, 0.1); color: var(--ink); }
+
+.lens-switch {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 800;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  padding: 0.3rem 0.35rem;
+  border-radius: 0.7rem;
+}
+.lens-switch:hover { color: var(--ink); }
+.lens-switch-track {
+  position: relative;
+  width: 2.4rem;
+  height: 1.35rem;
+  border-radius: 999px;
+  background: rgba(31, 42, 68, 0.18);
+  transition: background 0.18s ease;
+}
+.lens-switch-thumb {
+  position: absolute;
+  top: 0.16rem;
+  left: 0.16rem;
+  width: 1.03rem;
+  height: 1.03rem;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  transition: transform 0.18s ease;
+}
+.lens-switch[aria-checked="true"] { color: #8a4b00; }
+.lens-switch[aria-checked="true"] .lens-switch-track { background: #ff8c1a; }
+.lens-switch[aria-checked="true"] .lens-switch-thumb { transform: translateX(1.05rem); }
+
+/* Lesson sections */
+html.has-lesson-bar { scroll-padding-top: 7.5rem; }
+.lesson-sec { scroll-margin-top: 0.5rem; margin-bottom: 3rem; }
+.lesson-sec:last-child { margin-bottom: 0; }
+.lesson-sec-head { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.1rem; }
+.lesson-sec-emoji {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0.9rem;
+  background: rgba(76, 151, 255, 0.12);
+  font-size: 1.3rem;
+  flex: 0 0 auto;
+}
+@supports (background: color-mix(in srgb, red 10%, blue)) {
+  .lesson-sec-emoji { background: color-mix(in srgb, var(--tab-accent) 14%, #fff); }
+}
+.lesson-sec-title {
+  font-family: "Baloo 2", "Nunito", ui-sans-serif, system-ui, sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+.lesson-sec-sub { margin: 0.15rem 0 0; font-size: 0.85rem; font-weight: 700; color: var(--ink-soft); }
+.lesson-sec-head-actions { margin-left: auto; }
+
+/* Hint shown under the hero */
+.lens-hint {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  max-width: 40rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  background: rgba(31, 42, 68, 0.05);
+  border-radius: 0.9rem;
+  padding: 0.5rem 0.85rem;
+}
+
+/* Answer key (teacher mode) */
+.quiz-answer-label {
+  margin: 0.6rem 0 0.35rem;
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #15803d;
+}
+
+@media print {
+  .lesson-bar { display: none !important; }
+  .teacher-only { display: none !important; }
+}
+
+/* The briefing jump link only makes sense while Teacher mode is on. */
+html:not(.teacher-mode) .lesson-jump a[href="#sec-briefing"] { display: none; }
