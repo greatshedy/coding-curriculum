@@ -3957,16 +3957,1639 @@ if (guess === secret) {
 
   // --- Term 3: Modern JavaScript and Real-World Apps ---
   var term3 = [
-    stub(1, "JSON and scope", "🧾", "control", "Work with JSON and understand where variables live.", "Read and write JSON, and understand local and global scope."),
-    stub(2, "Promises", "⏳", "motion", "Understand and use Promises.", "Handle work that finishes later with Promises."),
-    stub(3, "async/await", "⚡", "sensing", "Use async and await to handle asynchronous tasks.", "Write asynchronous code that reads like ordinary code."),
-    stub(4, "fetch and APIs (offline sample)", "🌐", "operators", "Fetch data from an API and show it on the page.", "Get data from a server with fetch and display it, using an offline sample."),
-    stub(5, "Error handling and debugging with DevTools", "🐞", "events", "Handle errors and debug with the browser DevTools.", "Catch errors with try/catch and inspect your code with DevTools."),
-    stub(6, "Classes and OOP basics", "🏛️", "variables", "Create classes and objects in JavaScript.", "Model things with classes, constructors and methods."),
-    stub(7, "Modules and organising code", "📦", "looks", "Organise code into reusable modules.", "Split code into modules and import what you need."),
-    stub(8, "Capstone: plan and build", "🧱", "motion", "Plan and start building your capstone project.", "Plan your final project and start building its first features."),
-    stub(9, "Capstone: build and publish", "🚀", "control", "Finish and publish your capstone project.", "Complete your project and publish it online."),
-    stub(10, "Showcase, assessment, next steps", "🏆", "events", "Showcase your project and plan your next steps.", "Present your project, take the final assessment and look ahead.")
+    {
+      n: 1, title: "JSON and scope", emoji: "🧾", color: "control", tracks: "both",
+      goal: "Work with JSON and understand where variables live.",
+      concept: "Read and write JSON, and understand local and global scope.",
+      objective: "Convert data to and from JSON, and understand where variables live (scope).",
+      teachingPoints: [
+        "JSON is text that looks like a JavaScript object: keys and strings use double quotes, and there are no trailing commas.",
+        "JSON.stringify turns a value into JSON text; JSON.parse turns JSON text back into a value.",
+        "let and const inside { } are block-scoped: they only exist between the braces they were created in."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo: object to JSON and back", mins: 5 },
+        { label: "JSON and scope", mins: 8 },
+        { label: "Activity time", mins: 15 },
+        { label: "Share & wrap-up", mins: 4 }
+      ],
+      liveDemo: [
+        {
+          title: "An object turned into JSON text and back",
+          filename: "json.html",
+          caption: "The object is turned into JSON text with stringify, parsed back with parse, and the results are logged. A block-scoped variable is shown inside its block.",
+          code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 1: JSON and scope</title>
+</head>
+<body>
+  <h1>JSON and scope</h1>
+  <p>Open the console to see the results.</p>
+
+  <script>
+    var student = { name: "Ada", score: 82, subjects: ["Maths", "Science"] };
+
+    // 1. Object -> JSON text
+    var text = JSON.stringify(student);
+    console.log("As JSON text:", text);
+
+    // 2. JSON text -> object
+    var back = JSON.parse(text);
+    console.log("Back as an object:", back.name, back.score);
+
+    // 3. Block scope: this variable only exists inside the braces
+    if (true) {
+      let inside = "I only exist in this block";
+      console.log(inside);
+    }
+    // console.log(inside); // ERROR: inside is not defined out here
+
+    // Passing an object to JSON.parse throws, because parse needs text
+    // console.log(JSON.parse(back)); // ERROR
+  <\/script>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Writing JSON with single quotes or unquoted keys - JSON needs double quotes around every key and string.",
+        "Calling JSON.parse on data that is already an object; parse expects text.",
+        "Using a let or const variable outside the { } block it was created in, which raises a ReferenceError."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "JSON text vs JavaScript",
+            body: ["JSON is a text format for data. It looks like a JavaScript object but is stricter: keys and strings use double quotes, and there are no comments or trailing commas."],
+            codes: [
+              { code: `{ "name": "Ada", "score": 82, "subjects": ["Maths", "Science"] }` }
+            ]
+          },
+          {
+            h: "stringify and parse",
+            body: ["stringify turns a value into JSON text so it can be stored or sent. parse turns that text back into a value you can use."],
+            codes: [
+              { code: `var text = JSON.stringify({ name: "Ada" });\nvar obj = JSON.parse(text);\nconsole.log(obj.name); // Ada` }
+            ]
+          },
+          {
+            h: "Scope",
+            body: ["Scope is where a variable can be seen. A let or const created inside { } is block-scoped: it disappears at the closing brace."],
+            list: [
+              "let and const are block-scoped.",
+              "var ignores blocks and leaks outside them - avoid it.",
+              "Use the smallest scope that works."
+            ],
+            codes: [
+              { code: `if (true) {\n  let secret = "in here";\n}\nconsole.log(secret); // ReferenceError` }
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "json.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 1: JSON starter</title>
+</head>
+<body>
+  <h1>JSON and scope starter</h1>
+  <p>Open the console to see your results.</p>
+
+  <script>
+    var student = { name: "Chidi", score: 71 };
+    var jsonText = '{"name":"Amaka","score":90}';
+
+    // 1. TODO: turn student into JSON text with JSON.stringify
+    var text = "";
+
+    // 2. TODO: parse jsonText back into an object
+    var parsed = null;
+
+    // 3. TODO: log a value from the parsed object
+    console.log(text);
+    console.log(parsed);
+
+    // BONUS: uncomment to see the block-scope error, then fix it
+    if (true) {
+      let secret = "block only";
+    }
+    // console.log(secret);
+  <\/script>
+</body>
+</html>`,
+        core: [
+          "Turn the student object into JSON text with JSON.stringify and log it.",
+          "Parse jsonText with JSON.parse and log parsed.name.",
+          "Log one value from the student object."
+        ],
+        stretch: [
+          "Parse a JSON array of students and loop through it with forEach.",
+          "Uncomment console.log(secret), read the block-scope error, then move the log inside the block to fix it."
+        ]
+      },
+      assessment: [
+        {
+          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
+          questions: [
+            { prompt: "Question 1: What does JSON.stringify do?", answer: "It turns a value such as an object or array into JSON text (a string)." },
+            { prompt: "Question 2: What does JSON.parse do?", answer: "It takes JSON text and turns it back into a value you can use in your code." },
+            { prompt: "Question 3: What is block scope?", answer: "A let or const created inside { } only exists inside those braces; it cannot be used outside them." }
+          ]
+        }
+      ]
+    },
+    {
+      n: 2, title: "Promises", emoji: "⏳", color: "motion", tracks: "both",
+      goal: "Understand and use Promises.",
+      concept: "Handle work that finishes later with Promises.",
+      objective: "Understand what a promise represents and chain a simple one.",
+      teachingPoints: [
+        "A promise is a value that arrives later - a placeholder for something that is not ready yet.",
+        "A promise can resolve (succeed) or reject (fail).",
+        ".then() runs when it resolves and .catch() runs when it rejects."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo: a delayed value", mins: 5 },
+        { label: "Promises, then and catch", mins: 8 },
+        { label: "Activity time", mins: 15 },
+        { label: "Share & wrap-up", mins: 4 }
+      ],
+      liveDemo: [
+        {
+          title: "A promise that resolves after one second",
+          filename: "promises.html",
+          caption: "waitASecond() returns a promise. .then runs when the value arrives and .catch would run if it failed. Notice the last log runs first.",
+          code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 2: Promises</title>
+</head>
+<body>
+  <h1>Promises</h1>
+  <p>Open the console to see the order of the logs.</p>
+
+  <script>
+    function waitASecond() {
+      return new Promise(function (resolve) {
+        setTimeout(function () {
+          resolve("Data arrived after 1 second");
+        }, 1000);
+      });
+    }
+
+    waitASecond()
+      .then(function (value) {
+        console.log("Success:", value);
+      })
+      .catch(function (error) {
+        console.log("Failed:", error);
+      });
+
+    console.log("This line runs first, before the data arrives.");
+  <\/script>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Forgetting .then, so nothing happens with the value when the promise resolves.",
+        "Treating a promise as a plain value and logging it directly instead of using .then.",
+        "Leaving out .catch, which hides failures and makes bugs hard to find."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "A value that arrives later",
+            body: ["Some work takes time: a timer, reading a file, or asking a server for data. A promise is a placeholder for the value that will arrive later."],
+            list: [
+              "pending - still waiting",
+              "fulfilled - resolved with a value",
+              "rejected - failed with a reason"
+            ]
+          },
+          {
+            h: "then and catch",
+            body: [".then receives the resolved value; .catch receives the failure. Chaining them keeps the success and failure paths side by side."],
+            codes: [
+              { code: `getData()\n  .then(function (value) {\n    console.log("Got:", value);\n  })\n  .catch(function (error) {\n    console.log("Failed:", error);\n  });` }
+            ]
+          },
+          {
+            h: "A simple promise",
+            body: ["new Promise gives you resolve and reject. Call resolve(value) when the work succeeds."],
+            codes: [
+              { code: `new Promise(function (resolve) {\n  setTimeout(function () { resolve("done"); }, 1000);\n});` }
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "promises.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 2: Promises starter</title>
+</head>
+<body>
+  <h1>Promises starter</h1>
+  <p>Open the console to follow the order.</p>
+
+  <script>
+    // 1. TODO: return a promise that resolves with "Saved!" after 1 second
+    function save() {
+      return new Promise(function (resolve) {
+        // add a setTimeout that calls resolve("Saved!")
+      });
+    }
+
+    // 2. TODO: use .then to log the value
+    // 3. TODO: add a .catch to handle failure
+    save();
+
+    console.log("start");
+  <\/script>
+</body>
+</html>`,
+        core: [
+          "Make save() resolve with \"Saved!\" after a one-second timer.",
+          "Log the value with .then.",
+          "Add a .catch that logs a failure message."
+        ],
+        stretch: [
+          "Make the promise reject instead, and confirm .catch runs.",
+          "Chain two .then calls so the value passes through both."
+        ]
+      },
+      assessment: [
+        {
+          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
+          questions: [
+            { prompt: "Question 1: What is a promise?", answer: "A placeholder for a value that is not ready yet; it will resolve or reject later." },
+            { prompt: "Question 2: Which method runs when a promise resolves?", answer: ".then()" },
+            { prompt: "Question 3: Which method handles a failure?", answer: ".catch()" }
+          ]
+        }
+      ]
+    },
+    {
+      n: 3, title: "async/await", emoji: "⚡", color: "sensing", tracks: "both",
+      goal: "Use async and await to handle asynchronous tasks.",
+      concept: "Write asynchronous code that reads like ordinary code.",
+      objective: "Rewrite promise code with async/await.",
+      teachingPoints: [
+        "An async function always returns a promise.",
+        "await pauses inside an async function until the value arrives, then continues with it.",
+        "Wrap awaited work in try/catch so failures are handled."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo: await the delayed value", mins: 5 },
+        { label: "async, await and try/catch", mins: 8 },
+        { label: "Activity time", mins: 15 },
+        { label: "Share & wrap-up", mins: 4 }
+      ],
+      liveDemo: [
+        {
+          title: "The same delayed value, read with await",
+          filename: "async.html",
+          caption: "loadData() is async. await pauses it until waitASecond() resolves, while the rest of the page keeps running. try/catch handles any failure.",
+          code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 3: async/await</title>
+</head>
+<body>
+  <h1>async / await</h1>
+  <p>Open the console to see the order of the logs.</p>
+
+  <script>
+    function waitASecond() {
+      return new Promise(function (resolve) {
+        setTimeout(function () {
+          resolve("Data arrived after 1 second");
+        }, 1000);
+      });
+    }
+
+    async function loadData() {
+      try {
+        var value = await waitASecond();
+        console.log("Got:", value);
+      } catch (error) {
+        console.log("Failed:", error);
+      }
+    }
+
+    loadData();
+    console.log("This runs while we wait.");
+  <\/script>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Using await outside an async function, which is a syntax error.",
+        "Forgetting try/catch, so a rejected promise becomes an unhandled error.",
+        "Thinking await freezes the whole page; it only pauses the async function it is in."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "async makes a function return a promise",
+            body: ["Putting async before a function means it always returns a promise, even if you return a plain value."],
+            codes: [
+              { code: `async function greet() {\n  return "Hello";\n}\n// greet() returns a promise that resolves to "Hello"` }
+            ]
+          },
+          {
+            h: "await pauses here",
+            body: ["await waits for a promise and hands you its value. Code after it runs only once the value has arrived."],
+            codes: [
+              { code: `async function load() {\n  var value = await getData();\n  console.log(value);\n}` }
+            ]
+          },
+          {
+            h: "try/catch",
+            body: ["If the awaited promise rejects, await throws. Catch it with try/catch so your program keeps running."],
+            codes: [
+              { code: `try {\n  var value = await getData();\n} catch (error) {\n  console.log(error.message);\n}` }
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "async.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 3: async starter</title>
+</head>
+<body>
+  <h1>async / await starter</h1>
+  <p>Open the console to see your results.</p>
+
+  <script>
+    function getData() {
+      return new Promise(function (resolve) {
+        setTimeout(function () {
+          resolve("Sample data");
+        }, 1000);
+      });
+    }
+
+    // 1. TODO: mark this function async
+    function load() {
+      // 2. TODO: await getData() and log the value
+      // 3. TODO: wrap it in try/catch
+    }
+
+    load();
+  <\/script>
+</body>
+</html>`,
+        core: [
+          "Mark load() as async.",
+          "await getData() and log the value it resolves with.",
+          "Wrap the await in try/catch and log any error."
+        ],
+        stretch: [
+          "await two delayed values one after the other and log the total time.",
+          "Add a second async function and call it after the first finishes."
+        ]
+      },
+      assessment: [
+        {
+          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
+          questions: [
+            { prompt: "Question 1: What does the async keyword do to a function?", answer: "It makes the function return a promise, and lets you use await inside it." },
+            { prompt: "Question 2: What does await do?", answer: "It pauses the async function until the promise settles, then gives you the resolved value." },
+            { prompt: "Question 3: Why use try/catch with await?", answer: "A rejected promise makes await throw; try/catch handles that error so the program keeps running." }
+          ]
+        }
+      ]
+    },
+    {
+      n: 4, title: "fetch and APIs (offline sample)", emoji: "🌐", color: "operators", tracks: "both",
+      goal: "Fetch data from an API and show it on the page.",
+      concept: "Get data from a server with fetch and display it, using an offline sample.",
+      objective: "Understand how fetch gets data from an API, using an offline sample.",
+      teachingPoints: [
+        "An API is a way to ask another program for data; fetch(url) sends that request and returns a promise.",
+        "response.json() reads the body and returns another promise with the parsed data.",
+        "Online fetch loads live data; offline we use a fakeFetch that returns the same shape."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo: load sample results", mins: 5 },
+        { label: "APIs and the fetch pattern", mins: 8 },
+        { label: "Activity time", mins: 15 },
+        { label: "Share & wrap-up", mins: 4 }
+      ],
+      liveDemo: [
+        {
+          title: "Load results with an offline stand-in",
+          filename: "fetch.html",
+          caption: "fakeFetch() returns a promise that resolves to sample data, so this page works with no internet. The real fetch code is in the handout.",
+          code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 4: fetch (offline sample)</title>
+</head>
+<body>
+  <h1>Class results</h1>
+  <p>Open the console to see the loaded data.</p>
+
+  <script>
+    // Offline stand-in for fetch: resolves with sample data.
+    function fakeFetch(url) {
+      return new Promise(function (resolve) {
+        setTimeout(function () {
+          resolve({
+            ok: true,
+            json: function () {
+              return Promise.resolve({
+                className: "JSS 3B",
+                results: [
+                  { name: "Ada", score: 82 },
+                  { name: "Chidi", score: 58 },
+                  { name: "Amaka", score: 91 }
+                ]
+              });
+            }
+          });
+        }, 700);
+      });
+    }
+
+    async function loadResults() {
+      try {
+        var res = await fakeFetch("/api/results");
+        var data = await res.json();
+        console.log("Class:", data.className);
+        data.results.forEach(function (s) {
+          console.log(s.name + " scored " + s.score);
+        });
+      } catch (error) {
+        console.log("Could not load results:", error.message);
+      }
+    }
+
+    loadResults();
+  <\/script>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Forgetting the second await on response.json(), so you try to use a promise as data.",
+        "Not adding a .catch or try/catch, leaving failures invisible.",
+        "Expecting real network data in this offline page - it uses the sample."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "What an API is",
+            body: ["An API is a service you can ask for data. You send a request to a URL, and it answers with data, usually in JSON."],
+            list: [
+              "The URL names the resource you want.",
+              "The response has a status (200 means OK) and a body.",
+              "Most API bodies are JSON."
+            ]
+          },
+          {
+            h: "The fetch pattern",
+            body: ["fetch returns a promise. Await it to get the response, then await response.json() to read the body."],
+            codes: [
+              { code: `const res = await fetch(url);\nconst data = await res.json();` }
+            ]
+          },
+          {
+            h: "Offline stand-in",
+            body: ["This week we cannot reach the network, so fakeFetch returns the same shape of data. Swap in real fetch when you are online."],
+            codes: [
+              { code: `function fakeFetch(url) {\n  return new Promise(function (resolve) {\n    setTimeout(function () {\n      resolve({ ok: true, json: function () {\n        return Promise.resolve(sampleData);\n      } });\n    }, 700);\n  });\n}` }
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "fetch.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 4: fetch starter</title>
+</head>
+<body>
+  <h1>Class results</h1>
+  <p id="status">Loading...</p>
+  <ul id="list"></ul>
+
+  <script>
+    function fakeFetch(url) {
+      return new Promise(function (resolve) {
+        setTimeout(function () {
+          resolve({
+            json: function () {
+              return Promise.resolve({
+                className: "JSS 3B",
+                results: [
+                  { name: "Ada", score: 82 },
+                  { name: "Chidi", score: 58 },
+                  { name: "Amaka", score: 91 }
+                ]
+              });
+            }
+          });
+        }, 700);
+      });
+    }
+
+    // 1. TODO: with await, call fakeFetch and read the body
+    async function loadResults() {
+      // var res = await fakeFetch("/api/results");
+      // var data = await res.json();
+      // 2. TODO: show the class name in #status
+    }
+
+    loadResults();
+  <\/script>
+</body>
+</html>`,
+        core: [
+          "Use await to call fakeFetch and read the body with res.json().",
+          "Show the class name in the #status paragraph.",
+          "Loop the results into the list with a value from each."
+        ],
+        stretch: [
+          "Build a list item for each student showing name and score.",
+          "Add a try/catch that writes a friendly message to #status if loading fails."
+        ]
+      },
+      assessment: [
+        {
+          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
+          questions: [
+            { prompt: "Question 1: What does fetch return?", answer: "A promise that resolves to a response object." },
+            { prompt: "Question 2: How do you read JSON from the response?", answer: "Await response.json(), which returns a promise for the parsed data." },
+            { prompt: "Question 3: Why does this page use a sample offline?", answer: "There is no network in class, so fakeFetch returns sample data with the same shape as a real API response." }
+          ]
+        }
+      ]
+    },
+    {
+      n: 5, title: "Error handling and debugging with DevTools", emoji: "🐞", color: "events", tracks: "both",
+      goal: "Handle errors and debug with the browser DevTools.",
+      concept: "Catch errors with try/catch and inspect your code with DevTools.",
+      objective: "Catch errors in code and use the browser tools to find bugs.",
+      teachingPoints: [
+        "try/catch runs risky code and handles any error instead of stopping the page.",
+        "throw raises your own error with a message, useful for invalid input.",
+        "The console shows errors with a file and line number; DevTools lets you inspect values."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo: catching a parse error", mins: 5 },
+        { label: "try/catch/throw and the console", mins: 8 },
+        { label: "Activity time", mins: 15 },
+        { label: "Share & wrap-up", mins: 4 }
+      ],
+      liveDemo: [
+        {
+          title: "Handling a parse error and throwing your own",
+          filename: "errors.html",
+          caption: "The bad JSON does not crash the page - try/catch reports it. setAge throws a custom error that the second try/catch catches.",
+          code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 5: Errors and debugging</title>
+</head>
+<body>
+  <h1>Error handling</h1>
+  <p>Open the console to see the handled errors.</p>
+
+  <script>
+    try {
+      var data = JSON.parse("{ bad json }");
+      console.log("Parsed:", data);
+    } catch (error) {
+      console.log("Could not read the data:", error.message);
+    }
+
+    function setAge(age) {
+      if (age < 0) {
+        throw new Error("Age cannot be negative");
+      }
+      return age;
+    }
+
+    try {
+      setAge(-5);
+    } catch (error) {
+      console.log("Validation failed:", error.message);
+    }
+
+    console.log("The page kept running.");
+  <\/script>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "An empty catch block with no logging, which hides the problem instead of revealing it.",
+        "Catching too much so real bugs are swallowed silently.",
+        "Ignoring the console message, which already shows the file and line where it failed."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "try / catch / throw",
+            body: ["Wrap risky code in try. If it throws, catch receives the error. Use throw to raise your own error with a clear message."],
+            codes: [
+              { code: `try {\n  doSomethingRisky();\n} catch (error) {\n  console.log(error.message);\n}\n\nthrow new Error("Something went wrong");` }
+            ]
+          },
+          {
+            h: "Reading an error",
+            body: ["An error has a name (like SyntaxError or TypeError) and a message. The console also shows the file and line so you can jump straight to it."],
+            list: [
+              "Read the message first.",
+              "Click the file:line link in the console.",
+              "Check the line just before the reported one too."
+            ]
+          },
+          {
+            h: "Using the console",
+            body: ["The Console tab prints your logs and errors. Use it to check values: type a variable name and press Enter to inspect it live."]
+          }
+        ]
+      },
+      template: {
+        filename: "errors.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 5: Errors starter</title>
+</head>
+<body>
+  <h1>Error handling starter</h1>
+  <p id="message">Open the console.</p>
+
+  <script>
+    var raw = "{ name: Ada }"; // invalid JSON (keys need quotes)
+
+    // 1. TODO: wrap JSON.parse(raw) in try/catch
+    // 2. TODO: log a helpful message in catch
+    var data = JSON.parse(raw);
+
+    // 3. TODO: write a function that throws if a score is above 100
+    function checkScore(score) {
+      // ...
+    }
+
+    console.log(data);
+  <\/script>
+</body>
+</html>`,
+        core: [
+          "Wrap JSON.parse(raw) in try/catch and log a helpful message.",
+          "Fix raw so it becomes valid JSON and parse it cleanly.",
+          "Write checkScore() that throws when the score is above 100."
+        ],
+        stretch: [
+          "Validate the input in checkScore() and show the error text on the page.",
+          "Log error.name as well as error.message to see the difference."
+        ]
+      },
+      assessment: [
+        {
+          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
+          questions: [
+            { prompt: "Question 1: What does try/catch do?", answer: "It runs risky code and, if it throws, handles the error in catch instead of stopping the program." },
+            { prompt: "Question 2: What does throw do?", answer: "It raises your own error with a message, which you can catch." },
+            { prompt: "Question 3: Where do errors appear in the browser?", answer: "In the console, with the file and line number." }
+          ]
+        }
+      ]
+    },
+    {
+      n: 6, title: "Classes and OOP basics", emoji: "🏛️", color: "variables", tracks: "both",
+      goal: "Create classes and objects in JavaScript.",
+      concept: "Model things with classes, constructors and methods.",
+      objective: "Model things with a class and create objects from it.",
+      teachingPoints: [
+        "A class is a template for making objects with the same shape.",
+        "The constructor sets up each new object; this refers to the object being built.",
+        "Methods are functions on the class, and new creates an instance."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo: a Student class", mins: 5 },
+        { label: "Classes, constructors and methods", mins: 8 },
+        { label: "Activity time", mins: 15 },
+        { label: "Share & wrap-up", mins: 4 }
+      ],
+      liveDemo: [
+        {
+          title: "A Student class with a method",
+          filename: "classes.html",
+          caption: "One class, two instances. new runs the constructor for each object, and the methods use this to read their own values.",
+          code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 6: Classes</title>
+</head>
+<body>
+  <h1>Classes</h1>
+  <p>Open the console to meet Ada and Chidi.</p>
+
+  <script>
+    class Student {
+      constructor(name, score) {
+        this.name = name;
+        this.score = score;
+      }
+
+      greet() {
+        return "Hi, I am " + this.name;
+      }
+
+      result() {
+        return this.score >= 60 ? "Pass" : "Fail";
+      }
+    }
+
+    var ada = new Student("Ada", 82);
+    var chidi = new Student("Chidi", 55);
+
+    console.log(ada.greet(), "-", ada.result());
+    console.log(chidi.greet(), "-", chidi.result());
+  <\/script>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Forgetting new, so the class is called like a function and this is not set up.",
+        "Forgetting this, so name and score look like unknown variables.",
+        "Putting commas between class methods - class bodies use no commas."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Class and constructor",
+            body: ["A class is a blueprint. The constructor runs once for each new object and fills in its properties with this."],
+            codes: [
+              { code: `class Student {\n  constructor(name, score) {\n    this.name = name;\n    this.score = score;\n  }\n}` }
+            ]
+          },
+          {
+            h: "Methods and this",
+            body: ["Methods are functions written inside the class. Inside them, this points to the object the method was called on."],
+            codes: [
+              { code: `class Student {\n  constructor(name) { this.name = name; }\n  greet() { return "Hi, " + this.name; }\n}` }
+            ]
+          },
+          {
+            h: "Creating instances",
+            body: ["new creates an object from the class and returns it. Each instance has its own copies of the properties."],
+            codes: [
+              { code: `var ada = new Student("Ada", 82);\nconsole.log(ada.greet());` }
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "classes.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 6: Classes starter</title>
+</head>
+<body>
+  <h1>Classes starter</h1>
+  <p>Open the console.</p>
+
+  <script>
+    // 1. TODO: define a class Student with a constructor for name and score
+    // 2. TODO: add a method greet() that uses this.name
+    // 3. TODO: create two students with new and log their greetings
+
+    // BONUS: add a Shop class that holds a list of items
+    var shop = null;
+    console.log(shop);
+  <\/script>
+</body>
+</html>`,
+        core: [
+          "Write a Student class with a constructor taking name and score.",
+          "Add a greet() method that uses this.name.",
+          "Create two Student objects with new and log their greetings."
+        ],
+        stretch: [
+          "Add an addScore() method that updates this.score, plus a getter for the result.",
+          "Model a Shop class with an items array and a total() method."
+        ]
+      },
+      assessment: [
+        {
+          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
+          questions: [
+            { prompt: "Question 1: What creates an object from a class?", answer: "The new keyword, for example new Student(\"Ada\", 82)." },
+            { prompt: "Question 2: What does the constructor do?", answer: "It runs once per object and sets up that object's properties." },
+            { prompt: "Question 3: What does this refer to inside a method?", answer: "The object the method was called on." }
+          ]
+        }
+      ]
+    },
+    {
+      n: 7, title: "Modules and organising code", emoji: "📦", color: "looks", tracks: "both",
+      goal: "Organise code into reusable modules.",
+      concept: "Split code into modules and import what you need.",
+      objective: "Understand splitting code into modules and organising a project.",
+      teachingPoints: [
+        "Modules split a program into small files, each focused on one job.",
+        "export shares a value from a file; import brings it into another file.",
+        "Small modules are easier to read, test and reuse - but the browser needs separate files for real imports."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo: a helpers module stand-in", mins: 5 },
+        { label: "export, import and project layout", mins: 8 },
+        { label: "Activity time", mins: 15 },
+        { label: "Share & wrap-up", mins: 4 }
+      ],
+      liveDemo: [
+        {
+          title: "A helpers 'module' in one page",
+          filename: "modules.html",
+          caption: "This offline preview uses a helpers object where a real module would live in its own file. The real export/import syntax is in the handout.",
+          code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 7: Modules</title>
+</head>
+<body>
+  <h1>Organising code</h1>
+  <p>Open the console to see the helper results.</p>
+
+  <script>
+    // Offline stand-in for helpers.js
+    var helpers = {
+      toUpper: function (text) {
+        return text.toUpperCase();
+      },
+      average: function (numbers) {
+        var total = numbers.reduce(function (sum, n) { return sum + n; }, 0);
+        return total / numbers.length;
+      }
+    };
+
+    // In a real project this line would be:
+    // import { toUpper, average } from "./helpers.js";
+
+    document.querySelector("h1").textContent = helpers.toUpper("organising code");
+    console.log("Average:", helpers.average([82, 58, 91]));
+  <\/script>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Forgetting to export something you later try to import.",
+        "Using import in a script without type=\"module\", which the browser rejects.",
+        "Creating circular imports where two files import from each other."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Why modules",
+            body: ["One big file becomes hard to follow. Modules let you keep related code together and share only what is needed."],
+            list: [
+              "One file, one job.",
+              "Export what others need; keep the rest private.",
+              "Small files are easier to test and reuse."
+            ]
+          },
+          {
+            h: "export and import",
+            body: ["Mark something with export to share it, and use import in another file to bring it in. Files must be loaded with type=\"module\"."],
+            codes: [
+              { code: `// helpers.js\nexport function average(numbers) {\n  return numbers.reduce((a, b) => a + b, 0) / numbers.length;\n}\n\n// app.js\nimport { average } from "./helpers.js";` }
+            ]
+          },
+          {
+            h: "In this preview",
+            body: ["We cannot load separate files here, so a plain helpers object stands in for the module. The calls look the same as the imported ones would."],
+            codes: [
+              { code: `var helpers = { average: function (numbers) { /* ... */ } };\nhelpers.average([82, 58, 91]);` }
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "modules.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 7: Modules starter</title>
+</head>
+<body>
+  <h1>Modules starter</h1>
+  <p id="out"></p>
+
+  <script>
+    // 1. TODO: create a helpers object with toUpper and average
+    var helpers = {};
+
+    // 2. TODO: call helpers.toUpper on a name and helpers.average on scores
+    // 3. TODO: show the results on the page
+
+    console.log(helpers);
+  <\/script>
+</body>
+</html>`,
+        core: [
+          "Create a helpers object with a toUpper and an average function.",
+          "Call both helpers and log their results.",
+          "Show one result on the page."
+        ],
+        stretch: [
+          "Add a third helper, for example maxScore().",
+          "Write the real export/import version of helpers in the handout and explain which call changes."
+        ]
+      },
+      assessment: [
+        {
+          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
+          questions: [
+            { prompt: "Question 1: What does export do?", answer: "It makes a value available to other files." },
+            { prompt: "Question 2: What does import do?", answer: "It brings an exported value from another module into the current file." },
+            { prompt: "Question 3: Why keep modules small?", answer: "Small, focused files are easier to read, test and reuse." }
+          ]
+        }
+      ]
+    },
+    {
+      n: 8, title: "Capstone: plan and build", emoji: "🧱", color: "motion", tracks: "both",
+      goal: "Plan and start building your capstone project.",
+      concept: "Plan your final project and start building its first features.",
+      objective: "Choose a capstone app, plan it, and start building.",
+      teachingPoints: [
+        "Pick a scope you can finish: a quiz, a weather display from sample data, an expense tracker or a mini shop.",
+        "Plan the state and the interactions before you code.",
+        "Build the HTML and the first features, testing as you go."
+      ],
+      timing: [
+        { label: "Welcome & choose your app", mins: 3 },
+        { label: "Live demo: expense tracker", mins: 4 },
+        { label: "Build time", mins: 20 },
+        { label: "Present a first look", mins: 5 },
+        { label: "Wrap-up & next steps", mins: 3 }
+      ],
+      liveDemo: [
+        {
+          title: "A small expense tracker with state and storage",
+          filename: "capstone_js.html",
+          caption: "State lives in the expenses array. The page is drawn from it with render(), and it is saved with localStorage so it survives a refresh.",
+          code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 8: Expense tracker demo</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; max-width: 420px; }
+    li { padding: 6px; }
+    .total { font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Expense Tracker</h1>
+  <input id="desc" placeholder="What did you buy?" />
+  <input id="amount" type="number" placeholder="Amount (Naira)" />
+  <button id="addBtn">Add</button>
+  <p class="total" id="total"></p>
+  <ul id="list"></ul>
+
+  <script>
+    var expenses = JSON.parse(localStorage.getItem("expenses")) || [];
+
+    var list = document.getElementById("list");
+    var desc = document.getElementById("desc");
+    var amount = document.getElementById("amount");
+
+    function save() {
+      localStorage.setItem("expenses", JSON.stringify(expenses));
+    }
+
+    function render() {
+      list.innerHTML = "";
+      var total = 0;
+      expenses.forEach(function (item, index) {
+        total += item.amount;
+        var li = document.createElement("li");
+        li.textContent = item.desc + " - " + item.amount;
+        var del = document.createElement("button");
+        del.textContent = "Delete";
+        del.addEventListener("click", function () {
+          expenses.splice(index, 1);
+          save();
+          render();
+        });
+        li.appendChild(del);
+        list.appendChild(li);
+      });
+      document.getElementById("total").textContent = "Total: " + total;
+    }
+
+    document.getElementById("addBtn").addEventListener("click", function () {
+      var text = desc.value.trim();
+      var value = Number(amount.value);
+      if (text === "" || !value) return;
+      expenses.push({ desc: text, amount: value });
+      desc.value = "";
+      amount.value = "";
+      save();
+      render();
+    });
+
+    render();
+  <\/script>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Choosing a scope that is too big to finish - start with the smallest version that works.",
+        "Starting to code with no plan, so the features and data are unclear.",
+        "Mixing up state and display: changing the page directly instead of the state, then rendering."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Plan the app",
+            body: ["Before you type a line of code, decide four things. Keep them short enough to finish this term."],
+            list: [
+              "Topic: what is the app for?",
+              "State: what data does it hold?",
+              "Features: what can the user do?",
+              "Data: does it need saving?"
+            ]
+          },
+          {
+            h: "Build order",
+            body: ["Build the smallest version that works, then add one feature at a time. Test after each step."],
+            list: [
+              "The static HTML first.",
+              "The state variable and a render().",
+              "One interaction, for example add.",
+              "Then the list, delete, and finally saving."
+            ]
+          },
+          {
+            h: "Example plan",
+            body: ["Here is the expense tracker, planned before it was built."],
+            codes: [
+              { code: `// Topic:  track my spending\n// State:  expenses = [{ desc, amount }]\n// Features: add, delete, show total\n// Data:   save in localStorage` }
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "capstone_js.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 8: My capstone starter</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; max-width: 420px; }
+    li { padding: 6px; }
+  </style>
+</head>
+<body>
+  <h1>My Expense Tracker</h1>
+  <input id="desc" placeholder="What did you buy?" />
+  <input id="amount" type="number" placeholder="Amount (Naira)" />
+  <button id="addBtn">Add</button>
+  <p id="total"></p>
+  <ul id="list"></ul>
+
+  <script>
+    // STATE: the single source of truth
+    var expenses = [];
+
+    var list = document.getElementById("list");
+    var desc = document.getElementById("desc");
+    var amount = document.getElementById("amount");
+
+    function render() {
+      list.innerHTML = "";
+      expenses.forEach(function (item, index) {
+        var li = document.createElement("li");
+        li.textContent = item.desc + " - " + item.amount;
+        var del = document.createElement("button");
+        del.textContent = "Delete";
+        del.addEventListener("click", function () {
+          // TODO: remove this item and render again
+        });
+        li.appendChild(del);
+        list.appendChild(li);
+      });
+      // TODO: show the total
+    }
+
+    document.getElementById("addBtn").addEventListener("click", function () {
+      var text = desc.value.trim();
+      var value = Number(amount.value);
+      if (text === "" || !value) return;
+      // TODO: push { desc: text, amount: value }, clear inputs and render
+    });
+
+    render();
+  <\/script>
+</body>
+</html>`,
+        core: [
+          "Write your own plan: topic, state, features and whether it needs saving.",
+          "Build the input fields and the list.",
+          "Wire one interaction, for example add an expense."
+        ],
+        stretch: [
+          "Save the data in localStorage and load it when the page starts.",
+          "Add a summary value, for example a total or a count."
+        ]
+      },
+      assessment: [
+        {
+          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
+          questions: [
+            { prompt: "Question 1: Why keep the scope small?", answer: "A small, finishable scope means you actually get a working app instead of an unfinished big one." },
+            { prompt: "Question 2: What is the app's state?", answer: "The data the app works with, for example the expenses array. The page is drawn from it." },
+            { prompt: "Question 3: What is the first thing to build?", answer: "The static HTML and a simple version that runs, then add one feature at a time." }
+          ]
+        }
+      ]
+    },
+    {
+      n: 9, title: "Capstone: build and publish", emoji: "🚀", color: "control", tracks: "both",
+      goal: "Finish and publish your capstone project.",
+      concept: "Complete your project and publish it online.",
+      objective: "Finish, test and publish your capstone app.",
+      teachingPoints: [
+        "Finish the features you planned and remove anything half-done.",
+        "Test edge cases: empty input, a single item, deleting everything.",
+        "Publishing needs the internet, so in class we get the files and tests ready."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo: the finished app", mins: 5 },
+        { label: "Finishing, testing and error handling", mins: 8 },
+        { label: "Activity time", mins: 15 },
+        { label: "Share & wrap-up", mins: 4 }
+      ],
+      liveDemo: [
+        {
+          title: "The finished expense tracker",
+          filename: "capstone_finish.html",
+          caption: "This version handles errors when loading and saving, shows an empty state, and keeps the page in step with the state.",
+          code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 9: Finished expense tracker</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; max-width: 420px; }
+    li { padding: 6px; }
+    .total { font-weight: bold; }
+    .empty { color: #888; }
+  </style>
+</head>
+<body>
+  <h1>Expense Tracker</h1>
+  <input id="desc" placeholder="What did you buy?" />
+  <input id="amount" type="number" placeholder="Amount (Naira)" />
+  <button id="addBtn">Add</button>
+  <p class="total" id="total"></p>
+  <ul id="list"></ul>
+
+  <script>
+    function load() {
+      try {
+        return JSON.parse(localStorage.getItem("expenses")) || [];
+      } catch (error) {
+        console.log("Could not load expenses:", error.message);
+        return [];
+      }
+    }
+
+    function save(expenses) {
+      try {
+        localStorage.setItem("expenses", JSON.stringify(expenses));
+      } catch (error) {
+        console.log("Could not save expenses:", error.message);
+      }
+    }
+
+    var expenses = load();
+    var list = document.getElementById("list");
+    var desc = document.getElementById("desc");
+    var amount = document.getElementById("amount");
+
+    function render() {
+      list.innerHTML = "";
+      if (expenses.length === 0) {
+        var empty = document.createElement("li");
+        empty.className = "empty";
+        empty.textContent = "No expenses yet. Add one above.";
+        list.appendChild(empty);
+      }
+      var total = 0;
+      expenses.forEach(function (item, index) {
+        total += item.amount;
+        var li = document.createElement("li");
+        li.textContent = item.desc + " - " + item.amount;
+        var del = document.createElement("button");
+        del.textContent = "Delete";
+        del.addEventListener("click", function () {
+          expenses.splice(index, 1);
+          save(expenses);
+          render();
+        });
+        li.appendChild(del);
+        list.appendChild(li);
+      });
+      document.getElementById("total").textContent = "Total: " + total;
+    }
+
+    document.getElementById("addBtn").addEventListener("click", function () {
+      var text = desc.value.trim();
+      var value = Number(amount.value);
+      if (text === "" || !value) {
+        alert("Enter a description and a positive amount.");
+        return;
+      }
+      expenses.push({ desc: text, amount: value });
+      desc.value = "";
+      amount.value = "";
+      save(expenses);
+      render();
+    });
+
+    render();
+  <\/script>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Not testing edge cases, so an empty list or a deleted-everything state breaks the app.",
+        "Breaking links after moving files - check every file path when you reorganise.",
+        "Leaving out error handling, so a bad saved value crashes the page on load."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Finish and test",
+            body: ["Work through this list before you call the app done."],
+            list: [
+              "Every planned feature works.",
+              "The empty case shows a friendly message, not a blank or a crash.",
+              "Bad input (blank or zero) is rejected.",
+              "You tested in a fresh browser tab.",
+              "The console shows no red errors."
+            ]
+          },
+          {
+            h: "Publish (teacher demo; needs internet)",
+            body: ["Publishing puts your app online. Your teacher will demo this; do the offline steps (finish the files, test) during class."],
+            list: [
+              "Put your files in one folder with index.html as the start page.",
+              "Use a host such as GitHub Pages (needs an account and internet).",
+              "Open the live link and check it works on another device."
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "capstone_js.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 9: Finish your capstone</title>
+</head>
+<body>
+  <h1>My Expense Tracker</h1>
+  <input id="desc" placeholder="What did you buy?" />
+  <input id="amount" type="number" placeholder="Amount (Naira)" />
+  <button id="addBtn">Add</button>
+  <p id="total"></p>
+  <ul id="list"></ul>
+
+  <script>
+    // BUG 1: this reads the array without error handling
+    var expenses = JSON.parse(localStorage.getItem("expenses")) || [];
+
+    function save() {
+      // BUG 2: stores the object itself, not text
+      localStorage.setItem("expenses", expenses);
+    }
+
+    function render() {
+      var list = document.getElementById("list");
+      list.innerHTML = "";
+      var total = 0;
+      expenses.forEach(function (item, index) {
+        total += item.amount;
+        var li = document.createElement("li");
+        li.textContent = item.desc + " - " + item.amount;
+        var del = document.createElement("button");
+        del.textContent = "Delete";
+        del.addEventListener("click", function () {
+          expenses.splice(index, 1);
+          save();
+          render();
+        });
+        li.appendChild(del);
+        list.appendChild(li);
+      });
+      document.getElementById("total").textContent = "Total: " + total;
+    }
+
+    document.getElementById("addBtn").addEventListener("click", function () {
+      var text = document.getElementById("desc").value.trim();
+      var value = Number(document.getElementById("amount").value);
+      if (text === "") return;
+      expenses.push({ desc: text, amount: value });
+      save();
+      render();
+    });
+
+    render();
+  <\/script>
+</body>
+</html>`,
+        core: [
+          "Fix the saving bug: turn the array into text with JSON.stringify.",
+          "Test the empty case and show a friendly message instead of a blank list.",
+          "Add try/catch around loading the saved data."
+        ],
+        stretch: [
+          "Add one more feature, for example a category on each expense.",
+          "Write the publish steps you would follow at home, in order."
+        ]
+      },
+      assessment: [
+        {
+          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
+          questions: [
+            { prompt: "Question 1: Why test the empty case?", answer: "An empty list is the easiest state to break; checking it catches blank screens and errors early." },
+            { prompt: "Question 2: How do you save an array in localStorage?", answer: "localStorage.setItem(\"key\", JSON.stringify(array)), and JSON.parse it when loading." },
+            { prompt: "Question 3: Why add try/catch around loading?", answer: "The saved value could be missing or corrupt; try/catch keeps the app running with a safe default." },
+            { prompt: "Question 4: What must the start page of a published site be called?", answer: "index.html" }
+          ]
+        },
+        {
+          track: "A", audience: "Both", title: "Capstone checklist", type: "checklist",
+          items: [
+            "The app runs without errors in the console.",
+            "It keeps its data in a state variable and renders from it.",
+            "It handles errors and the empty case.",
+            "The files are ready to publish (index.html plus any others)."
+          ]
+        }
+      ]
+    },
+    {
+      n: 10, title: "Showcase, assessment, next steps", emoji: "🏆", color: "events", tracks: "both",
+      goal: "Showcase your project and plan your next steps.",
+      concept: "Present your project, take the final assessment and look ahead.",
+      objective: "Present your capstone and look ahead to what's next.",
+      teachingPoints: [
+        "Present what your app does and one challenge you solved.",
+        "Review the three terms: fundamentals, the DOM and events, and modern JavaScript.",
+        "Preview what comes next, such as Node and React, without going deep yet."
+      ],
+      timing: [
+        { label: "Welcome & set up", mins: 3 },
+        { label: "Showcase demos", mins: 8 },
+        { label: "Present and assess", mins: 18 },
+        { label: "Share", mins: 4 },
+        { label: "Wrap-up & next steps", mins: 2 }
+      ],
+      liveDemo: [
+        {
+          title: "A polished capstone to show",
+          filename: "showcase_js.html",
+          caption: "The showcase version adds a friendly empty state and an item count. Small polish makes a project feel finished.",
+          code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 10: Capstone showcase</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; max-width: 460px; }
+    li { padding: 6px; }
+    .total { font-weight: bold; }
+    .empty { color: #888; }
+  </style>
+</head>
+<body>
+  <h1>My Expense Tracker</h1>
+  <input id="desc" placeholder="What did you buy?" />
+  <input id="amount" type="number" placeholder="Amount (Naira)" />
+  <button id="addBtn">Add</button>
+  <p class="total" id="total"></p>
+  <ul id="list"></ul>
+
+  <script>
+    function load() {
+      try {
+        return JSON.parse(localStorage.getItem("expenses")) || [];
+      } catch (error) {
+        console.log("Could not load expenses:", error.message);
+        return [];
+      }
+    }
+
+    function save(expenses) {
+      try {
+        localStorage.setItem("expenses", JSON.stringify(expenses));
+      } catch (error) {
+        console.log("Could not save expenses:", error.message);
+      }
+    }
+
+    var expenses = load();
+    var list = document.getElementById("list");
+    var totalEl = document.getElementById("total");
+
+    function render() {
+      list.innerHTML = "";
+      if (expenses.length === 0) {
+        var empty = document.createElement("li");
+        empty.className = "empty";
+        empty.textContent = "No expenses yet. Add one above.";
+        list.appendChild(empty);
+      }
+      var total = 0;
+      expenses.forEach(function (item, index) {
+        total += item.amount;
+        var li = document.createElement("li");
+        li.textContent = item.desc + " - " + item.amount;
+        var del = document.createElement("button");
+        del.textContent = "Delete";
+        del.addEventListener("click", function () {
+          expenses.splice(index, 1);
+          save(expenses);
+          render();
+        });
+        li.appendChild(del);
+        list.appendChild(li);
+      });
+      totalEl.textContent = "Total: " + total + " (" + expenses.length + " items)";
+    }
+
+    document.getElementById("addBtn").addEventListener("click", function () {
+      var text = document.getElementById("desc").value.trim();
+      var value = Number(document.getElementById("amount").value);
+      if (text === "" || !value) {
+        alert("Enter a description and a positive amount.");
+        return;
+      }
+      expenses.push({ desc: text, amount: value });
+      document.getElementById("desc").value = "";
+      document.getElementById("amount").value = "";
+      save(expenses);
+      render();
+    });
+
+    render();
+  <\/script>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Turning up with no demo ready - have your app open and working before you present.",
+        "Being unable to explain a feature, so the audience cannot follow what you built.",
+        "Running over time - rehearse a short, clear talk."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Presentation script",
+            body: ["Keep it short. Use this order and aim for about two minutes."],
+            list: [
+              "What my app does, in one sentence.",
+              "Who it is for.",
+              "One feature to show live.",
+              "One problem I solved and how.",
+              "What I would add next."
+            ]
+          },
+          {
+            h: "Term 3 recap",
+            body: ["Everything we covered after the DOM and events."],
+            list: [
+              "JSON and scope.",
+              "Promises, then async/await.",
+              "fetch and APIs (with an offline sample).",
+              "Error handling and debugging.",
+              "Classes and modules, then the capstone."
+            ]
+          },
+          {
+            h: "What's next (a taster)",
+            body: ["These are ideas, not this term's work. You have the foundations to explore them next."],
+            list: [
+              "Node.js: run JavaScript outside the browser.",
+              "Build tools and real API keys for live data.",
+              "React: build interfaces from reusable components.",
+              "A framework for bigger projects and teams."
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "showcase_js.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 10: My showcase</title>
+</head>
+<body>
+  <h1>My Expense Tracker</h1>
+  <input id="desc" placeholder="What did you buy?" />
+  <input id="amount" type="number" placeholder="Amount (Naira)" />
+  <button id="addBtn">Add</button>
+  <p id="total"></p>
+  <ul id="list"></ul>
+
+  <script>
+    // 1. TODO: fix the last issue you found in testing
+    // 2. TODO: be ready to explain one function out loud
+    // 3. STRETCH: add one piece of polish you are proud of
+
+    function render() {
+      // your render code here
+    }
+  <\/script>
+</body>
+</html>`,
+        core: [
+          "Fix the last issue you found in testing.",
+          "Be ready to explain one function from your app.",
+          "Have the app open and working before you present."
+        ],
+        stretch: [
+          "Add one piece of polish you are proud of, such as an empty state or a count.",
+          "Write two sentences about what you would build next with what you have learned."
+        ]
+      },
+      assessment: [
+        {
+          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
+          questions: [
+            { prompt: "Question 1: What does JSON.parse do?", answer: "It turns JSON text back into a value your code can use." },
+            { prompt: "Question 2: What is the difference between a promise and async/await?", answer: "They do the same job: async/await is a cleaner way to write promise code so it reads like ordinary code." },
+            { prompt: "Question 3: What does fetch get you, and what is the next step?", answer: "fetch returns a promise for the response; the next step is await response.json() to read the body." },
+            { prompt: "Question 4: What creates an object from a class?", answer: "The new keyword, for example new Student(\"Ada\", 82)." },
+            { prompt: "Question 5: Why split code into modules?", answer: "Small, focused files are easier to read, test and reuse; export shares code and import brings it in." }
+          ]
+        },
+        {
+          track: "A", audience: "Both", title: "Course checklist", type: "checklist",
+          items: [
+            "I can convert data to and from JSON.",
+            "I can handle a value that arrives later with a promise or async/await.",
+            "I can load data with fetch (or an offline stand-in) and show it on the page.",
+            "I can model something with a class.",
+            "I finished and presented a capstone app."
+          ]
+        }
+      ]
+    }
   ];
 
   window.WEBDEV_CURRICULUM = {
