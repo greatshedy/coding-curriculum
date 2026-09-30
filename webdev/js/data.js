@@ -1861,22 +1861,102 @@ if (number > 50) {
     }
   ];
 
+  // Reused weeks are repositioned; new weeks are stubs until authored.
+  function stub(n, title, emoji, color, concept) {
+    return {
+      n: n, title: title, emoji: emoji, color: color, tracks: "both",
+      concept: concept,
+      objective: "",
+      teachingPoints: [],
+      timing: [],
+      liveDemo: [],
+      commonMistakes: [],
+      handout: { sections: [] },
+      template: null,
+      assessment: []
+    };
+  }
+
+  // Some reused weeks carry a `variants` object (jhs/shs) whose handout/template
+  // live inside the variant. Unify to a single week: promote any base field that
+  // is missing/empty from the first variant, then drop `variants`.
+  var UNIFY_KEYS = ["objective", "teachingPoints", "timing", "liveDemo", "commonMistakes", "handout", "template", "assessment"];
+  function unify(wk) {
+    if (wk && wk.variants) {
+      var keys = Object.keys(wk.variants);
+      if (keys.length) {
+        var v = wk.variants[keys[0]];
+        UNIFY_KEYS.forEach(function (k) {
+          var empty = (wk[k] == null) || (Array.isArray(wk[k]) && wk[k].length === 0);
+          if (empty && v[k] != null) wk[k] = v[k];
+        });
+      }
+      delete wk.variants;
+    }
+    return wk;
+  }
+
+  // --- Term 1: foundations ---
+  weeks[0].n = 1; weeks[1].n = 2; weeks[2].n = 3; weeks[3].n = 4; weeks[4].n = 5; weeks[5].n = 6;
+  var term1 = [
+    weeks[0], weeks[1], weeks[2], weeks[3], weeks[4], weeks[5],
+    stub(7, "Arrays", "📚", "operators", "An array is an ordered list of values. You can add to it, read items by their position, and loop through them."),
+    stub(8, "Objects", "🧩", "looks", "An object stores labelled values — each item has a key and a value. Objects model real things, like a student with a name and a score."),
+    stub(9, "Arrays & Objects in practice", "🛠️", "variables", "Combine arrays and objects to store and work with real collections of data, such as a list of students."),
+    stub(10, "Term project: a data-driven page", "🌟", "motion", "Build a page that stores a small collection of data in arrays and objects and shows it on screen.")
+  ];
+
+  // --- Term 2: the DOM & interactivity ---
+  unify(weeks[7]); weeks[7].n = 1;
+  var term2 = [
+    weeks[7],
+    stub(2, "Selecting & changing elements", "🔍", "sensing", "The DOM lets JavaScript find elements and change their text, attributes and styles."),
+    stub(3, "Events", "🖱️", "events", "Event listeners run code in response to clicks, typing and other user actions."),
+    stub(4, "Forms & user input", "📝", "variables", "Read values that users type into form fields and use them in your script."),
+    stub(5, "Classes & style toggling", "🎨", "looks", "Add and remove CSS classes from elements to change their appearance in response to events."),
+    stub(6, "Building lists with loops", "🔁", "control", "Use a loop to build and update a list of elements from an array of data."),
+    stub(7, "Timers", "⏱️", "operators", "setTimeout and setInterval run code after a delay or repeatedly."),
+    stub(8, "Saving data with localStorage", "💾", "variables", "localStorage keeps small amounts of data in the browser between visits."),
+    stub(9, "Debugging in the browser", "🐞", "sensing", "Read errors, use the console and break the problem into smaller parts to fix bugs."),
+    stub(10, "Term project: an interactive widget", "🌟", "events", "Build a small interactive widget that reacts to the user and keeps its state.")
+  ];
+
+  // --- Term 3: projects & showcase ---
+  unify(weeks[8]); weeks[8].n = 1;
+  unify(weeks[9]); weeks[9].n = 10;
+  var term3 = [
+    weeks[8],
+    stub(2, "Project setup", "📁", "motion", "Plan the files, the HTML structure and the JavaScript logic before writing the project."),
+    stub(3, "Build: to-do list (part 1)", "✅", "control", "Start the to-do list: add a task and show it in the list."),
+    stub(4, "Build: to-do list (part 2)", "✅", "control", "Finish the to-do list: mark tasks done, delete tasks and keep the list in order."),
+    stub(5, "Build: calculator", "🧮", "operators", "Build a calculator that reads two numbers and shows the result of an operation."),
+    stub(6, "Build: form validator", "🔒", "variables", "Check what the user typed and show helpful messages when a field is not valid."),
+    stub(7, "Polish & accessibility", "✨", "looks", "Improve spacing, labels, focus styles and keyboard use so everyone can use the project."),
+    stub(8, "Presenting your project", "🎤", "events", "Prepare a short presentation: what it does, how it works and one challenge you solved."),
+    stub(9, "Showcase day", "🏆", "sensing", "Present projects to the class and give helpful feedback to classmates."),
+    weeks[9]
+  ];
+
   window.WEBDEV_CURRICULUM = {
     slug: "webdev",
-    title: "JavaScript: 10-Week Web Development",
+    title: "Web Development",
     subject: "Programming",
-    length: "10 weeks",
-    audience: "Junior & Senior High",
+    length: "3 terms",
+    audience: "JSS 3, SS 1 & SS 2",
     prong: "Instructor Guides · Student Handouts · Code Templates · Assessments",
-    target: "Junior High and Senior High students. No prior JavaScript needed.",
+    target: "JSS 3, SS 1 and SS 2 students. No prior JavaScript needed.",
     startingPoint: "Students already know some HTML and CSS. This course adds JavaScript and builds up to a finished mini-project.",
-    endGoal: "By Week 10, every student has built and presented a working interactive web page.",
+    endGoal: "By the end of Term 3, every student has built and presented a working interactive web page.",
     focus: "Every concept is practised on a page students can run, edit and see working in the browser.",
     philosophy: "Read it, run it, change it. Each week ships a runnable code template so students see the result immediately.",
     tracks: [
       { key: "A", name: "Track A — with system", desc: "Students have laptops. They code along, run the templates, and complete peer pair-check assessments." },
       { key: "B", name: "Track B — no system", desc: "No laptops required. Students work through the handouts and complete written quizzes and design documents." }
     ],
-    weeks: weeks
+    terms: [
+      { n: 1, title: "JavaScript foundations", theme: "motion", weeks: term1 },
+      { n: 2, title: "The DOM & interactivity", theme: "sensing", weeks: term2 },
+      { n: 3, title: "Projects & showcase", theme: "control", weeks: term3 }
+    ]
   };
 })();
