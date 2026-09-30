@@ -6,29 +6,10 @@
 <title>Code Playground — write HTML, CSS and JavaScript and run it</title>
 <meta name="description" content="A browser code playground: edit HTML, CSS and JavaScript, press Run, and see the page and the console output." />
 
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/tailwind.build.css" />
+<link rel="stylesheet" href="../assets/fonts.css" />
 <link rel="stylesheet" href="../assets/style.css" />
 <link rel="stylesheet" href="../assets/code.css" />
-
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        fontFamily: {
-          display: ['"Baloo 2"', 'Nunito', 'sans-serif'],
-          sans: ['Nunito', 'ui-sans-serif', 'system-ui', 'sans-serif']
-        },
-        colors: {
-          ink: '#1f2a44', paper: '#f6f4ee', js: '#f7df1e', motion: '#4c97ff', looks: '#9966ff',
-          events: '#ffbf00', control: '#ffab19', sensing: '#5cb1d6', operators: '#59c059', variables: '#ff8c1a'
-        }
-      }
-    }
-  };
-</script>
 </head>
 <body class="min-h-screen">
 
@@ -55,7 +36,7 @@
 
   <header class="mb-6">
     <h1 class="font-display text-3xl sm:text-4xl font-extrabold">🧑‍💻 Code Playground</h1>
-    <p class="text-ink/65 mt-2 max-w-3xl">
+    <p class="text-ink-soft mt-2 max-w-3xl">
       Write HTML, CSS and JavaScript, press <strong>Run</strong>, and watch the page appear next to you.
       Anything you <code class="font-mono text-sm bg-ink/5 px-1.5 py-0.5 rounded">console.log()</code> shows up in the console panel below —
       open a lesson's template here if you want to experiment with it.
@@ -71,7 +52,7 @@
         </select>
       </label>
       <button id="blankBtn" type="button" class="rounded-xl bg-white px-4 py-2 text-sm font-extrabold text-ink border border-ink/15 hover:border-motion/50 transition">Start blank</button>
-      <span class="text-sm text-ink/50">Tip: press <kbd class="font-mono bg-ink/5 px-1.5 py-0.5 rounded">Ctrl</kbd> + <kbd class="font-mono bg-ink/5 px-1.5 py-0.5 rounded">Enter</kbd> to run.</span>
+      <span class="text-sm text-ink-muted">Tip: press <kbd class="font-mono bg-ink/5 px-1.5 py-0.5 rounded">Ctrl</kbd> + <kbd class="font-mono bg-ink/5 px-1.5 py-0.5 rounded">Enter</kbd> to run.</span>
     </div>
   </section>
 
@@ -101,7 +82,7 @@
 </main>
 
 <footer class="mt-10 border-t border-ink/10 py-10 no-print">
-  <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-ink/55">
+  <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-ink-muted">
     <p class="font-bold">CodeLab Curriculum — Code Playground</p>
     <a class="text-motion font-bold hover:underline" href="index.html">See all 10 weeks →</a>
   </div>

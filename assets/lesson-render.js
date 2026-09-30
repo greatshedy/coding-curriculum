@@ -17,7 +17,21 @@
   "use strict";
 
   var cfg = window.COURSE_CONFIG;
-  if (!cfg || !cfg.data) return;
+
+  function loadError(message) {
+    var root = document.getElementById("week-root");
+    if (!root) return;
+    var home = (cfg && cfg.indexHref) || "index.html";
+    root.innerHTML =
+      '<div class="card p-6 max-w-xl mx-auto text-center">' +
+        '<p class="text-4xl mb-2" aria-hidden="true">🧭</p>' +
+        '<h1 class="font-display text-2xl font-extrabold m-0">This lesson could not load</h1>' +
+        '<p class="text-ink-soft font-bold mt-2">' + message + "</p>" +
+        '<p class="mt-4"><a class="inline-flex items-center gap-2 rounded-xl bg-motion px-5 py-2.5 font-extrabold text-white hover:brightness-105 transition" href="' + home + '">Back to course home</a></p>' +
+      "</div>";
+  }
+
+  if (!cfg || !cfg.data) { loadError("The course data did not load. Check the file is present, then reload the page."); return; }
   var cur = cfg.data;
 
   var CL = window.CL || { escapeHtml: function (s) { return String(s == null ? "" : s); }, qs: function () { return null; } };
@@ -47,7 +61,7 @@
       flat.push({ week: wk, term: tm, termIndex: ti, weekIndex: wi });
     });
   });
-  if (!flat.length) return;
+  if (!flat.length) { loadError("No weeks were found for this course."); return; }
 
   var t = clamp(toInt(CL.qs("t"), 1), 1, terms.length);
   var term = terms[t - 1];
@@ -62,7 +76,7 @@
       }
     }
   }
-  if (!weeksInTerm.length) return;
+  if (!weeksInTerm.length) { loadError("No weeks were found for this term."); return; }
   var w = clamp(toInt(CL.qs("w"), 1), 1, weeksInTerm.length || 1);
 
   var current = 0;
@@ -176,22 +190,22 @@
       : "";
     var trackBadge = "";
     if (week.tracks) {
-      trackBadge = '<span class="pill bg-ink/5 text-ink/60">' + (week.tracks === "both" ? "Track A &amp; B" : "JHS &amp; SHS") + "</span>";
+      trackBadge = '<span class="pill bg-ink/5 text-ink-soft">' + (week.tracks === "both" ? "Track A &amp; B" : "JHS &amp; SHS") + "</span>";
     }
     return '<section class="mb-8">' +
-      '<p class="text-sm font-bold text-ink/45 mb-3"><a class="hover:text-motion" href="' + indexHref + '">Course home</a> <span class="mx-1">/</span> Week ' + w + " of " + weeksInTerm.length + "</p>" +
+      '<p class="text-sm font-bold text-ink-muted mb-3"><a class="hover:text-motion" href="' + indexHref + '">Course home</a> <span class="mx-1">/</span> Week ' + w + " of " + weeksInTerm.length + "</p>" +
       '<div class="flex flex-col sm:flex-row sm:items-center gap-4">' +
         '<div class="grid place-items-center w-20 h-20 rounded-3xl text-5xl shrink-0" style="background:' + soft + '">' + week.emoji + "</div>" +
         "<div>" +
           '<div class="flex flex-wrap items-center gap-2 mb-1">' +
             termBadge +
             '<span class="pill" style="background:' + soft + ";color:" + accent + '">Week ' + w + "</span>" +
-            '<span class="pill bg-ink/5 text-ink/60">' + e(cur.audience || "") + "</span>" +
+            '<span class="pill bg-ink/5 text-ink-soft">' + e(cur.audience || "") + "</span>" +
             trackBadge +
           "</div>" +
           '<h1 class="font-display text-3xl sm:text-4xl font-extrabold">' + e(week.title) + "</h1>" +
-          (week.goal ? '<p class="mt-3 flex items-start gap-2 rounded-xl bg-ink/5 px-3 py-2 text-sm font-bold text-ink/80 max-w-2xl"><span aria-hidden="true">🎯</span><span><span class="text-ink/45 uppercase tracking-wide text-xs font-extrabold mr-1">Goal:</span>' + e(week.goal) + "</span></p>" : "") +
-          '<p class="text-ink/65 max-w-2xl mt-2">' + e(week.concept || "") + "</p>" +
+          (week.goal ? '<p class="mt-3 flex items-start gap-2 rounded-xl bg-ink/5 px-3 py-2 text-sm font-bold text-ink/80 max-w-2xl"><span aria-hidden="true">🎯</span><span><span class="text-ink-muted uppercase tracking-wide text-xs font-extrabold mr-1">Goal:</span>' + e(week.goal) + "</span></p>" : "") +
+          '<p class="text-ink-soft max-w-2xl mt-2">' + e(week.concept || "") + "</p>" +
           '<p class="mt-4"><span class="lens-hint"><span aria-hidden="true">🔎</span><span>Everyone sees this lesson. Flip on <strong>Teacher mode</strong> for the briefing, timing and answer keys.</span></span></p>' +
         "</div>" +
       "</div>" +
@@ -288,7 +302,7 @@
     if (!blocks.length) return "";
     return '<div class="grid gap-6">' + blocks.map(function (b) {
       var badge = '<span class="track-badge" style="background:' + soft + ";color:" + accent + '">Track ' + e(b.track || "") + "</span>" +
-        (b.audience ? ' <span class="track-badge bg-ink/5 text-ink/60">' + e(b.audience) + "</span>" : "");
+        (b.audience ? ' <span class="track-badge bg-ink/5 text-ink-soft">' + e(b.audience) + "</span>" : "");
       var out = '<section class="card p-5">' +
         '<h3 class="font-display text-xl font-extrabold flex flex-wrap items-center gap-2">' + e(b.title) + badge + "</h3>";
 
@@ -318,7 +332,7 @@
           var blanks = "";
           for (var i = 0; i < lines; i++) blanks += '<div class="form-line"></div>';
           return '<div><p class="font-extrabold text-sm text-ink/80 m-0">' + e(f.label) + "</p>" +
-            (f.hint ? '<p class="text-xs text-ink/45 m-0 mb-1">' + e(f.hint) + "</p>" : "") + blanks + "</div>";
+            (f.hint ? '<p class="text-xs text-ink-muted m-0 mb-1">' + e(f.hint) + "</p>" : "") + blanks + "</div>";
         }).join("") + "</div>";
       }
 
@@ -414,16 +428,16 @@
       return (terms[0].weeks || []).map(function (wk, wi) {
         var on = wk === week;
         return '<a href="' + weekUrl(0, wi) + '" class="flex items-center gap-2 text-sm font-bold py-1 ' +
-          (on ? "text-motion" : "text-ink/60 hover:text-motion") + '">' +
+          (on ? "text-motion" : "text-ink-soft hover:text-motion") + '">' +
           '<span class="w-6 text-center">' + wk.emoji + "</span>" + "Week " + (wi + 1) + ": " + e(wk.title) + "</a>";
       }).join("");
     }
     return terms.map(function (tm, ti) {
-      return '<p class="text-xs font-extrabold uppercase tracking-wide text-ink/40 mt-3 mb-1">' + e(tm.title || ("Term " + (ti + 1))) + "</p>" +
+      return '<p class="text-xs font-extrabold uppercase tracking-wide text-ink-muted mt-3 mb-1">' + e(tm.title || ("Term " + (ti + 1))) + "</p>" +
         (tm.weeks || []).map(function (wk, wi) {
           var on = wk === week;
           return '<a href="' + weekUrl(ti, wi) + '" class="flex items-center gap-2 text-sm font-bold py-1 ' +
-            (on ? "text-motion" : "text-ink/60 hover:text-motion") + '">' +
+            (on ? "text-motion" : "text-ink-soft hover:text-motion") + '">' +
             '<span class="w-6 text-center">' + wk.emoji + "</span>" + (wi + 1) + ". " + e(wk.title) + "</a>";
         }).join("");
     }).join("");
@@ -433,11 +447,11 @@
   var bottomNav =
     '<section class="grid sm:grid-cols-2 gap-4 mt-8">' +
       (prev
-        ? '<a href="' + prevUrl + '" class="card card-hover p-5"><p class="text-xs font-extrabold uppercase text-ink/40 m-0">← Previous</p><p class="font-display text-lg font-extrabold m-0">' + e(prev.week.title) + "</p></a>"
-        : '<a href="' + indexHref + '" class="card card-hover p-5"><p class="text-xs font-extrabold uppercase text-ink/40 m-0">← Back</p><p class="font-display text-lg font-extrabold m-0">Course home</p></a>') +
+        ? '<a href="' + prevUrl + '" class="card card-hover p-5"><p class="text-xs font-extrabold uppercase text-ink-muted m-0">← Previous</p><p class="font-display text-lg font-extrabold m-0">' + e(prev.week.title) + "</p></a>"
+        : '<a href="' + indexHref + '" class="card card-hover p-5"><p class="text-xs font-extrabold uppercase text-ink-muted m-0">← Back</p><p class="font-display text-lg font-extrabold m-0">Course home</p></a>') +
       (next
-        ? '<a href="' + nextUrl + '" class="card card-hover p-5 text-right"><p class="text-xs font-extrabold uppercase text-ink/40 m-0">Next →</p><p class="font-display text-lg font-extrabold m-0">' + e(next.week.title) + "</p></a>"
-        : '<a href="' + playgroundHref + '" class="card card-hover p-5 text-right"><p class="text-xs font-extrabold uppercase text-ink/40 m-0">Next →</p><p class="font-display text-lg font-extrabold m-0">Code Playground</p></a>') +
+        ? '<a href="' + nextUrl + '" class="card card-hover p-5 text-right"><p class="text-xs font-extrabold uppercase text-ink-muted m-0">Next →</p><p class="font-display text-lg font-extrabold m-0">' + e(next.week.title) + "</p></a>"
+        : '<a href="' + playgroundHref + '" class="card card-hover p-5 text-right"><p class="text-xs font-extrabold uppercase text-ink-muted m-0">Next →</p><p class="font-display text-lg font-extrabold m-0">Code Playground</p></a>') +
     "</section>";
 
   /* ---------- assemble ---------- */
@@ -445,19 +459,19 @@
   if (week.variants) {
     variantBar =
       '<div class="card p-4 mb-6 flex flex-wrap items-center gap-3">' +
-        '<span class="text-sm font-extrabold uppercase tracking-wide text-ink/45">Choose your class:</span>' +
+        '<span class="text-sm font-extrabold uppercase tracking-wide text-ink-muted">Choose your class:</span>' +
         '<div class="flex flex-wrap gap-2" role="group" aria-label="Year group">' +
           Object.keys(week.variants).map(function (k, i) {
             return '<button type="button" class="variant-btn' + (i === 0 ? " is-active" : "") + '" data-variant="' + k + '">' +
               e(week.variants[k].name) + "</button>";
           }).join("") +
         "</div>" +
-        '<span class="text-sm font-bold text-ink/50" id="variant-project"></span>' +
+        '<span class="text-sm font-bold text-ink-muted" id="variant-project"></span>' +
       "</div>";
   }
 
   var tracksCard = (cur.tracks && cur.tracks.length)
-    ? '<div class="card p-6"><p class="text-xs font-extrabold uppercase tracking-wide text-ink/45 mb-2">Tracks</p>' +
+    ? '<div class="card p-6"><p class="text-xs font-extrabold uppercase tracking-wide text-ink-muted mb-2">Tracks</p>' +
         cur.tracks.map(function (tr) {
           return '<p class="text-sm text-ink/70 mb-2"><strong>' + e(tr.name) + "</strong><br>" + e(tr.desc) + "</p>";
         }).join("") +
@@ -473,7 +487,7 @@
     '<div class="grid lg:grid-cols-3 gap-6 items-start">' +
       '<div class="lg:col-span-2"><div class="card p-6" id="lesson-body"></div></div>' +
       '<aside class="grid gap-6 lg:sticky lg:top-24">' +
-        '<div class="card p-6"><p class="text-xs font-extrabold uppercase tracking-wide text-ink/45 mb-3">All weeks</p><nav class="grid gap-0.5">' + weekList() + "</nav></div>" +
+        '<div class="card p-6"><p class="text-xs font-extrabold uppercase tracking-wide text-ink-muted mb-3">All weeks</p><nav class="grid gap-0.5">' + weekList() + "</nav></div>" +
         tracksCard +
       "</aside>" +
     "</div>" +

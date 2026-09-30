@@ -17,7 +17,9 @@
 
   --ink: #1f2a44;
   --ink-soft: #4a5570;
+  --ink-muted: #565f72;
   --paper: #f6f4ee;
+  --focus-ring: #1d4ed8; /* AA-safe accent for focus indicators (3:1 non-text) */
 }
 
 html {
@@ -33,7 +35,11 @@ body {
     radial-gradient(circle at 12% 8%, rgba(76, 151, 255, 0.10), transparent 42%),
     radial-gradient(circle at 88% 4%, rgba(153, 102, 255, 0.10), transparent 40%),
     radial-gradient(circle at 50% 100%, rgba(255, 191, 0, 0.10), transparent 45%);
-  background-attachment: fixed;
+}
+
+/* Fixed washes look best on a large screen; on touch they jank, so they scroll. */
+@media (min-width: 768px) and (hover: hover) {
+  body { background-attachment: fixed; }
 }
 
 h1, h2, h3, h4, .font-display {
@@ -127,8 +133,8 @@ details.teacher[open] > summary::after { content: "\2013"; }
 details.teacher .teacher-body { padding: 0 1.1rem 1.1rem; }
 
 /* Focus visibility for keyboard users */
-a:focus-visible, button:focus-visible, input:focus-visible {
-  outline: 3px solid var(--scratch-motion);
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, [tabindex]:focus-visible {
+  outline: 3px solid var(--focus-ring);
   outline-offset: 2px;
   border-radius: 0.5rem;
 }
@@ -486,3 +492,24 @@ html.has-lesson-bar { scroll-padding-top: 7.5rem; }
 
 /* The briefing jump link only makes sense while Teacher mode is on. */
 html:not(.teacher-mode) .lesson-jump a[href="#sec-briefing"] { display: none; }
+
+/* ---------- Reduced motion: keep the state change, drop the travel ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .card,
+  .card-hover:hover,
+  .lesson-bar-inner,
+  .lens-switch-track,
+  .lens-switch-thumb { transition: none; }
+  .card-hover:hover { transform: none; }
+}
+
+/* ---------- Comfortable touch targets on coarse pointers ---------- */
+@media (pointer: coarse) {
+  [data-nav-menu] a,
+  .lesson-jump a,
+  .notes-tab,
+  .lens-switch { min-height: 2.75rem; }
+  .lesson-jump a,
+  .notes-tab { align-items: center; }
+}

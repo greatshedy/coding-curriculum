@@ -196,10 +196,10 @@
     var overlay = h("div", { class: "absolute inset-0 hidden place-items-center bg-white/85 backdrop-blur-sm text-center px-6 py-4 overflow-auto" });
     var stageBox = h("div", { class: "relative rounded-2xl border-2 border-ink/10 overflow-hidden bg-white shadow-inner" }, [canvas, overlay]);
     var controls = h("div", { class: "flex flex-wrap items-center gap-2" });
-    var statusEl = h("p", { class: "text-sm font-bold text-ink/60 min-h-[1.25rem] m-0" });
+    var statusEl = h("p", { class: "text-sm font-bold text-ink-soft min-h-[1.25rem] m-0" });
 
     var wrap = h("div", { class: "grid gap-4" });
-    if (opts.hint) wrap.appendChild(h("p", { class: "text-sm text-ink/65 m-0", text: opts.hint }));
+    if (opts.hint) wrap.appendChild(h("p", { class: "text-sm text-ink-soft m-0", text: opts.hint }));
     wrap.appendChild(stageBox);
     wrap.appendChild(controls);
     wrap.appendChild(statusEl);

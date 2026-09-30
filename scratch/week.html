@@ -6,29 +6,10 @@
 <title>Scratch Course — Lesson</title>
 <meta name="description" content="A week-by-week Scratch lesson with a live demo, block recipe, build activity and teacher notes." />
 
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/tailwind.build.css" />
+<link rel="stylesheet" href="../assets/fonts.css" />
 <link rel="stylesheet" href="../assets/style.css" />
 <link rel="stylesheet" href="../assets/scratch-blocks.css" />
-
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        fontFamily: {
-          display: ['"Baloo 2"', 'Nunito', 'sans-serif'],
-          sans: ['Nunito', 'ui-sans-serif', 'system-ui', 'sans-serif']
-        },
-        colors: {
-          ink: '#1f2a44', paper: '#f6f4ee', motion: '#4c97ff', looks: '#9966ff',
-          events: '#ffbf00', control: '#ffab19', sensing: '#5cb1d6', variables: '#ff8c1a'
-        }
-      }
-    }
-  };
-</script>
 </head>
 <body class="min-h-screen">
 
@@ -55,11 +36,19 @@
 </nav>
 
 <main id="week-root" class="max-w-6xl mx-auto px-4 py-8">
-  <p class="text-center text-ink/50 font-bold py-20">Loading lesson…</p>
+  <p class="text-center text-ink-muted font-bold py-20">Loading lesson…</p>
+  <noscript>
+    <div class="card p-6 max-w-xl mx-auto text-center">
+      <p class="text-4xl mb-2" aria-hidden="true">🧭</p>
+      <h1 class="font-display text-2xl font-extrabold m-0">This lesson needs JavaScript</h1>
+      <p class="text-ink-soft font-bold mt-2">The lesson is built in the browser from the course data. Please enable JavaScript and reload, or open the course home for the static list of weeks.</p>
+      <p class="mt-4"><a class="inline-flex items-center gap-2 rounded-xl bg-motion px-5 py-2.5 font-extrabold text-white hover:brightness-105 transition" href="index.html">Back to course home</a></p>
+    </div>
+  </noscript>
 </main>
 
 <footer class="mt-10 border-t border-ink/10 py-10 no-print">
-  <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-ink/55">
+  <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-ink-muted">
     <p class="font-bold">CodeLab Curriculum — Scratch: Game Development &amp; Storytelling</p>
     <a class="text-motion font-bold hover:underline" href="index.html">All 10 weeks →</a>
   </div>

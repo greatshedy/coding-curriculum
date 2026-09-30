@@ -17,8 +17,20 @@
     control: "Control", sensing: "Sensing", operators: "Operators", variables: "Variables", myblocks: "My Blocks"
   };
 
+  function loadError(message) {
+    var root = document.getElementById("week-root");
+    if (!root) return;
+    root.innerHTML =
+      '<div class="card p-6 max-w-xl mx-auto text-center">' +
+        '<p class="text-4xl mb-2" aria-hidden="true">🧭</p>' +
+        '<h1 class="font-display text-2xl font-extrabold m-0">This lesson could not load</h1>' +
+        '<p class="text-ink-soft font-bold mt-2">' + message + "</p>" +
+        '<p class="mt-4"><a class="inline-flex items-center gap-2 rounded-xl bg-motion px-5 py-2.5 font-extrabold text-white hover:brightness-105 transition" href="index.html">Back to course home</a></p>' +
+      "</div>";
+  }
+
   var cur = window.SCRATCH_CURRICULUM;
-  if (!cur) { return; }
+  if (!cur || !cur.weeks || !cur.weeks.length) { loadError("The course data did not load. Check the file is present, then reload the page."); return; }
 
   var total = cur.weeks.length;
   var n = parseInt(CL.qs("w") || "1", 10);
@@ -50,7 +62,7 @@
   function sectionTitle(emoji, title, extra) {
     return '<h2 class="font-display text-2xl font-extrabold flex items-center gap-2 mb-3">' +
       '<span aria-hidden="true">' + emoji + "</span>" + e(title) +
-      (extra ? '<span class="ml-1 text-sm font-bold text-ink/40">' + e(extra) + "</span>" : "") +
+      (extra ? '<span class="ml-1 text-sm font-bold text-ink-muted">' + e(extra) + "</span>" : "") +
       "</h2>";
   }
   function listItems(arr) {
@@ -62,13 +74,13 @@
   /* ---------- hero ---------- */
   var hero =
     '<section class="mb-8">' +
-      '<p class="text-sm font-bold text-ink/45 mb-3"><a class="hover:text-motion" href="index.html">Course home</a> <span class="mx-1">/</span> Week ' + n + " of " + total + "</p>" +
+      '<p class="text-sm font-bold text-ink-muted mb-3"><a class="hover:text-motion" href="index.html">Course home</a> <span class="mx-1">/</span> Week ' + n + " of " + total + "</p>" +
       '<div class="flex flex-col sm:flex-row sm:items-center gap-4">' +
         '<div class="grid place-items-center w-20 h-20 rounded-3xl text-5xl shrink-0" style="background:' + soft + '">' + week.emoji + "</div>" +
         "<div>" +
           '<span class="pill" style="background:' + soft + ";color:" + accent + '">Week ' + n + "</span>" +
           '<h1 class="font-display text-3xl sm:text-4xl font-extrabold mt-1">' + e(week.title) + "</h1>" +
-          '<p class="text-ink/65 max-w-2xl mt-2">' + e(week.concept) + "</p>" +
+          '<p class="text-ink-soft max-w-2xl mt-2">' + e(week.concept) + "</p>" +
         "</div>" +
       "</div>" +
     "</section>";
@@ -82,7 +94,7 @@
       '<p class="font-bold text-ink/85 mt-1">' + e(week.teachingPoint) + "</p>" +
     "</div>" +
     (week.vocab && week.vocab.length ? '<div class="mt-4 flex flex-wrap gap-2">' + week.vocab.map(function (v) {
-      return '<span class="pill bg-ink/5 text-ink/60">' + e(v) + "</span>";
+      return '<span class="pill bg-ink/5 text-ink-soft">' + e(v) + "</span>";
     }).join("") + "</div>" : "")
   );
 
@@ -91,10 +103,10 @@
     '<section id="demo" class="card p-6 scroll-mt-24" style="border-top:5px solid ' + accent + '">' +
       '<div class="flex flex-wrap items-center justify-between gap-2 mb-4">' +
         '<h2 class="font-display text-2xl font-extrabold flex items-center gap-2 m-0"><span aria-hidden="true">▶️</span> Try it — live demo</h2>' +
-        '<span class="pill bg-ink/5 text-ink/60">press Run, then change things</span>' +
+        '<span class="pill bg-ink/5 text-ink-soft">press Run, then change things</span>' +
       "</div>" +
       '<div id="demo-mount"></div>' +
-      '<p class="text-sm text-ink/55 mt-4">Want to build your own blocks from scratch? <a class="font-bold text-motion hover:underline" href="playground.html">Open the Block Playground →</a></p>' +
+      '<p class="text-sm text-ink-muted mt-4">Want to build your own blocks from scratch? <a class="font-bold text-motion hover:underline" href="playground.html">Open the Block Playground →</a></p>' +
     "</section>";
 
   /* ---------- blocks ---------- */
@@ -112,7 +124,7 @@
   var blocksCard =
     '<section id="blocks" class="card p-6 scroll-mt-24">' +
       sectionTitle("🧱", "Build it in Scratch", "the block recipe") +
-      '<p class="text-sm text-ink/60 mb-4">These are the real blocks to drag out in Scratch. Snap them together in this order and press the green flag.</p>' +
+      '<p class="text-sm text-ink-soft mb-4">These are the real blocks to drag out in Scratch. Snap them together in this order and press the green flag.</p>' +
       '<div class="sb-panel" id="blocks-mount"></div>' +
       '<div class="sb-legend mt-4">' + legend + "</div>" +
     "</section>";
@@ -228,8 +240,8 @@
           (t.timing ? '<div><p class="text-xs font-extrabold uppercase tracking-wide text-orange-700/70 m-0">Timing</p><p class="text-sm font-bold text-ink/75 m-0">' + e(t.timing) + "</p></div>" : "") +
           (t.errors && t.errors.length ? "<div><p class=\"text-xs font-extrabold uppercase tracking-wide text-orange-700/70 m-0\">Common bugs to expect</p><ul class=\"text-sm list-disc pl-5 mt-1 space-y-1 text-ink/75\">" + t.errors.map(function (x) { return "<li>" + e(x) + "</li>"; }).join("") + "</ul></div>" : "") +
           (t.support || t.extend ? '<div class="grid sm:grid-cols-2 gap-3">' +
-            (t.support ? '<div class="rounded-xl bg-white/70 p-3"><p class="text-xs font-extrabold uppercase tracking-wide text-ink/50 m-0">Support</p><p class="text-sm text-ink/75 m-0">' + e(t.support) + "</p></div>" : "") +
-            (t.extend ? '<div class="rounded-xl bg-white/70 p-3"><p class="text-xs font-extrabold uppercase tracking-wide text-ink/50 m-0">Extend</p><p class="text-sm text-ink/75 m-0">' + e(t.extend) + "</p></div>" : "") +
+            (t.support ? '<div class="rounded-xl bg-white/70 p-3"><p class="text-xs font-extrabold uppercase tracking-wide text-ink-muted m-0">Support</p><p class="text-sm text-ink/75 m-0">' + e(t.support) + "</p></div>" : "") +
+            (t.extend ? '<div class="rounded-xl bg-white/70 p-3"><p class="text-xs font-extrabold uppercase tracking-wide text-ink-muted m-0">Extend</p><p class="text-sm text-ink/75 m-0">' + e(t.extend) + "</p></div>" : "") +
           "</div>" : "") +
           (t.tip ? '<p class="text-sm rounded-xl bg-white/70 p-3 m-0"><strong>Pro tip:</strong> ' + e(t.tip) + "</p>" : "") +
         "</div>" +
@@ -238,9 +250,9 @@
 
   var tocCard =
     '<div class="card p-6">' +
-      '<p class="text-xs font-extrabold uppercase tracking-wide text-ink/45 mb-3">In this lesson</p>' +
+      '<p class="text-xs font-extrabold uppercase tracking-wide text-ink-muted mb-3">In this lesson</p>' +
       '<nav class="grid gap-1">' + tocItems.map(function (it) {
-        return '<a class="text-sm font-bold text-ink/65 hover:text-motion py-0.5" href="#' + it[0] + '">' + e(it[1]) + "</a>";
+        return '<a class="text-sm font-bold text-ink-soft hover:text-motion py-0.5" href="#' + it[0] + '">' + e(it[1]) + "</a>";
       }).join("") + "</nav>" +
     "</div>";
 
@@ -248,11 +260,11 @@
   var bottomNav =
     '<section class="grid sm:grid-cols-2 gap-4 mt-8">' +
       (prevUrl
-        ? '<a href="' + prevUrl + '" class="card card-hover p-5"><p class="text-xs font-extrabold uppercase text-ink/40 m-0">← Previous</p><p class="font-display text-lg font-extrabold m-0">Week ' + (n - 1) + ": " + e(cur.weeks[n - 2].title) + "</p></a>"
-        : '<a href="index.html" class="card card-hover p-5"><p class="text-xs font-extrabold uppercase text-ink/40 m-0">← Back</p><p class="font-display text-lg font-extrabold m-0">Course home</p></a>') +
+        ? '<a href="' + prevUrl + '" class="card card-hover p-5"><p class="text-xs font-extrabold uppercase text-ink-muted m-0">← Previous</p><p class="font-display text-lg font-extrabold m-0">Week ' + (n - 1) + ": " + e(cur.weeks[n - 2].title) + "</p></a>"
+        : '<a href="index.html" class="card card-hover p-5"><p class="text-xs font-extrabold uppercase text-ink-muted m-0">← Back</p><p class="font-display text-lg font-extrabold m-0">Course home</p></a>') +
       (nextUrl
-        ? '<a href="' + nextUrl + '" class="card card-hover p-5 text-right"><p class="text-xs font-extrabold uppercase text-ink/40 m-0">Next →</p><p class="font-display text-lg font-extrabold m-0">Week ' + (n + 1) + ": " + e(cur.weeks[n].title) + "</p></a>"
-        : '<a href="playground.html" class="card card-hover p-5 text-right"><p class="text-xs font-extrabold uppercase text-ink/40 m-0">Next →</p><p class="font-display text-lg font-extrabold m-0">Block Playground</p></a>') +
+        ? '<a href="' + nextUrl + '" class="card card-hover p-5 text-right"><p class="text-xs font-extrabold uppercase text-ink-muted m-0">Next →</p><p class="font-display text-lg font-extrabold m-0">Week ' + (n + 1) + ": " + e(cur.weeks[n].title) + "</p></a>"
+        : '<a href="playground.html" class="card card-hover p-5 text-right"><p class="text-xs font-extrabold uppercase text-ink-muted m-0">Next →</p><p class="font-display text-lg font-extrabold m-0">Block Playground</p></a>') +
     "</section>";
 
   /* ---------- assemble ---------- */
@@ -274,7 +286,7 @@
   if (window.ScratchBlocks && week.blocks && week.blocks.length) {
     blocksMount.appendChild(window.ScratchBlocks.render(week.blocks));
   } else {
-    blocksMount.innerHTML = '<p class="text-sm text-ink/50">No block recipe for this week — see the activity above.</p>';
+    blocksMount.innerHTML = '<p class="text-sm text-ink-muted">No block recipe for this week — see the activity above.</p>';
   }
 
   /* ---------- mount demo ---------- */
@@ -288,7 +300,7 @@
       if (window.console) console.error(err);
     }
   } else {
-    demoMount.innerHTML = '<p class="text-sm text-ink/50">Demo coming soon.</p>';
+    demoMount.innerHTML = '<p class="text-sm text-ink-muted">Demo coming soon.</p>';
   }
 
   /* ---------- lesson notes: tabs + print ---------- */

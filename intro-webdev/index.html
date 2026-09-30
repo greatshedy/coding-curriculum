@@ -6,28 +6,9 @@
 <title>HTML &amp; CSS: Build and Style the Web (JSS 1 &amp; JSS 2) — CodeLab</title>
 <meta name="description" content="Track A: a three-term HTML and CSS course for JSS 1 and JSS 2. Build and style real web pages, taught together every week." />
 
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/tailwind.build.css" />
+<link rel="stylesheet" href="../assets/fonts.css" />
 <link rel="stylesheet" href="../assets/style.css" />
-
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        fontFamily: {
-          display: ['"Baloo 2"', 'Nunito', 'sans-serif'],
-          sans: ['Nunito', 'ui-sans-serif', 'system-ui', 'sans-serif']
-        },
-        colors: {
-          ink: '#1f2a44', paper: '#f6f4ee', js: '#f7df1e', motion: '#4c97ff', looks: '#9966ff',
-          events: '#ffbf00', control: '#ffab19', sensing: '#5cb1d6', operators: '#59c059', variables: '#ff8c1a'
-        }
-      }
-    }
-  };
-</script>
 </head>
 <body class="min-h-screen">
 
@@ -59,7 +40,7 @@
         <div class="flex flex-wrap gap-2 mb-3">
           <span class="pill bg-events/25 text-yellow-900">Track A · Web Development</span>
           <span class="pill bg-motion/15 text-motion">JSS 1 &amp; JSS 2</span>
-          <span class="pill bg-ink/5 text-ink/60">3 terms</span>
+          <span class="pill bg-ink/5 text-ink-soft">3 terms</span>
           <span class="pill bg-looks/15 text-looks">HTML + CSS together</span>
         </div>
         <h1 class="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight">HTML &amp; CSS: Build and Style the Web</h1>
@@ -76,7 +57,7 @@
 </main>
 
 <footer class="mt-8 border-t border-ink/10 py-10 no-print">
-  <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-ink/55">
+  <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-ink-muted">
     <p class="font-bold">CodeLab Curriculum — HTML &amp; CSS: Build and Style the Web</p>
     <a class="text-motion font-bold hover:underline" href="week.html?t=1&w=1">Start Term 1 →</a>
   </div>
@@ -106,10 +87,10 @@
         '<div class="flex items-center gap-3 mb-4">' +
           '<span class="grid place-items-center w-10 h-10 rounded-2xl text-xl font-black" style="background:' + accent + '22;color:' + accent + '">' + term.n + "</span>" +
           '<div><h2 class="font-display text-2xl font-extrabold m-0">Term ' + term.n + ": " + esc(term.title) + "</h2>" +
-          '<p class="text-sm text-ink/55 m-0">' + term.weeks.length + " weeks</p></div>" +
+          '<p class="text-sm text-ink-muted m-0">' + term.weeks.length + " weeks</p></div>" +
         "</div>" +
         '<div class="card overflow-x-auto"><table class="w-full text-left text-sm border-collapse">' +
-          '<thead><tr class="bg-ink/5 text-ink/55 text-xs uppercase tracking-wide">' +
+          '<thead><tr class="bg-ink/5 text-ink-muted text-xs uppercase tracking-wide">' +
             '<th class="p-3 font-extrabold">Week</th><th class="p-3 font-extrabold">Topic</th><th class="p-3 font-extrabold">Learning focus</th><th class="p-3 font-extrabold sr-only">Open</th>' +
           "</tr></thead><tbody>" + rows + "</tbody></table></div>" +
       "</section>";
