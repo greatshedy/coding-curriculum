@@ -1,19 +1,21 @@
 /* ============================================================
-   data.js — the 10-Week Web Development (JavaScript) curriculum.
+   data.js — the 3-Term (30-Week) Web Development (JavaScript) curriculum.
    Full classroom package: instructor guides, student handouts,
    runnable code templates and assessments.
 
    Week shape:
-     { n, title, emoji, color, tracks,
-       concept, objective, teachingPoints[], timing[],
+     { n, title, emoji, color, tracks, goal, concept, objective,
+       teachingPoints[], timing[],
        liveDemo[{ title, filename, code, caption }],
        commonMistakes[],
        handout: { sections:[ { h, body[], list[], codes[], badge } ] },
-       template: { filename, code, tasks[] },
+       template: { filename, code, core[], stretch[] },
        assessment: [ { track, audience, title, type, ... } ] }
 
-   Weeks 9 and 10 use `variants: { jhs, shs }` instead of the
-   single-track fields, because their projects differ by year group.
+   Weeks not yet authored are created by stub(...) with an empty
+   content shape and are filled in follow-up tasks. The reused
+   "Meet the DOM" week still carries `variants: { jhs, shs }` at
+   source and is flattened by unify().
    ============================================================ */
 (function () {
   "use strict";
@@ -142,13 +144,19 @@
   </script>
 </body>
 </html>`,
-        tasks: [
+        core: [
           "Save this file as week1_firstname.html",
           "Replace [YOUR NAME HERE] with your actual name",
           "Replace [YOUR AGE] with your actual age",
           "Open the file in a browser",
           "Open the console (F12) and verify you see both messages",
-          "Try adding one more console.log() line with your favourite subject"
+          "Try adding one more console.log() line with your favourite subject",
+          "Log a message that says which class you are in, for example \"I am in JSS 3B\"",
+          "Note the exact order the messages appear in the console"
+        ],
+        stretch: [
+          "Log your name and age together on one line using +",
+          "Add a second script tag and check that both sets of messages still run"
         ]
       },
       assessment: [
@@ -325,11 +333,17 @@ console.log(likesIceCream);     // true` }
   </script>
 </body>
 </html>`,
-        tasks: [
+        core: [
           "Replace the placeholders with your own data",
           "Create 3 new variables (one string, one number, one boolean)",
           "Print all 6 variables to the console",
-          "Save and verify the console output"
+          "Save and verify the console output",
+          "Store the price of a snack in Naira as a number (for example 250.50) and print it",
+          "Change one let variable after printing it, then print it again to show the new value"
+        ],
+        stretch: [
+          "Try to reassign a const variable, read the error in the console, and explain what it means",
+          "Create a variable for your favourite football team and print a sentence that uses it"
         ]
       },
       assessment: [
@@ -352,9 +366,9 @@ console.log(likesIceCream);     // true` }
               prompt: "Question 2: Label each of these as a String, Number or Boolean.",
               code:
 `let score = 100;
-let city = "Tokyo";
+let city = "Abuja";
 let isWinner = false;`,
-              answer: "let score = 100; → Number\nlet city = \"Tokyo\"; → String\nlet isWinner = false; → Boolean"
+              answer: "let score = 100; → Number\nlet city = \"Abuja\"; → String\nlet isWinner = false; → Boolean"
             },
             {
               prompt: "Question 3 (Code trace): What will print to the console?",
@@ -482,11 +496,17 @@ console.log(age <= 14);   // false` }
   </script>
 </body>
 </html>`,
-        tasks: [
+        core: [
           "Run the template and read the console output",
           "Change the test scores and predict the new average before you run it",
           "Add a third test score and recalculate the average using all three",
-          "Add a check for whether the average is a Grade A (90 or higher)"
+          "Add a check for whether the average is a Grade A (90 or higher)",
+          "Work out your average across three subjects and print it",
+          "Print whether your average is a pass (50 or more) using a comparison"
+        ],
+        stretch: [
+          "Start with a shopping budget of 5000 Naira, subtract two prices, and print what is left",
+          "Add a number stored as text (\"5\" + 1) and explain why the result is different from 5 + 1"
         ]
       },
       assessment: [
@@ -659,11 +679,17 @@ if (isRaining) {
   </script>
 </body>
 </html>`,
-        tasks: [
+        core: [
           "Run the template and check the console",
           "Change userAge to different values and see which branch runs",
           "Complete the grade challenge: 80 or higher prints \"Great job!\", otherwise \"Keep trying!\"",
-          "Add a third branch using else if for a middle grade"
+          "Add a third branch using else if for a middle grade",
+          "Decide whether a football score is a win: print \"Win!\" if the goals are more than the opponent's, otherwise \"No win\"",
+          "Test at least three different values and note which branch ran each time"
+        ],
+        stretch: [
+          "Write an if / else if / else that prints a letter grade (A, B, C or F) for a score",
+          "Check a price in Naira: print \"expensive\" if it is over 10000, otherwise \"affordable\""
         ]
       },
       assessment: [
@@ -820,11 +846,17 @@ for (let i = 2; i <= 10; i = i + 2) {
   </script>
 </body>
 </html>`,
-        tasks: [
+        core: [
           "Run the template and count along with the console",
           "Write a loop that counts down from 10 to 1",
           "Write a loop that counts by 5s from 0 to 50",
-          "Predict how many lines each loop will print before you run it"
+          "Predict how many lines each loop will print before you run it",
+          "Print the multiples of 3 from 3 to 30",
+          "Write a loop that prints the numbers 1 to 7, one for each day of the week"
+        ],
+        stretch: [
+          "Use a loop inside a loop to print a small times table for 1 to 3",
+          "Add up the numbers 1 to 10 inside a loop and print the total"
         ]
       },
       assessment: [
@@ -989,11 +1021,17 @@ console.log(result);  // 8` }
   </script>
 </body>
 </html>`,
-        tasks: [
+        core: [
           "Run the template and check both greetings appear",
           "Write add(a, b) that returns the sum, and print add(4, 6)",
           "Write isOldEnough(age) that returns true when age >= 13",
-          "Call one of your functions three times with different values"
+          "Call one of your functions three times with different values",
+          "Write average(a, b, c) that returns the mean of three test scores",
+          "Call your average function with your own scores and print the result"
+        ],
+        stretch: [
+          "Write a function that takes a team's goals scored and conceded and returns \"win\", \"draw\" or \"loss\"",
+          "Write toNaira(amount) that returns the amount with the Naira sign in front"
         ]
       },
       assessment: [
@@ -1260,7 +1298,7 @@ document.getElementById("box").style.backgroundColor = "blue";`
 
     // Change the box colour
     document.getElementById("box").style.backgroundColor = "green";
-  </script>
+  <\/script>
 </body>
 </html>`
         }
@@ -1291,7 +1329,7 @@ document.getElementById("box").style.backgroundColor = "blue";`
 `<h1 id="title">Old Title</h1>
 <script>
   document.getElementById("title").textContent = "New Title!";
-</script>` }
+<\/script>` }
             ],
             after: ["When this page loads, the heading changes from \"Old Title\" to \"New Title!\"."]
           },
@@ -1302,7 +1340,7 @@ document.getElementById("box").style.backgroundColor = "blue";`
 `<p id="message">Hello</p>
 <script>
   document.getElementById("message").textContent = "Goodbye!";
-</script>` }
+<\/script>` }
             ]
           },
           {
@@ -1316,7 +1354,7 @@ document.getElementById("box").style.backgroundColor = "blue";`
 
   // Change the width
   document.getElementById("box").style.width = "200px";
-</script>` }
+<\/script>` }
             ]
           }
         ]
@@ -1349,14 +1387,16 @@ document.getElementById("box").style.backgroundColor = "blue";`
 
     // CHALLENGE: Create a new div with an ID
     // and use JS to change its background colour and text
-  </script>
+  <\/script>
 </body>
 </html>`,
-        tasks: [
-          "Run the template and watch the heading and box change",
-          "Change the background colour to a colour of your choice",
-          "Add a new div with an ID and change its colour and text with JavaScript",
-          "Break the ID on purpose (a typo) and see what happens — then fix it"
+        core: [
+          "Run the template and watch the heading and box change.",
+          "Change the background colour to a colour of your choice.",
+          "Add a new div with an ID and change its colour and text with JavaScript."
+        ],
+        stretch: [
+          "Break the ID on purpose with a typo, see what happens, then fix it."
         ]
       },
       assessment: [
@@ -1379,7 +1419,7 @@ document.getElementById("box").style.backgroundColor = "blue";`
 `<h1 id="heading">Original</h1>
 <script>
   document.getElementById("heading").textContent = "Changed!";
-</script>`,
+<\/script>`,
               answer: "The heading on the page will read \"Changed!\" instead of \"Original\"."
             },
             {
@@ -1862,10 +1902,10 @@ if (number > 50) {
   ];
 
   // Reused weeks are repositioned; new weeks are stubs until authored.
-  function stub(n, title, emoji, color, concept) {
+  function stub(n, title, emoji, color, goal, concept) {
     return {
       n: n, title: title, emoji: emoji, color: color, tracks: "both",
-      concept: concept,
+      goal: goal, concept: concept,
       objective: "",
       teachingPoints: [],
       timing: [],
@@ -1896,13 +1936,17 @@ if (number > 50) {
     return wk;
   }
 
-  // --- Term 1: foundations ---
+  // --- Term 1: JavaScript Fundamentals ---
   weeks[0].n = 1; weeks[1].n = 2; weeks[2].n = 3; weeks[3].n = 4; weeks[4].n = 5; weeks[5].n = 6;
-  var term1 = [
-    weeks[0], weeks[1], weeks[2], weeks[3], weeks[4], weeks[5],
+  weeks[0].goal = "Write and run your first JavaScript and see it in the browser console.";
+  weeks[1].goal = "Store information in variables and print it.";
+  weeks[2].goal = "Use operators to do maths and compare values.";
+  weeks[3].goal = "Make your program choose between actions with if / else.";
+  weeks[4].goal = "Repeat instructions with loops.";
+  weeks[5].goal = "Write reusable functions with parameters and return values.";
+  weeks[7].goal = "Find elements on the page and change them with JavaScript.";
 
-    /* ================================================================ 7 */
-    {
+  var weekArrays = {
       n: 7, title: "Arrays", emoji: "📚", color: "operators", tracks: "both",
       concept: "An array is an ordered list of values. You can add to it, read items by their position, and loop through them.",
       objective: "Students can create an array, read items by index, add items and loop through them.",
@@ -1951,7 +1995,7 @@ if (number > 50) {
             h: "An array is an ordered list",
             body: ["Write an array with square brackets and commas. Each item has a position, starting at zero."],
             codes: [
-              { code: `let names = ["Ada", "Sam", "Kofi"];` }
+              { code: `let names = ["Ada", "Chidi", "Amaka"];` }
             ]
           },
           {
@@ -1983,11 +2027,17 @@ if (number > 50) {
   <\/script>
 </body>
 </html>`,
-        tasks: [
+        core: [
           "Print the first and last subject.",
           "Add two more subjects with push().",
           "Loop through and print each subject with a number.",
-          "Explain to a partner why the first index is 0, not 1."
+          "Explain to a partner why the first index is 0, not 1.",
+          "Print how many subjects are in the list using .length.",
+          "Add your three best subjects and print the one in the middle."
+        ],
+        stretch: [
+          "Build an array of your class's top five scores and print only the scores above 70.",
+          "Try unshift() to add a subject at the start and see where it appears."
         ]
       },
       assessment: [
@@ -2008,10 +2058,10 @@ if (number > 50) {
           ]
         }
       ]
-    },
+  };
+  weekArrays.goal = "Store a list of values in an array and loop through them.";
 
-    /* ================================================================ 8 */
-    {
+  var weekObjects = {
       n: 8, title: "Objects", emoji: "🧩", color: "looks", tracks: "both",
       concept: "An object stores labelled values — each item has a key and a value. Objects model real things, like a student with a name and a score.",
       objective: "Students can create an object with key/value pairs and read its values.",
@@ -2085,11 +2135,17 @@ if (number > 50) {
   <\/script>
 </body>
 </html>`,
-        tasks: [
+        core: [
           "Fill in your own details.",
           "Add a new key called favouriteFood.",
           "Print every value with its label.",
-          "Explain to a partner the difference between an array and an object."
+          "Explain to a partner the difference between an array and an object.",
+          "Add a key called team and set it to your favourite football club.",
+          "Change the age in your object and print it again."
+        ],
+        stretch: [
+          "Create an object for a classmate with name, subject and score, then print a sentence using all three.",
+          "Try reading a key that does not exist and see what prints."
         ]
       },
       assessment: [
@@ -2110,42 +2166,48 @@ if (number > 50) {
           ]
         }
       ]
-    },
+  };
+  weekObjects.goal = "Store labelled values in an object and read them by key.";
 
-    /* ================================================================ 9 */
+  var term1 = [
+    weeks[0], weeks[1], weeks[2], weeks[3], weeks[4], weeks[5],
+    weekArrays, weekObjects,
     {
-      n: 9, title: "Arrays & Objects in practice", emoji: "🛠️", color: "variables", tracks: "both",
-      concept: "Combine arrays and objects to store and work with real collections of data, such as a list of students.",
-      objective: "Students can store a list of objects in an array and loop through it to read each object's values.",
+      n: 9, title: "Project: build a game", emoji: "🎮", color: "events", tracks: "both",
+      goal: "Build a small game that takes a choice and decides a winner.",
+      concept: "Combine variables, conditionals and functions to build a playable game.",
+      objective: "Students build a small console game using variables, conditionals and functions.",
       teachingPoints: [
-        "An array can hold objects: [{ name: \"Ada\", score: 90 }, ...].",
-        "A loop visits each object, and dot notation reads its values.",
-        "This pattern models real collections — a class list, a scoreboard, a shopping basket."
+        "A game needs a secret value, a player's move and a result.",
+        "Conditionals decide the outcome — win, lose or draw.",
+        "Functions keep the game logic tidy and easy to reuse."
       ],
       timing: [
         { label: "Welcome & recap", mins: 3 },
-        { label: "Live demo: a class list", mins: 5 },
-        { label: "Lists of objects", mins: 8 },
-        { label: "Activity time", mins: 15 },
-        { label: "Share & wrap-up", mins: 4 }
+        { label: "Live demo: a guessing game", mins: 4 },
+        { label: "Build time", mins: 20 },
+        { label: "Present", mins: 5 },
+        { label: "Share & wrap-up", mins: 3 }
       ],
       liveDemo: [
         {
-          title: "A class list",
-          filename: "practical.html",
-          caption: "An array of objects is the everyday shape of real data. The loop reads each object's keys.",
+          title: "A number-guessing game",
+          filename: "guessing_game.html",
+          caption: "Change the guess and press Run to see the console change. The secret stays 7.",
           code:
 `<!DOCTYPE html>
 <html>
 <body>
+  <h1>Guess the number (1–10)</h1>
   <script>
-    let students = [
-      { name: "Ada", score: 90 },
-      { name: "Sam", score: 75 },
-      { name: "Kofi", score: 82 }
-    ];
-    for (let i = 0; i < students.length; i++) {
-      console.log(students[i].name + " scored " + students[i].score);
+    let secret = 7;
+    let guess = 4;
+    if (guess === secret) {
+      console.log("Correct!");
+    } else if (guess < secret) {
+      console.log("Too low.");
+    } else {
+      console.log("Too high.");
     }
   <\/script>
 </body>
@@ -2153,543 +2215,330 @@ if (number > 50) {
         }
       ],
       commonMistakes: [
-        "Writing students.name instead of students[i].name inside the loop.",
-        "Forgetting that the loop index is a number, so the object needs [i] first.",
-        "Missing commas between the objects in the array."
+        "Using one = instead of === in the comparison, which assigns a value instead of checking it.",
+        "Forgetting that input read with prompt() is text, so \"7\" never equals the number 7 — convert it with Number().",
+        "Checking the wrong branch, such as logging \"Too high\" when the guess is lower than the secret."
       ],
       handout: {
         sections: [
           {
-            h: "A list of objects",
-            body: ["Put objects inside an array to store many records. Each record has the same keys."],
-            codes: [
-              { code: `let team = [{ name: "Ada", score: 90 }];` }
+            h: "Plan your game",
+            body: ["Before you build, decide the four parts of your game and write them down."],
+            list: [
+              "The secret — what the player is trying to find or beat",
+              "The player's move — the value the player gives each turn",
+              "The rule — how the secret and the move are compared",
+              "The result — what the game prints for a win, a loss or a draw"
             ]
           },
           {
-            h: "Reading each record",
-            body: ["Loop with the index, then use dot notation on that item."],
+            h: "Rock Paper Scissors idea",
+            body: [
+              "Store the computer's choice and the player's choice as strings, then compare them.",
+              "If both choices are the same it is a draw. Otherwise rock beats scissors, scissors beats paper and paper beats rock."
+            ],
             codes: [
-              { code: `team[i].name` }
+              { label: "Compare two choices", code:
+`let computer = "rock";
+let player = "scissors";
+
+if (computer === player) {
+  console.log("Draw!");
+} else if (computer === "rock" && player === "scissors") {
+  console.log("Computer wins!");
+} else {
+  console.log("Player wins!");
+}` }
+            ]
+          },
+          {
+            h: "Number guessing idea",
+            body: ["Pick a secret number, then log whether the guess is too low, too high or correct."],
+            codes: [
+              { label: "Decide the result", code:
+`let secret = 7;
+let guess = 4;
+
+if (guess === secret) {
+  console.log("Correct!");
+} else if (guess < secret) {
+  console.log("Too low.");
+} else {
+  console.log("Too high.");
+}` }
             ]
           }
         ]
       },
       template: {
-        filename: "my_class_list.html",
+        filename: "my_game.html",
         code:
 `<!DOCTYPE html>
 <html>
 <body>
+  <h1>My Guessing Game</h1>
   <script>
-    let players = [
-      { name: "Ada", goals: 3 },
-      { name: "Sam", goals: 1 },
-      { name: "Kofi", goals: 2 }
-    ];
-    for (let i = 0; i < players.length; i++) {
-      console.log(players[i].name + ": " + players[i].goals);
+    // 1. Set the secret number
+    let secret = 6;
+
+    // 2. The player's guess
+    let guess = 3;
+
+    // 3. Decide the result
+    if (guess === secret) {
+      console.log("Correct! You win.");
+    } else if (guess < secret) {
+      console.log("Too low. Try again.");
+    } else {
+      console.log("Too high. Try again.");
     }
   <\/script>
 </body>
 </html>`,
-        tasks: [
-          "Add a fourth player.",
-          "Add a new key to each player, such as team.",
-          "Print only players with more than one goal.",
-          "Explain to a partner why we use [i] before .name."
+        core: [
+          "Set a secret number between 1 and 10.",
+          "Set a guess and log whether it is too low, too high or correct.",
+          "Change the guess and run it again to test all three branches.",
+          "Wrap the decision in a function called checkGuess(guess) and call it."
+        ],
+        stretch: [
+          "Loop through several guesses in an array and check each one.",
+          "Make the secret random with let secret = Math.floor(Math.random() * 10) + 1; and play again."
         ]
       },
       assessment: [
         {
-          track: "A", audience: "Both", title: CHECKLIST_TRACK_A, type: "checklist",
+          track: "A", audience: "Both", title: "Game checklist", type: "checklist",
           items: [
-            "The loop reads each object's values",
-            "new records were added correctly",
-            "the student can explain the array-of-objects shape"
+            "The game runs without errors",
+            "The game uses at least one conditional",
+            "The game uses at least one function",
+            "The student can explain what happens in each branch"
           ]
         },
         {
           track: "B", audience: "Both", title: "Written quiz", type: "quiz",
           questions: [
-            { prompt: "Question 1: What is an array of objects good for?", answer: "Storing many records that all have the same keys, such as a class list." },
-            { prompt: "Question 2: If the loop index is i, how do you read the name of each object?", answer: "items[i].name" },
-            { prompt: "Question 3: Write one object with keys title and year.", answer: "let film = { title: \"Matilda\", year: 1996 };" }
+            {
+              prompt: "Question 1: In your game, what does the secret value represent?",
+              answer: "The secret is the value the player is trying to find or beat. In the guessing game it is the hidden number the guesses are compared against."
+            },
+            {
+              prompt: "Question 2: Why do we use === instead of = when comparing the guess and the secret?",
+              answer: "=== compares two values and returns true or false. A single = assigns a value, so it would overwrite the secret instead of checking it."
+            },
+            {
+              prompt: "Question 3 (Code trace): What will print?",
+              code:
+`let secret = 7;
+let guess = 9;
+
+if (guess === secret) {
+  console.log("Correct!");
+} else if (guess < secret) {
+  console.log("Too low.");
+} else {
+  console.log("Too high.");
+}`,
+              answer: "Too high."
+            },
+            {
+              prompt: "Question 4: Why is it useful to put the win/lose decision inside a function?",
+              answer: "The function keeps the logic in one place, gives it a clear name, and can be called again for each new guess without repeating the code."
+            }
           ]
         }
       ]
     },
-
-    /* ================================================================ 10 */
     {
-      n: 10, title: "Term project: a data-driven page", emoji: "🌟", color: "motion", tracks: "both",
-      concept: "Build a page that stores a small collection of data in arrays and objects and shows it on screen.",
-      objective: "Students build a page that stores a small collection of data in an array of objects and shows it on screen.",
+      n: 10, title: "Revision, assessment, showcase", emoji: "🎉", color: "control", tracks: "both",
+      goal: "Review Term 1 and show what you can build.",
+      concept: "Recap the core ideas and present a project.",
+      objective: "Review Term 1 and present a project.",
       teachingPoints: [
-        "Plan the fields first: what does each record need? e.g. name and score.",
-        "Store records in an array of objects.",
-        "Loop through them and write each one into the page with document.getElementById(...) and textContent."
+        "Revise variables, operators, conditionals, loops, functions, arrays and objects.",
+        "Present your work to the class and explain your code.",
+        "Reflect on what you learned and what you want to try next."
       ],
       timing: [
         { label: "Welcome & recap", mins: 3 },
-        { label: "Demo of a finished page", mins: 4 },
-        { label: "Build time", mins: 20 },
-        { label: "Present", mins: 5 },
-        { label: "Wrap-up", mins: 3 }
+        { label: "Recap of Term 1 skills", mins: 8 },
+        { label: "Presentations", mins: 18 },
+        { label: "Feedback", mins: 4 },
+        { label: "Share & wrap-up", mins: 2 }
       ],
       liveDemo: [
         {
-          title: "Data shown on the page",
-          filename: "data_page.html",
-          caption: "The data lives in an array of objects; the loop builds the list that appears on the page.",
+          title: "A recap script",
+          filename: "recap_js.html",
+          caption: "One variable, an array, a loop and a function working together to find a class average. Change a score and run it again.",
           code:
 `<!DOCTYPE html>
 <html>
 <body>
-  <h1>Class scores</h1>
-  <ul id="list"></ul>
+  <h1>Term 1 Recap</h1>
   <script>
-    let students = [
-      { name: "Ada", score: 90 },
-      { name: "Sam", score: 75 },
-      { name: "Kofi", score: 82 }
-    ];
-    let html = "";
-    for (let i = 0; i < students.length; i++) {
-      html = html + "<li>" + students[i].name + " — " + students[i].score + "</li>";
+    let classScores = [72, 58, 90, 65];
+
+    function average(scores) {
+      let total = 0;
+      for (let i = 0; i < scores.length; i++) {
+        total = total + scores[i];
+      }
+      return total / scores.length;
     }
-    document.getElementById("list").innerHTML = html;
+
+    console.log("Class average: " + average(classScores));
   <\/script>
 </body>
 </html>`
         }
       ],
       commonMistakes: [
-        "Building the string but never writing it into the page.",
-        "Forgetting to reset the string before the loop.",
-        "Missing commas or a closing bracket in the data array."
+        "Not testing before presenting, so an error shows up in front of the class. Run it once more before you present.",
+        "Being unable to explain a line of your own code. Read each line aloud and say what it does.",
+        "Skipping the live demo. The working example is the strongest part of the presentation."
       ],
       handout: {
         sections: [
           {
-            h: "Plan your data",
+            h: "Term 1 recap",
+            body: ["Check that you can do each of these before the showcase:"],
             list: [
-              "Choose two or three fields per record",
-              "Write three or four records",
-              "Decide how each record should look on the page"
+              "Create variables with let and const, and name the three data types",
+              "Use arithmetic and comparison operators, including ===",
+              "Write if / else if / else to choose between actions",
+              "Repeat code with a for loop",
+              "Write functions with parameters and a return value",
+              "Store values in arrays and objects and read them back"
             ]
           },
           {
-            h: "Show it on the page",
-            body: ["Loop through the records, build a string of HTML, then set it on an element with innerHTML."]
+            h: "Presentation script",
+            body: ["Use these prompts to plan what you will say as you present:"],
+            list: [
+              "Introduce your project in one sentence — what does it do?",
+              "Show it running and point out one thing that works well",
+              "Explain one line of your code in your own words",
+              "Name one challenge you met and how you solved it",
+              "Say what you would add next if you had more time"
+            ]
           }
         ]
       },
       template: {
-        filename: "my_data_page.html",
+        filename: "recap_js.html",
         code:
 `<!DOCTYPE html>
 <html>
 <body>
-  <h1>My data page</h1>
-  <ul id="list"></ul>
+  <h1>Fix me</h1>
   <script>
-    let items = [
-      { name: "Item one", value: 1 },
-      { name: "Item two", value: 2 }
-    ];
-    let html = "";
-    for (let i = 0; i < items.length; i++) {
-      html = html + "<li>" + items[i].name + "</li>";
+    let subjects = ["Maths", "English", "Science"];
+
+    // BUG: this loop runs one time too many and prints undefined at the end
+    for (let i = 0; i <= subjects.length; i++) {
+      console.log(subjects[i]);
     }
-    document.getElementById("list").innerHTML = html;
+
+    // TODO: turn the repeated logging into a function called printSubjects(list)
   <\/script>
 </body>
 </html>`,
-        tasks: [
-          "Choose your own data (scores, songs, countries).",
-          "Add at least four records.",
-          "Show two fields for each record.",
-          "Present your page and explain your data shape."
+        core: [
+          "Find and fix the bug so the loop prints each subject once.",
+          "Use an array and a loop to log each item.",
+          "Add a second array of scores and print each subject with its score."
+        ],
+        stretch: [
+          "Turn the repeated logging into a function called printSubjects(list).",
+          "Write a function that returns the highest score from a list of scores."
         ]
       },
       assessment: [
         {
-          track: "A", audience: "Both", title: "Term 1 project rubric", type: "rubric",
-          criteria: [
-            "Page runs without errors",
-            "Data is stored in an array of objects",
-            "A loop reads every record",
-            "Two fields are shown per record",
-            "The student can explain their data"
-          ]
-        },
-        {
-          track: "B", audience: "Both", title: "Design document — data-driven page", type: "form",
-          intro: "Complete this before the showcase.",
-          fields: [
-            { label: "What is your data about?" },
-            { label: "List the fields each record has", lines: 2 },
-            { label: "Write the pseudocode for your loop", lines: 3 }
+          track: "B", audience: "Both", title: "Final recap quiz", type: "quiz",
+          questions: [
+            {
+              prompt: "Question 1: What is the difference between let and const?",
+              answer: "let creates a variable whose value can be reassigned. const creates a variable whose value cannot be reassigned."
+            },
+            {
+              prompt: "Question 2: What does === check, and why is it better than = for comparisons?",
+              answer: "=== compares two values and returns true or false. A single = assigns a value, so it does not compare at all."
+            },
+            {
+              prompt: "Question 3: How many times does this loop run, and what values does i take?",
+              code:
+`for (let i = 0; i < 4; i++) {
+  console.log(i);
+}`,
+              answer: "It runs 4 times, with i taking the values 0, 1, 2 and 3."
+            },
+            {
+              prompt: "Question 4: What is the index of the first item in an array, and how do you read it?",
+              answer: "The first index is 0. If the array is called scores, you read it with scores[0]."
+            },
+            {
+              prompt: "Question 5: What does the return keyword do inside a function?",
+              answer: "It sends a value back out of the function to the place where the function was called."
+            }
           ]
         }
       ]
     }
   ];
 
-  // --- Term 2: the DOM & interactivity ---
+  // --- Term 2: The DOM, Events and Interactive Pages ---
   unify(weeks[7]); weeks[7].n = 1;
   var term2 = [
     weeks[7],
-    /* ================================================================ 2 */
     {
-      n: 2, title: "Selecting & changing elements", emoji: "🔍", color: "sensing", tracks: "both",
-      concept: "The DOM lets JavaScript find elements and change their text, attributes and styles.",
-      objective: "Students can select elements with querySelector and change their text and style.",
+      n: 2, title: "Changing text, styles and classes", emoji: "✏️", color: "sensing", tracks: "both",
+      goal: "Change an element's text, style and classes from JavaScript.",
+      concept: "Change what an element says and how it looks using textContent, style and classes.",
+      objective: "Students can change an element's text, one style at a time and its CSS classes from JavaScript.",
       teachingPoints: [
-        "document.querySelector(\".box\") returns the first element matching a CSS selector; querySelectorAll(...) returns all of them.",
-        "element.textContent = \"...\" changes the text; element.style.color = \"...\" changes one style.",
-        "A selector can be a tag, .class or #id."
+        "textContent changes the text inside an element.",
+        "element.style.<prop> changes one style, written in camelCase (backgroundColor, not background-color).",
+        "classList.add, classList.remove and classList.toggle switch whole CSS classes — keep styles in CSS where you can."
       ],
       timing: [
         { label: "Welcome & recap", mins: 3 },
-        { label: "Live demo", mins: 5 },
-        { label: "Selecting elements", mins: 8 },
+        { label: "Live demo: change text, style and class", mins: 5 },
+        { label: "textContent, style and classList", mins: 8 },
         { label: "Activity time", mins: 15 },
         { label: "Share & wrap-up", mins: 4 }
       ],
       liveDemo: [
         {
-          title: "Find and change",
-          filename: "select_change.html",
-          caption: "querySelector takes a CSS selector — #id or .class — and returns the element so you can change it.",
-          code:
-`<!DOCTYPE html>
-<html>
-<body>
-  <h1 id="title">Old heading</h1>
-  <p class="note">A note.</p>
-  <script>
-    let heading = document.querySelector("#title");
-    heading.textContent = "New heading";
-    heading.style.color = "#4c97ff";
-
-    let note = document.querySelector(".note");
-    note.style.fontWeight = "bold";
-  <\/script>
-</body>
-</html>`
-        }
-      ],
-      commonMistakes: [
-        "Forgetting the # or . in the selector, so it matches nothing.",
-        "Using querySelector when several elements match but only the first is wanted (use querySelectorAll).",
-        "Writing element.textContent() with brackets (textContent is a property, not a function)."
-      ],
-      handout: {
-        sections: [
-          {
-            h: "Select with CSS selectors",
-            body: ["querySelector takes the same selectors you already use in CSS."],
-            codes: [
-              { code: `document.querySelector("#title");  document.querySelector(".note");` }
-            ]
-          },
-          {
-            h: "Change text and style",
-            body: ["Set textContent to change text. Set element.style.<property> to change one style (camelCase in JS)."]
-          }
-        ]
-      },
-      template: {
-        filename: "my_select.html",
-        code:
-`<!DOCTYPE html>
-<html>
-<body>
-  <h1 id="title">Change me</h1>
-  <p class="note">Style me.</p>
-  <script>
-    let heading = document.querySelector("#title");
-    heading.textContent = "Changed by JavaScript";
-    let note = document.querySelector(".note");
-    note.style.color = "#15803d";
-  <\/script>
-</body>
-</html>`,
-        tasks: [
-          "Change the heading text again.",
-          "Give the note a background colour with style.",
-          "Add a second .note paragraph and select it with querySelectorAll.",
-          "Explain to a partner what a CSS selector is."
-        ]
-      },
-      assessment: [
-        {
-          track: "A", audience: "Both", title: CHECKLIST_TRACK_A, type: "checklist",
-          items: [
-            "Elements are selected with the right selector",
-            "textContent and style both change the page",
-            "the student can explain selectors"
-          ]
-        },
-        {
-          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
-          questions: [
-            { prompt: "Question 1: What does document.querySelector(\".box\") return?", answer: "The first element whose class is 'box'." },
-            { prompt: "Question 2: Which property changes an element's text?", answer: "textContent" },
-            { prompt: "Question 3: How do you write the CSS property background-color in JavaScript?", answer: "backgroundColor" }
-          ]
-        }
-      ]
-    },
-
-    /* ================================================================ 3 */
-    {
-      n: 3, title: "Events", emoji: "🖱️", color: "events", tracks: "both",
-      concept: "Event listeners run code in response to clicks, typing and other user actions.",
-      objective: "Students can attach click listeners and use the event to react to what was clicked.",
-      teachingPoints: [
-        "element.addEventListener(\"click\", handler) runs handler each time the element is clicked.",
-        "The handler receives an event object; event.target is the element that was clicked.",
-        "Pass the function without parentheses so it runs later, not immediately."
-      ],
-      timing: [
-        { label: "Welcome & recap", mins: 3 },
-        { label: "Live demo", mins: 5 },
-        { label: "Events", mins: 8 },
-        { label: "Activity time", mins: 15 },
-        { label: "Share & wrap-up", mins: 4 }
-      ],
-      liveDemo: [
-        {
-          title: "Click handler with the event",
-          filename: "event_target.html",
-          caption: "One handler is added to each button; event.target tells us which button was clicked.",
-          code:
-`<!DOCTYPE html>
-<html>
-<body>
-  <p id="out">Click a button</p>
-  <button class="pick">One</button>
-  <button class="pick">Two</button>
-  <script>
-    let buttons = document.querySelectorAll(".pick");
-    for (let i = 0; i < buttons.length; i++) {
-      buttons[i].addEventListener("click", function (event) {
-        document.getElementById("out").textContent = "You clicked: " + event.target.textContent;
-      });
-    }
-  <\/script>
-</body>
-</html>`
-        }
-      ],
-      commonMistakes: [
-        "Writing handler() with brackets, which calls it immediately.",
-        "Attaching the listener before the element exists (script above the HTML).",
-        "Forgetting that querySelectorAll returns a list that must be looped."
-      ],
-      handout: {
-        sections: [
-          {
-            h: "Listen for an event",
-            body: ["addEventListener says: when this event happens, run this function."],
-            codes: [
-              { code: `button.addEventListener("click", function () { ... });` }
-            ]
-          },
-          {
-            h: "The event object",
-            body: ["The handler's parameter is the event. event.target is the element that was clicked."]
-          }
-        ]
-      },
-      template: {
-        filename: "my_events.html",
-        code:
-`<!DOCTYPE html>
-<html>
-<body>
-  <h1 id="title">Pick a colour</h1>
-  <button class="colour" data-color="#4c97ff">Blue</button>
-  <button class="colour" data-color="#59c059">Green</button>
-  <script>
-    let buttons = document.querySelectorAll(".colour");
-    for (let i = 0; i < buttons.length; i++) {
-      buttons[i].addEventListener("click", function (event) {
-        document.getElementById("title").style.color = event.target.getAttribute("data-color");
-      });
-    }
-  <\/script>
-</body>
-</html>`,
-        tasks: [
-          "Add a red colour button.",
-          "Show the chosen colour name in the heading text too.",
-          "Explain why the handler has no brackets.",
-          "Explain to a partner what event.target is."
-        ]
-      },
-      assessment: [
-        {
-          track: "A", audience: "Both", title: CHECKLIST_TRACK_A, type: "checklist",
-          items: [
-            "Clicking each button reacts",
-            "the event object is used",
-            "listeners are on the right elements"
-          ]
-        },
-        {
-          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
-          questions: [
-            { prompt: "Question 1: Which method runs a function when an element is clicked?", answer: "addEventListener(\"click\", function () { ... })" },
-            { prompt: "Question 2: What is event.target?", answer: "The element that was clicked." },
-            { prompt: "Question 3: Why should the handler have no brackets when passed to addEventListener?", answer: "Brackets would call it immediately; without them the browser calls it later when the event happens." }
-          ]
-        }
-      ]
-    },
-
-    /* ================================================================ 4 */
-    {
-      n: 4, title: "Forms & user input", emoji: "📝", color: "variables", tracks: "both",
-      concept: "Read values that users type into form fields and use them in your script.",
-      objective: "Students can read a value a user typed and use it in their script.",
-      teachingPoints: [
-        "An input's current text is in its .value property.",
-        "A button click or a form submit event can trigger reading the value.",
-        "For a form, call event.preventDefault() to stop the page reloading."
-      ],
-      timing: [
-        { label: "Welcome & recap", mins: 3 },
-        { label: "Live demo", mins: 5 },
-        { label: "Reading input", mins: 8 },
-        { label: "Activity time", mins: 15 },
-        { label: "Share & wrap-up", mins: 4 }
-      ],
-      liveDemo: [
-        {
-          title: "Read the name",
-          filename: "forms.html",
-          caption: "The input's .value holds what was typed. Read it when the button is clicked.",
-          code:
-`<!DOCTYPE html>
-<html>
-<body>
-  <input id="nameInput" type="text" placeholder="Type your name" />
-  <button id="go">Greet me</button>
-  <p id="out"></p>
-  <script>
-    document.getElementById("go").addEventListener("click", function () {
-      let name = document.getElementById("nameInput").value;
-      document.getElementById("out").textContent = "Hello, " + name + "!";
-    });
-  <\/script>
-</body>
-</html>`
-        }
-      ],
-      commonMistakes: [
-        "Reading .value before the user has typed, so it is empty.",
-        "Reading the input once at load instead of inside the click handler.",
-        "Forgetting event.preventDefault() in a form, so the page reloads and clears the input."
-      ],
-      handout: {
-        sections: [
-          {
-            h: "Reading a value",
-            body: ["Every input has a value property that holds what the user typed right now."],
-            codes: [
-              { code: `let name = input.value;` }
-            ]
-          },
-          {
-            h: "Stopping a form reload",
-            body: ["When a form is submitted the browser reloads. Call event.preventDefault() first to handle it yourself."]
-          }
-        ]
-      },
-      template: {
-        filename: "my_form.html",
-        code:
-`<!DOCTYPE html>
-<html>
-<body>
-  <input id="food" type="text" placeholder="Favourite food" />
-  <button id="show">Show</button>
-  <p id="result"></p>
-  <script>
-    document.getElementById("show").addEventListener("click", function () {
-      let food = document.getElementById("food").value;
-      document.getElementById("result").textContent = "You like " + food;
-    });
-  <\/script>
-</body>
-</html>`,
-        tasks: [
-          "Read a second input (e.g. favourite colour) and show both values.",
-          "Show a message if the input is empty.",
-          "Wrap the inputs in a form and use submit with preventDefault.",
-          "Explain to a partner what .value gives you."
-        ]
-      },
-      assessment: [
-        {
-          track: "A", audience: "Both", title: CHECKLIST_TRACK_A, type: "checklist",
-          items: [
-            "The typed value is read correctly",
-            "an empty input is handled",
-            "the student can explain .value"
-          ]
-        },
-        {
-          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
-          questions: [
-            { prompt: "Question 1: Which property holds what a user typed into an input?", answer: ".value" },
-            { prompt: "Question 2: Why call event.preventDefault() in a form submit handler?", answer: "To stop the browser reloading the page (which would clear the input)." },
-            { prompt: "Question 3: How would you read an input with id=\"email\"?", answer: "document.getElementById(\"email\").value" }
-          ]
-        }
-      ]
-    },
-
-    /* ================================================================ 5 */
-    {
-      n: 5, title: "Classes & style toggling", emoji: "🎨", color: "looks", tracks: "both",
-      concept: "Add and remove CSS classes from elements to change their appearance in response to events.",
-      objective: "Students can add, remove and toggle CSS classes with classList.",
-      teachingPoints: [
-        "element.classList.add(\"name\"), .remove(\"name\") and .toggle(\"name\") change which classes an element has.",
-        "Because CSS already styles a class, toggling a class is the tidiest way to change appearance.",
-        "Keeping styles in CSS and only toggling classes in JS separates look from behaviour."
-      ],
-      timing: [
-        { label: "Welcome & recap", mins: 3 },
-        { label: "Live demo", mins: 5 },
-        { label: "classList", mins: 8 },
-        { label: "Activity time", mins: 15 },
-        { label: "Share & wrap-up", mins: 4 }
-      ],
-      liveDemo: [
-        {
-          title: "Toggle a theme",
-          filename: "classlist.html",
-          caption: "The dark class is defined in CSS; JavaScript only toggles the class on and off.",
+          title: "Change the page with a button",
+          filename: "change.html",
+          caption: "Open the page and click the button: the heading text changes and a dark class is toggled on the body. Click again to switch the class off.",
           code:
 `<!DOCTYPE html>
 <html>
 <head>
+  <title>Week 2: Change text, styles and classes</title>
   <style>
-    body { font-family: sans-serif; }
-    .dark { background: #1f2a44; color: #ffffff; }
+    body { font-family: sans-serif; padding: 20px; }
+    .dark { background-color: #1f2a44; color: #ffffff; }
+    #box { width: 120px; height: 120px; background-color: gold; margin-top: 12px; }
   </style>
 </head>
 <body>
-  <h1>Theme toggler</h1>
-  <button id="toggle">Toggle dark mode</button>
+  <h1 id="title">Hello, welcome!</h1>
+  <button id="changeBtn">Change the page</button>
+  <div id="box"></div>
+
   <script>
-    document.getElementById("toggle").addEventListener("click", function () {
+    var title = document.getElementById("title");
+
+    document.getElementById("changeBtn").addEventListener("click", function () {
+      // Change the text
+      title.textContent = "You changed the text!";
+
+      // Toggle a whole class instead of one style at a time
       document.body.classList.toggle("dark");
     });
   <\/script>
@@ -2698,219 +2547,302 @@ if (number > 50) {
         }
       ],
       commonMistakes: [
-        "Writing classList.add(\".dark\") with a dot (classes in classList do not take the dot).",
-        "Setting colours directly in JS when a class would be tidier.",
-        "Defining the class in JS but not in the CSS."
+        "Writing a CSS style in kebab-case. In JavaScript it is camelCase: use style.backgroundColor, not style.background-color.",
+        "Setting many individual styles in JavaScript when one CSS class would be tidier. Prefer classList.toggle and keep the styles in CSS.",
+        "A typo in the id. \"titel\" will never match \"title\", and getElementById returns null."
       ],
       handout: {
         sections: [
           {
-            h: "The classList methods",
-            body: ["add, remove and toggle change an element's classes. The class itself must be styled in CSS."],
+            h: "Change text",
+            body: ["textContent replaces everything inside an element with the text you give it."],
             codes: [
-              { code: `el.classList.toggle("dark");` }
+              { label: "change.html", code: `document.getElementById("title").textContent = "New title";` }
             ]
           },
           {
-            h: "Why toggle?",
-            body: ["Keep colours and spacing in CSS; use JavaScript only to switch classes. This keeps look and behaviour apart."]
+            h: "Change style (camelCase)",
+            body: ["Set one style directly on the element. CSS kebab-case becomes camelCase in JavaScript."],
+            codes: [
+              { code: `el.style.backgroundColor = "seagreen";\nel.style.fontSize = "28px";` }
+            ]
+          },
+          {
+            h: "Toggle a class",
+            body: ["Keep your styles in CSS, then switch a class on or off from JavaScript."],
+            codes: [
+              { code: `el.classList.toggle("dark");` }
+            ]
           }
         ]
       },
       template: {
-        filename: "my_classes.html",
+        filename: "change.html",
         code:
 `<!DOCTYPE html>
 <html>
 <head>
+  <title>Week 2: Change text, styles and classes</title>
   <style>
-    .highlight { background: #ffbf00; font-weight: 800; }
+    body { font-family: sans-serif; padding: 20px; }
+    .dark { background-color: #1f2a44; color: #ffffff; }
+    #box { width: 120px; height: 120px; background-color: gold; }
   </style>
 </head>
 <body>
-  <p id="line">Click the button to highlight this line.</p>
-  <button id="toggle">Highlight</button>
+  <h1 id="title">Change me</h1>
+  <button id="changeBtn">Go</button>
+  <div id="box"></div>
+
   <script>
-    document.getElementById("toggle").addEventListener("click", function () {
-      document.getElementById("line").classList.toggle("highlight");
+    document.getElementById("changeBtn").addEventListener("click", function () {
+      // 1. Change the heading text with textContent
+      document.getElementById("title").textContent = "Changed!";
+
+      // 2. Change one style in camelCase
+      document.getElementById("box").style.backgroundColor = "seagreen";
+
+      // 3. Toggle a class on the page
+      document.body.classList.toggle("dark");
     });
   <\/script>
 </body>
 </html>`,
-        tasks: [
-          "Add a second class and a second button.",
-          "Use add() and remove() as well as toggle().",
-          "Change the class's CSS and see the page update.",
-          "Explain to a partner why toggling a class is tidier than setting style in JS."
+        core: [
+          "Change the heading text to your own message with textContent.",
+          "Toggle the dark class on and off with classList.toggle().",
+          "Change the box colour using style.backgroundColor."
+        ],
+        stretch: [
+          "Toggle the dark class on the whole body so the whole page changes theme.",
+          "Add a second class called big to the heading and switch it on."
         ]
       },
       assessment: [
         {
-          track: "A", audience: "Both", title: CHECKLIST_TRACK_A, type: "checklist",
-          items: [
-            "Toggling changes the element",
-            "the class is defined in CSS",
-            "the student can name two classList methods"
-          ]
-        },
-        {
-          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
+          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
           questions: [
-            { prompt: "Question 1: Which classList method switches a class on if off and off if on?", answer: "classList.toggle(\"name\")" },
-            { prompt: "Question 2: Do you include the dot when adding a class with classList.add?", answer: "No — write the class name without the dot: classList.add(\"dark\")." },
-            { prompt: "Question 3: Why is toggling a class often better than setting styles in JavaScript?", answer: "It keeps the styling in CSS and the behaviour in JS, so each is easier to change." }
+            { prompt: "Question 1: Which property changes the text inside an element?", answer: "textContent." },
+            { prompt: "Question 2: How do you write the CSS property background-color as a JavaScript style property?", answer: "backgroundColor — it is camelCase, with no hyphen." },
+            { prompt: "Question 3: Which classList method adds a class if it is missing and removes it if it is already there?", answer: "classList.toggle()." }
           ]
         }
       ]
     },
-
-    /* ================================================================ 6 */
     {
-      n: 6, title: "Building lists with loops", emoji: "🔁", color: "control", tracks: "both",
-      concept: "Use a loop to build and update a list of elements from an array of data.",
-      objective: "Students can create new elements and add them to the page with createElement and appendChild.",
+      n: 3, title: "Creating and removing elements", emoji: "➕", color: "looks", tracks: "both",
+      goal: "Add new elements and remove ones you no longer need.",
+      concept: "Build new elements in code and add or remove them from the page.",
+      objective: "Students can create an element, fill it, add it to the page and remove it again.",
       teachingPoints: [
-        "document.createElement(\"li\") makes a new element that is not on the page yet.",
-        "parent.appendChild(child) adds it; element.textContent fills it.",
-        "Loop over an array of data to build a list of elements."
+        "document.createElement() makes a new element that is not on the page yet.",
+        "appendChild() puts an element inside a parent that is already on the page.",
+        "element.remove() takes an element off the page; fill text with textContent."
       ],
       timing: [
         { label: "Welcome & recap", mins: 3 },
-        { label: "Live demo", mins: 5 },
-        { label: "Creating elements", mins: 8 },
+        { label: "Live demo: add and delete list items", mins: 5 },
+        { label: "createElement, appendChild and remove", mins: 8 },
         { label: "Activity time", mins: 15 },
         { label: "Share & wrap-up", mins: 4 }
       ],
       liveDemo: [
         {
-          title: "Build a list from data",
-          filename: "build_list.html",
-          caption: "Each loop creates one li, fills it, and appends it to the ul. Refresh to see it rebuild.",
+          title: "A class list you can add to and delete from",
+          filename: "add_remove.html",
+          caption: "Every student becomes a new li built in JavaScript. The delete button uses the click events you will meet properly next week.",
           code:
 `<!DOCTYPE html>
 <html>
+<head>
+  <title>Week 3: Creating and removing elements</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    li { margin: 6px 0; }
+    button { margin-left: 8px; }
+  </style>
+</head>
 <body>
+  <h1>My class list</h1>
+  <button id="addBtn">Add a student</button>
   <ul id="list"></ul>
+
   <script>
-    let fruits = ["mango", "orange", "banana"];
-    let list = document.getElementById("list");
-    for (let i = 0; i < fruits.length; i++) {
-      let item = document.createElement("li");
-      item.textContent = fruits[i];
+    var students = ["Ada", "Chidi", "Amaka"];
+    var list = document.getElementById("list");
+
+    function addStudent(name) {
+      var item = document.createElement("li");
+      item.textContent = name;
+
+      var del = document.createElement("button");
+      del.textContent = "Delete";
+      del.addEventListener("click", function () {
+        item.remove();
+      });
+
+      item.appendChild(del);
       list.appendChild(item);
     }
+
+    students.forEach(function (name) {
+      addStudent(name);
+    });
+
+    document.getElementById("addBtn").addEventListener("click", function () {
+      addStudent("New student");
+    });
   <\/script>
 </body>
 </html>`
         }
       ],
       commonMistakes: [
-        "Creating an element but never appending it (so it never appears).",
-        "Appending to the wrong parent.",
-        "Setting text on the wrong variable (e.g. list instead of item)."
+        "Creating an element but never appending it. If you do not call appendChild, the element exists only in memory and never appears on the page.",
+        "Removing the wrong element, for example removing a parent when you meant to remove one item.",
+        "Appending to the wrong parent, such as adding an li straight to the body instead of the ul."
       ],
       handout: {
         sections: [
           {
-            h: "Three steps per item",
+            h: "Create, fill and append",
+            body: ["Create the element, set its text, then append it to a parent that is already on the page."],
             list: [
-              "Create it with createElement",
-              "Fill it with textContent",
-              "Append it to the parent"
+              "document.createElement(\"li\") makes the element but does not show it yet.",
+              "item.textContent = \"Ada\" fills it with text.",
+              "list.appendChild(item) adds it to the page."
+            ],
+            codes: [
+              { code: `var item = document.createElement("li");\nitem.textContent = "Ada";\nlist.appendChild(item);` }
             ]
           },
           {
-            h: "Loop the data",
-            body: ["Use the same loop you would for any array. Each pass builds one element."],
+            h: "Remove",
+            body: ["Call remove() on the element you want to take off the page."],
             codes: [
-              { code: `let li = document.createElement("li");  li.textContent = data[i];  list.appendChild(li);` }
+              { code: `item.remove();` }
             ]
           }
         ]
       },
       template: {
-        filename: "my_build_list.html",
+        filename: "add_remove.html",
         code:
 `<!DOCTYPE html>
 <html>
+<head>
+  <title>Week 3: Add and remove list items</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    li { margin: 6px 0; }
+    button { margin-left: 8px; }
+  </style>
+</head>
 <body>
-  <h1>My subjects</h1>
+  <h1>My to-do list</h1>
+  <button id="addBtn">Add an item</button>
   <ul id="list"></ul>
+
   <script>
-    let subjects = ["Maths", "English", "Science"];
-    let list = document.getElementById("list");
-    for (let i = 0; i < subjects.length; i++) {
-      let item = document.createElement("li");
-      item.textContent = subjects[i];
+    var count = 0;
+    var list = document.getElementById("list");
+
+    function addItem() {
+      count = count + 1;
+
+      // 1. Create a new li
+      var item = document.createElement("li");
+      item.textContent = "Item " + count;
+
+      // 2. Create a Delete button for it
+      var del = document.createElement("button");
+      del.textContent = "Delete";
+      del.addEventListener("click", function () {
+        item.remove();
+      });
+      item.appendChild(del);
+
+      // 3. Append the li to the list
       list.appendChild(item);
     }
+
+    document.getElementById("addBtn").addEventListener("click", addItem);
+
+    // STRETCH: add a Clear all button that removes every item
   <\/script>
 </body>
 </html>`,
-        tasks: [
-          "Add two more subjects to the array.",
-          "Add the index number in front of each subject.",
-          "Clear the list first (list.innerHTML = \"\") then rebuild it.",
-          "Explain to a partner the difference between creating and appending."
+        core: [
+          "Click Add an item and watch each new li appear.",
+          "Give each item a Delete button that calls item.remove().",
+          "Remove one item and check the others stay."
+        ],
+        stretch: [
+          "Add a Clear all button that removes every item from the list.",
+          "Add an input so you can type the text for each new item."
         ]
       },
       assessment: [
         {
-          track: "A", audience: "Both", title: CHECKLIST_TRACK_A, type: "checklist",
-          items: [
-            "Each item appears on the page",
-            "createElement and appendChild are both used",
-            "the loop matches the array length"
-          ]
-        },
-        {
-          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
+          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
           questions: [
-            { prompt: "Question 1: Which method creates a new element?", answer: "document.createElement(\"li\")" },
-            { prompt: "Question 2: Which method adds a new element to its parent?", answer: "parent.appendChild(child)" },
-            { prompt: "Question 3: What happens if you create an element but never append it?", answer: "It exists in memory but never appears on the page." }
+            { prompt: "Question 1: Which method creates a new element in memory?", answer: "document.createElement()." },
+            { prompt: "Question 2: Which method adds a created element to a parent on the page?", answer: "parent.appendChild(element)." },
+            { prompt: "Question 3: How do you remove an element from the page?", answer: "element.remove()." }
           ]
         }
       ]
     },
-
-    /* ================================================================ 7 */
     {
-      n: 7, title: "Timers", emoji: "⏱️", color: "operators", tracks: "both",
-      concept: "setTimeout and setInterval run code after a delay or repeatedly.",
-      objective: "Students can run code after a delay or repeatedly with setTimeout and setInterval.",
+      n: 4, title: "Events: click, input, mouse, keyboard", emoji: "🖱️", color: "events", tracks: "both",
+      goal: "Make the page respond to clicks, typing and key presses.",
+      concept: "Use event listeners to react to what the user does.",
+      objective: "Students can attach event listeners for clicks, typing, the mouse and the keyboard.",
       teachingPoints: [
-        "setTimeout(fn, ms) runs fn once after ms milliseconds.",
-        "setInterval(fn, ms) runs fn again and again until clearInterval(id) is called.",
-        "Store the id from setInterval so you can stop it later."
+        "addEventListener(type, handler) runs the handler when that event happens on the element.",
+        "Pass the handler without brackets — btn.addEventListener(\"click\", sayHi), not sayHi().",
+        "The event object carries the details: event.target is the element and event.key is the key pressed."
       ],
       timing: [
         { label: "Welcome & recap", mins: 3 },
-        { label: "Live demo", mins: 5 },
-        { label: "Timers", mins: 8 },
+        { label: "Live demo: click and input", mins: 5 },
+        { label: "addEventListener and the event object", mins: 8 },
         { label: "Activity time", mins: 15 },
         { label: "Share & wrap-up", mins: 4 }
       ],
       liveDemo: [
         {
-          title: "Count up every second",
-          filename: "timers.html",
-          caption: "setInterval runs the function every 1000ms (one second); clearInterval stops it.",
+          title: "A click counter and a live echo",
+          filename: "events.html",
+          caption: "Click the button to count, then type in the box: the input event fires on every keystroke and the page updates as you type.",
           code:
 `<!DOCTYPE html>
 <html>
+<head>
+  <title>Week 4: Events</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    #count { font-size: 40px; font-weight: bold; }
+  </style>
+</head>
 <body>
-  <p id="count">0</p>
-  <button id="stop">Stop</button>
+  <h1>Click and type</h1>
+  <button id="clickBtn">Click me</button>
+  <p>You clicked <span id="count">0</span> times.</p>
+
+  <input id="nameInput" placeholder="Type your name" />
+  <p>Hello, <span id="echo">…</span></p>
+
   <script>
-    let value = 0;
-    let output = document.getElementById("count");
-    let timer = setInterval(function () {
-      value = value + 1;
-      output.textContent = value;
-    }, 1000);
-    document.getElementById("stop").addEventListener("click", function () {
-      clearInterval(timer);
+    var total = 0;
+
+    document.getElementById("clickBtn").addEventListener("click", function () {
+      total = total + 1;
+      document.getElementById("count").textContent = total;
+    });
+
+    document.getElementById("nameInput").addEventListener("input", function (event) {
+      document.getElementById("echo").textContent = event.target.value || "…";
     });
   <\/script>
 </body>
@@ -2918,1349 +2850,2768 @@ if (number > 50) {
         }
       ],
       commonMistakes: [
-        "Forgetting the delay in milliseconds (1000 = 1 second, not 1).",
-        "Losing the id from setInterval, so it cannot be stopped.",
-        "Calling clearInterval(fn) with the function instead of the id."
+        "Calling the handler with brackets. addEventListener(\"click\", sayHi) passes the function; sayHi() would run it once immediately and pass its result.",
+        "Listening on the wrong element, so the event never fires. Check that the id you attached to is the id in the HTML.",
+        "Using the change event when you want a live update. Use input so it fires on every keystroke."
       ],
       handout: {
         sections: [
           {
-            h: "One-off vs repeating",
-            body: ["setTimeout runs once after a delay. setInterval keeps running; keep its id to stop it later."],
+            h: "Listening for events",
+            body: ["addEventListener takes the event name and the function to run when that event happens."],
             codes: [
-              { code: `let id = setInterval(fn, 1000);  clearInterval(id);` }
+              { code: `button.addEventListener("click", function () {\n  console.log("Clicked!");\n});` }
             ]
           },
           {
-            h: "Milliseconds",
-            list: [
-              "1000 ms = 1 second",
-              "500 ms = half a second",
-              "10000 ms = 10 seconds"
+            h: "The event object",
+            body: ["The handler receives an event object with details about what happened."],
+            codes: [
+              { code: `input.addEventListener("keydown", function (event) {\n  console.log(event.key);     // the key that was pressed\n  console.log(event.target);  // the element it happened on\n});` }
+            ]
+          },
+          {
+            h: "input events",
+            body: ["Use the input event, not change, when you want to react while the user is still typing."],
+            codes: [
+              { code: `input.addEventListener("input", function (event) {\n  preview.textContent = event.target.value;\n});` }
             ]
           }
         ]
       },
       template: {
-        filename: "my_timer.html",
+        filename: "events.html",
         code:
 `<!DOCTYPE html>
 <html>
+<head>
+  <title>Week 4: Events practice</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    #count { font-size: 40px; font-weight: bold; }
+  </style>
+</head>
 <body>
-  <p id="msg">Wait for it…</p>
+  <h1>Events practice</h1>
+  <button id="clickBtn">Click me</button>
+  <p>Count: <span id="count">0</span></p>
+
+  <input id="nameInput" placeholder="Type here" />
+  <p id="echo">…</p>
+
   <script>
-    setTimeout(function () {
-      document.getElementById("msg").textContent = "Ready!";
-    }, 2000);
+    var total = 0;
+
+    // 1. A click counter
+    document.getElementById("clickBtn").addEventListener("click", function () {
+      total = total + 1;
+      document.getElementById("count").textContent = total;
+    });
+
+    // 2. Echo what the user types
+    document.getElementById("nameInput").addEventListener("input", function (event) {
+      document.getElementById("echo").textContent = event.target.value;
+    });
+
+    // 3. TODO: add a keydown listener that shows which key was pressed
   <\/script>
 </body>
 </html>`,
-        tasks: [
-          "Change the delay to 5 seconds.",
-          "Use setInterval to count down from 10.",
-          "Add a Stop button that calls clearInterval.",
-          "Explain to a partner the difference between setTimeout and setInterval."
+        core: [
+          "Make the click counter count up every time the button is clicked.",
+          "Echo the input value into the page as the user types.",
+          "Add a keydown listener that shows the last key pressed."
+        ],
+        stretch: [
+          "Add three colour buttons and change the page background from one handler.",
+          "Log the event type of every event you listen for."
         ]
       },
       assessment: [
         {
-          track: "A", audience: "Both", title: CHECKLIST_TRACK_A, type: "checklist",
-          items: [
-            "The timer runs and updates the page",
-            "clearInterval stops it",
-            "the delay is in milliseconds"
-          ]
-        },
-        {
-          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
+          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
           questions: [
-            { prompt: "Question 1: Which function runs code once after a delay?", answer: "setTimeout(function, milliseconds)" },
-            { prompt: "Question 2: Which function repeats until stopped?", answer: "setInterval(function, milliseconds)" },
-            { prompt: "Question 3: How do you stop a setInterval?", answer: "Store the id it returns and call clearInterval(id)." }
+            { prompt: "Question 1: Which method attaches a handler to an event?", answer: "addEventListener()." },
+            { prompt: "Question 2: Why do you write the handler without brackets?", answer: "Without brackets you pass the function itself, so it runs later when the event happens. With brackets it would run straight away." },
+            { prompt: "Question 3: Which event fires on every keystroke as the user types?", answer: "the input event." }
           ]
         }
       ]
     },
-
-    /* ================================================================ 8 */
     {
-      n: 8, title: "Saving data with localStorage", emoji: "💾", color: "variables", tracks: "both",
-      concept: "localStorage keeps small amounts of data in the browser between visits.",
-      objective: "Students can save a value in the browser and read it back on a later visit.",
+      n: 5, title: "Forms and validation", emoji: "📝", color: "variables", tracks: "both",
+      goal: "Read form values and check what the user typed.",
+      concept: "Read values from a form and validate them before you use them.",
+      objective: "Students can read form values, stop the default submit and validate the input before accepting it.",
       teachingPoints: [
-        "localStorage.setItem(\"key\", \"value\") saves a string; localStorage.getItem(\"key\") reads it.",
-        "Values are always strings, so for lists/objects use JSON.stringify to save and JSON.parse to read.",
-        "Saved data stays in the browser until it is removed."
+        "Read the text a user typed with input.value.",
+        "Handle the form's submit event and call event.preventDefault() to stop the page reloading.",
+        "Validate one rule at a time (not empty, then a valid @) and show a clear message."
       ],
       timing: [
         { label: "Welcome & recap", mins: 3 },
-        { label: "Live demo", mins: 5 },
-        { label: "localStorage", mins: 8 },
+        { label: "Live demo: a sign-up form", mins: 5 },
+        { label: "value, preventDefault and validation", mins: 8 },
         { label: "Activity time", mins: 15 },
         { label: "Share & wrap-up", mins: 4 }
       ],
       liveDemo: [
         {
-          title: "Remember the name",
-          filename: "storage.html",
-          caption: "Save a value, then reload the page — the name is remembered because it lives in localStorage.",
+          title: "A sign-up form with validation",
+          filename: "validate.html",
+          caption: "Press Sign up with an empty name, then with an email that has no @, then with both filled in. The page never reloads because of preventDefault.",
           code:
 `<!DOCTYPE html>
 <html>
+<head>
+  <title>Week 5: Forms and validation</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    .error { color: #b00020; }
+    .ok { color: #1b7f3b; }
+  </style>
+</head>
 <body>
-  <input id="nameInput" type="text" placeholder="Your name" />
-  <button id="save">Save</button>
-  <p id="out"></p>
+  <h1>Sign up</h1>
+  <form id="signup">
+    <p><label>Name<br /><input id="name" /></label></p>
+    <p><label>Email<br /><input id="email" /></label></p>
+    <button type="submit">Sign up</button>
+  </form>
+  <p id="message"></p>
+
   <script>
-    let out = document.getElementById("out");
-    let saved = localStorage.getItem("name");
-    if (saved) {
-      out.textContent = "Welcome back, " + saved;
+    var form = document.getElementById("signup");
+    var message = document.getElementById("message");
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      var name = document.getElementById("name").value;
+      var email = document.getElementById("email").value;
+
+      if (name === "") {
+        message.className = "error";
+        message.textContent = "Please type your name.";
+        return;
+      }
+
+      if (email.indexOf("@") === -1) {
+        message.className = "error";
+        message.textContent = "Please type a valid email with an @.";
+        return;
+      }
+
+      message.className = "ok";
+      message.textContent = "Thank you, " + name + "!";
+    });
+  <\/script>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Reading input.value on page load, before the user has typed anything. Read the value inside the submit handler, when the user has finished typing.",
+        "Forgetting event.preventDefault(), so the browser reloads the page and your message disappears.",
+        "Showing every error at once. Check one rule, show one message, and return before checking the next."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Read the value",
+            body: ["Every input has a value property holding the text the user typed."],
+            codes: [
+              { code: `var name = document.getElementById("name").value;` }
+            ]
+          },
+          {
+            h: "Validate one rule at a time",
+            body: ["Check the first rule and return early; only when one rule passes do you check the next."],
+            codes: [
+              { code: `if (name === "") {\n  showError("Please type your name.");\n  return;\n}` }
+            ]
+          },
+          {
+            h: "preventDefault",
+            body: ["A form tries to reload the page when it is submitted. Stop it with preventDefault."],
+            codes: [
+              { code: `form.addEventListener("submit", function (event) {\n  event.preventDefault();\n  // now validate safely\n});` }
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "validate.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 5: Validate a form</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    .error { color: #b00020; }
+    .ok { color: #1b7f3b; }
+  </style>
+</head>
+<body>
+  <h1>Sign up</h1>
+  <form id="signup">
+    <p><label>Name<br /><input id="name" /></label></p>
+    <p><label>Email<br /><input id="email" /></label></p>
+    <button type="submit">Sign up</button>
+  </form>
+  <p id="message"></p>
+
+  <script>
+    document.getElementById("signup").addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      var name = document.getElementById("name").value;
+      var email = document.getElementById("email").value;
+      var message = document.getElementById("message");
+
+      // 1. TODO: if the name is empty, show an error and return
+
+      // 2. TODO: if the email has no "@", show an error and return
+
+      // 3. TODO: otherwise show a success message with the name
+    });
+  <\/script>
+</body>
+</html>`,
+        core: [
+          "Stop the page reloading with event.preventDefault().",
+          "Show an error when the name is empty.",
+          "Show an error when the email has no @, and a success message when both are valid."
+        ],
+        stretch: [
+          "Also check that the name is at least three characters long.",
+          "Disable the sign-up button until both fields have something in them."
+        ]
+      },
+      assessment: [
+        {
+          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
+          questions: [
+            { prompt: "Question 1: Which property holds the text a user typed into an input?", answer: "input.value." },
+            { prompt: "Question 2: Why call event.preventDefault() in a submit handler?", answer: "To stop the browser reloading the page (its default behaviour) so your JavaScript can handle the form." },
+            { prompt: "Question 3: Why show one error at a time?", answer: "It is clearer for the user: they fix the first problem, then see the next, instead of facing a wall of errors." }
+          ]
+        }
+      ]
+    },
+    {
+      n: 6, title: "Event handling patterns, including delegation", emoji: "🧭", color: "sensing", tracks: "both",
+      goal: "Handle events on many elements with one listener.",
+      concept: "Use event delegation so one listener can handle a whole group of elements.",
+      objective: "Students can handle events on many elements with one listener using event delegation and closest().",
+      teachingPoints: [
+        "One listener on a parent can handle events from all its children — that is event delegation.",
+        "event.target is the element that was actually clicked; closest() walks up to a matching ancestor.",
+        "Delegation keeps code short and still works for items added later."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo: one handler, many items", mins: 5 },
+        { label: "Delegation and closest()", mins: 8 },
+        { label: "Activity time", mins: 15 },
+        { label: "Share & wrap-up", mins: 4 }
+      ],
+      liveDemo: [
+        {
+          title: "One click handler for the whole list",
+          filename: "delegation.html",
+          caption: "Click any team to mark it done. Add a team and click it too: the same single listener on the ul handles items that did not exist when the page loaded.",
+          code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 6: Event delegation</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    li { padding: 6px; cursor: pointer; }
+    li.done { text-decoration: line-through; color: #888; }
+  </style>
+</head>
+<body>
+  <h1>Teams</h1>
+  <ul id="list">
+    <li>Super Eagles</li>
+    <li>Enyimba</li>
+    <li>Kano Pillars</li>
+  </ul>
+  <button id="addBtn">Add a team</button>
+
+  <script>
+    var list = document.getElementById("list");
+
+    // ONE listener on the parent handles every item, now and in the future
+    list.addEventListener("click", function (event) {
+      var item = event.target.closest("li");
+      if (!item) return;
+      item.classList.toggle("done");
+    });
+
+    document.getElementById("addBtn").addEventListener("click", function () {
+      var item = document.createElement("li");
+      item.textContent = "New team";
+      list.appendChild(item);
+    });
+  <\/script>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Adding a listener to every item instead of the parent. The parent listener is shorter and automatically covers new items.",
+        "Forgetting that event.target can be a child of the item. Use event.target.closest(\"li\") to find the item itself.",
+        "Attaching the listener to the parent before the parent exists. Put the script after the HTML, as always."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "One handler, many items",
+            body: ["Put a single listener on the parent. Events from the children bubble up to it."],
+            codes: [
+              { code: `list.addEventListener("click", function (event) {\n  var item = event.target.closest("li");\n  if (item) item.classList.toggle("done");\n});` }
+            ]
+          },
+          {
+            h: "closest()",
+            body: ["event.target is the exact element that was clicked. closest() walks up the page to the nearest ancestor that matches a selector."],
+            codes: [
+              { code: `event.target.closest("li");\nevent.target.closest("button.delete");` }
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "delegation.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 6: Event delegation</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    li { padding: 6px; cursor: pointer; }
+    li.done { text-decoration: line-through; color: #888; }
+    li button { margin-left: 8px; }
+  </style>
+</head>
+<body>
+  <h1>Teams</h1>
+  <ul id="list">
+    <li>Super Eagles <button class="delete">Delete</button></li>
+    <li>Enyimba <button class="delete">Delete</button></li>
+    <li>Kano Pillars <button class="delete">Delete</button></li>
+  </ul>
+  <button id="addBtn">Add a team</button>
+
+  <script>
+    var list = document.getElementById("list");
+
+    // CORE: one listener on the parent handles every item
+    list.addEventListener("click", function (event) {
+      var item = event.target.closest("li");
+      if (!item) return;
+      item.classList.toggle("done");
+
+      // STRETCH: also handle the Delete button inside each item
+      // if (event.target.classList.contains("delete")) {
+      //   item.remove();
+      // }
+    });
+
+    // STRETCH: add a new item and check the same handler works on it
+    document.getElementById("addBtn").addEventListener("click", function () {
+      var item = document.createElement("li");
+      item.textContent = "New team ";
+      var del = document.createElement("button");
+      del.className = "delete";
+      del.textContent = "Delete";
+      item.appendChild(del);
+      list.appendChild(item);
+    });
+  <\/script>
+</body>
+</html>`,
+        core: [
+          "Add one click listener on the ul, not on each li.",
+          "Use event.target.closest(\"li\") to find the clicked item and toggle the done class on it."
+        ],
+        stretch: [
+          "Uncomment the code that removes an item when its Delete button is clicked.",
+          "Add new items and confirm the same parent handler still works on them."
+        ]
+      },
+      assessment: [
+        {
+          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
+          questions: [
+            { prompt: "Question 1: What is event delegation?", answer: "Attaching one listener to a parent element and letting it handle events that bubble up from its children." },
+            { prompt: "Question 2: Why is delegation good for lists?", answer: "One listener covers every item, including items added later, so you write less code and do not rebind on each new item." },
+            { prompt: "Question 3: Which method finds the ancestor element that matches a selector?", answer: "closest()." }
+          ]
+        }
+      ]
+    },
+    {
+      n: 7, title: "Timers and localStorage", emoji: "⏱️", color: "operators", tracks: "both",
+      goal: "Run code on a schedule and save data in the browser.",
+      concept: "Use timers to run code later and localStorage to remember data.",
+      objective: "Students can run code on a timer and save and load data with localStorage.",
+      teachingPoints: [
+        "setTimeout runs once; setInterval repeats every N milliseconds — keep the id so you can clearInterval it.",
+        "localStorage.setItem(key, value) saves and getItem(key) reads back; values are always strings.",
+        "Save arrays and objects by turning them into text with JSON.stringify and back with JSON.parse."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo: a countdown and saved data", mins: 5 },
+        { label: "setInterval, clearInterval and localStorage", mins: 8 },
+        { label: "Activity time", mins: 15 },
+        { label: "Share & wrap-up", mins: 4 }
+      ],
+      liveDemo: [
+        {
+          title: "A countdown and a remembered name",
+          filename: "timer_store.html",
+          caption: "Start the countdown and stop it part-way. Type a name and Save, then reload the page: the name is read back from localStorage.",
+          code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 7: Timers and localStorage</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    #count { font-size: 40px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Countdown</h1>
+  <p id="count">10</p>
+  <button id="startBtn">Start</button>
+  <button id="stopBtn">Stop</button>
+
+  <h2>Your name is remembered</h2>
+  <input id="nameInput" placeholder="Type your name" />
+  <button id="saveBtn">Save</button>
+  <p id="saved"></p>
+
+  <script>
+    var seconds = 10;
+    var timerId = null;
+
+    document.getElementById("startBtn").addEventListener("click", function () {
+      if (timerId !== null) return; // already running
+      timerId = setInterval(function () {
+        seconds = seconds - 1;
+        document.getElementById("count").textContent = seconds;
+        if (seconds <= 0) {
+          clearInterval(timerId);
+          timerId = null;
+          document.getElementById("count").textContent = "Time up!";
+        }
+      }, 1000); // 1000 milliseconds = 1 second
+    });
+
+    document.getElementById("stopBtn").addEventListener("click", function () {
+      clearInterval(timerId);
+      timerId = null;
+    });
+
+    document.getElementById("saveBtn").addEventListener("click", function () {
+      var name = document.getElementById("nameInput").value;
+      localStorage.setItem("savedName", name);
+      showSaved();
+    });
+
+    function showSaved() {
+      var name = localStorage.getItem("savedName");
+      document.getElementById("saved").textContent = name ? "Hello again, " + name + "!" : "";
     }
-    document.getElementById("save").addEventListener("click", function () {
-      let name = document.getElementById("nameInput").value;
-      localStorage.setItem("name", name);
-      out.textContent = "Saved: " + name;
-    });
+
+    showSaved(); // read the value back when the page loads
   <\/script>
 </body>
 </html>`
         }
       ],
       commonMistakes: [
-        "Trying to save an array or object directly (save a JSON string instead).",
-        "Assuming getItem always returns a value — it returns null if nothing was saved.",
-        "Forgetting that localStorage only stores strings."
+        "Mixing up milliseconds and seconds. setInterval wants milliseconds, so one second is 1000, not 1.",
+        "Losing the interval id. Keep the value setInterval returns in a variable so you can pass it to clearInterval.",
+        "Forgetting that localStorage stores strings. Numbers and objects come back as text unless you convert them."
       ],
       handout: {
         sections: [
           {
-            h: "Save and read a value",
-            body: ["setItem saves under a key; getItem reads it back (or null)."],
+            h: "Timers",
+            body: ["setTimeout runs once after a delay; setInterval repeats until you stop it. Times are in milliseconds, so 1000 is one second."],
             codes: [
-              { code: `localStorage.setItem("name", "Ada");  let n = localStorage.getItem("name");` }
+              { code: `setTimeout(function () {\n  console.log("One second later");\n}, 1000);\n\nvar id = setInterval(tick, 1000);\nclearInterval(id);` }
             ]
           },
           {
-            h: "Saving lists",
-            body: ["Store an array or object as JSON text and parse it back."],
+            h: "Saving data",
+            body: ["localStorage keeps data in the browser. Everything is stored as a string."],
             codes: [
-              { code: `localStorage.setItem("items", JSON.stringify(list));  let list = JSON.parse(localStorage.getItem("items"));` }
+              { code: `localStorage.setItem("name", "Ada");\nvar name = localStorage.getItem("name");` }
+            ]
+          },
+          {
+            h: "Saving an array",
+            body: ["Turn an array into JSON text to save it, and parse the text to get the array back."],
+            codes: [
+              { code: `var teams = ["Super Eagles", "Enyimba"];\nlocalStorage.setItem("teams", JSON.stringify(teams));\n\nvar saved = JSON.parse(localStorage.getItem("teams"));` }
             ]
           }
         ]
       },
       template: {
-        filename: "my_storage.html",
+        filename: "timer_store.html",
         code:
 `<!DOCTYPE html>
 <html>
+<head>
+  <title>Week 7: Timers and localStorage</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    #count { font-size: 40px; font-weight: bold; }
+  </style>
+</head>
 <body>
-  <input id="colour" type="text" placeholder="Favourite colour" />
-  <button id="save">Save colour</button>
-  <p id="out"></p>
+  <h1>Countdown</h1>
+  <p id="count">10</p>
+  <button id="startBtn">Start</button>
+  <button id="stopBtn">Stop</button>
+
+  <h2>Save your name</h2>
+  <input id="nameInput" placeholder="Type your name" />
+  <button id="saveBtn">Save</button>
+  <p id="saved"></p>
+  <p id="note"></p>
+
   <script>
-    let out = document.getElementById("out");
-    let saved = localStorage.getItem("colour");
-    if (saved) out.textContent = "Your colour: " + saved;
-    document.getElementById("save").addEventListener("click", function () {
-      let value = document.getElementById("colour").value;
-      localStorage.setItem("colour", value);
-      out.textContent = "Saved: " + value;
-    });
+    var seconds = 10;
+    var timerId = null;
+
+    // 1. TODO: start the countdown with setInterval (1000 ms = 1 second)
+    //    when it reaches 0, stop it with clearInterval
+
+    // 2. TODO: stop the countdown with clearInterval when Stop is clicked
+
+    // 3. TODO: save the input value with localStorage.setItem,
+    //    then read it back with getItem and show it in #saved
   <\/script>
 </body>
 </html>`,
-        tasks: [
-          "Save a second value and read both on load.",
-          "Show a message when nothing has been saved yet.",
-          "Save an array with JSON.stringify and parse it back.",
-          "Explain to a partner why localStorage stores strings."
+        core: [
+          "Build the countdown so it starts at 10 and goes down once per second.",
+          "Stop the countdown with the Stop button using clearInterval.",
+          "Save a name with localStorage.setItem and read it back with getItem."
+        ],
+        stretch: [
+          "Save a list of names as an array, using JSON.stringify to store it and JSON.parse to read it back.",
+          "Show a small \"Saved!\" note for a moment after saving."
         ]
       },
       assessment: [
         {
-          track: "A", audience: "Both", title: CHECKLIST_TRACK_A, type: "checklist",
-          items: [
-            "A value saves and is read back after reload",
-            "a missing value is handled",
-            "the student can explain getItem returning null"
-          ]
-        },
-        {
-          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
+          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
           questions: [
-            { prompt: "Question 1: Which method saves a value in localStorage?", answer: "localStorage.setItem(\"key\", value)" },
-            { prompt: "Question 2: What does localStorage.getItem return if nothing was saved?", answer: "null" },
-            { prompt: "Question 3: How do you save an array in localStorage?", answer: "Convert it to a string with JSON.stringify, then setItem that string." }
+            { prompt: "Question 1: Which timer repeats, and which one runs once?", answer: "setInterval repeats; setTimeout runs once." },
+            { prompt: "Question 2: How do you stop a repeating timer?", answer: "Save the id that setInterval returns, then call clearInterval(id)." },
+            { prompt: "Question 3: How do you save an array in localStorage?", answer: "Turn it into a string with JSON.stringify, store the string, and use JSON.parse when you read it back." }
           ]
         }
       ]
     },
-
-    /* ================================================================ 9 */
     {
-      n: 9, title: "Debugging in the browser", emoji: "🐞", color: "sensing", tracks: "both",
-      concept: "Read errors, use the console and break the problem into smaller parts to fix bugs.",
-      objective: "Students can read errors and use the console to find and fix bugs.",
+      n: 8, title: "Modern syntax (arrow functions, template literals, destructuring, map/filter)", emoji: "✨", color: "motion", tracks: "both",
+      goal: "Use modern JavaScript syntax to write cleaner code.",
+      concept: "Write shorter code with arrow functions, template literals, destructuring and array methods.",
+      objective: "Students can use arrow functions, template literals, destructuring and map/filter to write cleaner code.",
       teachingPoints: [
-        "The console shows errors in red with a line number and a message.",
-        "console.log() shows the real value of a variable at that moment.",
-        "Break the problem into smaller steps and check each one."
+        "An arrow function is a shorter way to write a function: (x) => x + 1.",
+        "Template literals use backticks and ${...} to drop values into a string.",
+        "Destructuring pulls values out of objects and arrays; map and filter always return a new array."
       ],
       timing: [
         { label: "Welcome & recap", mins: 3 },
-        { label: "Live demo: read an error", mins: 5 },
-        { label: "Debugging", mins: 8 },
+        { label: "Live demo: refactor older code", mins: 5 },
+        { label: "Arrows, template literals, destructuring, map/filter", mins: 8 },
         { label: "Activity time", mins: 15 },
         { label: "Share & wrap-up", mins: 4 }
       ],
       liveDemo: [
         {
-          title: "Read the error",
-          filename: "debug_error.html",
-          caption: "Run it: the id is misspelled, so heading is null and changing its text throws. Fix the id and run again.",
+          title: "Refactoring old code with modern syntax",
+          filename: "modern.html",
+          caption: "The same job as last week, written shorter: an arrow function, destructuring in the parameter, filter and a template literal.",
           code:
 `<!DOCTYPE html>
 <html>
+<head>
+  <title>Week 8: Modern syntax</title>
+</head>
 <body>
-  <h1 id="title">Debug me</h1>
+  <h1>Students who passed</h1>
+  <ul id="list"></ul>
+
   <script>
-    let heading = document.getElementById("titel");
-    heading.textContent = "Fixed!";
+    var students = [
+      { name: "Ada", score: 82 },
+      { name: "Chidi", score: 58 },
+      { name: "Amaka", score: 91 },
+      { name: "Tunde", score: 47 }
+    ];
+
+    // Old way: students.filter(function (student) { return student.score >= 60; })
+    var passed = students.filter((student) => student.score >= 60);
+
+    var list = document.getElementById("list");
+
+    // Destructuring in the parameter, and a template literal
+    passed.forEach(({ name, score }) => {
+      var item = document.createElement("li");
+      item.textContent = \`\${name} scored \${score}\`;
+      list.appendChild(item);
+    });
   <\/script>
 </body>
 </html>`
         }
       ],
       commonMistakes: [
-        "Guessing instead of reading the red error message and its line number.",
-        "Not logging values to see what is actually there.",
-        "Fixing a different line than the one the error points to."
+        "Using an arrow function where this matters. Arrow functions do not have their own this, which will trip you up later with classes.",
+        "Forgetting backticks. Template literals use `Hi ${name}` with backticks, not quotes.",
+        "Thinking filter changes the original array. filter and map return a new array; the original is left alone."
       ],
       handout: {
         sections: [
           {
-            h: "Read the error",
-            body: ["The console shows the message and the line number. Go to that line and check names, quotes and brackets."]
+            h: "Arrow functions",
+            body: ["An arrow function is a shorter way to write a function. When the body is a single expression, the return is implicit."],
+            codes: [
+              { code: `var double = (n) => n * 2;\nvar add = (a, b) => a + b;` }
+            ]
           },
           {
-            h: "Checklist of common bugs",
-            list: [
-              "Spelling of ids and variables",
-              "Missing quotes or brackets",
-              "Script before the elements it uses",
-              "Calling a function with or without brackets in the wrong place"
+            h: "Template literals",
+            body: ["Use backticks and ${...} to drop values into a string without a pile of + signs and quotes."],
+            codes: [
+              { code: "var name = \"Ada\";\nvar greeting = `Hello, ${name}!`;" }
+            ]
+          },
+          {
+            h: "map and filter",
+            body: ["map changes every item and returns a new array; filter keeps the items that pass a test."],
+            codes: [
+              { code: `var nums = [5, 12, 18, 3];\nvar big = nums.filter(n => n > 10);\nvar doubled = nums.map(n => n * 2);` }
             ]
           }
         ]
       },
       template: {
-        filename: "bug_hunt.html",
+        filename: "modern.html",
         code:
 `<!DOCTYPE html>
 <html>
+<head>
+  <title>Week 8: Modern syntax</title>
+</head>
 <body>
-  <p id="score">Score: 0</p>
+  <h1>Modern syntax</h1>
+  <ul id="list"></ul>
+
   <script>
-    let points = 10;
-    let label = document.getElementById("scoer");
-    label.textContent = "Score: " + points;
+    var student = { name: "Ada", score: 82 };
+    var scores = [45, 82, 58, 91, 47];
+
+    // 1. TODO: rewrite this function as an arrow function
+    var double = function (n) {
+      return n * 2;
+    };
+
+    // 2. TODO: build this message with a template literal
+    var message = "Student: " + student.name;
+
+    // 3. TODO: filter the scores to keep only those 60 and above
+    var passed = scores.filter(function (n) {
+      return n >= 60;
+    });
+
+    console.log(double(5));
+    console.log(message);
+    console.log(passed);
   <\/script>
 </body>
 </html>`,
-        tasks: [
-          "Run the page and read the console error.",
-          "Fix the bug and run again.",
-          "Add a console.log to check the value of points.",
-          "Explain to a partner how the line number helped."
+        core: [
+          "Rewrite the double function as an arrow function.",
+          "Build the message with a template literal using backticks and ${...}.",
+          "Filter the scores so only those 60 and above remain."
+        ],
+        stretch: [
+          "Use map to turn the scores into strings like \"Score: 82\".",
+          "Destructure name and score from the student object."
         ]
       },
       assessment: [
         {
-          track: "A", audience: "Both", title: CHECKLIST_TRACK_A, type: "checklist",
-          items: [
-            "The page runs with no errors after fixing",
-            "the student describes the bug",
-            "a console.log was used"
-          ]
-        },
-        {
-          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
+          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
           questions: [
-            { prompt: "Question 1: Where do JavaScript errors appear?", answer: "In the browser console, in red with a line number." },
-            { prompt: "Question 2: What is console.log useful for?", answer: "Showing the real value of something so you can check your assumptions." },
-            { prompt: "Question 3: What is a common cause of a 'Cannot read properties of null' error?", answer: "An element was not found (e.g. a misspelled id), so the variable is null." }
+            { prompt: "Question 1: Write the arrow-function form of function (x) { return x + 1; }.", answer: "(x) => x + 1" },
+            { prompt: "Question 2: What characters wrap a template literal?", answer: "Backticks: `Hi ${name}`." },
+            { prompt: "Question 3: Does filter change the original array?", answer: "No. filter returns a new array; the original is unchanged." }
           ]
         }
       ]
     },
-
-    /* ================================================================ 10 */
     {
-      n: 10, title: "Term project: an interactive widget", emoji: "🌟", color: "events", tracks: "both",
-      concept: "Build a small interactive widget that reacts to the user and keeps its state.",
-      objective: "Students build a small widget that reacts to the user and keeps its state.",
+      n: 9, title: "Project: to-do app or calculator", emoji: "📋", color: "control", tracks: "both",
+      goal: "Build and test a small interactive app.",
+      concept: "Combine the DOM, events and forms to build a small app.",
+      objective: "Students build a small interactive app using the DOM, events and a state variable.",
       teachingPoints: [
-        "A widget has state (a variable), controls (buttons/inputs) and a display.",
-        "Event handlers update the state, then redraw the display.",
-        "Test each control and handle the empty case."
+        "Keep the app's data in a state variable — one source of truth.",
+        "Render the page from the state every time the state changes.",
+        "Handle add and remove, and test edge cases such as an empty input."
       ],
       timing: [
         { label: "Welcome & recap", mins: 3 },
-        { label: "Demo of a finished widget", mins: 4 },
+        { label: "Live demo: the to-do app", mins: 4 },
         { label: "Build time", mins: 20 },
         { label: "Present", mins: 5 },
         { label: "Wrap-up", mins: 3 }
       ],
       liveDemo: [
         {
-          title: "A small interactive widget",
-          filename: "widget.html",
-          caption: "State in a variable, controls that change it, and one update() that redraws the display.",
+          title: "A to-do app with add, done and delete",
+          filename: "app.html",
+          caption: "Add a task, click a task to mark it done, and click Delete to remove it. Every change updates the array and re-renders the list from the state.",
           code:
 `<!DOCTYPE html>
 <html>
 <head>
+  <title>Week 9: To-do app</title>
   <style>
-    body { font-family: sans-serif; text-align: center; padding: 24px; }
-    #count { font-size: 48px; }
+    body { font-family: sans-serif; padding: 20px; max-width: 420px; }
+    li { padding: 6px; cursor: pointer; }
+    li.done { text-decoration: line-through; color: #888; }
+    li button { margin-left: 8px; }
   </style>
 </head>
 <body>
-  <h1 id="count">0</h1>
-  <button id="up">+1</button>
-  <button id="down">−1</button>
-  <button id="reset">Reset</button>
+  <h1>My To-Do List</h1>
+  <input id="taskInput" placeholder="Add a task" />
+  <button id="addBtn">Add</button>
+  <p id="count"></p>
+  <ul id="list"></ul>
+
   <script>
-    let value = 0;
-    let display = document.getElementById("count");
-    function update() { display.textContent = value; }
-    document.getElementById("up").addEventListener("click", function () { value = value + 1; update(); });
-    document.getElementById("down").addEventListener("click", function () { value = value - 1; update(); });
-    document.getElementById("reset").addEventListener("click", function () { value = 0; update(); });
+    var tasks = [
+      { text: "Buy garri", done: false },
+      { text: "Pay 500 Naira for data", done: false },
+      { text: "Finish maths homework", done: true }
+    ];
+    var list = document.getElementById("list");
+
+    function render() {
+      list.innerHTML = "";
+      tasks.forEach(function (task, index) {
+        var item = document.createElement("li");
+        item.textContent = task.text;
+        if (task.done) item.classList.add("done");
+
+        var del = document.createElement("button");
+        del.textContent = "Delete";
+        del.addEventListener("click", function (event) {
+          event.stopPropagation();
+          tasks.splice(index, 1);
+          render();
+        });
+
+        item.appendChild(del);
+        item.addEventListener("click", function () {
+          task.done = !task.done;
+          render();
+        });
+
+        list.appendChild(item);
+      });
+      document.getElementById("count").textContent = tasks.length + " task(s)";
+    }
+
+    document.getElementById("addBtn").addEventListener("click", function () {
+      var input = document.getElementById("taskInput");
+      var text = input.value.trim();
+      if (text === "") return;
+      tasks.push({ text: text, done: false });
+      input.value = "";
+      render();
+    });
+
+    render();
   <\/script>
 </body>
 </html>`
         }
       ],
       commonMistakes: [
-        "Changing the state but forgetting to redraw.",
-        "Duplicating the same code in every handler instead of one update function.",
-        "Not testing the reset or the empty case."
+        "Changing the state but not redrawing. If you do not call render() after a change, the page still shows the old data.",
+        "Duplicated handlers. Re-rendering replaces the items, so attach handlers inside render and not again somewhere else.",
+        "Ignoring empty input. Trim the text and return early, or you add blank rows."
       ],
       handout: {
         sections: [
           {
-            h: "State, controls, display",
+            h: "Plan the app",
+            body: ["Decide the data, the page and the actions before you write any code."],
             list: [
-              "A variable for the state",
-              "Controls that change it",
-              "A display element",
-              "One function that redraws"
+              "State: what does one task look like? { text, done }",
+              "Page: an input, an Add button and a ul.",
+              "Actions: add, mark done, delete.",
+              "Redraw the list every time the state changes."
             ]
           },
           {
-            h: "Test it",
-            body: ["Click every control. Try the edges (start value, reset, zero). Fix anything that looks wrong."]
+            h: "Render from state",
+            body: ["One function redraws the whole list from the tasks array, so the page always matches the data."],
+            codes: [
+              { code: `function render() {\n  list.innerHTML = "";\n  tasks.forEach(function (task) {\n    // build an li from task and append it\n  });\n}` }
+            ]
           }
         ]
       },
       template: {
-        filename: "my_widget.html",
+        filename: "app.html",
         code:
 `<!DOCTYPE html>
 <html>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Week 9: My to-do app</title>
   <style>
-    body { font-family: sans-serif; text-align: center; padding: 24px; }
-    #count { font-size: 40px; }
+    body { font-family: sans-serif; padding: 20px; max-width: 420px; }
+    li { padding: 6px; }
+    li.done { text-decoration: line-through; color: #888; }
   </style>
 </head>
 <body>
-  <h1>My widget</h1>
-  <p id="count">0</p>
-  <button id="up">+1</button>
-  <button id="reset">Reset</button>
+  <h1>My To-Do List</h1>
+  <input id="taskInput" placeholder="Add a task" />
+  <button id="addBtn">Add</button>
+  <p id="count"></p>
+  <ul id="list"></ul>
+
   <script>
-    let value = 0;
-    function update() { document.getElementById("count").textContent = value; }
-    document.getElementById("up").addEventListener("click", function () { value = value + 1; update(); });
-    document.getElementById("reset").addEventListener("click", function () { value = 0; update(); });
+    // STATE: the single source of truth
+    var tasks = [];
+
+    var list = document.getElementById("list");
+    var input = document.getElementById("taskInput");
+
+    function render() {
+      list.innerHTML = "";
+      tasks.forEach(function (task, index) {
+        var item = document.createElement("li");
+        item.textContent = task.text;
+        if (task.done) item.classList.add("done");
+
+        item.addEventListener("click", function () {
+          // TODO: flip task.done and render again
+        });
+
+        var del = document.createElement("button");
+        del.textContent = "Delete";
+        del.addEventListener("click", function (event) {
+          event.stopPropagation();
+          // TODO: remove this task and render again
+        });
+
+        item.appendChild(del);
+        list.appendChild(item);
+      });
+      // TODO: show the task count
+    }
+
+    document.getElementById("addBtn").addEventListener("click", function () {
+      var text = input.value.trim();
+      if (text === "") return;
+      // TODO: push a new task { text: text, done: false }, clear the input and render
+    });
+
+    render();
   <\/script>
 </body>
 </html>`,
-        tasks: [
-          "Choose a widget idea (counter, scoreboard, colour changer).",
-          "Add at least two controls.",
-          "Keep the state in a variable and redraw with one function.",
-          "Present your widget and explain how its state changes."
+        core: [
+          "Add a task: push it to the tasks array, clear the input and render again.",
+          "Click a task to mark it done: flip task.done and render.",
+          "Click Delete to remove a task from the array and render."
+        ],
+        stretch: [
+          "Save the tasks in localStorage with JSON.stringify, and load them back when the page starts.",
+          "Show a task count, for example \"3 tasks\"."
         ]
       },
       assessment: [
         {
-          track: "A", audience: "Both", title: "Term 2 project rubric", type: "rubric",
-          criteria: [
-            "Widget runs without errors",
-            "React to at least one user action",
-            "State is kept in a variable",
-            "The display redraws correctly",
-            "The student can explain their widget"
+          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
+          questions: [
+            { prompt: "Question 1: Why keep the app's data in a tasks array instead of only drawing it on the page?", answer: "The array is the source of truth; the page is drawn from it. Changing the array and rendering keeps the page and the data in step." },
+            { prompt: "Question 2: After you change the state, what must you do so the page shows it?", answer: "Call render() again to redraw the page from the state." },
+            { prompt: "Question 3: Why check for an empty input before adding a task?", answer: "To avoid adding blank rows. Trim the text and return early if it is empty." },
+            { prompt: "Question 4: How do you save an array of tasks in localStorage?", answer: "localStorage.setItem(\"tasks\", JSON.stringify(tasks)), then JSON.parse when reading it back." }
           ]
         },
         {
-          track: "B", audience: "Both", title: "Design document — interactive widget", type: "form",
-          intro: "Complete this before the showcase.",
-          fields: [
-            { label: "What does your widget do?" },
-            { label: "What controls does it have?", lines: 2 },
-            { label: "What is its state (which variable)?", lines: 2 }
+          track: "A", audience: "Both", title: "App checklist", type: "checklist",
+          items: [
+            "The app runs without errors.",
+            "It reacts to the user's input (add, click, delete).",
+            "It keeps its data in a state variable and renders from it.",
+            "The student can explain one of their event handlers."
+          ]
+        }
+      ]
+    },
+    {
+      n: 10, title: "Revision, assessment, showcase", emoji: "🎉", color: "sensing", tracks: "both",
+      goal: "Review Term 2 and showcase your work.",
+      concept: "Recap the term's ideas and present a project.",
+      objective: "Students revise Term 2 and present a small piece of work they can explain.",
+      teachingPoints: [
+        "Revise the DOM, events, forms, timers, localStorage and modern syntax.",
+        "Present your work and explain one line of your own code.",
+        "Reflect on what you would build next."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Term 2 revision", mins: 8 },
+        { label: "Presentations", mins: 18 },
+        { label: "Feedback", mins: 4 },
+        { label: "Wrap-up", mins: 2 }
+      ],
+      liveDemo: [
+        {
+          title: "A page that uses delegation, a class toggle and localStorage",
+          filename: "recap_dom.html",
+          caption: "One page bringing the term together: a parent listener marks clicked items, a button toggles a class on the body, and a value is saved and read back with localStorage.",
+          code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 10: DOM recap</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    .dark { background-color: #1f2a44; color: #ffffff; }
+    li.clicked { font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Term 2 recap</h1>
+  <button id="themeBtn">Toggle theme</button>
+  <ul id="list">
+    <li>DOM</li>
+    <li>Events</li>
+    <li>Forms</li>
+    <li>Timers</li>
+    <li>localStorage</li>
+  </ul>
+
+  <h2>Saved value</h2>
+  <input id="noteInput" placeholder="Type a note" />
+  <button id="saveBtn">Save</button>
+  <p id="saved"></p>
+
+  <script>
+    // Delegation: one handler marks any clicked item
+    document.getElementById("list").addEventListener("click", function (event) {
+      var item = event.target.closest("li");
+      if (item) item.classList.toggle("clicked");
+    });
+
+    // Class toggle on the body
+    document.getElementById("themeBtn").addEventListener("click", function () {
+      document.body.classList.toggle("dark");
+    });
+
+    // Save and read a value with localStorage
+    document.getElementById("saveBtn").addEventListener("click", function () {
+      localStorage.setItem("term2note", document.getElementById("noteInput").value);
+      showNote();
+    });
+
+    function showNote() {
+      var note = localStorage.getItem("term2note");
+      document.getElementById("saved").textContent = note ? "Saved: " + note : "Nothing saved yet.";
+    }
+
+    showNote();
+  <\/script>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Not testing before presenting, so an error shows up in front of the class. Run it once more before you present.",
+        "Being unable to explain a line of your own code. Read each handler aloud and say what it does.",
+        "Skipping the live demo. A running example is the strongest part of the presentation."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Term 2 recap",
+            body: ["Check that you can do each of these before the showcase:"],
+            list: [
+              "Find an element and change its text, style or classes",
+              "Create, add and remove elements",
+              "Listen for clicks, input and key events",
+              "Read form values and validate with preventDefault",
+              "Use event delegation with one handler on a parent",
+              "Run timers and save data in localStorage",
+              "Use arrow functions, template literals, map and filter"
+            ]
+          },
+          {
+            h: "Presentation script",
+            body: ["Use these prompts to plan what you will say as you present:"],
+            list: [
+              "Introduce your project in one sentence.",
+              "Show it running and point out one thing that works well.",
+              "Explain one event handler in your own words.",
+              "Name one challenge you met and how you solved it.",
+              "Say what you would add next if you had more time."
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "recap_dom.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 10: Term 2 recap</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    .dark { background-color: #1f2a44; color: #ffffff; }
+    li.clicked { font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Fix me</h1>
+  <button id="themeBtn">Toggle theme</button>
+  <ul id="list">
+    <li>DOM</li>
+    <li>Events</li>
+    <li>Forms</li>
+  </ul>
+  <input id="noteInput" placeholder="Type a note" />
+  <button id="saveBtn">Save</button>
+  <p id="saved"></p>
+
+  <script>
+    // BUG: this runs immediately instead of when the button is clicked
+    document.getElementById("themeBtn").addEventListener("click", document.body.classList.toggle("dark"));
+
+    // This listener is fine — use it to check your delegation
+    document.getElementById("list").addEventListener("click", function (event) {
+      var item = event.target.closest("li");
+      if (item) item.classList.toggle("clicked");
+    });
+
+    document.getElementById("saveBtn").addEventListener("click", function () {
+      // TODO: save the input value with localStorage.setItem,
+      // then read it back with getItem and show it in #saved
+    });
+  <\/script>
+</body>
+</html>`,
+        core: [
+          "Fix the broken handler: pass a function to addEventListener instead of calling the toggle now.",
+          "Toggle the dark class on the body when the button is clicked.",
+          "Save the input value with localStorage and show it in #saved."
+        ],
+        stretch: [
+          "Refactor the filter/loop in your project to use map or filter.",
+          "Load your saved value when the page starts and show it right away."
+        ]
+      },
+      assessment: [
+        {
+          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
+          questions: [
+            { prompt: "Question 1: What does addEventListener do?", answer: "It attaches a function that runs when the given event happens on that element." },
+            { prompt: "Question 2: What is event delegation and why is it useful?", answer: "One listener on a parent handles events from its children; it works for items added later and keeps the code short." },
+            { prompt: "Question 3: Why call event.preventDefault() in a form submit handler?", answer: "To stop the page reloading so your JavaScript can validate and handle the form." },
+            { prompt: "Question 4: What does setInterval do, and how do you stop it?", answer: "It repeats a function every N milliseconds; save the id it returns and call clearInterval(id)." },
+            { prompt: "Question 5: What is the difference between filter and map?", answer: "filter keeps the items that pass a test; map changes every item. Both return a new array." }
           ]
         }
       ]
     }
   ];
 
-  // --- Term 3: projects & showcase ---
-  unify(weeks[8]); weeks[8].n = 1;
-  unify(weeks[9]); weeks[9].n = 10;
+  // --- Term 3: Modern JavaScript and Real-World Apps ---
   var term3 = [
-    weeks[8],
     {
-      n: 2, title: "Project setup", emoji: "📁", color: "motion", tracks: "both",
-      concept: "Plan the files, the HTML structure and the JavaScript logic before writing the project.",
-      objective: "Students plan their project's HTML structure and JavaScript logic before coding.",
+      n: 1, title: "JSON and scope", emoji: "🧾", color: "control", tracks: "both",
+      goal: "Work with JSON and understand where variables live.",
+      concept: "Read and write JSON, and understand local and global scope.",
+      objective: "Convert data to and from JSON, and understand where variables live (scope).",
       teachingPoints: [
-        "Decide the project, then sketch the HTML: which elements and which ids.",
-        "Write the JavaScript logic as plain steps (pseudocode) before real code.",
-        "Set up the starter file with the elements and empty script ready."
+        "JSON is text that looks like a JavaScript object: keys and strings use double quotes, and there are no trailing commas.",
+        "JSON.stringify turns a value into JSON text; JSON.parse turns JSON text back into a value.",
+        "let and const inside { } are block-scoped: they only exist between the braces they were created in."
       ],
       timing: [
         { label: "Welcome & recap", mins: 3 },
-        { label: "Live demo", mins: 5 },
-        { label: "Planning", mins: 8 },
+        { label: "Live demo: object to JSON and back", mins: 5 },
+        { label: "JSON and scope", mins: 8 },
         { label: "Activity time", mins: 15 },
         { label: "Share & wrap-up", mins: 4 }
       ],
       liveDemo: [
         {
-          title: "A project skeleton",
-          filename: "setup.html",
-          caption: "Ids are chosen, the skeleton is ready, and the logic is written as steps before any real code.",
-          code:
-`<!DOCTYPE html>
-<html>
-<body>
-  <h1>My Project</h1>
-  <input id="taskInput" type="text" placeholder="New task" />
-  <button id="addButton">Add</button>
-  <ul id="taskList"></ul>
-  <script>
-    // Logic to write:
-    // 1. read the input value
-    // 2. create a list item
-    // 3. append it to the list
-  <\/script>
-</body>
-</html>`
-        }
-      ],
-      commonMistakes: [
-        "Starting to code without deciding the ids first.",
-        "Choosing vague ids that are hard to remember.",
-        "Writing logic that depends on elements that do not exist yet."
-      ],
-      handout: {
-        sections: [
-          {
-            h: "Plan the pieces",
-            list: [
-              "The elements you need (with ids)",
-              "The user actions (add, delete…)",
-              "The state variables",
-              "The steps in the main logic"
-            ]
-          },
-          {
-            h: "Set up the file",
-            body: ["Put the elements in the HTML and leave the script empty. Run it to confirm the page loads."]
-          }
-        ]
-      },
-      template: {
-        filename: "my_setup.html",
-        code:
-`<!DOCTYPE html>
-<html>
-<body>
-  <h1>My Project Setup</h1>
-  <input id="noteInput" type="text" placeholder="Write a note" />
-  <button id="saveNote">Save</button>
-  <ul id="noteList"></ul>
-  <script>
-    // TODO: write your logic as steps here
-  <\/script>
-</body>
-</html>`,
-        tasks: [
-          "Choose your project (to-do list, calculator or form validator).",
-          "List the elements and ids you will need.",
-          "Write the main logic as numbered steps.",
-          "Run the skeleton to confirm it loads."
-        ]
-      },
-      assessment: [
-        {
-          track: "A", audience: "Both", title: CHECKLIST_TRACK_A, type: "checklist",
-          items: [
-            "The skeleton loads",
-            "Ids are clear and consistent",
-            "The logic is written as steps"
-          ]
-        },
-        {
-          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
-          questions: [
-            { prompt: "Question 1: Why plan the ids before coding?", answer: "So the JavaScript can find the right elements, and the names stay consistent." },
-            { prompt: "Question 2: What is pseudocode?", answer: "Writing the steps of the logic in plain language before real code." },
-            { prompt: "Question 3: Name two elements a to-do list needs.", answer: "Any two of: an input for the task, an add button, a list to show tasks." }
-          ]
-        }
-      ]
-    },
-
-    {
-      n: 3, title: "Build: to-do list (part 1)", emoji: "✅", color: "control", tracks: "both",
-      concept: "Start the to-do list: add a task and show it in the list.",
-      objective: "Students add a task to a list from an input field.",
-      teachingPoints: [
-        "Read the input value, create an li, set its text and append it.",
-        "Ignore empty input with a guard (if (text === \"\") return;).",
-        "Clear the input after adding."
-      ],
-      timing: [
-        { label: "Welcome & recap", mins: 3 },
-        { label: "Live demo", mins: 5 },
-        { label: "Build", mins: 8 },
-        { label: "Activity time", mins: 15 },
-        { label: "Share & wrap-up", mins: 4 }
-      ],
-      liveDemo: [
-        {
-          title: "Add a task",
-          filename: "todo_1.html",
-          caption: "The guard stops empty tasks; the input clears after each add.",
-          code:
-`<!DOCTYPE html>
-<html>
-<body>
-  <input id="taskInput" type="text" placeholder="New task" />
-  <button id="addButton">Add</button>
-  <ul id="taskList"></ul>
-  <script>
-    document.getElementById("addButton").addEventListener("click", function () {
-      let input = document.getElementById("taskInput");
-      let text = input.value.trim();
-      if (text === "") return;
-      let item = document.createElement("li");
-      item.textContent = text;
-      document.getElementById("taskList").appendChild(item);
-      input.value = "";
-    });
-  <\/script>
-</body>
-</html>`
-        }
-      ],
-      commonMistakes: [
-        "Not trimming the value, so spaces are added as tasks.",
-        "Forgetting to clear the input.",
-        "Appending to the input instead of the list."
-      ],
-      handout: {
-        sections: [
-          {
-            h: "Four steps to add a task",
-            list: [
-              "Read the value",
-              "Trim it",
-              "Create and fill an li",
-              "Append and clear"
-            ]
-          },
-          {
-            h: "Guard the empty case",
-            codes: [
-              {
-                code:
-`if (text === "") return;`
-              }
-            ]
-          }
-        ]
-      },
-      template: {
-        filename: "my_todo_1.html",
-        code:
-`<!DOCTYPE html>
-<html>
-<body>
-  <input id="taskInput" type="text" placeholder="New task" />
-  <button id="addButton">Add</button>
-  <ul id="taskList"></ul>
-  <script>
-    document.getElementById("addButton").addEventListener("click", function () {
-      let input = document.getElementById("taskInput");
-      let text = input.value.trim();
-      if (text === "") return;
-      let item = document.createElement("li");
-      item.textContent = text;
-      document.getElementById("taskList").appendChild(item);
-      input.value = "";
-    });
-  <\/script>
-</body>
-</html>`,
-        tasks: [
-          "Add several tasks and check they appear in order.",
-          "Try adding an empty task and confirm nothing is added.",
-          "Add the task count to the page.",
-          "Explain to a partner what the guard does."
-        ]
-      },
-      assessment: [
-        {
-          track: "A", audience: "Both", title: CHECKLIST_TRACK_A, type: "checklist",
-          items: [
-            "Tasks are added in order",
-            "Empty input is ignored",
-            "The input clears"
-          ]
-        },
-        {
-          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
-          questions: [
-            { prompt: "Question 1: Why trim the input value before using it?", answer: "So extra spaces are not saved as an empty-looking task." },
-            { prompt: "Question 2: What does the guard if (text === \"\") return; do?", answer: "Stops the code when the input is empty, so no empty task is added." },
-            { prompt: "Question 3: Which method adds the new li to the list?", answer: "appendChild" }
-          ]
-        }
-      ]
-    },
-
-    {
-      n: 4, title: "Build: to-do list (part 2)", emoji: "✅", color: "control", tracks: "both",
-      concept: "Finish the to-do list: mark tasks done, delete tasks and keep the list in order.",
-      objective: "Students mark tasks complete, delete them and keep the list after reloading.",
-      teachingPoints: [
-        "Toggle a done class on a task to mark it complete.",
-        "Add a delete button per task that removes its li.",
-        "Save the tasks with localStorage so they survive a reload."
-      ],
-      timing: [
-        { label: "Welcome & recap", mins: 3 },
-        { label: "Live demo", mins: 5 },
-        { label: "Build", mins: 8 },
-        { label: "Activity time", mins: 15 },
-        { label: "Share & wrap-up", mins: 4 }
-      ],
-      liveDemo: [
-        {
-          title: "Complete, delete and save",
-          filename: "todo_2.html",
-          caption: "Clicking a task toggles the done class. The addTask function keeps the code tidy.",
+          title: "An object turned into JSON text and back",
+          filename: "json.html",
+          caption: "The object is turned into JSON text with stringify, parsed back with parse, and the results are logged. A block-scoped variable is shown inside its block.",
           code:
 `<!DOCTYPE html>
 <html>
 <head>
-  <style>
-    .done { text-decoration: line-through; color: #94a3b8; }
-  </style>
+  <title>Week 1: JSON and scope</title>
 </head>
 <body>
-  <input id="taskInput" type="text" placeholder="New task" />
-  <button id="addButton">Add</button>
-  <ul id="taskList"></ul>
-  <script>
-    let list = document.getElementById("taskList");
+  <h1>JSON and scope</h1>
+  <p>Open the console to see the results.</p>
 
-    function addTask(text) {
-      let item = document.createElement("li");
-      item.textContent = text;
-      item.addEventListener("click", function () {
-        item.classList.toggle("done");
+  <script>
+    var student = { name: "Ada", score: 82, subjects: ["Maths", "Science"] };
+
+    // 1. Object -> JSON text
+    var text = JSON.stringify(student);
+    console.log("As JSON text:", text);
+
+    // 2. JSON text -> object
+    var back = JSON.parse(text);
+    console.log("Back as an object:", back.name, back.score);
+
+    // 3. Block scope: this variable only exists inside the braces
+    if (true) {
+      let inside = "I only exist in this block";
+      console.log(inside);
+    }
+    // console.log(inside); // ERROR: inside is not defined out here
+
+    // Passing an object to JSON.parse throws, because parse needs text
+    // console.log(JSON.parse(back)); // ERROR
+  <\/script>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Writing JSON with single quotes or unquoted keys - JSON needs double quotes around every key and string.",
+        "Calling JSON.parse on data that is already an object; parse expects text.",
+        "Using a let or const variable outside the { } block it was created in, which raises a ReferenceError."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "JSON text vs JavaScript",
+            body: ["JSON is a text format for data. It looks like a JavaScript object but is stricter: keys and strings use double quotes, and there are no comments or trailing commas."],
+            codes: [
+              { code: `{ "name": "Ada", "score": 82, "subjects": ["Maths", "Science"] }` }
+            ]
+          },
+          {
+            h: "stringify and parse",
+            body: ["stringify turns a value into JSON text so it can be stored or sent. parse turns that text back into a value you can use."],
+            codes: [
+              { code: `var text = JSON.stringify({ name: "Ada" });\nvar obj = JSON.parse(text);\nconsole.log(obj.name); // Ada` }
+            ]
+          },
+          {
+            h: "Scope",
+            body: ["Scope is where a variable can be seen. A let or const created inside { } is block-scoped: it disappears at the closing brace."],
+            list: [
+              "let and const are block-scoped.",
+              "var ignores blocks and leaks outside them - avoid it.",
+              "Use the smallest scope that works."
+            ],
+            codes: [
+              { code: `if (true) {\n  let secret = "in here";\n}\nconsole.log(secret); // ReferenceError` }
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "json.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 1: JSON starter</title>
+</head>
+<body>
+  <h1>JSON and scope starter</h1>
+  <p>Open the console to see your results.</p>
+
+  <script>
+    var student = { name: "Chidi", score: 71 };
+    var jsonText = '{"name":"Amaka","score":90}';
+
+    // 1. TODO: turn student into JSON text with JSON.stringify
+    var text = "";
+
+    // 2. TODO: parse jsonText back into an object
+    var parsed = null;
+
+    // 3. TODO: log a value from the parsed object
+    console.log(text);
+    console.log(parsed);
+
+    // BONUS: uncomment to see the block-scope error, then fix it
+    if (true) {
+      let secret = "block only";
+    }
+    // console.log(secret);
+  <\/script>
+</body>
+</html>`,
+        core: [
+          "Turn the student object into JSON text with JSON.stringify and log it.",
+          "Parse jsonText with JSON.parse and log parsed.name.",
+          "Log one value from the student object."
+        ],
+        stretch: [
+          "Parse a JSON array of students and loop through it with forEach.",
+          "Uncomment console.log(secret), read the block-scope error, then move the log inside the block to fix it."
+        ]
+      },
+      assessment: [
+        {
+          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
+          questions: [
+            { prompt: "Question 1: What does JSON.stringify do?", answer: "It turns a value such as an object or array into JSON text (a string)." },
+            { prompt: "Question 2: What does JSON.parse do?", answer: "It takes JSON text and turns it back into a value you can use in your code." },
+            { prompt: "Question 3: What is block scope?", answer: "A let or const created inside { } only exists inside those braces; it cannot be used outside them." }
+          ]
+        }
+      ]
+    },
+    {
+      n: 2, title: "Promises", emoji: "⏳", color: "motion", tracks: "both",
+      goal: "Understand and use Promises.",
+      concept: "Handle work that finishes later with Promises.",
+      objective: "Understand what a promise represents and chain a simple one.",
+      teachingPoints: [
+        "A promise is a value that arrives later - a placeholder for something that is not ready yet.",
+        "A promise can resolve (succeed) or reject (fail).",
+        ".then() runs when it resolves and .catch() runs when it rejects."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo: a delayed value", mins: 5 },
+        { label: "Promises, then and catch", mins: 8 },
+        { label: "Activity time", mins: 15 },
+        { label: "Share & wrap-up", mins: 4 }
+      ],
+      liveDemo: [
+        {
+          title: "A promise that resolves after one second",
+          filename: "promises.html",
+          caption: "waitASecond() returns a promise. .then runs when the value arrives and .catch would run if it failed. Notice the last log runs first.",
+          code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 2: Promises</title>
+</head>
+<body>
+  <h1>Promises</h1>
+  <p>Open the console to see the order of the logs.</p>
+
+  <script>
+    function waitASecond() {
+      return new Promise(function (resolve) {
+        setTimeout(function () {
+          resolve("Data arrived after 1 second");
+        }, 1000);
       });
-      list.appendChild(item);
     }
 
-    document.getElementById("addButton").addEventListener("click", function () {
-      let input = document.getElementById("taskInput");
-      let text = input.value.trim();
-      if (text === "") return;
-      addTask(text);
-      input.value = "";
-    });
-  <\/script>
-</body>
-</html>`
-        }
-      ],
-      commonMistakes: [
-        "Toggling the class on the wrong element.",
-        "Saving to localStorage on every keystroke instead of when the list changes.",
-        "Reading the saved list before the page elements exist."
-      ],
-      handout: {
-        sections: [
-          {
-            h: "Mark and delete",
-            body: ["Clicking a task toggles a done class. A delete button removes the li with item.remove()."]
-          },
-          {
-            h: "Save the list",
-            body: ["After any change, save an array of task texts with JSON.stringify; on load, read it back and rebuild."],
-            codes: [
-              {
-                code:
-`localStorage.setItem("tasks", JSON.stringify(tasks));`
-              }
-            ]
-          }
-        ]
-      },
-      template: {
-        filename: "my_todo_2.html",
-        code:
-`<!DOCTYPE html>
-<html>
-<head>
-  <style>
-    .done { text-decoration: line-through; color: #94a3b8; }
-  </style>
-</head>
-<body>
-  <input id="taskInput" type="text" placeholder="New task" />
-  <button id="addButton">Add</button>
-  <ul id="taskList"></ul>
-  <script>
-    let list = document.getElementById("taskList");
-    function addTask(text) {
-      let item = document.createElement("li");
-      item.textContent = text;
-      item.addEventListener("click", function () { item.classList.toggle("done"); });
-      list.appendChild(item);
-    }
-    document.getElementById("addButton").addEventListener("click", function () {
-      let input = document.getElementById("taskInput");
-      let text = input.value.trim();
-      if (text === "") return;
-      addTask(text);
-      input.value = "";
-    });
-  <\/script>
-</body>
-</html>`,
-        tasks: [
-          "Make clicking a task mark it done.",
-          "Add a delete button to each task.",
-          "Save the tasks with localStorage and rebuild them on load.",
-          "Test: add, reload, and confirm tasks remain."
-        ]
-      },
-      assessment: [
-        {
-          track: "A", audience: "Both", title: CHECKLIST_TRACK_A, type: "checklist",
-          items: [
-            "Tasks toggle done",
-            "Tasks can be deleted",
-            "Tasks survive a reload"
-          ]
-        },
-        {
-          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
-          questions: [
-            { prompt: "Question 1: Which classList method marks a task done on and off?", answer: "classList.toggle(\"done\")" },
-            { prompt: "Question 2: How do you remove an element from the page?", answer: "Call element.remove() on it." },
-            { prompt: "Question 3: How do you save a list of tasks in localStorage?", answer: "JSON.stringify the array and setItem it under a key." }
-          ]
-        }
-      ]
-    },
+    waitASecond()
+      .then(function (value) {
+        console.log("Success:", value);
+      })
+      .catch(function (error) {
+        console.log("Failed:", error);
+      });
 
-    {
-      n: 5, title: "Build: calculator", emoji: "🧮", color: "operators", tracks: "both",
-      concept: "Build a calculator that reads two numbers and shows the result of an operation.",
-      objective: "Students read two numbers and an operation, then show the result.",
-      teachingPoints: [
-        "Read two numbers with .value and convert them with Number(...).",
-        "Choose the operation with an if/else or a selected operator.",
-        "Show the result in a display element."
-      ],
-      timing: [
-        { label: "Welcome & recap", mins: 3 },
-        { label: "Live demo", mins: 5 },
-        { label: "Build", mins: 8 },
-        { label: "Activity time", mins: 15 },
-        { label: "Share & wrap-up", mins: 4 }
-      ],
-      liveDemo: [
-        {
-          title: "Add two numbers",
-          filename: "calc.html",
-          caption: "Number() turns the input text into a real number so the maths works.",
-          code:
-`<!DOCTYPE html>
-<html>
-<body>
-  <input id="a" type="number" placeholder="First number" />
-  <input id="b" type="number" placeholder="Second number" />
-  <button id="add">+</button>
-  <p id="result"></p>
-  <script>
-    document.getElementById("add").addEventListener("click", function () {
-      let a = Number(document.getElementById("a").value);
-      let b = Number(document.getElementById("b").value);
-      document.getElementById("result").textContent = "Result: " + (a + b);
-    });
+    console.log("This line runs first, before the data arrives.");
   <\/script>
 </body>
 </html>`
         }
       ],
       commonMistakes: [
-        "Forgetting Number(), so the values are joined as text (\"2\" + \"3\" = \"23\").",
-        "Dividing by zero without handling it.",
-        "Using one = instead of === in a comparison."
+        "Forgetting .then, so nothing happens with the value when the promise resolves.",
+        "Treating a promise as a plain value and logging it directly instead of using .then.",
+        "Leaving out .catch, which hides failures and makes bugs hard to find."
       ],
       handout: {
         sections: [
           {
-            h: "From text to number",
-            body: ["Input values are strings. Wrap them in Number() to do maths."],
-            codes: [
-              {
-                code:
-`let a = Number(inputA.value);`
-              }
-            ]
-          },
-          {
-            h: "Pick the operation",
-            body: ["Use buttons or a select, then an if/else to choose what to do."]
-          }
-        ]
-      },
-      template: {
-        filename: "my_calc.html",
-        code:
-`<!DOCTYPE html>
-<html>
-<body>
-  <input id="a" type="number" placeholder="First number" />
-  <input id="b" type="number" placeholder="Second number" />
-  <button id="add">+</button>
-  <button id="sub">−</button>
-  <button id="mul">×</button>
-  <p id="result"></p>
-  <script>
-    function show(value) { document.getElementById("result").textContent = "Result: " + value; }
-    document.getElementById("add").addEventListener("click", function () {
-      show(Number(document.getElementById("a").value) + Number(document.getElementById("b").value));
-    });
-    document.getElementById("sub").addEventListener("click", function () {
-      show(Number(document.getElementById("a").value) - Number(document.getElementById("b").value));
-    });
-    document.getElementById("mul").addEventListener("click", function () {
-      show(Number(document.getElementById("a").value) * Number(document.getElementById("b").value));
-    });
-  <\/script>
-</body>
-</html>`,
-        tasks: [
-          "Add a divide button.",
-          "Show a message when dividing by zero.",
-          "Ignore an empty field gracefully.",
-          "Explain to a partner why Number() is needed."
-        ]
-      },
-      assessment: [
-        {
-          track: "A", audience: "Both", title: CHECKLIST_TRACK_A, type: "checklist",
-          items: [
-            "Each operation shows the right result",
-            "Division by zero is handled",
-            "Number() is used"
-          ]
-        },
-        {
-          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
-          questions: [
-            { prompt: "Question 1: Why wrap input values in Number()?", answer: "Because input values are strings; Number() turns them into numbers so maths works." },
-            { prompt: "Question 2: What is \"2\" + \"3\" if they are strings?", answer: "\"23\" — the strings are joined, not added." },
-            { prompt: "Question 3: Write the line that adds two numbers a and b.", answer: "let result = a + b;" }
-          ]
-        }
-      ]
-    },
-
-    {
-      n: 6, title: "Build: form validator", emoji: "🔒", color: "variables", tracks: "both",
-      concept: "Check what the user typed and show helpful messages when a field is not valid.",
-      objective: "Students check what the user typed and show helpful messages.",
-      teachingPoints: [
-        "Read the input, check a rule (not empty, has \"@\", long enough) and show a message.",
-        "Show one clear message at a time, and only submit when everything passes.",
-        "Use event.preventDefault() on the form submit."
-      ],
-      timing: [
-        { label: "Welcome & recap", mins: 3 },
-        { label: "Live demo", mins: 5 },
-        { label: "Build", mins: 8 },
-        { label: "Activity time", mins: 15 },
-        { label: "Share & wrap-up", mins: 4 }
-      ],
-      liveDemo: [
-        {
-          title: "Check an email",
-          filename: "validator.html",
-          caption: "Each rule has its own message. Only when all pass do we say it looks good.",
-          code:
-`<!DOCTYPE html>
-<html>
-<body>
-  <input id="email" type="text" placeholder="you@example.com" />
-  <button id="check">Check</button>
-  <p id="msg"></p>
-  <script>
-    document.getElementById("check").addEventListener("click", function () {
-      let email = document.getElementById("email").value.trim();
-      let msg = document.getElementById("msg");
-      if (email === "") {
-        msg.textContent = "Please type your email.";
-      } else if (email.indexOf("@") === -1) {
-        msg.textContent = "An email needs an @ sign.";
-      } else {
-        msg.style.color = "#15803d";
-        msg.textContent = "Looks good!";
-      }
-    });
-  <\/script>
-</body>
-</html>`
-        }
-      ],
-      commonMistakes: [
-        "Showing all messages at once instead of the first failure.",
-        "Forgetting to trim, so spaces count as valid input.",
-        "Forgetting preventDefault on a real form submit."
-      ],
-      handout: {
-        sections: [
-          {
-            h: "Rules and messages",
-            body: ["Check one rule at a time, and show a helpful message for the first one that fails."],
-            codes: [
-              {
-                code:
-`if (value === "") { show("Please fill this in"); }`
-              }
-            ]
-          },
-          {
-            h: "Stop the reload",
-            body: ["In a form, call event.preventDefault() before validating."]
-          }
-        ]
-      },
-      template: {
-        filename: "my_validator.html",
-        code:
-`<!DOCTYPE html>
-<html>
-<body>
-  <input id="username" type="text" placeholder="Username" />
-  <button id="check">Check</button>
-  <p id="msg"></p>
-  <script>
-    document.getElementById("check").addEventListener("click", function () {
-      let value = document.getElementById("username").value.trim();
-      let msg = document.getElementById("msg");
-      if (value === "") {
-        msg.textContent = "Please type a username.";
-      } else if (value.length < 3) {
-        msg.textContent = "Usernames need at least 3 characters.";
-      } else {
-        msg.style.color = "#15803d";
-        msg.textContent = "Nice username!";
-      }
-    });
-  <\/script>
-</body>
-</html>`,
-        tasks: [
-          "Add a rule for a maximum length.",
-          "Show an error message in red and success in green.",
-          "Wrap it in a form with submit and preventDefault.",
-          "Explain to a partner why only the first failure is shown."
-        ]
-      },
-      assessment: [
-        {
-          track: "A", audience: "Both", title: CHECKLIST_TRACK_A, type: "checklist",
-          items: [
-            "Rules are checked in order",
-            "Messages are clear",
-            "preventDefault is used in the form"
-          ]
-        },
-        {
-          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
-          questions: [
-            { prompt: "Question 1: Why show only the first failing rule's message?", answer: "So the user can fix one problem at a time instead of being overwhelmed." },
-            { prompt: "Question 2: How do you check a value is not empty?", answer: "if (value === \"\") { ... }" },
-            { prompt: "Question 3: Why call event.preventDefault() on a form submit?", answer: "To stop the browser reloading the page while you validate." }
-          ]
-        }
-      ]
-    },
-
-    {
-      n: 7, title: "Polish & accessibility", emoji: "✨", color: "looks", tracks: "both",
-      concept: "Improve spacing, labels, focus styles and keyboard use so everyone can use the project.",
-      objective: "Students improve their project's usability and make it work for more people.",
-      teachingPoints: [
-        "Label every input and keep contrast high so text is readable.",
-        "Make sure everything works with the keyboard (focus styles, buttons not divs).",
-        "Add clear messages and a tidy layout."
-      ],
-      timing: [
-        { label: "Welcome & recap", mins: 3 },
-        { label: "Live demo", mins: 5 },
-        { label: "Polish", mins: 8 },
-        { label: "Activity time", mins: 15 },
-        { label: "Share & wrap-up", mins: 4 }
-      ],
-      liveDemo: [
-        {
-          title: "Labels and focus",
-          filename: "a11y.html",
-          caption: "A label tied to the input with for/id helps everyone. The focus outline shows where the keyboard is.",
-          code:
-`<!DOCTYPE html>
-<html>
-<head>
-  <style>
-    body { font-family: sans-serif; padding: 16px; }
-    label { display: block; font-weight: 700; margin-top: 8px; }
-    input:focus, button:focus { outline: 3px solid #4c97ff; outline-offset: 2px; }
-  </style>
-</head>
-<body>
-  <label for="email">Email address</label>
-  <input id="email" type="text" />
-  <button id="go">Submit</button>
-  <script>
-    document.getElementById("go").addEventListener("click", function () {
-      document.getElementById("email").style.border = "2px solid #15803d";
-    });
-  <\/script>
-</body>
-</html>`
-        }
-      ],
-      commonMistakes: [
-        "Using placeholder text instead of a real label.",
-        "Removing focus outlines, which breaks keyboard use.",
-        "Using a div with a click handler instead of a real button."
-      ],
-      handout: {
-        sections: [
-          {
-            h: "Small things, big difference",
+            h: "A value that arrives later",
+            body: ["Some work takes time: a timer, reading a file, or asking a server for data. A promise is a placeholder for the value that will arrive later."],
             list: [
-              "Label every input (for/id)",
-              "Keep text contrast high",
-              "Use real buttons",
-              "Do not remove focus outlines"
+              "pending - still waiting",
+              "fulfilled - resolved with a value",
+              "rejected - failed with a reason"
             ]
           },
           {
-            h: "Check the keyboard",
-            body: ["Click nothing: use Tab and Enter only. If you can finish your task, your project is keyboard-friendly."]
+            h: "then and catch",
+            body: [".then receives the resolved value; .catch receives the failure. Chaining them keeps the success and failure paths side by side."],
+            codes: [
+              { code: `getData()\n  .then(function (value) {\n    console.log("Got:", value);\n  })\n  .catch(function (error) {\n    console.log("Failed:", error);\n  });` }
+            ]
+          },
+          {
+            h: "A simple promise",
+            body: ["new Promise gives you resolve and reject. Call resolve(value) when the work succeeds."],
+            codes: [
+              { code: `new Promise(function (resolve) {\n  setTimeout(function () { resolve("done"); }, 1000);\n});` }
+            ]
           }
         ]
       },
       template: {
-        filename: "my_polish.html",
+        filename: "promises.html",
         code:
 `<!DOCTYPE html>
 <html>
 <head>
-  <style>
-    body { font-family: sans-serif; padding: 16px; }
-    label { display: block; font-weight: 700; margin-top: 8px; }
-    button:focus, input:focus { outline: 3px solid #4c97ff; }
-  </style>
+  <title>Week 2: Promises starter</title>
 </head>
 <body>
-  <label for="task">New task</label>
-  <input id="task" type="text" />
-  <button id="add">Add</button>
+  <h1>Promises starter</h1>
+  <p>Open the console to follow the order.</p>
+
+  <script>
+    // 1. TODO: return a promise that resolves with "Saved!" after 1 second
+    function save() {
+      return new Promise(function (resolve) {
+        // add a setTimeout that calls resolve("Saved!")
+      });
+    }
+
+    // 2. TODO: use .then to log the value
+    // 3. TODO: add a .catch to handle failure
+    save();
+
+    console.log("start");
+  <\/script>
+</body>
+</html>`,
+        core: [
+          "Make save() resolve with \"Saved!\" after a one-second timer.",
+          "Log the value with .then.",
+          "Add a .catch that logs a failure message."
+        ],
+        stretch: [
+          "Make the promise reject instead, and confirm .catch runs.",
+          "Chain two .then calls so the value passes through both."
+        ]
+      },
+      assessment: [
+        {
+          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
+          questions: [
+            { prompt: "Question 1: What is a promise?", answer: "A placeholder for a value that is not ready yet; it will resolve or reject later." },
+            { prompt: "Question 2: Which method runs when a promise resolves?", answer: ".then()" },
+            { prompt: "Question 3: Which method handles a failure?", answer: ".catch()" }
+          ]
+        }
+      ]
+    },
+    {
+      n: 3, title: "async/await", emoji: "⚡", color: "sensing", tracks: "both",
+      goal: "Use async and await to handle asynchronous tasks.",
+      concept: "Write asynchronous code that reads like ordinary code.",
+      objective: "Rewrite promise code with async/await.",
+      teachingPoints: [
+        "An async function always returns a promise.",
+        "await pauses inside an async function until the value arrives, then continues with it.",
+        "Wrap awaited work in try/catch so failures are handled."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo: await the delayed value", mins: 5 },
+        { label: "async, await and try/catch", mins: 8 },
+        { label: "Activity time", mins: 15 },
+        { label: "Share & wrap-up", mins: 4 }
+      ],
+      liveDemo: [
+        {
+          title: "The same delayed value, read with await",
+          filename: "async.html",
+          caption: "loadData() is async. await pauses it until waitASecond() resolves, while the rest of the page keeps running. try/catch handles any failure.",
+          code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 3: async/await</title>
+</head>
+<body>
+  <h1>async / await</h1>
+  <p>Open the console to see the order of the logs.</p>
+
+  <script>
+    function waitASecond() {
+      return new Promise(function (resolve) {
+        setTimeout(function () {
+          resolve("Data arrived after 1 second");
+        }, 1000);
+      });
+    }
+
+    async function loadData() {
+      try {
+        var value = await waitASecond();
+        console.log("Got:", value);
+      } catch (error) {
+        console.log("Failed:", error);
+      }
+    }
+
+    loadData();
+    console.log("This runs while we wait.");
+  <\/script>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Using await outside an async function, which is a syntax error.",
+        "Forgetting try/catch, so a rejected promise becomes an unhandled error.",
+        "Thinking await freezes the whole page; it only pauses the async function it is in."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "async makes a function return a promise",
+            body: ["Putting async before a function means it always returns a promise, even if you return a plain value."],
+            codes: [
+              { code: `async function greet() {\n  return "Hello";\n}\n// greet() returns a promise that resolves to "Hello"` }
+            ]
+          },
+          {
+            h: "await pauses here",
+            body: ["await waits for a promise and hands you its value. Code after it runs only once the value has arrived."],
+            codes: [
+              { code: `async function load() {\n  var value = await getData();\n  console.log(value);\n}` }
+            ]
+          },
+          {
+            h: "try/catch",
+            body: ["If the awaited promise rejects, await throws. Catch it with try/catch so your program keeps running."],
+            codes: [
+              { code: `try {\n  var value = await getData();\n} catch (error) {\n  console.log(error.message);\n}` }
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "async.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 3: async starter</title>
+</head>
+<body>
+  <h1>async / await starter</h1>
+  <p>Open the console to see your results.</p>
+
+  <script>
+    function getData() {
+      return new Promise(function (resolve) {
+        setTimeout(function () {
+          resolve("Sample data");
+        }, 1000);
+      });
+    }
+
+    // 1. TODO: mark this function async
+    function load() {
+      // 2. TODO: await getData() and log the value
+      // 3. TODO: wrap it in try/catch
+    }
+
+    load();
+  <\/script>
+</body>
+</html>`,
+        core: [
+          "Mark load() as async.",
+          "await getData() and log the value it resolves with.",
+          "Wrap the await in try/catch and log any error."
+        ],
+        stretch: [
+          "await two delayed values one after the other and log the total time.",
+          "Add a second async function and call it after the first finishes."
+        ]
+      },
+      assessment: [
+        {
+          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
+          questions: [
+            { prompt: "Question 1: What does the async keyword do to a function?", answer: "It makes the function return a promise, and lets you use await inside it." },
+            { prompt: "Question 2: What does await do?", answer: "It pauses the async function until the promise settles, then gives you the resolved value." },
+            { prompt: "Question 3: Why use try/catch with await?", answer: "A rejected promise makes await throw; try/catch handles that error so the program keeps running." }
+          ]
+        }
+      ]
+    },
+    {
+      n: 4, title: "fetch and APIs (offline sample)", emoji: "🌐", color: "operators", tracks: "both",
+      goal: "Fetch data from an API and show it on the page.",
+      concept: "Get data from a server with fetch and display it, using an offline sample.",
+      objective: "Understand how fetch gets data from an API, using an offline sample.",
+      teachingPoints: [
+        "An API is a way to ask another program for data; fetch(url) sends that request and returns a promise.",
+        "response.json() reads the body and returns another promise with the parsed data.",
+        "Online fetch loads live data; offline we use a fakeFetch that returns the same shape."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo: load sample results", mins: 5 },
+        { label: "APIs and the fetch pattern", mins: 8 },
+        { label: "Activity time", mins: 15 },
+        { label: "Share & wrap-up", mins: 4 }
+      ],
+      liveDemo: [
+        {
+          title: "Load results with an offline stand-in",
+          filename: "fetch.html",
+          caption: "fakeFetch() returns a promise that resolves to sample data, so this page works with no internet. The real fetch code is in the handout.",
+          code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 4: fetch (offline sample)</title>
+</head>
+<body>
+  <h1>Class results</h1>
+  <p>Open the console to see the loaded data.</p>
+
+  <script>
+    // Offline stand-in for fetch: resolves with sample data.
+    function fakeFetch(url) {
+      return new Promise(function (resolve) {
+        setTimeout(function () {
+          resolve({
+            ok: true,
+            json: function () {
+              return Promise.resolve({
+                className: "JSS 3B",
+                results: [
+                  { name: "Ada", score: 82 },
+                  { name: "Chidi", score: 58 },
+                  { name: "Amaka", score: 91 }
+                ]
+              });
+            }
+          });
+        }, 700);
+      });
+    }
+
+    async function loadResults() {
+      try {
+        var res = await fakeFetch("/api/results");
+        var data = await res.json();
+        console.log("Class:", data.className);
+        data.results.forEach(function (s) {
+          console.log(s.name + " scored " + s.score);
+        });
+      } catch (error) {
+        console.log("Could not load results:", error.message);
+      }
+    }
+
+    loadResults();
+  <\/script>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Forgetting the second await on response.json(), so you try to use a promise as data.",
+        "Not adding a .catch or try/catch, leaving failures invisible.",
+        "Expecting real network data in this offline page - it uses the sample."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "What an API is",
+            body: ["An API is a service you can ask for data. You send a request to a URL, and it answers with data, usually in JSON."],
+            list: [
+              "The URL names the resource you want.",
+              "The response has a status (200 means OK) and a body.",
+              "Most API bodies are JSON."
+            ]
+          },
+          {
+            h: "The fetch pattern",
+            body: ["fetch returns a promise. Await it to get the response, then await response.json() to read the body."],
+            codes: [
+              { code: `const res = await fetch(url);\nconst data = await res.json();` }
+            ]
+          },
+          {
+            h: "Offline stand-in",
+            body: ["This week we cannot reach the network, so fakeFetch returns the same shape of data. Swap in real fetch when you are online."],
+            codes: [
+              { code: `function fakeFetch(url) {\n  return new Promise(function (resolve) {\n    setTimeout(function () {\n      resolve({ ok: true, json: function () {\n        return Promise.resolve(sampleData);\n      } });\n    }, 700);\n  });\n}` }
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "fetch.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 4: fetch starter</title>
+</head>
+<body>
+  <h1>Class results</h1>
+  <p id="status">Loading...</p>
   <ul id="list"></ul>
+
   <script>
-    document.getElementById("add").addEventListener("click", function () {
-      let input = document.getElementById("task");
-      if (input.value.trim() === "") return;
-      let item = document.createElement("li");
-      item.textContent = input.value.trim();
-      document.getElementById("list").appendChild(item);
-      input.value = "";
-    });
+    function fakeFetch(url) {
+      return new Promise(function (resolve) {
+        setTimeout(function () {
+          resolve({
+            json: function () {
+              return Promise.resolve({
+                className: "JSS 3B",
+                results: [
+                  { name: "Ada", score: 82 },
+                  { name: "Chidi", score: 58 },
+                  { name: "Amaka", score: 91 }
+                ]
+              });
+            }
+          });
+        }, 700);
+      });
+    }
+
+    // 1. TODO: with await, call fakeFetch and read the body
+    async function loadResults() {
+      // var res = await fakeFetch("/api/results");
+      // var data = await res.json();
+      // 2. TODO: show the class name in #status
+    }
+
+    loadResults();
   <\/script>
 </body>
 </html>`,
-        tasks: [
-          "Add a label to every input in your project.",
-          "Check your contrast and fix anything hard to read.",
-          "Complete your task using only the keyboard.",
-          "Fix anything a classmate finds confusing."
+        core: [
+          "Use await to call fakeFetch and read the body with res.json().",
+          "Show the class name in the #status paragraph.",
+          "Loop the results into the list with a value from each."
+        ],
+        stretch: [
+          "Build a list item for each student showing name and score.",
+          "Add a try/catch that writes a friendly message to #status if loading fails."
         ]
       },
       assessment: [
         {
-          track: "A", audience: "Both", title: CHECKLIST_TRACK_A, type: "checklist",
-          items: [
-            "Every input has a label",
-            "The task works with the keyboard",
-            "Contrast is readable"
-          ]
-        },
-        {
-          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
+          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
           questions: [
-            { prompt: "Question 1: Why use a label with for/id instead of only a placeholder?", answer: "A label is read aloud by screen readers and stays visible; a placeholder disappears when you type." },
-            { prompt: "Question 2: Why should you not remove focus outlines?", answer: "They show keyboard users where they are on the page." },
-            { prompt: "Question 3: Which is better for a clickable control, a <button> or a <div>?", answer: "A <button> — it is focusable and works with the keyboard and assistive tech." }
+            { prompt: "Question 1: What does fetch return?", answer: "A promise that resolves to a response object." },
+            { prompt: "Question 2: How do you read JSON from the response?", answer: "Await response.json(), which returns a promise for the parsed data." },
+            { prompt: "Question 3: Why does this page use a sample offline?", answer: "There is no network in class, so fakeFetch returns sample data with the same shape as a real API response." }
           ]
         }
       ]
     },
-
     {
-      n: 8, title: "Presenting your project", emoji: "🎤", color: "events", tracks: "both",
-      concept: "Prepare a short presentation: what it does, how it works and one challenge you solved.",
-      objective: "Students prepare and rehearse a short, clear project presentation.",
+      n: 5, title: "Error handling and debugging with DevTools", emoji: "🐞", color: "events", tracks: "both",
+      goal: "Handle errors and debug with the browser DevTools.",
+      concept: "Catch errors with try/catch and inspect your code with DevTools.",
+      objective: "Catch errors in code and use the browser tools to find bugs.",
       teachingPoints: [
-        "Say what it does, show it working, then explain one part of the code.",
-        "Demo the main path and one edge case (e.g. empty input).",
-        "Be ready for one question."
+        "try/catch runs risky code and handles any error instead of stopping the page.",
+        "throw raises your own error with a message, useful for invalid input.",
+        "The console shows errors with a file and line number; DevTools lets you inspect values."
       ],
       timing: [
         { label: "Welcome & recap", mins: 3 },
-        { label: "Live demo of a good presentation", mins: 5 },
-        { label: "Prepare", mins: 8 },
+        { label: "Live demo: catching a parse error", mins: 5 },
+        { label: "try/catch/throw and the console", mins: 8 },
         { label: "Activity time", mins: 15 },
         { label: "Share & wrap-up", mins: 4 }
       ],
       liveDemo: [
         {
-          title: "Presentation demo script",
-          filename: "present.html",
-          caption: "A four-step talk keeps presentations clear and short.",
+          title: "Handling a parse error and throwing your own",
+          filename: "errors.html",
+          caption: "The bad JSON does not crash the page - try/catch reports it. setAge throws a custom error that the second try/catch catches.",
           code:
 `<!DOCTYPE html>
 <html>
+<head>
+  <title>Week 5: Errors and debugging</title>
+</head>
 <body>
-  <h1>Talk track</h1>
-  <ol>
-    <li>What my project is and who it is for.</li>
-    <li>Show it working (the main action).</li>
-    <li>Show one edge case, like empty input.</li>
-    <li>Explain one function or event in the code.</li>
-  </ol>
+  <h1>Error handling</h1>
+  <p>Open the console to see the handled errors.</p>
+
+  <script>
+    try {
+      var data = JSON.parse("{ bad json }");
+      console.log("Parsed:", data);
+    } catch (error) {
+      console.log("Could not read the data:", error.message);
+    }
+
+    function setAge(age) {
+      if (age < 0) {
+        throw new Error("Age cannot be negative");
+      }
+      return age;
+    }
+
+    try {
+      setAge(-5);
+    } catch (error) {
+      console.log("Validation failed:", error.message);
+    }
+
+    console.log("The page kept running.");
+  <\/script>
 </body>
 </html>`
         }
       ],
       commonMistakes: [
-        "Reading the code line by line instead of explaining the idea.",
-        "Never actually showing the project working.",
-        "Running over time with no structure."
+        "An empty catch block with no logging, which hides the problem instead of revealing it.",
+        "Catching too much so real bugs are swallowed silently.",
+        "Ignoring the console message, which already shows the file and line where it failed."
       ],
       handout: {
         sections: [
           {
-            h: "Your four-step talk",
-            list: [
-              "What it does",
-              "Show it working",
-              "One edge case",
-              "One piece of code you are proud of"
+            h: "try / catch / throw",
+            body: ["Wrap risky code in try. If it throws, catch receives the error. Use throw to raise your own error with a clear message."],
+            codes: [
+              { code: `try {\n  doSomethingRisky();\n} catch (error) {\n  console.log(error.message);\n}\n\nthrow new Error("Something went wrong");` }
             ]
           },
           {
-            h: "Rehearse",
-            body: ["Practise out loud to a partner once. Time yourself — aim for one to two minutes."]
+            h: "Reading an error",
+            body: ["An error has a name (like SyntaxError or TypeError) and a message. The console also shows the file and line so you can jump straight to it."],
+            list: [
+              "Read the message first.",
+              "Click the file:line link in the console.",
+              "Check the line just before the reported one too."
+            ]
+          },
+          {
+            h: "Using the console",
+            body: ["The Console tab prints your logs and errors. Use it to check values: type a variable name and press Enter to inspect it live."]
           }
         ]
       },
       template: {
-        filename: "my_talk.html",
+        filename: "errors.html",
         code:
 `<!DOCTYPE html>
 <html>
+<head>
+  <title>Week 5: Errors starter</title>
+</head>
 <body>
-  <h1>My presentation plan</h1>
-  <ol>
-    <li>What my project does: ...</li>
-    <li>The main action: ...</li>
-    <li>An edge case I handle: ...</li>
-    <li>A piece of code I am proud of: ...</li>
-  </ol>
+  <h1>Error handling starter</h1>
+  <p id="message">Open the console.</p>
+
+  <script>
+    var raw = "{ name: Ada }"; // invalid JSON (keys need quotes)
+
+    // 1. TODO: wrap JSON.parse(raw) in try/catch
+    // 2. TODO: log a helpful message in catch
+    var data = JSON.parse(raw);
+
+    // 3. TODO: write a function that throws if a score is above 100
+    function checkScore(score) {
+      // ...
+    }
+
+    console.log(data);
+  <\/script>
 </body>
 </html>`,
-        tasks: [
-          "Fill in your four-step plan.",
-          "Rehearse once out loud.",
-          "Time yourself (aim for 1–2 minutes).",
-          "Prepare one question you expect to be asked."
+        core: [
+          "Wrap JSON.parse(raw) in try/catch and log a helpful message.",
+          "Fix raw so it becomes valid JSON and parse it cleanly.",
+          "Write checkScore() that throws when the score is above 100."
+        ],
+        stretch: [
+          "Validate the input in checkScore() and show the error text on the page.",
+          "Log error.name as well as error.message to see the difference."
         ]
       },
       assessment: [
         {
-          track: "A", audience: "Both", title: CHECKLIST_TRACK_A, type: "checklist",
-          items: [
-            "The talk has all four steps",
-            "The project is demonstrated working",
-            "The talk fits the time"
-          ]
-        },
-        {
-          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
+          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
           questions: [
-            { prompt: "Question 1: Name the four steps of the talk.", answer: "What it does; show it working; one edge case; one piece of code you are proud of." },
-            { prompt: "Question 2: What is an edge case?", answer: "An unusual input or situation, such as empty input or zero, that your project should handle." },
-            { prompt: "Question 3: Why rehearse out loud?", answer: "So the talk flows, fits the time, and you notice anything unclear." }
+            { prompt: "Question 1: What does try/catch do?", answer: "It runs risky code and, if it throws, handles the error in catch instead of stopping the program." },
+            { prompt: "Question 2: What does throw do?", answer: "It raises your own error with a message, which you can catch." },
+            { prompt: "Question 3: Where do errors appear in the browser?", answer: "In the console, with the file and line number." }
           ]
         }
       ]
     },
-
     {
-      n: 9, title: "Showcase day", emoji: "🏆", color: "sensing", tracks: "both",
-      concept: "Present projects to the class and give helpful feedback to classmates.",
-      objective: "Students present projects and give useful feedback to classmates.",
+      n: 6, title: "Classes and OOP basics", emoji: "🏛️", color: "variables", tracks: "both",
+      goal: "Create classes and objects in JavaScript.",
+      concept: "Model things with classes, constructors and methods.",
+      objective: "Model things with a class and create objects from it.",
       teachingPoints: [
-        "Present your project using the four-step talk.",
-        "Give specific, kind feedback: one thing that worked, one idea to improve.",
-        "Use the rubric to reflect on your own project."
+        "A class is a template for making objects with the same shape.",
+        "The constructor sets up each new object; this refers to the object being built.",
+        "Methods are functions on the class, and new creates an instance."
       ],
       timing: [
-        { label: "Welcome", mins: 3 },
-        { label: "Presentations", mins: 25 },
-        { label: "Peer feedback", mins: 5 },
-        { label: "Reflection & wrap-up", mins: 4 }
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo: a Student class", mins: 5 },
+        { label: "Classes, constructors and methods", mins: 8 },
+        { label: "Activity time", mins: 15 },
+        { label: "Share & wrap-up", mins: 4 }
       ],
       liveDemo: [
         {
-          title: "Feedback sentence starters",
-          filename: "feedback.html",
-          caption: "Specific feedback names what worked and suggests one improvement.",
+          title: "A Student class with a method",
+          filename: "classes.html",
+          caption: "One class, two instances. new runs the constructor for each object, and the methods use this to read their own values.",
           code:
 `<!DOCTYPE html>
 <html>
+<head>
+  <title>Week 6: Classes</title>
+</head>
 <body>
-  <h1>Feedback starters</h1>
-  <ul>
-    <li>"I liked how … because …"</li>
-    <li>"Have you tried … ?"</li>
-    <li>"One small thing: …"</li>
-  </ul>
+  <h1>Classes</h1>
+  <p>Open the console to meet Ada and Chidi.</p>
+
+  <script>
+    class Student {
+      constructor(name, score) {
+        this.name = name;
+        this.score = score;
+      }
+
+      greet() {
+        return "Hi, I am " + this.name;
+      }
+
+      result() {
+        return this.score >= 60 ? "Pass" : "Fail";
+      }
+    }
+
+    var ada = new Student("Ada", 82);
+    var chidi = new Student("Chidi", 55);
+
+    console.log(ada.greet(), "-", ada.result());
+    console.log(chidi.greet(), "-", chidi.result());
+  <\/script>
 </body>
 </html>`
         }
       ],
       commonMistakes: [
-        "Vague feedback (\"it's nice\") instead of specific.",
-        "Rushing through presentations and skipping the demo.",
-        "Not listening to classmates' presentations."
+        "Forgetting new, so the class is called like a function and this is not set up.",
+        "Forgetting this, so name and score look like unknown variables.",
+        "Putting commas between class methods - class bodies use no commas."
       ],
       handout: {
         sections: [
           {
-            h: "Give good feedback",
-            body: ["Say one thing that worked and name it, then suggest one improvement. Be kind and specific."]
+            h: "Class and constructor",
+            body: ["A class is a blueprint. The constructor runs once for each new object and fills in its properties with this."],
+            codes: [
+              { code: `class Student {\n  constructor(name, score) {\n    this.name = name;\n    this.score = score;\n  }\n}` }
+            ]
           },
           {
-            h: "Reflect on your own",
-            body: ["Use the rubric to note what you did well and one thing you would change."]
+            h: "Methods and this",
+            body: ["Methods are functions written inside the class. Inside them, this points to the object the method was called on."],
+            codes: [
+              { code: `class Student {\n  constructor(name) { this.name = name; }\n  greet() { return "Hi, " + this.name; }\n}` }
+            ]
+          },
+          {
+            h: "Creating instances",
+            body: ["new creates an object from the class and returns it. Each instance has its own copies of the properties."],
+            codes: [
+              { code: `var ada = new Student("Ada", 82);\nconsole.log(ada.greet());` }
+            ]
           }
         ]
       },
       template: {
-        filename: "my_reflection.html",
+        filename: "classes.html",
         code:
 `<!DOCTYPE html>
 <html>
+<head>
+  <title>Week 6: Classes starter</title>
+</head>
 <body>
-  <h1>My reflection</h1>
-  <p>One thing that worked: ...</p>
-  <p>One thing I would change: ...</p>
+  <h1>Classes starter</h1>
+  <p>Open the console.</p>
+
+  <script>
+    // 1. TODO: define a class Student with a constructor for name and score
+    // 2. TODO: add a method greet() that uses this.name
+    // 3. TODO: create two students with new and log their greetings
+
+    // BONUS: add a Shop class that holds a list of items
+    var shop = null;
+    console.log(shop);
+  <\/script>
 </body>
 </html>`,
-        tasks: [
-          "Present your project.",
-          "Give two classmates specific feedback.",
-          "Note one thing that worked and one to change.",
-          "Complete the class reflection."
+        core: [
+          "Write a Student class with a constructor taking name and score.",
+          "Add a greet() method that uses this.name.",
+          "Create two Student objects with new and log their greetings."
+        ],
+        stretch: [
+          "Add an addScore() method that updates this.score, plus a getter for the result.",
+          "Model a Shop class with an items array and a total() method."
         ]
       },
       assessment: [
         {
-          track: "A", audience: "Both", title: "Project showcase rubric", type: "rubric",
-          criteria: [
-            "Project runs without errors",
-            "Student can explain what the code does",
-            "At least one feature has been customised",
-            "Student can point to and explain one function, loop or event",
-            "Student gives specific feedback to a classmate"
-          ]
-        },
-        {
-          track: "B", audience: "Both", title: "Showcase reflection", type: "form",
-          intro: "Complete after the showcase.",
-          fields: [
-            { label: "What went well in your presentation?" },
-            { label: "One thing you would change", lines: 2 },
-            { label: "One new thing you learned", lines: 2 }
+          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
+          questions: [
+            { prompt: "Question 1: What creates an object from a class?", answer: "The new keyword, for example new Student(\"Ada\", 82)." },
+            { prompt: "Question 2: What does the constructor do?", answer: "It runs once per object and sets up that object's properties." },
+            { prompt: "Question 3: What does this refer to inside a method?", answer: "The object the method was called on." }
           ]
         }
       ]
     },
-    weeks[9]
+    {
+      n: 7, title: "Modules and organising code", emoji: "📦", color: "looks", tracks: "both",
+      goal: "Organise code into reusable modules.",
+      concept: "Split code into modules and import what you need.",
+      objective: "Understand splitting code into modules and organising a project.",
+      teachingPoints: [
+        "Modules split a program into small files, each focused on one job.",
+        "export shares a value from a file; import brings it into another file.",
+        "Small modules are easier to read, test and reuse - but the browser needs separate files for real imports."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo: a helpers module stand-in", mins: 5 },
+        { label: "export, import and project layout", mins: 8 },
+        { label: "Activity time", mins: 15 },
+        { label: "Share & wrap-up", mins: 4 }
+      ],
+      liveDemo: [
+        {
+          title: "A helpers 'module' in one page",
+          filename: "modules.html",
+          caption: "This offline preview uses a helpers object where a real module would live in its own file. The real export/import syntax is in the handout.",
+          code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 7: Modules</title>
+</head>
+<body>
+  <h1>Organising code</h1>
+  <p>Open the console to see the helper results.</p>
+
+  <script>
+    // Offline stand-in for helpers.js
+    var helpers = {
+      toUpper: function (text) {
+        return text.toUpperCase();
+      },
+      average: function (numbers) {
+        var total = numbers.reduce(function (sum, n) { return sum + n; }, 0);
+        return total / numbers.length;
+      }
+    };
+
+    // In a real project this line would be:
+    // import { toUpper, average } from "./helpers.js";
+
+    document.querySelector("h1").textContent = helpers.toUpper("organising code");
+    console.log("Average:", helpers.average([82, 58, 91]));
+  <\/script>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Forgetting to export something you later try to import.",
+        "Using import in a script without type=\"module\", which the browser rejects.",
+        "Creating circular imports where two files import from each other."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Why modules",
+            body: ["One big file becomes hard to follow. Modules let you keep related code together and share only what is needed."],
+            list: [
+              "One file, one job.",
+              "Export what others need; keep the rest private.",
+              "Small files are easier to test and reuse."
+            ]
+          },
+          {
+            h: "export and import",
+            body: ["Mark something with export to share it, and use import in another file to bring it in. Files must be loaded with type=\"module\"."],
+            codes: [
+              { code: `// helpers.js\nexport function average(numbers) {\n  return numbers.reduce((a, b) => a + b, 0) / numbers.length;\n}\n\n// app.js\nimport { average } from "./helpers.js";` }
+            ]
+          },
+          {
+            h: "In this preview",
+            body: ["We cannot load separate files here, so a plain helpers object stands in for the module. The calls look the same as the imported ones would."],
+            codes: [
+              { code: `var helpers = { average: function (numbers) { /* ... */ } };\nhelpers.average([82, 58, 91]);` }
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "modules.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 7: Modules starter</title>
+</head>
+<body>
+  <h1>Modules starter</h1>
+  <p id="out"></p>
+
+  <script>
+    // 1. TODO: create a helpers object with toUpper and average
+    var helpers = {};
+
+    // 2. TODO: call helpers.toUpper on a name and helpers.average on scores
+    // 3. TODO: show the results on the page
+
+    console.log(helpers);
+  <\/script>
+</body>
+</html>`,
+        core: [
+          "Create a helpers object with a toUpper and an average function.",
+          "Call both helpers and log their results.",
+          "Show one result on the page."
+        ],
+        stretch: [
+          "Add a third helper, for example maxScore().",
+          "Write the real export/import version of helpers in the handout and explain which call changes."
+        ]
+      },
+      assessment: [
+        {
+          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
+          questions: [
+            { prompt: "Question 1: What does export do?", answer: "It makes a value available to other files." },
+            { prompt: "Question 2: What does import do?", answer: "It brings an exported value from another module into the current file." },
+            { prompt: "Question 3: Why keep modules small?", answer: "Small, focused files are easier to read, test and reuse." }
+          ]
+        }
+      ]
+    },
+    {
+      n: 8, title: "Capstone: plan and build", emoji: "🧱", color: "motion", tracks: "both",
+      goal: "Plan and start building your capstone project.",
+      concept: "Plan your final project and start building its first features.",
+      objective: "Choose a capstone app, plan it, and start building.",
+      teachingPoints: [
+        "Pick a scope you can finish: a quiz, a weather display from sample data, an expense tracker or a mini shop.",
+        "Plan the state and the interactions before you code.",
+        "Build the HTML and the first features, testing as you go."
+      ],
+      timing: [
+        { label: "Welcome & choose your app", mins: 3 },
+        { label: "Live demo: expense tracker", mins: 4 },
+        { label: "Build time", mins: 20 },
+        { label: "Present a first look", mins: 5 },
+        { label: "Wrap-up & next steps", mins: 3 }
+      ],
+      liveDemo: [
+        {
+          title: "A small expense tracker with state and storage",
+          filename: "capstone_js.html",
+          caption: "State lives in the expenses array. The page is drawn from it with render(), and it is saved with localStorage so it survives a refresh.",
+          code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 8: Expense tracker demo</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; max-width: 420px; }
+    li { padding: 6px; }
+    .total { font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Expense Tracker</h1>
+  <input id="desc" placeholder="What did you buy?" />
+  <input id="amount" type="number" placeholder="Amount (Naira)" />
+  <button id="addBtn">Add</button>
+  <p class="total" id="total"></p>
+  <ul id="list"></ul>
+
+  <script>
+    var expenses = JSON.parse(localStorage.getItem("expenses")) || [];
+
+    var list = document.getElementById("list");
+    var desc = document.getElementById("desc");
+    var amount = document.getElementById("amount");
+
+    function save() {
+      localStorage.setItem("expenses", JSON.stringify(expenses));
+    }
+
+    function render() {
+      list.innerHTML = "";
+      var total = 0;
+      expenses.forEach(function (item, index) {
+        total += item.amount;
+        var li = document.createElement("li");
+        li.textContent = item.desc + " - " + item.amount;
+        var del = document.createElement("button");
+        del.textContent = "Delete";
+        del.addEventListener("click", function () {
+          expenses.splice(index, 1);
+          save();
+          render();
+        });
+        li.appendChild(del);
+        list.appendChild(li);
+      });
+      document.getElementById("total").textContent = "Total: " + total;
+    }
+
+    document.getElementById("addBtn").addEventListener("click", function () {
+      var text = desc.value.trim();
+      var value = Number(amount.value);
+      if (text === "" || !value) return;
+      expenses.push({ desc: text, amount: value });
+      desc.value = "";
+      amount.value = "";
+      save();
+      render();
+    });
+
+    render();
+  <\/script>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Choosing a scope that is too big to finish - start with the smallest version that works.",
+        "Starting to code with no plan, so the features and data are unclear.",
+        "Mixing up state and display: changing the page directly instead of the state, then rendering."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Plan the app",
+            body: ["Before you type a line of code, decide four things. Keep them short enough to finish this term."],
+            list: [
+              "Topic: what is the app for?",
+              "State: what data does it hold?",
+              "Features: what can the user do?",
+              "Data: does it need saving?"
+            ]
+          },
+          {
+            h: "Build order",
+            body: ["Build the smallest version that works, then add one feature at a time. Test after each step."],
+            list: [
+              "The static HTML first.",
+              "The state variable and a render().",
+              "One interaction, for example add.",
+              "Then the list, delete, and finally saving."
+            ]
+          },
+          {
+            h: "Example plan",
+            body: ["Here is the expense tracker, planned before it was built."],
+            codes: [
+              { code: `// Topic:  track my spending\n// State:  expenses = [{ desc, amount }]\n// Features: add, delete, show total\n// Data:   save in localStorage` }
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "capstone_js.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 8: My capstone starter</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; max-width: 420px; }
+    li { padding: 6px; }
+  </style>
+</head>
+<body>
+  <h1>My Expense Tracker</h1>
+  <input id="desc" placeholder="What did you buy?" />
+  <input id="amount" type="number" placeholder="Amount (Naira)" />
+  <button id="addBtn">Add</button>
+  <p id="total"></p>
+  <ul id="list"></ul>
+
+  <script>
+    // STATE: the single source of truth
+    var expenses = [];
+
+    var list = document.getElementById("list");
+    var desc = document.getElementById("desc");
+    var amount = document.getElementById("amount");
+
+    function render() {
+      list.innerHTML = "";
+      expenses.forEach(function (item, index) {
+        var li = document.createElement("li");
+        li.textContent = item.desc + " - " + item.amount;
+        var del = document.createElement("button");
+        del.textContent = "Delete";
+        del.addEventListener("click", function () {
+          // TODO: remove this item and render again
+        });
+        li.appendChild(del);
+        list.appendChild(li);
+      });
+      // TODO: show the total
+    }
+
+    document.getElementById("addBtn").addEventListener("click", function () {
+      var text = desc.value.trim();
+      var value = Number(amount.value);
+      if (text === "" || !value) return;
+      // TODO: push { desc: text, amount: value }, clear inputs and render
+    });
+
+    render();
+  <\/script>
+</body>
+</html>`,
+        core: [
+          "Write your own plan: topic, state, features and whether it needs saving.",
+          "Build the input fields and the list.",
+          "Wire one interaction, for example add an expense."
+        ],
+        stretch: [
+          "Save the data in localStorage and load it when the page starts.",
+          "Add a summary value, for example a total or a count."
+        ]
+      },
+      assessment: [
+        {
+          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
+          questions: [
+            { prompt: "Question 1: Why keep the scope small?", answer: "A small, finishable scope means you actually get a working app instead of an unfinished big one." },
+            { prompt: "Question 2: What is the app's state?", answer: "The data the app works with, for example the expenses array. The page is drawn from it." },
+            { prompt: "Question 3: What is the first thing to build?", answer: "The static HTML and a simple version that runs, then add one feature at a time." }
+          ]
+        }
+      ]
+    },
+    {
+      n: 9, title: "Capstone: build and publish", emoji: "🚀", color: "control", tracks: "both",
+      goal: "Finish and publish your capstone project.",
+      concept: "Complete your project and publish it online.",
+      objective: "Finish, test and publish your capstone app.",
+      teachingPoints: [
+        "Finish the features you planned and remove anything half-done.",
+        "Test edge cases: empty input, a single item, deleting everything.",
+        "Publishing needs the internet, so in class we get the files and tests ready."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo: the finished app", mins: 5 },
+        { label: "Finishing, testing and error handling", mins: 8 },
+        { label: "Activity time", mins: 15 },
+        { label: "Share & wrap-up", mins: 4 }
+      ],
+      liveDemo: [
+        {
+          title: "The finished expense tracker",
+          filename: "capstone_finish.html",
+          caption: "This version handles errors when loading and saving, shows an empty state, and keeps the page in step with the state.",
+          code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 9: Finished expense tracker</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; max-width: 420px; }
+    li { padding: 6px; }
+    .total { font-weight: bold; }
+    .empty { color: #888; }
+  </style>
+</head>
+<body>
+  <h1>Expense Tracker</h1>
+  <input id="desc" placeholder="What did you buy?" />
+  <input id="amount" type="number" placeholder="Amount (Naira)" />
+  <button id="addBtn">Add</button>
+  <p class="total" id="total"></p>
+  <ul id="list"></ul>
+
+  <script>
+    function load() {
+      try {
+        return JSON.parse(localStorage.getItem("expenses")) || [];
+      } catch (error) {
+        console.log("Could not load expenses:", error.message);
+        return [];
+      }
+    }
+
+    function save(expenses) {
+      try {
+        localStorage.setItem("expenses", JSON.stringify(expenses));
+      } catch (error) {
+        console.log("Could not save expenses:", error.message);
+      }
+    }
+
+    var expenses = load();
+    var list = document.getElementById("list");
+    var desc = document.getElementById("desc");
+    var amount = document.getElementById("amount");
+
+    function render() {
+      list.innerHTML = "";
+      if (expenses.length === 0) {
+        var empty = document.createElement("li");
+        empty.className = "empty";
+        empty.textContent = "No expenses yet. Add one above.";
+        list.appendChild(empty);
+      }
+      var total = 0;
+      expenses.forEach(function (item, index) {
+        total += item.amount;
+        var li = document.createElement("li");
+        li.textContent = item.desc + " - " + item.amount;
+        var del = document.createElement("button");
+        del.textContent = "Delete";
+        del.addEventListener("click", function () {
+          expenses.splice(index, 1);
+          save(expenses);
+          render();
+        });
+        li.appendChild(del);
+        list.appendChild(li);
+      });
+      document.getElementById("total").textContent = "Total: " + total;
+    }
+
+    document.getElementById("addBtn").addEventListener("click", function () {
+      var text = desc.value.trim();
+      var value = Number(amount.value);
+      if (text === "" || !value) {
+        alert("Enter a description and a positive amount.");
+        return;
+      }
+      expenses.push({ desc: text, amount: value });
+      desc.value = "";
+      amount.value = "";
+      save(expenses);
+      render();
+    });
+
+    render();
+  <\/script>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Not testing edge cases, so an empty list or a deleted-everything state breaks the app.",
+        "Breaking links after moving files - check every file path when you reorganise.",
+        "Leaving out error handling, so a bad saved value crashes the page on load."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Finish and test",
+            body: ["Work through this list before you call the app done."],
+            list: [
+              "Every planned feature works.",
+              "The empty case shows a friendly message, not a blank or a crash.",
+              "Bad input (blank or zero) is rejected.",
+              "You tested in a fresh browser tab.",
+              "The console shows no red errors."
+            ]
+          },
+          {
+            h: "Publish (teacher demo; needs internet)",
+            body: ["Publishing puts your app online. Your teacher will demo this; do the offline steps (finish the files, test) during class."],
+            list: [
+              "Put your files in one folder with index.html as the start page.",
+              "Use a host such as GitHub Pages (needs an account and internet).",
+              "Open the live link and check it works on another device."
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "capstone_js.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 9: Finish your capstone</title>
+</head>
+<body>
+  <h1>My Expense Tracker</h1>
+  <input id="desc" placeholder="What did you buy?" />
+  <input id="amount" type="number" placeholder="Amount (Naira)" />
+  <button id="addBtn">Add</button>
+  <p id="total"></p>
+  <ul id="list"></ul>
+
+  <script>
+    // BUG 1: this reads the array without error handling
+    var expenses = JSON.parse(localStorage.getItem("expenses")) || [];
+
+    function save() {
+      // BUG 2: stores the object itself, not text
+      localStorage.setItem("expenses", expenses);
+    }
+
+    function render() {
+      var list = document.getElementById("list");
+      list.innerHTML = "";
+      var total = 0;
+      expenses.forEach(function (item, index) {
+        total += item.amount;
+        var li = document.createElement("li");
+        li.textContent = item.desc + " - " + item.amount;
+        var del = document.createElement("button");
+        del.textContent = "Delete";
+        del.addEventListener("click", function () {
+          expenses.splice(index, 1);
+          save();
+          render();
+        });
+        li.appendChild(del);
+        list.appendChild(li);
+      });
+      document.getElementById("total").textContent = "Total: " + total;
+    }
+
+    document.getElementById("addBtn").addEventListener("click", function () {
+      var text = document.getElementById("desc").value.trim();
+      var value = Number(document.getElementById("amount").value);
+      if (text === "") return;
+      expenses.push({ desc: text, amount: value });
+      save();
+      render();
+    });
+
+    render();
+  <\/script>
+</body>
+</html>`,
+        core: [
+          "Fix the saving bug: turn the array into text with JSON.stringify.",
+          "Test the empty case and show a friendly message instead of a blank list.",
+          "Add try/catch around loading the saved data."
+        ],
+        stretch: [
+          "Add one more feature, for example a category on each expense.",
+          "Write the publish steps you would follow at home, in order."
+        ]
+      },
+      assessment: [
+        {
+          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
+          questions: [
+            { prompt: "Question 1: Why test the empty case?", answer: "An empty list is the easiest state to break; checking it catches blank screens and errors early." },
+            { prompt: "Question 2: How do you save an array in localStorage?", answer: "localStorage.setItem(\"key\", JSON.stringify(array)), and JSON.parse it when loading." },
+            { prompt: "Question 3: Why add try/catch around loading?", answer: "The saved value could be missing or corrupt; try/catch keeps the app running with a safe default." },
+            { prompt: "Question 4: What must the start page of a published site be called?", answer: "index.html" }
+          ]
+        },
+        {
+          track: "A", audience: "Both", title: "Capstone checklist", type: "checklist",
+          items: [
+            "The app runs without errors in the console.",
+            "It keeps its data in a state variable and renders from it.",
+            "It handles errors and the empty case.",
+            "The files are ready to publish (index.html plus any others)."
+          ]
+        }
+      ]
+    },
+    {
+      n: 10, title: "Showcase, assessment, next steps", emoji: "🏆", color: "events", tracks: "both",
+      goal: "Showcase your project and plan your next steps.",
+      concept: "Present your project, take the final assessment and look ahead.",
+      objective: "Present your capstone and look ahead to what's next.",
+      teachingPoints: [
+        "Present what your app does and one challenge you solved.",
+        "Review the three terms: fundamentals, the DOM and events, and modern JavaScript.",
+        "Preview what comes next, such as Node and React, without going deep yet."
+      ],
+      timing: [
+        { label: "Welcome & set up", mins: 3 },
+        { label: "Showcase demos", mins: 8 },
+        { label: "Present and assess", mins: 18 },
+        { label: "Share", mins: 4 },
+        { label: "Wrap-up & next steps", mins: 2 }
+      ],
+      liveDemo: [
+        {
+          title: "A polished capstone to show",
+          filename: "showcase_js.html",
+          caption: "The showcase version adds a friendly empty state and an item count. Small polish makes a project feel finished.",
+          code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 10: Capstone showcase</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; max-width: 460px; }
+    li { padding: 6px; }
+    .total { font-weight: bold; }
+    .empty { color: #888; }
+  </style>
+</head>
+<body>
+  <h1>My Expense Tracker</h1>
+  <input id="desc" placeholder="What did you buy?" />
+  <input id="amount" type="number" placeholder="Amount (Naira)" />
+  <button id="addBtn">Add</button>
+  <p class="total" id="total"></p>
+  <ul id="list"></ul>
+
+  <script>
+    function load() {
+      try {
+        return JSON.parse(localStorage.getItem("expenses")) || [];
+      } catch (error) {
+        console.log("Could not load expenses:", error.message);
+        return [];
+      }
+    }
+
+    function save(expenses) {
+      try {
+        localStorage.setItem("expenses", JSON.stringify(expenses));
+      } catch (error) {
+        console.log("Could not save expenses:", error.message);
+      }
+    }
+
+    var expenses = load();
+    var list = document.getElementById("list");
+    var totalEl = document.getElementById("total");
+
+    function render() {
+      list.innerHTML = "";
+      if (expenses.length === 0) {
+        var empty = document.createElement("li");
+        empty.className = "empty";
+        empty.textContent = "No expenses yet. Add one above.";
+        list.appendChild(empty);
+      }
+      var total = 0;
+      expenses.forEach(function (item, index) {
+        total += item.amount;
+        var li = document.createElement("li");
+        li.textContent = item.desc + " - " + item.amount;
+        var del = document.createElement("button");
+        del.textContent = "Delete";
+        del.addEventListener("click", function () {
+          expenses.splice(index, 1);
+          save(expenses);
+          render();
+        });
+        li.appendChild(del);
+        list.appendChild(li);
+      });
+      totalEl.textContent = "Total: " + total + " (" + expenses.length + " items)";
+    }
+
+    document.getElementById("addBtn").addEventListener("click", function () {
+      var text = document.getElementById("desc").value.trim();
+      var value = Number(document.getElementById("amount").value);
+      if (text === "" || !value) {
+        alert("Enter a description and a positive amount.");
+        return;
+      }
+      expenses.push({ desc: text, amount: value });
+      document.getElementById("desc").value = "";
+      document.getElementById("amount").value = "";
+      save(expenses);
+      render();
+    });
+
+    render();
+  <\/script>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Turning up with no demo ready - have your app open and working before you present.",
+        "Being unable to explain a feature, so the audience cannot follow what you built.",
+        "Running over time - rehearse a short, clear talk."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Presentation script",
+            body: ["Keep it short. Use this order and aim for about two minutes."],
+            list: [
+              "What my app does, in one sentence.",
+              "Who it is for.",
+              "One feature to show live.",
+              "One problem I solved and how.",
+              "What I would add next."
+            ]
+          },
+          {
+            h: "Term 3 recap",
+            body: ["Everything we covered after the DOM and events."],
+            list: [
+              "JSON and scope.",
+              "Promises, then async/await.",
+              "fetch and APIs (with an offline sample).",
+              "Error handling and debugging.",
+              "Classes and modules, then the capstone."
+            ]
+          },
+          {
+            h: "What's next (a taster)",
+            body: ["These are ideas, not this term's work. You have the foundations to explore them next."],
+            list: [
+              "Node.js: run JavaScript outside the browser.",
+              "Build tools and real API keys for live data.",
+              "React: build interfaces from reusable components.",
+              "A framework for bigger projects and teams."
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "showcase_js.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 10: My showcase</title>
+</head>
+<body>
+  <h1>My Expense Tracker</h1>
+  <input id="desc" placeholder="What did you buy?" />
+  <input id="amount" type="number" placeholder="Amount (Naira)" />
+  <button id="addBtn">Add</button>
+  <p id="total"></p>
+  <ul id="list"></ul>
+
+  <script>
+    // 1. TODO: fix the last issue you found in testing
+    // 2. TODO: be ready to explain one function out loud
+    // 3. STRETCH: add one piece of polish you are proud of
+
+    function render() {
+      // your render code here
+    }
+  <\/script>
+</body>
+</html>`,
+        core: [
+          "Fix the last issue you found in testing.",
+          "Be ready to explain one function from your app.",
+          "Have the app open and working before you present."
+        ],
+        stretch: [
+          "Add one piece of polish you are proud of, such as an empty state or a count.",
+          "Write two sentences about what you would build next with what you have learned."
+        ]
+      },
+      assessment: [
+        {
+          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
+          questions: [
+            { prompt: "Question 1: What does JSON.parse do?", answer: "It turns JSON text back into a value your code can use." },
+            { prompt: "Question 2: What is the difference between a promise and async/await?", answer: "They do the same job: async/await is a cleaner way to write promise code so it reads like ordinary code." },
+            { prompt: "Question 3: What does fetch get you, and what is the next step?", answer: "fetch returns a promise for the response; the next step is await response.json() to read the body." },
+            { prompt: "Question 4: What creates an object from a class?", answer: "The new keyword, for example new Student(\"Ada\", 82)." },
+            { prompt: "Question 5: Why split code into modules?", answer: "Small, focused files are easier to read, test and reuse; export shares code and import brings it in." }
+          ]
+        },
+        {
+          track: "A", audience: "Both", title: "Course checklist", type: "checklist",
+          items: [
+            "I can convert data to and from JSON.",
+            "I can handle a value that arrives later with a promise or async/await.",
+            "I can load data with fetch (or an offline stand-in) and show it on the page.",
+            "I can model something with a class.",
+            "I finished and presented a capstone app."
+          ]
+        }
+      ]
+    }
   ];
 
   window.WEBDEV_CURRICULUM = {
     slug: "webdev",
-    title: "Web Development",
+    title: "JavaScript: Web Development",
     subject: "Programming",
     length: "3 terms",
     audience: "JSS 3, SS 1 & SS 2",
     prong: "Instructor Guides · Student Handouts · Code Templates · Assessments",
     target: "JSS 3, SS 1 and SS 2 students. No prior JavaScript needed.",
-    startingPoint: "Students already know some HTML and CSS. This course adds JavaScript and builds up to a finished mini-project.",
-    endGoal: "By the end of Term 3, every student has built and presented a working interactive web page.",
+    startingPoint: "Students already know some HTML and CSS. This course adds JavaScript and builds up to a finished project.",
+    endGoal: "By the end of Term 3, every student has built and published a working interactive web app.",
     focus: "Every concept is practised on a page students can run, edit and see working in the browser.",
-    philosophy: "Read it, run it, change it. Each week ships a runnable code template so students see the result immediately.",
+    philosophy: "Read it, run it, change it. Each week ships a runnable code template.",
     tracks: [
       { key: "A", name: "Track A — with system", desc: "Students have laptops. They code along, run the templates, and complete peer pair-check assessments." },
       { key: "B", name: "Track B — no system", desc: "No laptops required. Students work through the handouts and complete written quizzes and design documents." }
     ],
     terms: [
-      { n: 1, title: "JavaScript foundations", theme: "motion", weeks: term1 },
-      { n: 2, title: "The DOM & interactivity", theme: "sensing", weeks: term2 },
-      { n: 3, title: "Projects & showcase", theme: "control", weeks: term3 }
+      { n: 1, title: "JavaScript Fundamentals", theme: "motion", weeks: term1 },
+      { n: 2, title: "The DOM, Events and Interactive Pages", theme: "sensing", weeks: term2 },
+      { n: 3, title: "Modern JavaScript and Real-World Apps", theme: "control", weeks: term3 }
     ]
   };
 })();

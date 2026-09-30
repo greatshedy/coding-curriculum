@@ -146,6 +146,7 @@
             trackBadge +
           "</div>" +
           '<h1 class="font-display text-3xl sm:text-4xl font-extrabold">' + e(week.title) + "</h1>" +
+          (week.goal ? '<p class="mt-3 flex items-start gap-2 rounded-xl bg-ink/5 px-3 py-2 text-sm font-bold text-ink/80 max-w-2xl"><span aria-hidden="true">🎯</span><span><span class="text-ink/45 uppercase tracking-wide text-xs font-extrabold mr-1">Goal:</span>' + e(week.goal) + "</span></p>" : "") +
           '<p class="text-ink/65 max-w-2xl mt-2">' + e(week.concept || "") + "</p>" +
         "</div>" +
       "</div>" +
@@ -197,20 +198,33 @@
       if (s.after) out += paras(s.after);
       return out + "</section>";
     }).join("");
-    return '<div>' + sections + "</div>";
+    var goalHtml = t.goal
+      ? '<div class="notes-script"><p class="notes-mini">Goal for this week</p><p>' + e(t.goal) + "</p></div>"
+      : "";
+    return '<div>' + goalHtml + sections + "</div>";
   }
 
   /* ---------- tab 3: code template ---------- */
   function templatePanel(t) {
     if (!t.template) return '<p class="text-ink/50">No template for this week.</p>';
+    var steps = function (arr) {
+      return '<ol class="steps">' + (arr || []).map(function (x) { return "<li><span class='text-ink/80'>" + e(x) + "</span></li>"; }).join("") + "</ol>";
+    };
+    var tasksHtml;
+    if (t.template.core) {
+      tasksHtml = '<p class="notes-mini">Core tasks — everyone</p>' + steps(t.template.core) +
+        (t.template.stretch && t.template.stretch.length
+          ? '<p class="notes-mini" style="margin-top:1.1rem">Stretch challenge — go further</p>' + list(t.template.stretch, "★")
+          : "");
+    } else {
+      tasksHtml = steps(t.template.tasks);
+    }
     return "<div class=\"grid gap-5\">" +
       "<div>" + sectionTitle("🧑‍💻", "Code template", "edit and run it") +
         '<p class="notes-reading m-0">This is the starter file for the week. Edit it, press <strong>Run</strong>, and watch the result and the console update. Then follow the tasks below.</p>' +
       "</div>" +
       editorSlot({ code: t.template.code, filename: t.template.filename }) +
-      '<div>' + sectionTitle("🛠️", "What to do") + '<ol class="steps">' +
-        (t.template.tasks || []).map(function (x) { return "<li><span class='text-ink/80'>" + e(x) + "</span></li>"; }).join("") +
-      "</ol></div>" +
+      '<div>' + sectionTitle("🛠️", "What to do") + tasksHtml + "</div>" +
     "</div>";
   }
 
