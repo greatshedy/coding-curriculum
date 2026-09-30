@@ -110,11 +110,11 @@
 }
 .code-btn:hover { border-color: var(--tab-accent); color: var(--tab-accent); }
 .code-btn--run {
-  background: #16a34a;
-  border-color: #16a34a;
+  background: #15803d;
+  border-color: #15803d;
   color: #fff;
 }
-.code-btn--run:hover { background: #15803d; border-color: #15803d; color: #fff; }
+.code-btn--run:hover { background: #166534; border-color: #166534; color: #fff; }
 .code-btn--ghost { background: transparent; border-color: transparent; color: var(--ink-soft); }
 
 /* ---------------------------------------------------------- editor */
@@ -132,7 +132,7 @@
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: #94a3b8;
+  color: #64748b;
   padding: 0.45rem 0.8rem;
   border-bottom: 1px solid var(--code-line);
   background: #fbfdff;
@@ -212,13 +212,13 @@
 .code-line--error .code-line-badge { background: #b91c1c; color: #fff; }
 .code-line--warn .code-line-text { color: #fcd34d; }
 .code-line--warn .code-line-badge { background: #b45309; color: #fff; }
-.code-console-empty { color: #64748b; font-style: italic; margin: 0; }
+.code-console-empty { color: #94a3b8; font-style: italic; margin: 0; }
 
 /* ---------------------------------------------------------- timing */
 .timing { display: grid; gap: 0.15rem; }
 .timing-row { display: grid; grid-template-columns: 1fr auto; gap: 0.2rem 0.75rem; margin-bottom: 0.5rem; }
 .timing-row .t-label { font-weight: 700; color: #3a4560; font-size: 0.9rem; }
-.timing-row .t-mins { font-weight: 800; font-size: 0.78rem; color: #94a3b8; }
+.timing-row .t-mins { font-weight: 800; font-size: 0.78rem; color: #64748b; }
 .timing-row .t-bar {
   grid-column: 1 / -1;
   height: 6px;

@@ -6,28 +6,9 @@
 <title>10-Week Scratch Course — Game Development &amp; Storytelling</title>
 <meta name="description" content="Ten weeks of Scratch for ages 7–11: interface, movement, events, loops, conditionals, variables, broadcasting, storytelling and a final showcase." />
 
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/tailwind.build.css" />
+<link rel="stylesheet" href="../assets/fonts.css" />
 <link rel="stylesheet" href="../assets/style.css" />
-
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        fontFamily: {
-          display: ['"Baloo 2"', 'Nunito', 'sans-serif'],
-          sans: ['Nunito', 'ui-sans-serif', 'system-ui', 'sans-serif']
-        },
-        colors: {
-          ink: '#1f2a44', paper: '#f6f4ee', motion: '#4c97ff', looks: '#9966ff',
-          events: '#ffbf00', control: '#ffab19', sensing: '#5cb1d6', variables: '#ff8c1a'
-        }
-      }
-    }
-  };
-</script>
 </head>
 <body class="min-h-screen">
 
@@ -60,7 +41,7 @@
         <div class="flex flex-wrap gap-2 mb-3">
           <span class="pill bg-events/25 text-yellow-900">Programming</span>
           <span class="pill bg-motion/15 text-motion">Ages 7–11</span>
-          <span class="pill bg-ink/5 text-ink/60">10 weeks</span>
+          <span class="pill bg-ink/5 text-ink-soft">10 weeks</span>
           <span class="pill bg-looks/15 text-looks">Games + Storytelling</span>
         </div>
         <h1 class="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight">Scratch: Game Development &amp; Storytelling</h1>
@@ -77,21 +58,21 @@
     </div>
 
     <dl class="mt-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-      <div class="card p-5"><dt class="text-xs font-extrabold uppercase tracking-wide text-ink/45">Target students</dt><dd class="text-ink/75 font-semibold mt-1 text-sm">Ages 7–11, all with laptops.</dd></div>
-      <div class="card p-5"><dt class="text-xs font-extrabold uppercase tracking-wide text-ink/45">Starting point</dt><dd class="text-ink/75 font-semibold mt-1 text-sm">Students already know basic Scratch ideas (what sprites are, the interface). This course goes deeper.</dd></div>
-      <div class="card p-5"><dt class="text-xs font-extrabold uppercase tracking-wide text-ink/45">End goal</dt><dd class="text-ink/75 font-semibold mt-1 text-sm">Every student builds and presents one complete Scratch game or interactive story.</dd></div>
-      <div class="card p-5"><dt class="text-xs font-extrabold uppercase tracking-wide text-ink/45">Focus areas</dt><dd class="text-ink/75 font-semibold mt-1 text-sm">Equal emphasis on game development and storytelling / animation.</dd></div>
+      <div class="card p-5"><dt class="text-xs font-extrabold uppercase tracking-wide text-ink-muted">Target students</dt><dd class="text-ink/75 font-semibold mt-1 text-sm">Ages 7–11, all with laptops.</dd></div>
+      <div class="card p-5"><dt class="text-xs font-extrabold uppercase tracking-wide text-ink-muted">Starting point</dt><dd class="text-ink/75 font-semibold mt-1 text-sm">Students already know basic Scratch ideas (what sprites are, the interface). This course goes deeper.</dd></div>
+      <div class="card p-5"><dt class="text-xs font-extrabold uppercase tracking-wide text-ink-muted">End goal</dt><dd class="text-ink/75 font-semibold mt-1 text-sm">Every student builds and presents one complete Scratch game or interactive story.</dd></div>
+      <div class="card p-5"><dt class="text-xs font-extrabold uppercase tracking-wide text-ink-muted">Focus areas</dt><dd class="text-ink/75 font-semibold mt-1 text-sm">Equal emphasis on game development and storytelling / animation.</dd></div>
     </dl>
   </header>
 
   <!-- ===================== AT A GLANCE ===================== -->
   <section class="pb-12">
     <h2 class="font-display text-3xl font-extrabold mb-2">10 weeks at a glance</h2>
-    <p class="text-ink/60 mb-5">Click any week to open the lesson, read the notes, run the demo and get the block recipe.</p>
+    <p class="text-ink-soft mb-5">Click any week to open the lesson, read the notes, run the demo and get the block recipe.</p>
     <div class="card overflow-x-auto">
       <table class="w-full text-left text-sm border-collapse">
         <thead>
-          <tr class="bg-ink/5 text-ink/55 text-xs uppercase tracking-wide">
+          <tr class="bg-ink/5 text-ink-muted text-xs uppercase tracking-wide">
             <th class="p-3 font-extrabold">Week</th>
             <th class="p-3 font-extrabold">Topic</th>
             <th class="p-3 font-extrabold">Learning focus</th>
@@ -108,14 +89,14 @@
   <section class="pb-12">
     <h2 class="font-display text-3xl font-extrabold mb-5">Teaching tips for all 10 weeks</h2>
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-      <div class="card p-5"><div class="text-2xl mb-2">🎬</div><h3 class="font-extrabold">Start with a demo</h3><p class="text-sm text-ink/65 mt-1">Open every class with a cool 30-second Scratch video (1–2 min). It gets kids excited.</p></div>
-      <div class="card p-5"><div class="text-2xl mb-2">👩‍🏫</div><h3 class="font-extrabold">Code together first</h3><p class="text-sm text-ink/65 mt-1">Every lesson, build the main example as a class, step by step. Then let them customise.</p></div>
-      <div class="card p-5"><div class="text-2xl mb-2">🧪</div><h3 class="font-extrabold">Let them explore</h3><p class="text-sm text-ink/65 mt-1">After explaining a concept, give 10 minutes of free play. Let them try wild ideas.</p></div>
-      <div class="card p-5"><div class="text-2xl mb-2">🐞</div><h3 class="font-extrabold">Celebrate bugs</h3><p class="text-sm text-ink/65 mt-1">When something breaks, celebrate! "Great! Now we get to debug." Debugging teaches problem-solving.</p></div>
-      <div class="card p-5"><div class="text-2xl mb-2">🤝</div><h3 class="font-extrabold">Pair &amp; share</h3><p class="text-sm text-ink/65 mt-1">Sit in pairs: one codes, one watches. Switch halfway. Builds collaboration.</p></div>
-      <div class="card p-5"><div class="text-2xl mb-2">🌐</div><h3 class="font-extrabold">Use Scratch Studio</h3><p class="text-sm text-ink/65 mt-1">Create a class studio online so students can share projects and comment on each other's work.</p></div>
-      <div class="card p-5"><div class="text-2xl mb-2">🖼️</div><h3 class="font-extrabold">Keep a project gallery</h3><p class="text-sm text-ink/65 mt-1">Print or screenshot finished projects and hang them up. Pride + motivation.</p></div>
-      <div class="card p-5"><div class="text-2xl mb-2">🎚️</div><h3 class="font-extrabold">Differentiate</h3><p class="text-sm text-ink/65 mt-1">Advanced students add leaderboards, levels or AI enemies. Struggling students do one feature well.</p></div>
+      <div class="card p-5"><div class="text-2xl mb-2">🎬</div><h3 class="font-extrabold">Start with a demo</h3><p class="text-sm text-ink-soft mt-1">Open every class with a cool 30-second Scratch video (1–2 min). It gets kids excited.</p></div>
+      <div class="card p-5"><div class="text-2xl mb-2">👩‍🏫</div><h3 class="font-extrabold">Code together first</h3><p class="text-sm text-ink-soft mt-1">Every lesson, build the main example as a class, step by step. Then let them customise.</p></div>
+      <div class="card p-5"><div class="text-2xl mb-2">🧪</div><h3 class="font-extrabold">Let them explore</h3><p class="text-sm text-ink-soft mt-1">After explaining a concept, give 10 minutes of free play. Let them try wild ideas.</p></div>
+      <div class="card p-5"><div class="text-2xl mb-2">🐞</div><h3 class="font-extrabold">Celebrate bugs</h3><p class="text-sm text-ink-soft mt-1">When something breaks, celebrate! "Great! Now we get to debug." Debugging teaches problem-solving.</p></div>
+      <div class="card p-5"><div class="text-2xl mb-2">🤝</div><h3 class="font-extrabold">Pair &amp; share</h3><p class="text-sm text-ink-soft mt-1">Sit in pairs: one codes, one watches. Switch halfway. Builds collaboration.</p></div>
+      <div class="card p-5"><div class="text-2xl mb-2">🌐</div><h3 class="font-extrabold">Use Scratch Studio</h3><p class="text-sm text-ink-soft mt-1">Create a class studio online so students can share projects and comment on each other's work.</p></div>
+      <div class="card p-5"><div class="text-2xl mb-2">🖼️</div><h3 class="font-extrabold">Keep a project gallery</h3><p class="text-sm text-ink-soft mt-1">Print or screenshot finished projects and hang them up. Pride + motivation.</p></div>
+      <div class="card p-5"><div class="text-2xl mb-2">🎚️</div><h3 class="font-extrabold">Differentiate</h3><p class="text-sm text-ink-soft mt-1">Advanced students add leaderboards, levels or AI enemies. Struggling students do one feature well.</p></div>
     </div>
   </section>
 
@@ -219,7 +200,7 @@
 </main>
 
 <footer class="border-t border-ink/10 py-10 no-print">
-  <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-ink/55">
+  <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-ink-muted">
     <p class="font-bold">CodeLab Curriculum — Scratch: Game Development &amp; Storytelling</p>
     <a class="text-motion font-bold hover:underline" href="week.html?w=1">Start Week 1 →</a>
   </div>

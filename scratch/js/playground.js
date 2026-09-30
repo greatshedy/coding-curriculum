@@ -90,7 +90,7 @@
   function setStatus(t) { statusEl.textContent = t || ""; }
   function setRunState(on) {
     runStateEl.textContent = on ? "running" : "stopped";
-    runStateEl.className = "pill " + (on ? "bg-green-600 text-white" : "bg-ink/5 text-ink/60");
+    runStateEl.className = "pill " + (on ? "bg-green-600 text-white" : "bg-ink/5 text-ink-soft");
   }
 
   /* ---------------------------------------------------------- timing (cancellable) */
@@ -434,7 +434,7 @@
       var defs = DEFS.filter(function (d) { return d.cat === cat; });
       if (!defs.length) return;
       var group = document.createElement("div");
-      group.appendChild(el("p", { class: "text-xs font-extrabold uppercase tracking-wide text-ink/45 m-0 mb-2", text: CAT_LABEL[cat] }));
+      group.appendChild(el("p", { class: "text-xs font-extrabold uppercase tracking-wide text-ink-muted m-0 mb-2", text: CAT_LABEL[cat] }));
       var row = el("div", { class: "flex flex-wrap gap-2 items-start" });
       defs.forEach(function (def) {
         var p = previewEl(def);

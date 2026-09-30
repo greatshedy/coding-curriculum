@@ -6,35 +6,9 @@
 <title>CodeLab Curriculum — Learn by making</title>
 <meta name="description" content="Hands-on coding curricula for the classroom. Start with the 10-Week Scratch Game Development &amp; Storytelling course." />
 
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/tailwind.build.css" />
+<link rel="stylesheet" href="assets/fonts.css" />
 <link rel="stylesheet" href="assets/style.css" />
-
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        fontFamily: {
-          display: ['"Baloo 2"', 'Nunito', 'sans-serif'],
-          sans: ['Nunito', 'ui-sans-serif', 'system-ui', 'sans-serif']
-        },
-        colors: {
-          ink: '#1f2a44',
-          paper: '#f6f4ee',
-          js: '#f7df1e',
-          motion: '#4c97ff',
-          looks: '#9966ff',
-          events: '#ffbf00',
-          control: '#ffab19',
-          sensing: '#5cb1d6',
-          variables: '#ff8c1a'
-        }
-      }
-    }
-  };
-</script>
 </head>
 <body class="min-h-screen">
 
@@ -44,7 +18,7 @@
 <nav class="sticky top-0 z-50 bg-ink text-white shadow-lg">
   <div class="max-w-6xl mx-auto px-4">
     <div class="flex items-center justify-between h-16">
-      <a href="index.html" class="flex items-center gap-2 font-display text-xl font-800">
+      <a href="index.html" class="flex items-center gap-2 font-display text-xl font-extrabold">
         <span class="grid place-items-center w-9 h-9 rounded-xl bg-motion text-lg">{"{}"}</span>
         <span class="font-extrabold">CodeLab</span>
       </a>
@@ -93,23 +67,23 @@
     </div>
 
     <dl class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
-      <div class="card p-4"><dt class="text-3xl font-extrabold font-display text-motion">3</dt><dd class="text-sm font-bold text-ink/60">Courses</dd></div>
-      <div class="card p-4"><dt class="text-3xl font-extrabold font-display text-looks">70+</dt><dd class="text-sm font-bold text-ink/60">Weeks of lessons</dd></div>
-      <div class="card p-4"><dt class="text-3xl font-extrabold font-display text-control">20+</dt><dd class="text-sm font-bold text-ink/60">Runnable demos</dd></div>
-      <div class="card p-4"><dt class="text-3xl font-extrabold font-display text-variables">5–18</dt><dd class="text-sm font-bold text-ink/60">Age range</dd></div>
+      <div class="card p-4"><dt class="text-3xl font-extrabold font-display text-motion">3</dt><dd class="text-sm font-bold text-ink-soft">Courses</dd></div>
+      <div class="card p-4"><dt class="text-3xl font-extrabold font-display text-looks">70+</dt><dd class="text-sm font-bold text-ink-soft">Weeks of lessons</dd></div>
+      <div class="card p-4"><dt class="text-3xl font-extrabold font-display text-control">20+</dt><dd class="text-sm font-bold text-ink-soft">Runnable demos</dd></div>
+      <div class="card p-4"><dt class="text-3xl font-extrabold font-display text-variables">5–18</dt><dd class="text-sm font-bold text-ink-soft">Age range</dd></div>
     </dl>
   </header>
 
   <!-- ===================== CURRICULA ===================== -->
   <section id="curricula" class="max-w-6xl mx-auto px-4 py-10">
     <h2 class="font-display text-3xl font-extrabold mb-2">Curricula</h2>
-    <p class="text-ink/60 mb-6">Each subject is a self-contained course you can teach start to finish.</p>
+    <p class="text-ink-soft mb-6">Each subject is a self-contained course you can teach start to finish.</p>
 
     <div class="grid md:grid-cols-2 gap-6">
 
       <!-- Scratch (live) -->
       <article class="card card-hover p-6 flex flex-col relative overflow-hidden">
-        <span class="pointer-events-none absolute right-6 bottom-4 text-[4.5rem] leading-none select-none opacity-95" aria-hidden="true">🐱</span>
+        <span class="pointer-events-none absolute right-5 bottom-3 text-[4rem] leading-none select-none opacity-90" aria-hidden="true">🐱</span>
         <div class="relative">
           <div class="flex items-center gap-2 mb-3">
             <span class="pill bg-events/20 text-yellow-800">Available now</span>
@@ -126,7 +100,7 @@
             <li class="flex items-center gap-2"><span class="text-green-600">✓</span> Scratch-style block recipes</li>
             <li class="flex items-center gap-2"><span class="text-green-600">✓</span> Block playground simulator</li>
           </ul>
-          <div class="mt-6 flex flex-wrap gap-3">
+          <div class="mt-6 flex flex-wrap gap-3 pr-20">
             <a href="scratch/index.html" class="inline-flex items-center gap-2 rounded-xl bg-motion px-5 py-2.5 font-extrabold text-white hover:brightness-105 transition">Open course</a>
             <a href="scratch/week.html?w=1" class="inline-flex items-center gap-2 rounded-xl bg-white px-5 py-2.5 font-extrabold text-ink border border-ink/10 hover:border-motion/40 transition">Jump to Week 1</a>
           </div>
@@ -135,7 +109,7 @@
 
       <!-- Track A: HTML & CSS (live) -->
       <article class="card card-hover p-6 flex flex-col relative overflow-hidden">
-        <span class="pointer-events-none absolute right-6 bottom-4 grid place-items-center w-16 h-16 rounded-2xl bg-motion text-white text-xl font-black select-none" aria-hidden="true">{"{}"}</span>
+        <span class="pointer-events-none absolute right-5 bottom-3 grid place-items-center w-14 h-14 rounded-2xl bg-motion text-white text-lg font-black select-none" aria-hidden="true">{"{}"}</span>
         <div class="relative">
           <div class="flex items-center gap-2 mb-3">
             <span class="pill bg-events/20 text-yellow-800">Available now</span>
@@ -152,7 +126,7 @@
             <li class="flex items-center gap-2"><span class="text-green-600">✓</span> Runnable pages, works offline</li>
             <li class="flex items-center gap-2"><span class="text-green-600">✓</span> Core + stretch tasks &amp; mini-checks</li>
           </ul>
-          <div class="mt-6 flex flex-wrap gap-3">
+          <div class="mt-6 flex flex-wrap gap-3 pr-20">
             <a href="intro-webdev/index.html" class="inline-flex items-center gap-2 rounded-xl bg-motion px-5 py-2.5 font-extrabold text-white hover:brightness-105 transition">Open course</a>
             <a href="intro-webdev/week.html?t=1&w=1" class="inline-flex items-center gap-2 rounded-xl bg-white px-5 py-2.5 font-extrabold text-ink border border-ink/10 hover:border-motion/40 transition">Jump to Term 1</a>
           </div>
@@ -161,7 +135,7 @@
 
       <!-- Track B: JavaScript (live) -->
       <article class="card card-hover p-6 flex flex-col relative overflow-hidden">
-        <span class="pointer-events-none absolute right-6 bottom-4 grid place-items-center w-16 h-16 rounded-2xl bg-js text-ink text-xl font-black select-none" aria-hidden="true">JS</span>
+        <span class="pointer-events-none absolute right-5 bottom-3 grid place-items-center w-14 h-14 rounded-2xl bg-js text-ink text-lg font-black select-none" aria-hidden="true">JS</span>
         <div class="relative">
           <div class="flex items-center gap-2 mb-3">
             <span class="pill bg-events/20 text-yellow-800">Available now</span>
@@ -178,7 +152,7 @@
             <li class="flex items-center gap-2"><span class="text-green-600">✓</span> Code templates that really run</li>
             <li class="flex items-center gap-2"><span class="text-green-600">✓</span> Core + stretch tasks &amp; mini-checks</li>
           </ul>
-          <div class="mt-6 flex flex-wrap gap-3">
+          <div class="mt-6 flex flex-wrap gap-3 pr-20">
             <a href="webdev/index.html" class="inline-flex items-center gap-2 rounded-xl bg-js px-5 py-2.5 font-extrabold text-ink hover:brightness-105 transition">Open course</a>
             <a href="webdev/week.html?t=1&w=1" class="inline-flex items-center gap-2 rounded-xl bg-white px-5 py-2.5 font-extrabold text-ink border border-ink/10 hover:border-motion/40 transition">Jump to Term 1</a>
           </div>
@@ -190,11 +164,11 @@
     <div class="card p-6 border-dashed mt-6">
       <div class="flex flex-wrap items-center gap-x-6 gap-y-3">
         <div>
-          <span class="pill bg-ink/5 text-ink/60">Coming soon</span>
+          <span class="pill bg-ink/5 text-ink-soft">Coming soon</span>
           <h3 class="font-display text-xl font-extrabold mt-2">More subjects</h3>
-          <p class="text-sm text-ink/60 mt-1 m-0">The site is built to take more courses. Add one when you're ready.</p>
+          <p class="text-sm text-ink-soft mt-1 m-0">The site is built to take more courses. Add one when you're ready.</p>
         </div>
-        <ul class="flex flex-wrap gap-x-6 gap-y-2 text-sm font-semibold text-ink/45 md:ml-auto">
+        <ul class="flex flex-wrap gap-x-6 gap-y-2 text-sm font-semibold text-ink-muted md:ml-auto">
           <li class="flex items-center gap-2"><span>🐍</span> Python Basics</li>
           <li class="flex items-center gap-2"><span>🤖</span> Robotics &amp; Sensors</li>
         </ul>
@@ -209,22 +183,22 @@
       <div class="card p-6">
         <div class="grid place-items-center w-12 h-12 rounded-2xl bg-motion/15 text-2xl mb-3">🎯</div>
         <h3 class="font-extrabold text-lg">Read the concept</h3>
-        <p class="text-sm text-ink/65 mt-1">Short, plain-English explanation of the idea for the week, plus a key teaching point.</p>
+        <p class="text-sm text-ink-soft mt-1">Short, plain-English explanation of the idea for the week, plus a key teaching point.</p>
       </div>
       <div class="card p-6">
         <div class="grid place-items-center w-12 h-12 rounded-2xl bg-events/25 text-2xl mb-3">📖</div>
         <h3 class="font-extrabold text-lg">Lesson notes</h3>
-        <p class="text-sm text-ink/65 mt-1">A reading note for students — the big idea, words to know, key takeaways and discussion questions — plus a full teacher briefing. Printable.</p>
+        <p class="text-sm text-ink-soft mt-1">A reading note for students — the big idea, words to know, key takeaways and discussion questions — plus a full teacher briefing. Printable.</p>
       </div>
       <div class="card p-6">
         <div class="grid place-items-center w-12 h-12 rounded-2xl bg-looks/15 text-2xl mb-3">▶️</div>
         <h3 class="font-extrabold text-lg">Run it live</h3>
-        <p class="text-sm text-ink/65 mt-1">Press Run and watch the idea happen — move it, break it, change the numbers and run it again.</p>
+        <p class="text-sm text-ink-soft mt-1">Press Run and watch the idea happen — move it, break it, change the numbers and run it again.</p>
       </div>
       <div class="card p-6">
         <div class="grid place-items-center w-12 h-12 rounded-2xl bg-events/25 text-2xl mb-3">🧱</div>
         <h3 class="font-extrabold text-lg">Build it yourself</h3>
-        <p class="text-sm text-ink/65 mt-1">Follow the block recipe or code template and the step-by-step activity to make it your own.</p>
+        <p class="text-sm text-ink-soft mt-1">Follow the block recipe or code template and the step-by-step activity to make it your own.</p>
       </div>
     </div>
   </section>
@@ -232,7 +206,7 @@
 </main>
 
 <footer class="mt-8 border-t border-ink/10 py-10">
-  <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-ink/55">
+  <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-ink-muted">
     <p class="font-bold">CodeLab Curriculum — built for the classroom.</p>
     <p>Three courses, seventy-plus weeks of lessons. <a class="text-motion font-bold hover:underline" href="#curricula">Pick a course →</a></p>
   </div>

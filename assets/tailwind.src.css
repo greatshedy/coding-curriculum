@@ -1,0 +1,5 @@
+/* CodeLab Tailwind entry — see tailwind.config.js for the tokens.
+   Build: npx tailwindcss@3.4.17 -c tailwind.config.js -i assets/tailwind.src.css -o assets/tailwind.build.css --minify */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

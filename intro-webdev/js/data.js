@@ -5812,7 +5812,7 @@
       {
         key: "A",
         name: "Track A — JSS 1 & JSS 2",
-        desc: "HTML and CSS taught as a pair, every week. Four tabs per lesson: instructor guide, handout, runnable code, assessment.",
+        desc: "HTML and CSS taught as a pair, every week. One lesson page everyone shares: read it, run it, build it, check it.",
       },
     ],
     terms: [

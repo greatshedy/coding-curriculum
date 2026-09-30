@@ -6,28 +6,9 @@
 <title>JavaScript: Web Development — Full Classroom Package</title>
 <meta name="description" content="Three terms of modern JavaScript for JSS 3, SS 1 and SS 2: the DOM, events and fetch, with instructor guides, student handouts, runnable code templates and assessments." />
 
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/tailwind.build.css" />
+<link rel="stylesheet" href="../assets/fonts.css" />
 <link rel="stylesheet" href="../assets/style.css" />
-
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        fontFamily: {
-          display: ['"Baloo 2"', 'Nunito', 'sans-serif'],
-          sans: ['Nunito', 'ui-sans-serif', 'system-ui', 'sans-serif']
-        },
-        colors: {
-          ink: '#1f2a44', paper: '#f6f4ee', js: '#f7df1e', motion: '#4c97ff', looks: '#9966ff',
-          events: '#ffbf00', control: '#ffab19', sensing: '#5cb1d6', operators: '#59c059', variables: '#ff8c1a'
-        }
-      }
-    }
-  };
-</script>
 </head>
 <body class="min-h-screen">
 
@@ -60,12 +41,12 @@
         <div class="flex flex-wrap gap-2 mb-3">
           <span class="pill bg-events/25 text-yellow-900">Programming</span>
           <span class="pill bg-motion/15 text-motion">Track B · JSS 3, SS 1 &amp; SS 2</span>
-          <span class="pill bg-ink/5 text-ink/60">3 terms</span>
+          <span class="pill bg-ink/5 text-ink-soft">3 terms</span>
           <span class="pill bg-looks/15 text-looks">Full classroom package</span>
         </div>
         <h1 class="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight">JavaScript: Web Development</h1>
         <p class="mt-3 text-lg text-ink/70 max-w-3xl">
-          Instructor guides, student handouts, runnable code templates and assessments — everything you need to teach
+          Instructor guides, student handouts, runnable code templates and assessments: everything you need to teach
           modern JavaScript, from the first <code class="font-mono text-sm bg-ink/5 px-1.5 py-0.5 rounded">console.log()</code>
           through the DOM, events and <code class="font-mono text-sm bg-ink/5 px-1.5 py-0.5 rounded">fetch()</code> to a finished, published web app.
         </p>
@@ -78,22 +59,22 @@
     </div>
 
     <dl class="mt-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-      <div class="card p-5"><dt class="text-xs font-extrabold uppercase tracking-wide text-ink/45">Target students</dt><dd class="text-ink/75 font-semibold mt-1 text-sm">JSS 3, SS 1 and SS 2. No prior JavaScript needed.</dd></div>
-      <div class="card p-5"><dt class="text-xs font-extrabold uppercase tracking-wide text-ink/45">Starting point</dt><dd class="text-ink/75 font-semibold mt-1 text-sm">Students already know some HTML and CSS. This course adds JavaScript.</dd></div>
-      <div class="card p-5"><dt class="text-xs font-extrabold uppercase tracking-wide text-ink/45">End goal</dt><dd class="text-ink/75 font-semibold mt-1 text-sm">Every student builds and publishes a working interactive web app.</dd></div>
-      <div class="card p-5"><dt class="text-xs font-extrabold uppercase tracking-wide text-ink/45">Two tracks</dt><dd class="text-ink/75 font-semibold mt-1 text-sm">Track A has laptops. Track B works on paper with written assessments.</dd></div>
+      <div class="card p-5"><dt class="text-xs font-extrabold uppercase tracking-wide text-ink-muted">Target students</dt><dd class="text-ink/75 font-semibold mt-1 text-sm">JSS 3, SS 1 and SS 2. No prior JavaScript needed.</dd></div>
+      <div class="card p-5"><dt class="text-xs font-extrabold uppercase tracking-wide text-ink-muted">Starting point</dt><dd class="text-ink/75 font-semibold mt-1 text-sm">Students already know some HTML and CSS. This course adds JavaScript.</dd></div>
+      <div class="card p-5"><dt class="text-xs font-extrabold uppercase tracking-wide text-ink-muted">End goal</dt><dd class="text-ink/75 font-semibold mt-1 text-sm">Every student builds and publishes a working interactive web app.</dd></div>
+      <div class="card p-5"><dt class="text-xs font-extrabold uppercase tracking-wide text-ink-muted">Two tracks</dt><dd class="text-ink/75 font-semibold mt-1 text-sm">Track A has laptops. Track B works on paper with written assessments.</dd></div>
     </dl>
   </header>
 
   <!-- ===================== HOW IT WORKS ===================== -->
   <section class="pb-12">
     <h2 class="font-display text-3xl font-extrabold mb-2">How each lesson works</h2>
-    <p class="text-ink/60 mb-5">Every week page is the full classroom package, split into four tabs.</p>
+    <p class="text-ink-soft mb-5">Every week page is the full classroom package, split into four tabs.</p>
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-      <div class="card p-5"><div class="text-2xl mb-2">🧑‍🏫</div><h3 class="font-extrabold">Instructor guide</h3><p class="text-sm text-ink/65 mt-1">Objective, key teaching points, a timing breakdown, the live-code demo and common mistakes to watch for.</p></div>
-      <div class="card p-5"><div class="text-2xl mb-2">📄</div><h3 class="font-extrabold">Student handout</h3><p class="text-sm text-ink/65 mt-1">The explanation, analogies and worked examples — printable, and every example can be run.</p></div>
-      <div class="card p-5"><div class="text-2xl mb-2">🧑‍💻</div><h3 class="font-extrabold">Code template</h3><p class="text-sm text-ink/65 mt-1">The starter file, editable and runnable, with a live preview, a console panel and download.</p></div>
-      <div class="card p-5"><div class="text-2xl mb-2">✅</div><h3 class="font-extrabold">Assessment</h3><p class="text-sm text-ink/65 mt-1">Track A peer pair-checks and Track B written quizzes — answers hidden for the teacher.</p></div>
+      <div class="card p-5"><div class="text-2xl mb-2">🧑‍🏫</div><h3 class="font-extrabold">Instructor guide</h3><p class="text-sm text-ink-soft mt-1">Objective, key teaching points, a timing breakdown, the live-code demo and common mistakes to watch for.</p></div>
+      <div class="card p-5"><div class="text-2xl mb-2">📄</div><h3 class="font-extrabold">Student handout</h3><p class="text-sm text-ink-soft mt-1">The explanation, analogies and worked examples, printable, and every example can be run.</p></div>
+      <div class="card p-5"><div class="text-2xl mb-2">🧑‍💻</div><h3 class="font-extrabold">Code template</h3><p class="text-sm text-ink-soft mt-1">The starter file, editable and runnable, with a live preview, a console panel and download.</p></div>
+      <div class="card p-5"><div class="text-2xl mb-2">✅</div><h3 class="font-extrabold">Assessment</h3><p class="text-sm text-ink-soft mt-1">Track A peer pair-checks and Track B written quizzes; answers hidden for the teacher.</p></div>
     </div>
   </section>
 
@@ -124,14 +105,14 @@
     </div>
     <div class="card p-5 mt-4 flex flex-wrap items-center gap-3">
       <span class="pill bg-ink/5 text-ink/70">Term 3: modern JavaScript &amp; real-world apps</span>
-      <p class="text-sm text-ink/70 m-0">Every student plans and builds one mini-project — a to-do list, a calculator or a form validator — then presents it on showcase day.</p>
+      <p class="text-sm text-ink/70 m-0">Every student plans and builds one mini-project (a to-do list, a calculator or a form validator), then presents it on showcase day.</p>
     </div>
   </section>
 
   <!-- ===================== AT A GLANCE ===================== -->
   <section class="pb-12">
     <h2 class="font-display text-3xl font-extrabold mb-2">Terms at a glance</h2>
-    <p class="text-ink/60 mb-5">Click any week to open the instructor guide, handout, code template and assessment.</p>
+    <p class="text-ink-soft mb-5">Click any week to open the instructor guide, handout, code template and assessment.</p>
     <div id="terms"></div>
   </section>
 
@@ -141,7 +122,7 @@
     <div class="grid md:grid-cols-3 gap-6">
       <div class="card p-6">
         <h3 class="font-display text-xl font-extrabold">Weekly (Track A)</h3>
-        <p class="text-sm text-ink/65 mt-1">Peer pair-check checklist, every week:</p>
+        <p class="text-sm text-ink-soft mt-1">Peer pair-check checklist, every week:</p>
         <ul class="mt-3 space-y-1 text-sm text-ink/75 list-disc pl-5">
           <li>Does the code run without errors?</li>
           <li>Can the author explain the code in their own words?</li>
@@ -150,7 +131,7 @@
       </div>
       <div class="card p-6">
         <h3 class="font-display text-xl font-extrabold">Weekly (Track B)</h3>
-        <p class="text-sm text-ink/65 mt-1">Written quiz, every week:</p>
+        <p class="text-sm text-ink-soft mt-1">Written quiz, every week:</p>
         <ul class="mt-3 space-y-1 text-sm text-ink/75 list-disc pl-5">
           <li>Short-answer questions on the concept</li>
           <li>Code-trace questions ("what will print?")</li>
@@ -174,7 +155,7 @@
     <div class="card p-6 md:p-8 bg-ink text-white flex flex-col md:flex-row items-start md:items-center gap-6 justify-between">
       <div>
         <h2 class="font-display text-2xl font-extrabold">Want a blank page to experiment on?</h2>
-        <p class="text-white/75 mt-1 max-w-2xl">The Code Playground gives students an HTML editor, a live preview and a console — with a ready-made example for every week.</p>
+        <p class="text-white/75 mt-1 max-w-2xl">The Code Playground gives students an HTML editor, a live preview and a console, with a ready-made example for every week.</p>
       </div>
       <a href="playground.html" class="shrink-0 inline-flex items-center gap-2 rounded-2xl bg-js px-6 py-3 font-extrabold text-ink hover:brightness-105 transition">Open the Code Playground →</a>
     </div>
@@ -183,7 +164,7 @@
 </main>
 
 <footer class="border-t border-ink/10 py-10 no-print">
-  <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-ink/55">
+  <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-ink-muted">
     <p class="font-bold">CodeLab Curriculum — Web Development</p>
     <a class="text-motion font-bold hover:underline" href="week.html?t=1&w=1">Start Term 1 →</a>
   </div>
@@ -213,10 +194,10 @@
         '<div class="flex items-center gap-3 mb-4">' +
           '<span class="grid place-items-center w-10 h-10 rounded-2xl text-xl font-black" style="background:' + accent + '22;color:' + accent + '">' + term.n + "</span>" +
           '<div><h2 class="font-display text-2xl font-extrabold m-0">Term ' + term.n + ": " + esc(term.title) + "</h2>" +
-          '<p class="text-sm text-ink/55 m-0">' + term.weeks.length + " weeks</p></div>" +
+          '<p class="text-sm text-ink-muted m-0">' + term.weeks.length + " weeks</p></div>" +
         "</div>" +
         '<div class="card overflow-x-auto"><table class="w-full text-left text-sm border-collapse">' +
-          '<thead><tr class="bg-ink/5 text-ink/55 text-xs uppercase tracking-wide">' +
+          '<thead><tr class="bg-ink/5 text-ink-muted text-xs uppercase tracking-wide">' +
             '<th class="p-3 font-extrabold">Week</th><th class="p-3 font-extrabold">Topic</th><th class="p-3 font-extrabold">Learning focus</th><th class="p-3 font-extrabold sr-only">Open</th>' +
           "</tr></thead><tbody>" + rows + "</tbody></table></div>" +
       "</section>";
