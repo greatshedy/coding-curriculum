@@ -2575,16 +2575,1125 @@
   ];
 
   var term3 = [
-    week(1, "What is JavaScript?", "⚡", "motion", "JavaScript is the language that makes pages interactive. It runs in the browser and can change the page after it has loaded."),
-    week(2, "Variables and data", "📦", "variables", "Variables are named boxes that store information. JavaScript has different types of data, such as text, numbers and true/false."),
-    week(3, "Making decisions", "🔀", "control", "if and else let a program choose between different actions depending on whether something is true."),
-    week(4, "Functions", "🧩", "operators", "A function is a reusable set of instructions with a name, so you can run the same steps whenever you need them."),
-    week(5, "The DOM: finding elements", "🔍", "sensing", "The DOM is the browser's model of the page. JavaScript can find elements in it by their id."),
-    week(6, "Changing the page with JS", "✏️", "looks", "Once JavaScript has found an element, it can change its text and its styles."),
-    week(7, "Events", "🖱️", "events", "Events are things that happen on a page, like a click. Event listeners run code in response."),
-    week(8, "Mini-project: a counter", "🔢", "variables", "Combine variables, functions, the DOM and events to build a working counter."),
-    week(9, "Debugging and polish", "🐞", "sensing", "The browser console shows errors and messages. Reading it carefully is the fastest way to fix a page."),
-    week(10, "Showcase and recap", "🏆", "looks", "Present your interactive page and review everything learned across the three terms.")
+    {
+      n: 1, title: "What is JavaScript?", emoji: "⚡", color: "motion", tracks: "both",
+      concept: "JavaScript is the language that makes pages interactive. It runs in the browser and can change the page after it has loaded.",
+      objective: "Students can explain what JavaScript does and run a first script that logs to the console.",
+      teachingPoints: [
+        "JavaScript makes a page interactive; it runs in the browser after the page loads.",
+        "A <script> tag holds JavaScript; console.log() prints a message to the console.",
+        "Code runs from top to bottom, one line at a time."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo: first script", mins: 5 },
+        { label: "What JS does", mins: 8 },
+        { label: "Activity", mins: 15 },
+        { label: "Share & wrap-up", mins: 4 }
+      ],
+      liveDemo: [
+        {
+          title: "Your first script",
+          filename: "first_script.html",
+          caption: "Open the console panel under the preview (or press F12) to see the messages. Change the text and press Run again.",
+          code:
+`<!DOCTYPE html>
+<html>
+<body>
+  <h1>Hello, JavaScript</h1>
+  <script>
+    console.log("JavaScript is running!");
+    console.log("This message comes from a script.");
+  <\/script>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Putting the <script> tag in the wrong place or forgetting to close it, so the code never runs.",
+        "Looking for output on the page — console.log prints to the console panel, not the page.",
+        "Spelling console.log wrongly, which throws an error."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "What JavaScript does",
+            body: [
+              "HTML builds the page, CSS styles it, and JavaScript makes it move and react. JavaScript runs inside the browser."
+            ],
+            list: [
+              "Change text",
+              "React to clicks",
+              "Do maths",
+              "Show messages in the console"
+            ]
+          },
+          {
+            h: "The script tag and the console",
+            body: [
+              "Wrap your JavaScript in a <script> tag. Use console.log() to print a message you can read in the console panel."
+            ],
+            codes: [
+              { label: "A first message", code: "<script>console.log(\"Hello!\");<\/script>" }
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "my_first_script.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<body>
+  <h1>My first script</h1>
+  <script>
+    console.log("My name is ...");
+    console.log("I am learning JavaScript.");
+  <\/script>
+</body>
+</html>`,
+        tasks: [
+          "Change the first message to your name.",
+          "Add a third console.log line about your favourite subject.",
+          "Read the console panel and point to each message.",
+          "Explain to a partner what the <script> tag is for."
+        ]
+      },
+      assessment: [
+        {
+          track: "A", audience: "Both", title: "Peer pair-check", type: "checklist",
+          items: [
+            "The console shows both messages",
+            "The script tag is closed",
+            "The student can say what a browser console is"
+          ]
+        },
+        {
+          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
+          questions: [
+            { prompt: "Question 1: What does console.log() do?", answer: "It prints a message to the browser's console so you can check what your code is doing." },
+            { prompt: "Question 2: Which tag holds JavaScript inside an HTML page?", answer: "The <script> tag." },
+            { prompt: "Question 3: Does JavaScript run on the page or on a server?", answer: "On the page, inside the browser." }
+          ]
+        }
+      ]
+    },
+    {
+      n: 2, title: "Variables and data", emoji: "📦", color: "variables", tracks: "both",
+      concept: "Variables are named boxes that store information. JavaScript has different types of data, such as text, numbers and true/false.",
+      objective: "Students can store values in variables and print them, and name the three basic data types.",
+      teachingPoints: [
+        "A variable is a named box that stores a value: let score = 10;.",
+        "let allows the value to change later; const does not.",
+        "The three basic types are string (text), number, and boolean (true/false)."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo", mins: 5 },
+        { label: "Variables & types", mins: 8 },
+        { label: "Activity", mins: 15 },
+        { label: "Share & wrap-up", mins: 4 }
+      ],
+      liveDemo: [
+        {
+          title: "Boxes of data",
+          filename: "variables.html",
+          caption: "Each variable is a labelled box. Change the values and press Run to see the console update.",
+          code:
+`<!DOCTYPE html>
+<html>
+<body>
+  <h1>Variables</h1>
+  <script>
+    let name = "Ada";
+    let age = 12;
+    const school = "Green High";
+    let likesFootball = true;
+
+    console.log(name);
+    console.log(age);
+    console.log("I go to " + school);
+    console.log("Likes football: " + likesFootball);
+  <\/script>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Confusing let and const, then trying to change a const and getting an error.",
+        "Forgetting the quotes around text, so the browser thinks it is a variable name.",
+        "Using spaces or capital letters inconsistently in variable names (use camelCase)."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Variables are named boxes",
+            body: [
+              "A variable stores a value under a name. Use let when the value will change, and const when it will not."
+            ],
+            codes: [
+              { label: "let and const", code: "let score = 10;\nconst name = \"Ada\";" }
+            ]
+          },
+          {
+            h: "Three types of data",
+            body: [
+              "JavaScript has three basic data types you will use every day."
+            ],
+            list: [
+              "string — text in quotes, like \"Ada\"",
+              "number — like 12 or 3.5",
+              "boolean — true or false"
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "my_profile_vars.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<body>
+  <h1>My profile variables</h1>
+  <script>
+    let myName = "Your name";
+    let myAge = 0;
+    let mySchool = "Your school";
+    let likesCoding = true;
+
+    console.log(myName);
+    console.log(myAge);
+    console.log(mySchool);
+    console.log(likesCoding);
+  <\/script>
+</body>
+</html>`,
+        tasks: [
+          "Change each variable to your own details.",
+          "Add a new string variable for your favourite food and log it.",
+          "Add a number variable for your favourite number.",
+          "Decide which variables could be const and change them."
+        ]
+      },
+      assessment: [
+        {
+          track: "A", audience: "Both", title: "Peer pair-check", type: "checklist",
+          items: [
+            "All variables log correctly",
+            "At least one string and one number are used",
+            "The student can explain let vs const"
+          ]
+        },
+        {
+          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
+          questions: [
+            { prompt: "Question 1: Write a variable called score set to 50.", answer: "let score = 50;" },
+            { prompt: "Question 2: What is the difference between let and const?", answer: "let can be changed later; const cannot be reassigned." },
+            { prompt: "Question 3: What type of data is \"hello\"? What about true?", answer: "\"hello\" is a string; true is a boolean." }
+          ]
+        }
+      ]
+    },
+    {
+      n: 3, title: "Making decisions", emoji: "🔀", color: "control", tracks: "both",
+      concept: "if and else let a program choose between different actions depending on whether something is true.",
+      objective: "Students can write if/else statements that choose between actions.",
+      teachingPoints: [
+        "if runs a block only when a condition is true.",
+        "else runs when the condition is false; else if checks another condition.",
+        "Comparisons use ===, >, <, >=, <= — a single = assigns, it does not compare."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo", mins: 5 },
+        { label: "Decisions", mins: 8 },
+        { label: "Activity", mins: 15 },
+        { label: "Share & wrap-up", mins: 4 }
+      ],
+      liveDemo: [
+        {
+          title: "Am I old enough?",
+          filename: "decisions.html",
+          caption: "Change age to 15 and press Run — the message changes because the condition changes.",
+          code:
+`<!DOCTYPE html>
+<html>
+<body>
+  <h1>Age checker</h1>
+  <script>
+    let age = 12;
+    if (age >= 13) {
+      console.log("You can join the teen club.");
+    } else {
+      console.log("The teen club is for age 13 and up.");
+    }
+  <\/script>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Writing one = instead of three === in a comparison.",
+        "Forgetting the braces { } around the block.",
+        "Putting the semicolon right after the if (...) before the braces."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Making a choice",
+            body: [
+              "An if statement checks a condition. If it is true, its block runs. Otherwise the else block runs."
+            ],
+            codes: [
+              { label: "if and else", code: "if (score > 50) {\n  console.log(\"Pass\");\n} else {\n  console.log(\"Try again\");\n}" }
+            ]
+          },
+          {
+            h: "Comparing values",
+            body: [
+              "Use === to check if two values are equal, and >, <, >=, <= to compare numbers. A single = is for assigning a value, not comparing."
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "my_decisions.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<body>
+  <h1>Grade checker</h1>
+  <script>
+    let score = 75;
+    if (score >= 70) {
+      console.log("Great work!");
+    } else if (score >= 50) {
+      console.log("Good, keep going.");
+    } else {
+      console.log("Keep practising.");
+    }
+  <\/script>
+</body>
+</html>`,
+        tasks: [
+          "Change score to 45 and run it.",
+          "Add a fourth grade band for score below 30.",
+          "Add a check for a perfect score of 100.",
+          "Explain to a partner when the else block runs."
+        ]
+      },
+      assessment: [
+        {
+          track: "A", audience: "Both", title: "Peer pair-check", type: "checklist",
+          items: [
+            "The message changes with the score",
+            "The braces are present",
+            "The student can explain what a condition is"
+          ]
+        },
+        {
+          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
+          questions: [
+            { prompt: "Question 1: Write an if statement that logs \"pass\" when score is 50 or more.", answer: "if (score >= 50) { console.log(\"pass\"); }" },
+            { prompt: "Question 2: What is the difference between = and ===?", answer: "= assigns a value; === compares two values for equality." },
+            { prompt: "Question 3: When does an else block run?", answer: "When the if condition is false." }
+          ]
+        }
+      ]
+    },
+    {
+      n: 4, title: "Functions", emoji: "🧩", color: "operators", tracks: "both",
+      concept: "A function is a reusable set of instructions with a name, so you can run the same steps whenever you need them.",
+      objective: "Students can write and call simple functions with parameters and a return value.",
+      teachingPoints: [
+        "A function is a named block of instructions you can run whenever you need it.",
+        "Parameters are the values you pass in; return sends a value back out.",
+        "You call a function by writing its name followed by parentheses."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo", mins: 5 },
+        { label: "Functions", mins: 8 },
+        { label: "Activity", mins: 15 },
+        { label: "Share & wrap-up", mins: 4 }
+      ],
+      liveDemo: [
+        {
+          title: "A greeting function",
+          filename: "functions.html",
+          caption: "greet takes a name and returns a message. Calling it twice with different names reuses the same code.",
+          code:
+`<!DOCTYPE html>
+<html>
+<body>
+  <h1>Functions</h1>
+  <script>
+    function greet(name) {
+      return "Hello, " + name + "!";
+    }
+    console.log(greet("Ada"));
+    console.log(greet("Sam"));
+  <\/script>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Forgetting the parentheses when calling a function, so nothing runs.",
+        "Writing a function but never calling it.",
+        "Forgetting return, so the function gives back nothing."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Reuse with functions",
+            body: [
+              "A function packages instructions under a name so you can run them again and again without rewriting them."
+            ],
+            codes: [
+              { label: "A function", code: "function shout(word) {\n  return word + \"!!\";\n}" }
+            ]
+          },
+          {
+            h: "Parameters and return",
+            body: [
+              "Parameters are the inputs in the brackets. return sends a result back to whoever called the function."
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "my_functions.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<body>
+  <h1>My functions</h1>
+  <script>
+    function double(number) {
+      return number * 2;
+    }
+    function introduce(name, age) {
+      return name + " is " + age + " years old.";
+    }
+    console.log(double(5));
+    console.log(introduce("Ada", 12));
+  <\/script>
+</body>
+</html>`,
+        tasks: [
+          "Call double with three different numbers.",
+          "Add a function called square that returns a number times itself.",
+          "Call introduce with your own name and age.",
+          "Explain to a partner what a return value is."
+        ]
+      },
+      assessment: [
+        {
+          track: "A", audience: "Both", title: "Peer pair-check", type: "checklist",
+          items: [
+            "The functions run and log results",
+            "Each function is called at least once",
+            "The student can explain parameters"
+          ]
+        },
+        {
+          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
+          questions: [
+            { prompt: "Question 1: Write a function that takes a name and returns a greeting.", answer: "function greet(name) { return \"Hi, \" + name + \"!\"; }" },
+            { prompt: "Question 2: What keyword sends a value back from a function?", answer: "return" },
+            { prompt: "Question 3: How do you run a function called start?", answer: "Write start(); — the name followed by parentheses." }
+          ]
+        }
+      ]
+    },
+    {
+      n: 5, title: "The DOM: finding elements", emoji: "🔍", color: "sensing", tracks: "both",
+      concept: "The DOM is the browser's model of the page. JavaScript can find elements in it by their id.",
+      objective: "Students can find an element on the page with getElementById and read its text.",
+      teachingPoints: [
+        "The DOM is the browser's model of the page; JavaScript can reach into it.",
+        "document.getElementById(\"name\") finds one element by its id.",
+        "textContent reads (or later, sets) the text inside an element."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo", mins: 5 },
+        { label: "The DOM", mins: 8 },
+        { label: "Activity", mins: 15 },
+        { label: "Share & wrap-up", mins: 4 }
+      ],
+      liveDemo: [
+        {
+          title: "Find and read",
+          filename: "dom.html",
+          caption: "getElementById returns the element with id=\"title\"; textContent gives its text. Try changing the heading text.",
+          code:
+`<!DOCTYPE html>
+<html>
+<body>
+  <h1 id="title">A heading</h1>
+  <script>
+    let heading = document.getElementById("title");
+    console.log(heading.textContent);
+  <\/script>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "A typo in the id, so getElementById returns null and the next line errors.",
+        "Putting the script before the element it looks for, so the element is not there yet.",
+        "Forgetting the capital letters in getElementById."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "The page as a tree",
+            body: [
+              "The browser turns your HTML into a tree of elements called the DOM. JavaScript can walk that tree and find any element."
+            ]
+          },
+          {
+            h: "Finding an element by id",
+            body: [
+              "Give an element an id, then use document.getElementById to get it. Read its text with textContent."
+            ],
+            codes: [
+              { label: "Finding an element", code: "let box = document.getElementById(\"box\");" }
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "my_dom.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<body>
+  <h1 id="title">Welcome</h1>
+  <p id="firstParagraph">This is the first paragraph.</p>
+  <script>
+    let heading = document.getElementById("title");
+    let para = document.getElementById("firstParagraph");
+    console.log(heading.textContent);
+    console.log(para.textContent);
+  <\/script>
+</body>
+</html>`,
+        tasks: [
+          "Add an id to a third element and log its text.",
+          "Change an id in the HTML and update the script to match.",
+          "Predict what the console will show before running.",
+          "Explain to a partner what the DOM is."
+        ]
+      },
+      assessment: [
+        {
+          track: "A", audience: "Both", title: "Peer pair-check", type: "checklist",
+          items: [
+            "The console shows the element text",
+            "Ids match between HTML and script",
+            "The student can say what the DOM is"
+          ]
+        },
+        {
+          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
+          questions: [
+            { prompt: "Question 1: What does document.getElementById(\"title\") return?", answer: "The element whose id is \"title\"." },
+            { prompt: "Question 2: Which property holds the text inside an element?", answer: "textContent" },
+            { prompt: "Question 3: What happens if the id does not exist on the page?", answer: "getElementById returns null, and using it as if it were an element causes an error." }
+          ]
+        }
+      ]
+    },
+    {
+      n: 6, title: "Changing the page with JS", emoji: "✏️", color: "looks", tracks: "both",
+      concept: "Once JavaScript has found an element, it can change its text and its styles.",
+      objective: "Students can change an element's text and style from JavaScript.",
+      teachingPoints: [
+        "Setting element.textContent = \"...\" changes the text on the page.",
+        "Setting element.style.property changes one style; in JS, style names use camelCase (e.g. backgroundColor).",
+        "The change happens live, without reloading the page."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo", mins: 5 },
+        { label: "Changing the DOM", mins: 8 },
+        { label: "Activity", mins: 15 },
+        { label: "Share & wrap-up", mins: 4 }
+      ],
+      liveDemo: [
+        {
+          title: "Change it live",
+          filename: "change.html",
+          caption: "The heading text and colours change with no reload. Notice backgroundColor uses camelCase, not background-color.",
+          code:
+`<!DOCTYPE html>
+<html>
+<body>
+  <h1 id="title">Before</h1>
+  <script>
+    let heading = document.getElementById("title");
+    heading.textContent = "After — changed by JavaScript!";
+    heading.style.color = "#4c97ff";
+    heading.style.backgroundColor = "#eef2f7";
+  <\/script>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Writing heading.style.background-color (the CSS spelling) instead of backgroundColor.",
+        "Forgetting the quotes around the new text.",
+        "Using = to compare instead of assign, or missing the = to assign."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Change the text",
+            body: [
+              "Set textContent to a new string to change what an element says."
+            ],
+            codes: [
+              { label: "New text", code: "heading.textContent = \"New text\";" }
+            ]
+          },
+          {
+            h: "Change the style",
+            body: [
+              "element.style changes one CSS property at a time. Use camelCase: backgroundColor, fontSize, color."
+            ],
+            codes: [
+              { label: "New colour", code: "heading.style.color = \"#4c97ff\";" }
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "my_change.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<body>
+  <h1 id="title">Original title</h1>
+  <p id="message">Original message.</p>
+  <script>
+    let title = document.getElementById("title");
+    let message = document.getElementById("message");
+    title.textContent = "My new title";
+    message.style.color = "#15803d";
+  <\/script>
+</body>
+</html>`,
+        tasks: [
+          "Change the title text again.",
+          "Change the message text with textContent.",
+          "Give the title a background colour with style.",
+          "Explain to a partner why backgroundColor is written in camelCase."
+        ]
+      },
+      assessment: [
+        {
+          track: "A", audience: "Both", title: "Peer pair-check", type: "checklist",
+          items: [
+            "The page shows the changed text",
+            "At least two styles change",
+            "The student can explain camelCase"
+          ]
+        },
+        {
+          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
+          questions: [
+            { prompt: "Question 1: Write the line that changes the text of an element called title to \"Hi\".", answer: "title.textContent = \"Hi\";" },
+            { prompt: "Question 2: How do you write the CSS property font-size in JavaScript style?", answer: "fontSize — style names use camelCase." },
+            { prompt: "Question 3: Does the page reload when JavaScript changes the DOM?", answer: "No. The change happens live on the page without reloading." }
+          ]
+        }
+      ]
+    },
+    {
+      n: 7, title: "Events", emoji: "🖱️", color: "events", tracks: "both",
+      concept: "Events are things that happen on a page, like a click. Event listeners run code in response.",
+      objective: "Students can make a page react to a click with an event listener.",
+      teachingPoints: [
+        "An event is something that happens on a page, like a click.",
+        "element.addEventListener(\"click\", handler) runs a function when the event happens.",
+        "The handler is a function passed to addEventListener; you do not call it yourself."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo", mins: 5 },
+        { label: "Events", mins: 8 },
+        { label: "Activity", mins: 15 },
+        { label: "Share & wrap-up", mins: 4 }
+      ],
+      liveDemo: [
+        {
+          title: "React to a click",
+          filename: "events.html",
+          caption: "addEventListener waits for a click, then runs the function. Try changing the message.",
+          code:
+`<!DOCTYPE html>
+<html>
+<body>
+  <h1 id="title">Click the button</h1>
+  <button id="myButton">Click me</button>
+  <script>
+    let button = document.getElementById("myButton");
+    button.addEventListener("click", function () {
+      document.getElementById("title").textContent = "You clicked it!";
+    });
+  <\/script>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Writing addEventListener(\"click\", handler()) with parentheses, which calls the function immediately instead of waiting.",
+        "Putting the listener on the wrong element or using the wrong id.",
+        "Forgetting the script is below the elements, so the button is not found yet."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Events and listeners",
+            body: [
+              "An event is an action, like a click. An event listener says: when this event happens, run this function."
+            ],
+            codes: [
+              { label: "A click listener", code: "button.addEventListener(\"click\", function () {\n  console.log(\"clicked\");\n});" }
+            ]
+          },
+          {
+            h: "Pass the function, do not call it",
+            body: [
+              "Write the function name without parentheses so the browser can call it later, when the event happens."
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "my_events.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<body>
+  <h1 id="title">Button practice</h1>
+  <button id="changeButton">Change the title</button>
+  <button id="resetButton">Reset</button>
+  <script>
+    document.getElementById("changeButton").addEventListener("click", function () {
+      document.getElementById("title").textContent = "Changed!";
+    });
+    document.getElementById("resetButton").addEventListener("click", function () {
+      document.getElementById("title").textContent = "Button practice";
+    });
+  <\/script>
+</body>
+</html>`,
+        tasks: [
+          "Make the first button change the title to your own message.",
+          "Add a third button that changes the title colour.",
+          "Make the reset button also restore the colour.",
+          "Explain to a partner why the handler has no parentheses."
+        ]
+      },
+      assessment: [
+        {
+          track: "A", audience: "Both", title: "Peer pair-check", type: "checklist",
+          items: [
+            "Clicking the button changes the page",
+            "The listener is on the right element",
+            "The student can explain what an event is"
+          ]
+        },
+        {
+          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
+          questions: [
+            { prompt: "Question 1: Which method listens for a click on an element?", answer: "element.addEventListener(\"click\", function () { ... });" },
+            { prompt: "Question 2: Why should the handler function not have parentheses when passed to addEventListener?", answer: "Parentheses would call it immediately; without them, the browser calls it later when the event happens." },
+            { prompt: "Question 3: Name two events a page can listen for.", answer: "Any two of: click, mouseover, keydown, submit." }
+          ]
+        }
+      ]
+    },
+    {
+      n: 8, title: "Mini-project: a counter", emoji: "🔢", color: "variables", tracks: "both",
+      concept: "Combine variables, functions, the DOM and events to build a working counter.",
+      objective: "Students combine variables, functions, the DOM and events to build a working counter.",
+      teachingPoints: [
+        "A counter needs a variable to hold the number, a way to display it, and buttons to change it.",
+        "Each button's event handler updates the variable and then updates the display.",
+        "Keep the logic in small functions so each part is easy to test."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo", mins: 5 },
+        { label: "Build a counter", mins: 8 },
+        { label: "Activity", mins: 15 },
+        { label: "Share & wrap-up", mins: 4 }
+      ],
+      liveDemo: [
+        {
+          title: "A working counter",
+          filename: "counter.html",
+          caption: "A variable holds the count; each button changes it and calls update() to show the new number.",
+          code:
+`<!DOCTYPE html>
+<html>
+<body>
+  <h1 id="count">0</h1>
+  <button id="minus">−</button>
+  <button id="plus">+</button>
+  <button id="reset">Reset</button>
+  <script>
+    let value = 0;
+    let display = document.getElementById("count");
+
+    function update() {
+      display.textContent = value;
+    }
+    document.getElementById("plus").addEventListener("click", function () {
+      value = value + 1;
+      update();
+    });
+    document.getElementById("minus").addEventListener("click", function () {
+      value = value - 1;
+      update();
+    });
+    document.getElementById("reset").addEventListener("click", function () {
+      value = 0;
+      update();
+    });
+  <\/script>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Changing the variable but forgetting to update the display.",
+        "Putting the buttons' handlers above the elements, so the elements are not found.",
+        "Duplicating the same code in every handler instead of using one update function."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Plan the counter",
+            body: [
+              "A counter is built from four simple parts."
+            ],
+            list: [
+              "A variable to store the count",
+              "An element to show it",
+              "Buttons for plus, minus and reset",
+              "One function that redraws the display"
+            ]
+          },
+          {
+            h: "The update function",
+            body: [
+              "Keep one function that writes the current value to the page. Every button calls it after changing the value."
+            ],
+            codes: [
+              { label: "update()", code: "function update() {\n  display.textContent = value;\n}" }
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "my_counter.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<body>
+  <h1 id="count">0</h1>
+  <button id="plus">+1</button>
+  <button id="minus">−1</button>
+  <button id="reset">Reset</button>
+  <script>
+    let value = 0;
+    let display = document.getElementById("count");
+    function update() {
+      display.textContent = value;
+    }
+    document.getElementById("plus").addEventListener("click", function () {
+      value = value + 1;
+      update();
+    });
+    document.getElementById("minus").addEventListener("click", function () {
+      value = value - 1;
+      update();
+    });
+    document.getElementById("reset").addEventListener("click", function () {
+      value = 0;
+      update();
+    });
+  <\/script>
+</body>
+</html>`,
+        tasks: [
+          "Add a \"times two\" button that doubles the value.",
+          "Change the plus button to add 5 instead of 1.",
+          "Change the display colour when the value goes below zero.",
+          "Explain to a partner why update() is called after each change."
+        ]
+      },
+      assessment: [
+        {
+          track: "A", audience: "Both", title: "Peer pair-check", type: "checklist",
+          items: [
+            "All buttons change the number correctly",
+            "The display updates every time",
+            "The student can explain what update() does"
+          ]
+        },
+        {
+          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
+          questions: [
+            { prompt: "Question 1: Why keep a value variable in a counter?", answer: "It stores the current count so the buttons can change it and the display can show it." },
+            { prompt: "Question 2: What does update() do?", answer: "It writes the current value into the display element." },
+            { prompt: "Question 3: Write the handler that adds 1 to value when a button is clicked.", answer: "button.addEventListener(\"click\", function () { value = value + 1; update(); });" }
+          ]
+        }
+      ]
+    },
+    {
+      n: 9, title: "Debugging and polish", emoji: "🐞", color: "sensing", tracks: "both",
+      concept: "The browser console shows errors and messages. Reading it carefully is the fastest way to fix a page.",
+      objective: "Students can use the console to find and fix errors, and polish a small project.",
+      teachingPoints: [
+        "The console shows errors in red with the line number and a message.",
+        "console.log() placed in your code shows what a value is at that moment.",
+        "Common fixes: typos in ids, missing quotes or braces, and scripts running before the elements exist."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo: read an error", mins: 5 },
+        { label: "Debugging", mins: 8 },
+        { label: "Activity", mins: 15 },
+        { label: "Share & wrap-up", mins: 4 }
+      ],
+      liveDemo: [
+        {
+          title: "Read the error",
+          filename: "debug.html",
+          caption: "Run this and read the console: heading is null because the id is misspelled. Fix the id and run again.",
+          code:
+`<!DOCTYPE html>
+<html>
+<body>
+  <h1 id="title">Debug me</h1>
+  <script>
+    // This line has a typo in the id.
+    let heading = document.getElementById("titel");
+    console.log(heading);
+  <\/script>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Ignoring the red error message and guessing instead of reading it.",
+        "Not using console.log to check what a value actually is.",
+        "Fixing the wrong line because the error's line number was not checked."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "The console is your helper",
+            body: [
+              "Errors appear in red with a line number. Read the message, go to that line, and fix it. Log values to see what your code is really doing."
+            ]
+          },
+          {
+            h: "Common bugs to check",
+            body: [
+              "When a page does not work, look for these first."
+            ],
+            list: [
+              "Spelling of ids and variable names",
+              "Missing or extra quotes",
+              "Missing braces or semicolons",
+              "Script placed before the elements it uses"
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "bug_hunt.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<body>
+  <h1 id="title">Bug hunt</h1>
+  <p id="score">Score: 0</p>
+  <script>
+    let points = 10
+    let label = document.getElementById("score");
+    label.textContent = "Score: " + points
+    console.log("Points is " + points);
+  <\/script>
+</body>
+</html>`,
+        tasks: [
+          "Run the page and read the console.",
+          "Find and fix any error, then run it again.",
+          "Add a console.log to check the value of points.",
+          "Explain to a partner how you found the bug."
+        ]
+      },
+      assessment: [
+        {
+          track: "A", audience: "Both", title: "Peer pair-check", type: "checklist",
+          items: [
+            "The page runs with no console errors",
+            "The student can describe the bug they fixed",
+            "A console.log was used to check a value"
+          ]
+        },
+        {
+          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
+          questions: [
+            { prompt: "Question 1: Where do JavaScript errors appear?", answer: "In the browser's console, usually in red with a line number." },
+            { prompt: "Question 2: What is console.log useful for while debugging?", answer: "It shows the actual value of something, so you can check whether your code is doing what you expect." },
+            { prompt: "Question 3: Name one common cause of a JavaScript error.", answer: "Any one of: a typo in an id or variable name, a missing quote or brace, or a script that runs before the elements exist." }
+          ]
+        }
+      ]
+    },
+    {
+      n: 10, title: "Showcase and recap", emoji: "🏆", color: "looks", tracks: "both",
+      concept: "Present your interactive page and review everything learned across the three terms.",
+      objective: "Students present an interactive page and review the three terms' skills.",
+      teachingPoints: [
+        "Present what the page does, how it reacts, and the JavaScript behind it.",
+        "Review the journey: HTML structure, CSS style, JavaScript behaviour.",
+        "Reflect on one thing that was tricky and how it was solved."
+      ],
+      timing: [
+        { label: "Welcome", mins: 3 },
+        { label: "Demo of a finished interactive page", mins: 4 },
+        { label: "Final build & polish", mins: 18 },
+        { label: "Presentations", mins: 6 },
+        { label: "Recap & wrap-up", mins: 4 }
+      ],
+      liveDemo: [
+        {
+          title: "A finished interactive page",
+          filename: "showcase.html",
+          caption: "HTML for structure, CSS for style, JavaScript for behaviour — all three terms working together.",
+          code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body { font-family: sans-serif; background: #f6f4ee; text-align: center; padding: 24px; }
+    button { padding: 8px 16px; border: 0; border-radius: 8px; background: #4c97ff; color: #fff; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h1 id="message">Tap the button</h1>
+  <button id="go">Tap me</button>
+  <script>
+    let greetings = ["Hello!", "Welcome!", "Nice to see you!"];
+    let index = 0;
+    document.getElementById("go").addEventListener("click", function () {
+      document.getElementById("message").textContent = greetings[index];
+      index = index + 1;
+      if (index >= greetings.length) {
+        index = 0;
+      }
+    });
+  <\/script>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Presenting without checking the page runs first.",
+        "Trying to add features at the last minute instead of polishing what works.",
+        "Being unable to explain a line of their own code."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "What to present",
+            body: [
+              "Use these four points to guide your presentation."
+            ],
+            list: [
+              "What your page does",
+              "How it reacts to the user",
+              "One piece of JavaScript you are proud of",
+              "One challenge you solved"
+            ]
+          },
+          {
+            h: "The three terms together",
+            body: [
+              "HTML gives the page structure, CSS makes it look good, and JavaScript makes it react. Every web page you use combines all three."
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "final_page.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body { font-family: sans-serif; text-align: center; padding: 24px; }
+    #count { font-size: 48px; }
+  </style>
+</head>
+<body>
+  <h1>My interactive page</h1>
+  <p id="count">0</p>
+  <button id="up">Add one</button>
+  <script>
+    let value = 0;
+    document.getElementById("up").addEventListener("click", function () {
+      value = value + 1;
+      document.getElementById("count").textContent = value;
+    });
+  <\/script>
+</body>
+</html>`,
+        tasks: [
+          "Make your page do something the user can see and interact with.",
+          "Check it runs with no console errors.",
+          "Be ready to explain one line of your JavaScript.",
+          "Present your page and name one thing you learned across the three terms."
+        ]
+      },
+      assessment: [
+        {
+          track: "A", audience: "Both", title: "Final showcase rubric", type: "rubric",
+          criteria: [
+            "Page runs without errors",
+            "The page reacts to the user",
+            "Uses HTML, CSS and JavaScript together",
+            "The student can explain a line of their own code",
+            "The student reflects on something they learned"
+          ]
+        },
+        {
+          track: "B", audience: "Both", title: "Final recap quiz", type: "quiz",
+          questions: [
+            { prompt: "Question 1: What are the three languages of the web and what does each do?", answer: "HTML gives structure, CSS gives style, and JavaScript gives behaviour and interactivity." },
+            { prompt: "Question 2: Write a line that stores the number 7 in a variable.", answer: "let number = 7;" },
+            { prompt: "Question 3: Write an if statement that logs \"yes\" when ready is true.", answer: "if (ready === true) { console.log(\"yes\"); }" },
+            { prompt: "Question 4: Write a function that returns the sum of two numbers.", answer: "function add(a, b) { return a + b; }" },
+            { prompt: "Question 5: Which method finds an element by its id?", answer: "document.getElementById()" },
+            { prompt: "Question 6: Which method runs a function when a button is clicked?", answer: "addEventListener(\"click\", function () { ... })" }
+          ]
+        }
+      ]
+    }
   ];
 
   window.INTRO_CURRICULUM = {
