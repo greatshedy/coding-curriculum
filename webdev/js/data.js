@@ -9,7 +9,7 @@
        liveDemo[{ title, filename, code, caption }],
        commonMistakes[],
        handout: { sections:[ { h, body[], list[], codes[], badge } ] },
-       template: { filename, code, tasks[] },
+       template: { filename, code, core[], stretch[] },
        assessment: [ { track, audience, title, type, ... } ] }
 
    Weeks not yet authored are created by stub(...) with an empty
@@ -144,13 +144,19 @@
   </script>
 </body>
 </html>`,
-        tasks: [
+        core: [
           "Save this file as week1_firstname.html",
           "Replace [YOUR NAME HERE] with your actual name",
           "Replace [YOUR AGE] with your actual age",
           "Open the file in a browser",
           "Open the console (F12) and verify you see both messages",
-          "Try adding one more console.log() line with your favourite subject"
+          "Try adding one more console.log() line with your favourite subject",
+          "Log a message that says which class you are in, for example \"I am in JSS 3B\"",
+          "Note the exact order the messages appear in the console"
+        ],
+        stretch: [
+          "Log your name and age together on one line using +",
+          "Add a second script tag and check that both sets of messages still run"
         ]
       },
       assessment: [
@@ -327,11 +333,17 @@ console.log(likesIceCream);     // true` }
   </script>
 </body>
 </html>`,
-        tasks: [
+        core: [
           "Replace the placeholders with your own data",
           "Create 3 new variables (one string, one number, one boolean)",
           "Print all 6 variables to the console",
-          "Save and verify the console output"
+          "Save and verify the console output",
+          "Store the price of a snack in Naira as a number (for example 250.50) and print it",
+          "Change one let variable after printing it, then print it again to show the new value"
+        ],
+        stretch: [
+          "Try to reassign a const variable, read the error in the console, and explain what it means",
+          "Create a variable for your favourite football team and print a sentence that uses it"
         ]
       },
       assessment: [
@@ -354,9 +366,9 @@ console.log(likesIceCream);     // true` }
               prompt: "Question 2: Label each of these as a String, Number or Boolean.",
               code:
 `let score = 100;
-let city = "Tokyo";
+let city = "Abuja";
 let isWinner = false;`,
-              answer: "let score = 100; → Number\nlet city = \"Tokyo\"; → String\nlet isWinner = false; → Boolean"
+              answer: "let score = 100; → Number\nlet city = \"Abuja\"; → String\nlet isWinner = false; → Boolean"
             },
             {
               prompt: "Question 3 (Code trace): What will print to the console?",
@@ -484,11 +496,17 @@ console.log(age <= 14);   // false` }
   </script>
 </body>
 </html>`,
-        tasks: [
+        core: [
           "Run the template and read the console output",
           "Change the test scores and predict the new average before you run it",
           "Add a third test score and recalculate the average using all three",
-          "Add a check for whether the average is a Grade A (90 or higher)"
+          "Add a check for whether the average is a Grade A (90 or higher)",
+          "Work out your average across three subjects and print it",
+          "Print whether your average is a pass (50 or more) using a comparison"
+        ],
+        stretch: [
+          "Start with a shopping budget of 5000 Naira, subtract two prices, and print what is left",
+          "Add a number stored as text (\"5\" + 1) and explain why the result is different from 5 + 1"
         ]
       },
       assessment: [
@@ -661,11 +679,17 @@ if (isRaining) {
   </script>
 </body>
 </html>`,
-        tasks: [
+        core: [
           "Run the template and check the console",
           "Change userAge to different values and see which branch runs",
           "Complete the grade challenge: 80 or higher prints \"Great job!\", otherwise \"Keep trying!\"",
-          "Add a third branch using else if for a middle grade"
+          "Add a third branch using else if for a middle grade",
+          "Decide whether a football score is a win: print \"Win!\" if the goals are more than the opponent's, otherwise \"No win\"",
+          "Test at least three different values and note which branch ran each time"
+        ],
+        stretch: [
+          "Write an if / else if / else that prints a letter grade (A, B, C or F) for a score",
+          "Check a price in Naira: print \"expensive\" if it is over 10000, otherwise \"affordable\""
         ]
       },
       assessment: [
@@ -822,11 +846,17 @@ for (let i = 2; i <= 10; i = i + 2) {
   </script>
 </body>
 </html>`,
-        tasks: [
+        core: [
           "Run the template and count along with the console",
           "Write a loop that counts down from 10 to 1",
           "Write a loop that counts by 5s from 0 to 50",
-          "Predict how many lines each loop will print before you run it"
+          "Predict how many lines each loop will print before you run it",
+          "Print the multiples of 3 from 3 to 30",
+          "Write a loop that prints the numbers 1 to 7, one for each day of the week"
+        ],
+        stretch: [
+          "Use a loop inside a loop to print a small times table for 1 to 3",
+          "Add up the numbers 1 to 10 inside a loop and print the total"
         ]
       },
       assessment: [
@@ -991,11 +1021,17 @@ console.log(result);  // 8` }
   </script>
 </body>
 </html>`,
-        tasks: [
+        core: [
           "Run the template and check both greetings appear",
           "Write add(a, b) that returns the sum, and print add(4, 6)",
           "Write isOldEnough(age) that returns true when age >= 13",
-          "Call one of your functions three times with different values"
+          "Call one of your functions three times with different values",
+          "Write average(a, b, c) that returns the mean of three test scores",
+          "Call your average function with your own scores and print the result"
+        ],
+        stretch: [
+          "Write a function that takes a team's goals scored and conceded and returns \"win\", \"draw\" or \"loss\"",
+          "Write toNaira(amount) that returns the amount with the Naira sign in front"
         ]
       },
       assessment: [
@@ -1957,7 +1993,7 @@ if (number > 50) {
             h: "An array is an ordered list",
             body: ["Write an array with square brackets and commas. Each item has a position, starting at zero."],
             codes: [
-              { code: `let names = ["Ada", "Sam", "Kofi"];` }
+              { code: `let names = ["Ada", "Chidi", "Amaka"];` }
             ]
           },
           {
@@ -1989,11 +2025,17 @@ if (number > 50) {
   <\/script>
 </body>
 </html>`,
-        tasks: [
+        core: [
           "Print the first and last subject.",
           "Add two more subjects with push().",
           "Loop through and print each subject with a number.",
-          "Explain to a partner why the first index is 0, not 1."
+          "Explain to a partner why the first index is 0, not 1.",
+          "Print how many subjects are in the list using .length.",
+          "Add your three best subjects and print the one in the middle."
+        ],
+        stretch: [
+          "Build an array of your class's top five scores and print only the scores above 70.",
+          "Try unshift() to add a subject at the start and see where it appears."
         ]
       },
       assessment: [
@@ -2091,11 +2133,17 @@ if (number > 50) {
   <\/script>
 </body>
 </html>`,
-        tasks: [
+        core: [
           "Fill in your own details.",
           "Add a new key called favouriteFood.",
           "Print every value with its label.",
-          "Explain to a partner the difference between an array and an object."
+          "Explain to a partner the difference between an array and an object.",
+          "Add a key called team and set it to your favourite football club.",
+          "Change the age in your object and print it again."
+        ],
+        stretch: [
+          "Create an object for a classmate with name, subject and score, then print a sentence using all three.",
+          "Try reading a key that does not exist and see what prints."
         ]
       },
       assessment: [
@@ -2122,8 +2170,321 @@ if (number > 50) {
   var term1 = [
     weeks[0], weeks[1], weeks[2], weeks[3], weeks[4], weeks[5],
     weekArrays, weekObjects,
-    stub(9, "Project: build a game", "🎮", "events", "Build a small game that takes a choice and decides a winner.", "Combine variables, conditionals and functions to build a playable game."),
-    stub(10, "Revision, assessment, showcase", "🎉", "control", "Review Term 1 and show what you can build.", "Recap the core ideas and present a project.")
+    {
+      n: 9, title: "Project: build a game", emoji: "🎮", color: "events", tracks: "both",
+      goal: "Build a small game that takes a choice and decides a winner.",
+      concept: "Combine variables, conditionals and functions to build a playable game.",
+      objective: "Students build a small console game using variables, conditionals and functions.",
+      teachingPoints: [
+        "A game needs a secret value, a player's move and a result.",
+        "Conditionals decide the outcome — win, lose or draw.",
+        "Functions keep the game logic tidy and easy to reuse."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo: a guessing game", mins: 4 },
+        { label: "Build time", mins: 20 },
+        { label: "Present", mins: 5 },
+        { label: "Share & wrap-up", mins: 3 }
+      ],
+      liveDemo: [
+        {
+          title: "A number-guessing game",
+          filename: "guessing_game.html",
+          caption: "Change the guess and press Run to see the console change. The secret stays 7.",
+          code:
+`<!DOCTYPE html>
+<html>
+<body>
+  <h1>Guess the number (1–10)</h1>
+  <script>
+    let secret = 7;
+    let guess = 4;
+    if (guess === secret) {
+      console.log("Correct!");
+    } else if (guess < secret) {
+      console.log("Too low.");
+    } else {
+      console.log("Too high.");
+    }
+  <\/script>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Using one = instead of === in the comparison, which assigns a value instead of checking it.",
+        "Forgetting that input read with prompt() is text, so \"7\" never equals the number 7 — convert it with Number().",
+        "Checking the wrong branch, such as logging \"Too high\" when the guess is lower than the secret."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Plan your game",
+            body: ["Before you build, decide the four parts of your game and write them down."],
+            list: [
+              "The secret — what the player is trying to find or beat",
+              "The player's move — the value the player gives each turn",
+              "The rule — how the secret and the move are compared",
+              "The result — what the game prints for a win, a loss or a draw"
+            ]
+          },
+          {
+            h: "Rock Paper Scissors idea",
+            body: [
+              "Store the computer's choice and the player's choice as strings, then compare them.",
+              "If both choices are the same it is a draw. Otherwise rock beats scissors, scissors beats paper and paper beats rock."
+            ],
+            codes: [
+              { label: "Compare two choices", code:
+`let computer = "rock";
+let player = "scissors";
+
+if (computer === player) {
+  console.log("Draw!");
+} else if (computer === "rock" && player === "scissors") {
+  console.log("Computer wins!");
+} else {
+  console.log("Player wins!");
+}` }
+            ]
+          },
+          {
+            h: "Number guessing idea",
+            body: ["Pick a secret number, then log whether the guess is too low, too high or correct."],
+            codes: [
+              { label: "Decide the result", code:
+`let secret = 7;
+let guess = 4;
+
+if (guess === secret) {
+  console.log("Correct!");
+} else if (guess < secret) {
+  console.log("Too low.");
+} else {
+  console.log("Too high.");
+}` }
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "my_game.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<body>
+  <h1>My Guessing Game</h1>
+  <script>
+    // 1. Set the secret number
+    let secret = 6;
+
+    // 2. The player's guess
+    let guess = 3;
+
+    // 3. Decide the result
+    if (guess === secret) {
+      console.log("Correct! You win.");
+    } else if (guess < secret) {
+      console.log("Too low. Try again.");
+    } else {
+      console.log("Too high. Try again.");
+    }
+  <\/script>
+</body>
+</html>`,
+        core: [
+          "Set a secret number between 1 and 10.",
+          "Set a guess and log whether it is too low, too high or correct.",
+          "Change the guess and run it again to test all three branches.",
+          "Wrap the decision in a function called checkGuess(guess) and call it."
+        ],
+        stretch: [
+          "Loop through several guesses in an array and check each one.",
+          "Make the secret random with let secret = Math.floor(Math.random() * 10) + 1; and play again."
+        ]
+      },
+      assessment: [
+        {
+          track: "A", audience: "Both", title: "Game checklist", type: "checklist",
+          items: [
+            "The game runs without errors",
+            "The game uses at least one conditional",
+            "The game uses at least one function",
+            "The student can explain what happens in each branch"
+          ]
+        },
+        {
+          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
+          questions: [
+            {
+              prompt: "Question 1: In your game, what does the secret value represent?",
+              answer: "The secret is the value the player is trying to find or beat. In the guessing game it is the hidden number the guesses are compared against."
+            },
+            {
+              prompt: "Question 2: Why do we use === instead of = when comparing the guess and the secret?",
+              answer: "=== compares two values and returns true or false. A single = assigns a value, so it would overwrite the secret instead of checking it."
+            },
+            {
+              prompt: "Question 3 (Code trace): What will print?",
+              code:
+`let secret = 7;
+let guess = 9;
+
+if (guess === secret) {
+  console.log("Correct!");
+} else if (guess < secret) {
+  console.log("Too low.");
+} else {
+  console.log("Too high.");
+}`,
+              answer: "Too high."
+            },
+            {
+              prompt: "Question 4: Why is it useful to put the win/lose decision inside a function?",
+              answer: "The function keeps the logic in one place, gives it a clear name, and can be called again for each new guess without repeating the code."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      n: 10, title: "Revision, assessment, showcase", emoji: "🎉", color: "control", tracks: "both",
+      goal: "Review Term 1 and show what you can build.",
+      concept: "Recap the core ideas and present a project.",
+      objective: "Review Term 1 and present a project.",
+      teachingPoints: [
+        "Revise variables, operators, conditionals, loops, functions, arrays and objects.",
+        "Present your work to the class and explain your code.",
+        "Reflect on what you learned and what you want to try next."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Recap of Term 1 skills", mins: 8 },
+        { label: "Presentations", mins: 18 },
+        { label: "Feedback", mins: 4 },
+        { label: "Share & wrap-up", mins: 2 }
+      ],
+      liveDemo: [
+        {
+          title: "A recap script",
+          filename: "recap_js.html",
+          caption: "One variable, an array, a loop and a function working together to find a class average. Change a score and run it again.",
+          code:
+`<!DOCTYPE html>
+<html>
+<body>
+  <h1>Term 1 Recap</h1>
+  <script>
+    let classScores = [72, 58, 90, 65];
+
+    function average(scores) {
+      let total = 0;
+      for (let i = 0; i < scores.length; i++) {
+        total = total + scores[i];
+      }
+      return total / scores.length;
+    }
+
+    console.log("Class average: " + average(classScores));
+  <\/script>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Not testing before presenting, so an error shows up in front of the class. Run it once more before you present.",
+        "Being unable to explain a line of your own code. Read each line aloud and say what it does.",
+        "Skipping the live demo. The working example is the strongest part of the presentation."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Term 1 recap",
+            body: ["Check that you can do each of these before the showcase:"],
+            list: [
+              "Create variables with let and const, and name the three data types",
+              "Use arithmetic and comparison operators, including ===",
+              "Write if / else if / else to choose between actions",
+              "Repeat code with a for loop",
+              "Write functions with parameters and a return value",
+              "Store values in arrays and objects and read them back"
+            ]
+          },
+          {
+            h: "Presentation script",
+            body: ["Use these prompts to plan what you will say as you present:"],
+            list: [
+              "Introduce your project in one sentence — what does it do?",
+              "Show it running and point out one thing that works well",
+              "Explain one line of your code in your own words",
+              "Name one challenge you met and how you solved it",
+              "Say what you would add next if you had more time"
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "recap_js.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<body>
+  <h1>Fix me</h1>
+  <script>
+    let subjects = ["Maths", "English", "Science"];
+
+    // BUG: this loop runs one time too many and prints undefined at the end
+    for (let i = 0; i <= subjects.length; i++) {
+      console.log(subjects[i]);
+    }
+
+    // TODO: turn the repeated logging into a function called printSubjects(list)
+  <\/script>
+</body>
+</html>`,
+        core: [
+          "Find and fix the bug so the loop prints each subject once.",
+          "Use an array and a loop to log each item.",
+          "Add a second array of scores and print each subject with its score."
+        ],
+        stretch: [
+          "Turn the repeated logging into a function called printSubjects(list).",
+          "Write a function that returns the highest score from a list of scores."
+        ]
+      },
+      assessment: [
+        {
+          track: "B", audience: "Both", title: "Final recap quiz", type: "quiz",
+          questions: [
+            {
+              prompt: "Question 1: What is the difference between let and const?",
+              answer: "let creates a variable whose value can be reassigned. const creates a variable whose value cannot be reassigned."
+            },
+            {
+              prompt: "Question 2: What does === check, and why is it better than = for comparisons?",
+              answer: "=== compares two values and returns true or false. A single = assigns a value, so it does not compare at all."
+            },
+            {
+              prompt: "Question 3: How many times does this loop run, and what values does i take?",
+              code:
+`for (let i = 0; i < 4; i++) {
+  console.log(i);
+}`,
+              answer: "It runs 4 times, with i taking the values 0, 1, 2 and 3."
+            },
+            {
+              prompt: "Question 4: What is the index of the first item in an array, and how do you read it?",
+              answer: "The first index is 0. If the array is called scores, you read it with scores[0]."
+            },
+            {
+              prompt: "Question 5: What does the return keyword do inside a function?",
+              answer: "It sends a value back out of the function to the place where the function was called."
+            }
+          ]
+        }
+      ]
+    }
   ];
 
   // --- Term 2: The DOM, Events and Interactive Pages ---
