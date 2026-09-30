@@ -1900,10 +1900,441 @@ if (number > 50) {
   weeks[0].n = 1; weeks[1].n = 2; weeks[2].n = 3; weeks[3].n = 4; weeks[4].n = 5; weeks[5].n = 6;
   var term1 = [
     weeks[0], weeks[1], weeks[2], weeks[3], weeks[4], weeks[5],
-    stub(7, "Arrays", "📚", "operators", "An array is an ordered list of values. You can add to it, read items by their position, and loop through them."),
-    stub(8, "Objects", "🧩", "looks", "An object stores labelled values — each item has a key and a value. Objects model real things, like a student with a name and a score."),
-    stub(9, "Arrays & Objects in practice", "🛠️", "variables", "Combine arrays and objects to store and work with real collections of data, such as a list of students."),
-    stub(10, "Term project: a data-driven page", "🌟", "motion", "Build a page that stores a small collection of data in arrays and objects and shows it on screen.")
+
+    /* ================================================================ 7 */
+    {
+      n: 7, title: "Arrays", emoji: "📚", color: "operators", tracks: "both",
+      concept: "An array is an ordered list of values. You can add to it, read items by their position, and loop through them.",
+      objective: "Students can create an array, read items by index, add items and loop through them.",
+      teachingPoints: [
+        "An array is an ordered list written with square brackets: let fruits = [\"mango\", \"orange\"];.",
+        "Items are numbered from 0, so fruits[0] is the first item; .length gives the count.",
+        "push() adds an item to the end, and a for loop visits every item."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo: a list of values", mins: 5 },
+        { label: "Arrays", mins: 8 },
+        { label: "Activity time", mins: 15 },
+        { label: "Share & wrap-up", mins: 4 }
+      ],
+      liveDemo: [
+        {
+          title: "A list of values",
+          filename: "arrays.html",
+          caption: "Indexing starts at 0. push adds to the end; the loop prints every item with its index.",
+          code:
+`<!DOCTYPE html>
+<html>
+<body>
+  <script>
+    let fruits = ["mango", "orange", "banana"];
+    console.log(fruits[0]);
+    console.log("Count: " + fruits.length);
+    fruits.push("apple");
+    for (let i = 0; i < fruits.length; i++) {
+      console.log(i + ": " + fruits[i]);
+    }
+  <\/script>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Getting the last item with fruits[fruits.length] (it is fruits[fruits.length - 1]).",
+        "Starting a loop at 1 and skipping the first item.",
+        "Mixing up fruits[0] (the item) with fruits.length (how many there are)."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "An array is an ordered list",
+            body: ["Write an array with square brackets and commas. Each item has a position, starting at zero."],
+            codes: [
+              { code: `let names = ["Ada", "Sam", "Kofi"];` }
+            ]
+          },
+          {
+            h: "Reading, adding and counting",
+            body: ["Read an item by its index, add with push(), and count with length."],
+            codes: [
+              { code: `names[0];  names.push("Zara");  names.length;` }
+            ]
+          },
+          {
+            h: "Looping through an array",
+            body: ["A for loop uses the index to visit each item in turn."]
+          }
+        ]
+      },
+      template: {
+        filename: "my_arrays.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<body>
+  <script>
+    let subjects = ["Maths", "English", "Science"];
+    console.log(subjects[1]);
+    subjects.push("History");
+    for (let i = 0; i < subjects.length; i++) {
+      console.log(subjects[i]);
+    }
+  <\/script>
+</body>
+</html>`,
+        tasks: [
+          "Print the first and last subject.",
+          "Add two more subjects with push().",
+          "Loop through and print each subject with a number.",
+          "Explain to a partner why the first index is 0, not 1."
+        ]
+      },
+      assessment: [
+        {
+          track: "A", audience: "Both", title: CHECKLIST_TRACK_A, type: "checklist",
+          items: [
+            "The array logs correct values",
+            "push() adds an item",
+            "the loop prints each item once"
+          ]
+        },
+        {
+          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
+          questions: [
+            { prompt: "Question 1: Write an array of three colours.", answer: "let colours = [\"red\", \"green\", \"blue\"];" },
+            { prompt: "Question 2: What does colours.length give you?", answer: "The number of items in the array." },
+            { prompt: "Question 3: How do you read the first item of an array called names?", answer: "names[0]" }
+          ]
+        }
+      ]
+    },
+
+    /* ================================================================ 8 */
+    {
+      n: 8, title: "Objects", emoji: "🧩", color: "looks", tracks: "both",
+      concept: "An object stores labelled values — each item has a key and a value. Objects model real things, like a student with a name and a score.",
+      objective: "Students can create an object with key/value pairs and read its values.",
+      teachingPoints: [
+        "An object stores labelled values in curly braces: { name: \"Ada\", age: 12 }.",
+        "Each label is a key and each value is read with dot notation: student.name.",
+        "Objects group related details about one thing into a single box."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo: a labelled box", mins: 5 },
+        { label: "Objects", mins: 8 },
+        { label: "Activity time", mins: 15 },
+        { label: "Share & wrap-up", mins: 4 }
+      ],
+      liveDemo: [
+        {
+          title: "A labelled box",
+          filename: "objects.html",
+          caption: "Each value has a key. Read with a dot; change a value by assigning a new one.",
+          code:
+`<!DOCTYPE html>
+<html>
+<body>
+  <script>
+    let student = { name: "Ada", age: 12, likesCoding: true };
+    console.log(student.name);
+    console.log(student.age);
+    student.age = 13;
+    console.log("New age: " + student.age);
+  <\/script>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Using square brackets with an unquoted key that does not exist (student[age] instead of student.age).",
+        "Forgetting the colon between a key and its value.",
+        "Adding a comma instead of a colon, or leaving out commas between pairs."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Keys and values",
+            body: ["An object is a set of labelled values. The label is the key; the value sits after a colon."],
+            codes: [
+              { code: `let book = { title: "Matilda", pages: 240 };` }
+            ]
+          },
+          {
+            h: "Reading and changing values",
+            body: ["Use dot notation to read a value, and assign to it to change it."],
+            codes: [
+              { code: `book.title;  book.pages = 250;` }
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "my_object.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<body>
+  <script>
+    let me = { name: "Your name", age: 0, school: "Your school" };
+    console.log(me.name);
+    console.log(me.school);
+    me.age = me.age + 1;
+    console.log(me.age);
+  <\/script>
+</body>
+</html>`,
+        tasks: [
+          "Fill in your own details.",
+          "Add a new key called favouriteFood.",
+          "Print every value with its label.",
+          "Explain to a partner the difference between an array and an object."
+        ]
+      },
+      assessment: [
+        {
+          track: "A", audience: "Both", title: CHECKLIST_TRACK_A, type: "checklist",
+          items: [
+            "The object logs correct values",
+            "dot notation works",
+            "a new key was added"
+          ]
+        },
+        {
+          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
+          questions: [
+            { prompt: "Question 1: Write an object with keys name and score.", answer: "let player = { name: \"Ada\", score: 10 };" },
+            { prompt: "Question 2: How do you read the name from an object called player?", answer: "player.name" },
+            { prompt: "Question 3: What is the difference between an array and an object?", answer: "An array is an ordered list read by number; an object is a set of labelled values read by key." }
+          ]
+        }
+      ]
+    },
+
+    /* ================================================================ 9 */
+    {
+      n: 9, title: "Arrays & Objects in practice", emoji: "🛠️", color: "variables", tracks: "both",
+      concept: "Combine arrays and objects to store and work with real collections of data, such as a list of students.",
+      objective: "Students can store a list of objects in an array and loop through it to read each object's values.",
+      teachingPoints: [
+        "An array can hold objects: [{ name: \"Ada\", score: 90 }, ...].",
+        "A loop visits each object, and dot notation reads its values.",
+        "This pattern models real collections — a class list, a scoreboard, a shopping basket."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo: a class list", mins: 5 },
+        { label: "Lists of objects", mins: 8 },
+        { label: "Activity time", mins: 15 },
+        { label: "Share & wrap-up", mins: 4 }
+      ],
+      liveDemo: [
+        {
+          title: "A class list",
+          filename: "practical.html",
+          caption: "An array of objects is the everyday shape of real data. The loop reads each object's keys.",
+          code:
+`<!DOCTYPE html>
+<html>
+<body>
+  <script>
+    let students = [
+      { name: "Ada", score: 90 },
+      { name: "Sam", score: 75 },
+      { name: "Kofi", score: 82 }
+    ];
+    for (let i = 0; i < students.length; i++) {
+      console.log(students[i].name + " scored " + students[i].score);
+    }
+  <\/script>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Writing students.name instead of students[i].name inside the loop.",
+        "Forgetting that the loop index is a number, so the object needs [i] first.",
+        "Missing commas between the objects in the array."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "A list of objects",
+            body: ["Put objects inside an array to store many records. Each record has the same keys."],
+            codes: [
+              { code: `let team = [{ name: "Ada", score: 90 }];` }
+            ]
+          },
+          {
+            h: "Reading each record",
+            body: ["Loop with the index, then use dot notation on that item."],
+            codes: [
+              { code: `team[i].name` }
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "my_class_list.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<body>
+  <script>
+    let players = [
+      { name: "Ada", goals: 3 },
+      { name: "Sam", goals: 1 },
+      { name: "Kofi", goals: 2 }
+    ];
+    for (let i = 0; i < players.length; i++) {
+      console.log(players[i].name + ": " + players[i].goals);
+    }
+  <\/script>
+</body>
+</html>`,
+        tasks: [
+          "Add a fourth player.",
+          "Add a new key to each player, such as team.",
+          "Print only players with more than one goal.",
+          "Explain to a partner why we use [i] before .name."
+        ]
+      },
+      assessment: [
+        {
+          track: "A", audience: "Both", title: CHECKLIST_TRACK_A, type: "checklist",
+          items: [
+            "The loop reads each object's values",
+            "new records were added correctly",
+            "the student can explain the array-of-objects shape"
+          ]
+        },
+        {
+          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
+          questions: [
+            { prompt: "Question 1: What is an array of objects good for?", answer: "Storing many records that all have the same keys, such as a class list." },
+            { prompt: "Question 2: If the loop index is i, how do you read the name of each object?", answer: "items[i].name" },
+            { prompt: "Question 3: Write one object with keys title and year.", answer: "let film = { title: \"Matilda\", year: 1996 };" }
+          ]
+        }
+      ]
+    },
+
+    /* ================================================================ 10 */
+    {
+      n: 10, title: "Term project: a data-driven page", emoji: "🌟", color: "motion", tracks: "both",
+      concept: "Build a page that stores a small collection of data in arrays and objects and shows it on screen.",
+      objective: "Students build a page that stores a small collection of data in an array of objects and shows it on screen.",
+      teachingPoints: [
+        "Plan the fields first: what does each record need? e.g. name and score.",
+        "Store records in an array of objects.",
+        "Loop through them and write each one into the page with document.getElementById(...) and textContent."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Demo of a finished page", mins: 4 },
+        { label: "Build time", mins: 20 },
+        { label: "Present", mins: 5 },
+        { label: "Wrap-up", mins: 3 }
+      ],
+      liveDemo: [
+        {
+          title: "Data shown on the page",
+          filename: "data_page.html",
+          caption: "The data lives in an array of objects; the loop builds the list that appears on the page.",
+          code:
+`<!DOCTYPE html>
+<html>
+<body>
+  <h1>Class scores</h1>
+  <ul id="list"></ul>
+  <script>
+    let students = [
+      { name: "Ada", score: 90 },
+      { name: "Sam", score: 75 },
+      { name: "Kofi", score: 82 }
+    ];
+    let html = "";
+    for (let i = 0; i < students.length; i++) {
+      html = html + "<li>" + students[i].name + " — " + students[i].score + "</li>";
+    }
+    document.getElementById("list").innerHTML = html;
+  <\/script>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Building the string but never writing it into the page.",
+        "Forgetting to reset the string before the loop.",
+        "Missing commas or a closing bracket in the data array."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Plan your data",
+            list: [
+              "Choose two or three fields per record",
+              "Write three or four records",
+              "Decide how each record should look on the page"
+            ]
+          },
+          {
+            h: "Show it on the page",
+            body: ["Loop through the records, build a string of HTML, then set it on an element with innerHTML."]
+          }
+        ]
+      },
+      template: {
+        filename: "my_data_page.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<body>
+  <h1>My data page</h1>
+  <ul id="list"></ul>
+  <script>
+    let items = [
+      { name: "Item one", value: 1 },
+      { name: "Item two", value: 2 }
+    ];
+    let html = "";
+    for (let i = 0; i < items.length; i++) {
+      html = html + "<li>" + items[i].name + "</li>";
+    }
+    document.getElementById("list").innerHTML = html;
+  <\/script>
+</body>
+</html>`,
+        tasks: [
+          "Choose your own data (scores, songs, countries).",
+          "Add at least four records.",
+          "Show two fields for each record.",
+          "Present your page and explain your data shape."
+        ]
+      },
+      assessment: [
+        {
+          track: "A", audience: "Both", title: "Term 1 project rubric", type: "rubric",
+          criteria: [
+            "Page runs without errors",
+            "Data is stored in an array of objects",
+            "A loop reads every record",
+            "Two fields are shown per record",
+            "The student can explain their data"
+          ]
+        },
+        {
+          track: "B", audience: "Both", title: "Design document — data-driven page", type: "form",
+          intro: "Complete this before the showcase.",
+          fields: [
+            { label: "What is your data about?" },
+            { label: "List the fields each record has", lines: 2 },
+            { label: "Write the pseudocode for your loop", lines: 3 }
+          ]
+        }
+      ]
+    }
   ];
 
   // --- Term 2: the DOM & interactivity ---
