@@ -1393,7 +1393,7 @@ document.getElementById("box").style.backgroundColor = "blue";`
 
     /* ================================================================ 9 */
     {
-      n: 9, title: "Guided Exercise & Project Kickoff", emoji: "🚧", color: "motion", tracks: "jhs-shs",
+      n: 9, title: "Planning a project", emoji: "🚧", color: "motion", tracks: "both",
       concept: "Junior High build one complete interactive element from start to finish. Senior High plan and start a mini-project.",
       teachingPoints: [
         "An event listener \"waits\" for something to happen, such as a click.",
@@ -1669,7 +1669,7 @@ document.getElementById("box").style.backgroundColor = "blue";`
 
     /* ================================================================ 10 */
     {
-      n: 10, title: "Showcase & Recap", emoji: "🎉", color: "control", tracks: "jhs-shs",
+      n: 10, title: "Recap & next steps", emoji: "🎉", color: "control", tracks: "both",
       concept: "Present your project, take the final recap quiz, and reflect on everything you learned.",
       teachingPoints: [
         "Explaining your code out loud shows how well you understand it.",
@@ -3327,14 +3327,917 @@ if (number > 50) {
   unify(weeks[9]); weeks[9].n = 10;
   var term3 = [
     weeks[8],
-    stub(2, "Project setup", "📁", "motion", "Plan the files, the HTML structure and the JavaScript logic before writing the project."),
-    stub(3, "Build: to-do list (part 1)", "✅", "control", "Start the to-do list: add a task and show it in the list."),
-    stub(4, "Build: to-do list (part 2)", "✅", "control", "Finish the to-do list: mark tasks done, delete tasks and keep the list in order."),
-    stub(5, "Build: calculator", "🧮", "operators", "Build a calculator that reads two numbers and shows the result of an operation."),
-    stub(6, "Build: form validator", "🔒", "variables", "Check what the user typed and show helpful messages when a field is not valid."),
-    stub(7, "Polish & accessibility", "✨", "looks", "Improve spacing, labels, focus styles and keyboard use so everyone can use the project."),
-    stub(8, "Presenting your project", "🎤", "events", "Prepare a short presentation: what it does, how it works and one challenge you solved."),
-    stub(9, "Showcase day", "🏆", "sensing", "Present projects to the class and give helpful feedback to classmates."),
+    {
+      n: 2, title: "Project setup", emoji: "📁", color: "motion", tracks: "both",
+      concept: "Plan the files, the HTML structure and the JavaScript logic before writing the project.",
+      objective: "Students plan their project's HTML structure and JavaScript logic before coding.",
+      teachingPoints: [
+        "Decide the project, then sketch the HTML: which elements and which ids.",
+        "Write the JavaScript logic as plain steps (pseudocode) before real code.",
+        "Set up the starter file with the elements and empty script ready."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo", mins: 5 },
+        { label: "Planning", mins: 8 },
+        { label: "Activity time", mins: 15 },
+        { label: "Share & wrap-up", mins: 4 }
+      ],
+      liveDemo: [
+        {
+          title: "A project skeleton",
+          filename: "setup.html",
+          caption: "Ids are chosen, the skeleton is ready, and the logic is written as steps before any real code.",
+          code:
+`<!DOCTYPE html>
+<html>
+<body>
+  <h1>My Project</h1>
+  <input id="taskInput" type="text" placeholder="New task" />
+  <button id="addButton">Add</button>
+  <ul id="taskList"></ul>
+  <script>
+    // Logic to write:
+    // 1. read the input value
+    // 2. create a list item
+    // 3. append it to the list
+  <\/script>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Starting to code without deciding the ids first.",
+        "Choosing vague ids that are hard to remember.",
+        "Writing logic that depends on elements that do not exist yet."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Plan the pieces",
+            list: [
+              "The elements you need (with ids)",
+              "The user actions (add, delete…)",
+              "The state variables",
+              "The steps in the main logic"
+            ]
+          },
+          {
+            h: "Set up the file",
+            body: "Put the elements in the HTML and leave the script empty. Run it to confirm the page loads."
+          }
+        ]
+      },
+      template: {
+        filename: "my_setup.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<body>
+  <h1>My Project Setup</h1>
+  <input id="noteInput" type="text" placeholder="Write a note" />
+  <button id="saveNote">Save</button>
+  <ul id="noteList"></ul>
+  <script>
+    // TODO: write your logic as steps here
+  <\/script>
+</body>
+</html>`,
+        tasks: [
+          "Choose your project (to-do list, calculator or form validator).",
+          "List the elements and ids you will need.",
+          "Write the main logic as numbered steps.",
+          "Run the skeleton to confirm it loads."
+        ]
+      },
+      assessment: [
+        {
+          track: "A", audience: "Both", title: CHECKLIST_TRACK_A, type: "checklist",
+          items: [
+            "The skeleton loads",
+            "Ids are clear and consistent",
+            "The logic is written as steps"
+          ]
+        },
+        {
+          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
+          questions: [
+            { prompt: "Question 1: Why plan the ids before coding?", answer: "So the JavaScript can find the right elements, and the names stay consistent." },
+            { prompt: "Question 2: What is pseudocode?", answer: "Writing the steps of the logic in plain language before real code." },
+            { prompt: "Question 3: Name two elements a to-do list needs.", answer: "Any two of: an input for the task, an add button, a list to show tasks." }
+          ]
+        }
+      ]
+    },
+
+    {
+      n: 3, title: "Build: to-do list (part 1)", emoji: "✅", color: "control", tracks: "both",
+      concept: "Start the to-do list: add a task and show it in the list.",
+      objective: "Students add a task to a list from an input field.",
+      teachingPoints: [
+        "Read the input value, create an li, set its text and append it.",
+        "Ignore empty input with a guard (if (text === \"\") return;).",
+        "Clear the input after adding."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo", mins: 5 },
+        { label: "Build", mins: 8 },
+        { label: "Activity time", mins: 15 },
+        { label: "Share & wrap-up", mins: 4 }
+      ],
+      liveDemo: [
+        {
+          title: "Add a task",
+          filename: "todo_1.html",
+          caption: "The guard stops empty tasks; the input clears after each add.",
+          code:
+`<!DOCTYPE html>
+<html>
+<body>
+  <input id="taskInput" type="text" placeholder="New task" />
+  <button id="addButton">Add</button>
+  <ul id="taskList"></ul>
+  <script>
+    document.getElementById("addButton").addEventListener("click", function () {
+      let input = document.getElementById("taskInput");
+      let text = input.value.trim();
+      if (text === "") return;
+      let item = document.createElement("li");
+      item.textContent = text;
+      document.getElementById("taskList").appendChild(item);
+      input.value = "";
+    });
+  <\/script>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Not trimming the value, so spaces are added as tasks.",
+        "Forgetting to clear the input.",
+        "Appending to the input instead of the list."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Four steps to add a task",
+            list: [
+              "Read the value",
+              "Trim it",
+              "Create and fill an li",
+              "Append and clear"
+            ]
+          },
+          {
+            h: "Guard the empty case",
+            codes: [
+              {
+                code:
+`if (text === "") return;`
+              }
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "my_todo_1.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<body>
+  <input id="taskInput" type="text" placeholder="New task" />
+  <button id="addButton">Add</button>
+  <ul id="taskList"></ul>
+  <script>
+    document.getElementById("addButton").addEventListener("click", function () {
+      let input = document.getElementById("taskInput");
+      let text = input.value.trim();
+      if (text === "") return;
+      let item = document.createElement("li");
+      item.textContent = text;
+      document.getElementById("taskList").appendChild(item);
+      input.value = "";
+    });
+  <\/script>
+</body>
+</html>`,
+        tasks: [
+          "Add several tasks and check they appear in order.",
+          "Try adding an empty task and confirm nothing is added.",
+          "Add the task count to the page.",
+          "Explain to a partner what the guard does."
+        ]
+      },
+      assessment: [
+        {
+          track: "A", audience: "Both", title: CHECKLIST_TRACK_A, type: "checklist",
+          items: [
+            "Tasks are added in order",
+            "Empty input is ignored",
+            "The input clears"
+          ]
+        },
+        {
+          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
+          questions: [
+            { prompt: "Question 1: Why trim the input value before using it?", answer: "So extra spaces are not saved as an empty-looking task." },
+            { prompt: "Question 2: What does the guard if (text === \"\") return; do?", answer: "Stops the code when the input is empty, so no empty task is added." },
+            { prompt: "Question 3: Which method adds the new li to the list?", answer: "appendChild" }
+          ]
+        }
+      ]
+    },
+
+    {
+      n: 4, title: "Build: to-do list (part 2)", emoji: "✅", color: "control", tracks: "both",
+      concept: "Finish the to-do list: mark tasks done, delete tasks and keep the list in order.",
+      objective: "Students mark tasks complete, delete them and keep the list after reloading.",
+      teachingPoints: [
+        "Toggle a done class on a task to mark it complete.",
+        "Add a delete button per task that removes its li.",
+        "Save the tasks with localStorage so they survive a reload."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo", mins: 5 },
+        { label: "Build", mins: 8 },
+        { label: "Activity time", mins: 15 },
+        { label: "Share & wrap-up", mins: 4 }
+      ],
+      liveDemo: [
+        {
+          title: "Complete, delete and save",
+          filename: "todo_2.html",
+          caption: "Clicking a task toggles the done class. The addTask function keeps the code tidy.",
+          code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .done { text-decoration: line-through; color: #94a3b8; }
+  </style>
+</head>
+<body>
+  <input id="taskInput" type="text" placeholder="New task" />
+  <button id="addButton">Add</button>
+  <ul id="taskList"></ul>
+  <script>
+    let list = document.getElementById("taskList");
+
+    function addTask(text) {
+      let item = document.createElement("li");
+      item.textContent = text;
+      item.addEventListener("click", function () {
+        item.classList.toggle("done");
+      });
+      list.appendChild(item);
+    }
+
+    document.getElementById("addButton").addEventListener("click", function () {
+      let input = document.getElementById("taskInput");
+      let text = input.value.trim();
+      if (text === "") return;
+      addTask(text);
+      input.value = "";
+    });
+  <\/script>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Toggling the class on the wrong element.",
+        "Saving to localStorage on every keystroke instead of when the list changes.",
+        "Reading the saved list before the page elements exist."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Mark and delete",
+            body: "Clicking a task toggles a done class. A delete button removes the li with item.remove()."
+          },
+          {
+            h: "Save the list",
+            body: "After any change, save an array of task texts with JSON.stringify; on load, read it back and rebuild.",
+            codes: [
+              {
+                code:
+`localStorage.setItem("tasks", JSON.stringify(tasks));`
+              }
+            ]
+          }
+        ]
+      },
+      template: {
+        filename: "my_todo_2.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .done { text-decoration: line-through; color: #94a3b8; }
+  </style>
+</head>
+<body>
+  <input id="taskInput" type="text" placeholder="New task" />
+  <button id="addButton">Add</button>
+  <ul id="taskList"></ul>
+  <script>
+    let list = document.getElementById("taskList");
+    function addTask(text) {
+      let item = document.createElement("li");
+      item.textContent = text;
+      item.addEventListener("click", function () { item.classList.toggle("done"); });
+      list.appendChild(item);
+    }
+    document.getElementById("addButton").addEventListener("click", function () {
+      let input = document.getElementById("taskInput");
+      let text = input.value.trim();
+      if (text === "") return;
+      addTask(text);
+      input.value = "";
+    });
+  <\/script>
+</body>
+</html>`,
+        tasks: [
+          "Make clicking a task mark it done.",
+          "Add a delete button to each task.",
+          "Save the tasks with localStorage and rebuild them on load.",
+          "Test: add, reload, and confirm tasks remain."
+        ]
+      },
+      assessment: [
+        {
+          track: "A", audience: "Both", title: CHECKLIST_TRACK_A, type: "checklist",
+          items: [
+            "Tasks toggle done",
+            "Tasks can be deleted",
+            "Tasks survive a reload"
+          ]
+        },
+        {
+          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
+          questions: [
+            { prompt: "Question 1: Which classList method marks a task done on and off?", answer: "classList.toggle(\"done\")" },
+            { prompt: "Question 2: How do you remove an element from the page?", answer: "Call element.remove() on it." },
+            { prompt: "Question 3: How do you save a list of tasks in localStorage?", answer: "JSON.stringify the array and setItem it under a key." }
+          ]
+        }
+      ]
+    },
+
+    {
+      n: 5, title: "Build: calculator", emoji: "🧮", color: "operators", tracks: "both",
+      concept: "Build a calculator that reads two numbers and shows the result of an operation.",
+      objective: "Students read two numbers and an operation, then show the result.",
+      teachingPoints: [
+        "Read two numbers with .value and convert them with Number(...).",
+        "Choose the operation with an if/else or a selected operator.",
+        "Show the result in a display element."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo", mins: 5 },
+        { label: "Build", mins: 8 },
+        { label: "Activity time", mins: 15 },
+        { label: "Share & wrap-up", mins: 4 }
+      ],
+      liveDemo: [
+        {
+          title: "Add two numbers",
+          filename: "calc.html",
+          caption: "Number() turns the input text into a real number so the maths works.",
+          code:
+`<!DOCTYPE html>
+<html>
+<body>
+  <input id="a" type="number" placeholder="First number" />
+  <input id="b" type="number" placeholder="Second number" />
+  <button id="add">+</button>
+  <p id="result"></p>
+  <script>
+    document.getElementById("add").addEventListener("click", function () {
+      let a = Number(document.getElementById("a").value);
+      let b = Number(document.getElementById("b").value);
+      document.getElementById("result").textContent = "Result: " + (a + b);
+    });
+  <\/script>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Forgetting Number(), so the values are joined as text (\"2\" + \"3\" = \"23\").",
+        "Dividing by zero without handling it.",
+        "Using one = instead of === in a comparison."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "From text to number",
+            body: "Input values are strings. Wrap them in Number() to do maths.",
+            codes: [
+              {
+                code:
+`let a = Number(inputA.value);`
+              }
+            ]
+          },
+          {
+            h: "Pick the operation",
+            body: "Use buttons or a select, then an if/else to choose what to do."
+          }
+        ]
+      },
+      template: {
+        filename: "my_calc.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<body>
+  <input id="a" type="number" placeholder="First number" />
+  <input id="b" type="number" placeholder="Second number" />
+  <button id="add">+</button>
+  <button id="sub">−</button>
+  <button id="mul">×</button>
+  <p id="result"></p>
+  <script>
+    function show(value) { document.getElementById("result").textContent = "Result: " + value; }
+    document.getElementById("add").addEventListener("click", function () {
+      show(Number(document.getElementById("a").value) + Number(document.getElementById("b").value));
+    });
+    document.getElementById("sub").addEventListener("click", function () {
+      show(Number(document.getElementById("a").value) - Number(document.getElementById("b").value));
+    });
+    document.getElementById("mul").addEventListener("click", function () {
+      show(Number(document.getElementById("a").value) * Number(document.getElementById("b").value));
+    });
+  <\/script>
+</body>
+</html>`,
+        tasks: [
+          "Add a divide button.",
+          "Show a message when dividing by zero.",
+          "Ignore an empty field gracefully.",
+          "Explain to a partner why Number() is needed."
+        ]
+      },
+      assessment: [
+        {
+          track: "A", audience: "Both", title: CHECKLIST_TRACK_A, type: "checklist",
+          items: [
+            "Each operation shows the right result",
+            "Division by zero is handled",
+            "Number() is used"
+          ]
+        },
+        {
+          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
+          questions: [
+            { prompt: "Question 1: Why wrap input values in Number()?", answer: "Because input values are strings; Number() turns them into numbers so maths works." },
+            { prompt: "Question 2: What is \"2\" + \"3\" if they are strings?", answer: "\"23\" — the strings are joined, not added." },
+            { prompt: "Question 3: Write the line that adds two numbers a and b.", answer: "let result = a + b;" }
+          ]
+        }
+      ]
+    },
+
+    {
+      n: 6, title: "Build: form validator", emoji: "🔒", color: "variables", tracks: "both",
+      concept: "Check what the user typed and show helpful messages when a field is not valid.",
+      objective: "Students check what the user typed and show helpful messages.",
+      teachingPoints: [
+        "Read the input, check a rule (not empty, has \"@\", long enough) and show a message.",
+        "Show one clear message at a time, and only submit when everything passes.",
+        "Use event.preventDefault() on the form submit."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo", mins: 5 },
+        { label: "Build", mins: 8 },
+        { label: "Activity time", mins: 15 },
+        { label: "Share & wrap-up", mins: 4 }
+      ],
+      liveDemo: [
+        {
+          title: "Check an email",
+          filename: "validator.html",
+          caption: "Each rule has its own message. Only when all pass do we say it looks good.",
+          code:
+`<!DOCTYPE html>
+<html>
+<body>
+  <input id="email" type="text" placeholder="you@example.com" />
+  <button id="check">Check</button>
+  <p id="msg"></p>
+  <script>
+    document.getElementById("check").addEventListener("click", function () {
+      let email = document.getElementById("email").value.trim();
+      let msg = document.getElementById("msg");
+      if (email === "") {
+        msg.textContent = "Please type your email.";
+      } else if (email.indexOf("@") === -1) {
+        msg.textContent = "An email needs an @ sign.";
+      } else {
+        msg.style.color = "#15803d";
+        msg.textContent = "Looks good!";
+      }
+    });
+  <\/script>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Showing all messages at once instead of the first failure.",
+        "Forgetting to trim, so spaces count as valid input.",
+        "Forgetting preventDefault on a real form submit."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Rules and messages",
+            body: "Check one rule at a time, and show a helpful message for the first one that fails.",
+            codes: [
+              {
+                code:
+`if (value === "") { show("Please fill this in"); }`
+              }
+            ]
+          },
+          {
+            h: "Stop the reload",
+            body: "In a form, call event.preventDefault() before validating."
+          }
+        ]
+      },
+      template: {
+        filename: "my_validator.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<body>
+  <input id="username" type="text" placeholder="Username" />
+  <button id="check">Check</button>
+  <p id="msg"></p>
+  <script>
+    document.getElementById("check").addEventListener("click", function () {
+      let value = document.getElementById("username").value.trim();
+      let msg = document.getElementById("msg");
+      if (value === "") {
+        msg.textContent = "Please type a username.";
+      } else if (value.length < 3) {
+        msg.textContent = "Usernames need at least 3 characters.";
+      } else {
+        msg.style.color = "#15803d";
+        msg.textContent = "Nice username!";
+      }
+    });
+  <\/script>
+</body>
+</html>`,
+        tasks: [
+          "Add a rule for a maximum length.",
+          "Show an error message in red and success in green.",
+          "Wrap it in a form with submit and preventDefault.",
+          "Explain to a partner why only the first failure is shown."
+        ]
+      },
+      assessment: [
+        {
+          track: "A", audience: "Both", title: CHECKLIST_TRACK_A, type: "checklist",
+          items: [
+            "Rules are checked in order",
+            "Messages are clear",
+            "preventDefault is used in the form"
+          ]
+        },
+        {
+          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
+          questions: [
+            { prompt: "Question 1: Why show only the first failing rule's message?", answer: "So the user can fix one problem at a time instead of being overwhelmed." },
+            { prompt: "Question 2: How do you check a value is not empty?", answer: "if (value === \"\") { ... }" },
+            { prompt: "Question 3: Why call event.preventDefault() on a form submit?", answer: "To stop the browser reloading the page while you validate." }
+          ]
+        }
+      ]
+    },
+
+    {
+      n: 7, title: "Polish & accessibility", emoji: "✨", color: "looks", tracks: "both",
+      concept: "Improve spacing, labels, focus styles and keyboard use so everyone can use the project.",
+      objective: "Students improve their project's usability and make it work for more people.",
+      teachingPoints: [
+        "Label every input and keep contrast high so text is readable.",
+        "Make sure everything works with the keyboard (focus styles, buttons not divs).",
+        "Add clear messages and a tidy layout."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo", mins: 5 },
+        { label: "Polish", mins: 8 },
+        { label: "Activity time", mins: 15 },
+        { label: "Share & wrap-up", mins: 4 }
+      ],
+      liveDemo: [
+        {
+          title: "Labels and focus",
+          filename: "a11y.html",
+          caption: "A label tied to the input with for/id helps everyone. The focus outline shows where the keyboard is.",
+          code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { font-family: sans-serif; padding: 16px; }
+    label { display: block; font-weight: 700; margin-top: 8px; }
+    input:focus, button:focus { outline: 3px solid #4c97ff; outline-offset: 2px; }
+  </style>
+</head>
+<body>
+  <label for="email">Email address</label>
+  <input id="email" type="text" />
+  <button id="go">Submit</button>
+  <script>
+    document.getElementById("go").addEventListener("click", function () {
+      document.getElementById("email").style.border = "2px solid #15803d";
+    });
+  <\/script>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Using placeholder text instead of a real label.",
+        "Removing focus outlines, which breaks keyboard use.",
+        "Using a div with a click handler instead of a real button."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Small things, big difference",
+            list: [
+              "Label every input (for/id)",
+              "Keep text contrast high",
+              "Use real buttons",
+              "Do not remove focus outlines"
+            ]
+          },
+          {
+            h: "Check the keyboard",
+            body: "Click nothing: use Tab and Enter only. If you can finish your task, your project is keyboard-friendly."
+          }
+        ]
+      },
+      template: {
+        filename: "my_polish.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { font-family: sans-serif; padding: 16px; }
+    label { display: block; font-weight: 700; margin-top: 8px; }
+    button:focus, input:focus { outline: 3px solid #4c97ff; }
+  </style>
+</head>
+<body>
+  <label for="task">New task</label>
+  <input id="task" type="text" />
+  <button id="add">Add</button>
+  <ul id="list"></ul>
+  <script>
+    document.getElementById("add").addEventListener("click", function () {
+      let input = document.getElementById("task");
+      if (input.value.trim() === "") return;
+      let item = document.createElement("li");
+      item.textContent = input.value.trim();
+      document.getElementById("list").appendChild(item);
+      input.value = "";
+    });
+  <\/script>
+</body>
+</html>`,
+        tasks: [
+          "Add a label to every input in your project.",
+          "Check your contrast and fix anything hard to read.",
+          "Complete your task using only the keyboard.",
+          "Fix anything a classmate finds confusing."
+        ]
+      },
+      assessment: [
+        {
+          track: "A", audience: "Both", title: CHECKLIST_TRACK_A, type: "checklist",
+          items: [
+            "Every input has a label",
+            "The task works with the keyboard",
+            "Contrast is readable"
+          ]
+        },
+        {
+          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
+          questions: [
+            { prompt: "Question 1: Why use a label with for/id instead of only a placeholder?", answer: "A label is read aloud by screen readers and stays visible; a placeholder disappears when you type." },
+            { prompt: "Question 2: Why should you not remove focus outlines?", answer: "They show keyboard users where they are on the page." },
+            { prompt: "Question 3: Which is better for a clickable control, a <button> or a <div>?", answer: "A <button> — it is focusable and works with the keyboard and assistive tech." }
+          ]
+        }
+      ]
+    },
+
+    {
+      n: 8, title: "Presenting your project", emoji: "🎤", color: "events", tracks: "both",
+      concept: "Prepare a short presentation: what it does, how it works and one challenge you solved.",
+      objective: "Students prepare and rehearse a short, clear project presentation.",
+      teachingPoints: [
+        "Say what it does, show it working, then explain one part of the code.",
+        "Demo the main path and one edge case (e.g. empty input).",
+        "Be ready for one question."
+      ],
+      timing: [
+        { label: "Welcome & recap", mins: 3 },
+        { label: "Live demo of a good presentation", mins: 5 },
+        { label: "Prepare", mins: 8 },
+        { label: "Activity time", mins: 15 },
+        { label: "Share & wrap-up", mins: 4 }
+      ],
+      liveDemo: [
+        {
+          title: "Presentation demo script",
+          filename: "present.html",
+          caption: "A four-step talk keeps presentations clear and short.",
+          code:
+`<!DOCTYPE html>
+<html>
+<body>
+  <h1>Talk track</h1>
+  <ol>
+    <li>What my project is and who it is for.</li>
+    <li>Show it working (the main action).</li>
+    <li>Show one edge case, like empty input.</li>
+    <li>Explain one function or event in the code.</li>
+  </ol>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Reading the code line by line instead of explaining the idea.",
+        "Never actually showing the project working.",
+        "Running over time with no structure."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Your four-step talk",
+            list: [
+              "What it does",
+              "Show it working",
+              "One edge case",
+              "One piece of code you are proud of"
+            ]
+          },
+          {
+            h: "Rehearse",
+            body: "Practise out loud to a partner once. Time yourself — aim for one to two minutes."
+          }
+        ]
+      },
+      template: {
+        filename: "my_talk.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<body>
+  <h1>My presentation plan</h1>
+  <ol>
+    <li>What my project does: ...</li>
+    <li>The main action: ...</li>
+    <li>An edge case I handle: ...</li>
+    <li>A piece of code I am proud of: ...</li>
+  </ol>
+</body>
+</html>`,
+        tasks: [
+          "Fill in your four-step plan.",
+          "Rehearse once out loud.",
+          "Time yourself (aim for 1–2 minutes).",
+          "Prepare one question you expect to be asked."
+        ]
+      },
+      assessment: [
+        {
+          track: "A", audience: "Both", title: CHECKLIST_TRACK_A, type: "checklist",
+          items: [
+            "The talk has all four steps",
+            "The project is demonstrated working",
+            "The talk fits the time"
+          ]
+        },
+        {
+          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
+          questions: [
+            { prompt: "Question 1: Name the four steps of the talk.", answer: "What it does; show it working; one edge case; one piece of code you are proud of." },
+            { prompt: "Question 2: What is an edge case?", answer: "An unusual input or situation, such as empty input or zero, that your project should handle." },
+            { prompt: "Question 3: Why rehearse out loud?", answer: "So the talk flows, fits the time, and you notice anything unclear." }
+          ]
+        }
+      ]
+    },
+
+    {
+      n: 9, title: "Showcase day", emoji: "🏆", color: "sensing", tracks: "both",
+      concept: "Present projects to the class and give helpful feedback to classmates.",
+      objective: "Students present projects and give useful feedback to classmates.",
+      teachingPoints: [
+        "Present your project using the four-step talk.",
+        "Give specific, kind feedback: one thing that worked, one idea to improve.",
+        "Use the rubric to reflect on your own project."
+      ],
+      timing: [
+        { label: "Welcome", mins: 3 },
+        { label: "Presentations", mins: 25 },
+        { label: "Peer feedback", mins: 5 },
+        { label: "Reflection & wrap-up", mins: 4 }
+      ],
+      liveDemo: [
+        {
+          title: "Feedback sentence starters",
+          filename: "feedback.html",
+          caption: "Specific feedback names what worked and suggests one improvement.",
+          code:
+`<!DOCTYPE html>
+<html>
+<body>
+  <h1>Feedback starters</h1>
+  <ul>
+    <li>"I liked how … because …"</li>
+    <li>"Have you tried … ?"</li>
+    <li>"One small thing: …"</li>
+  </ul>
+</body>
+</html>`
+        }
+      ],
+      commonMistakes: [
+        "Vague feedback (\"it's nice\") instead of specific.",
+        "Rushing through presentations and skipping the demo.",
+        "Not listening to classmates' presentations."
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Give good feedback",
+            body: "Say one thing that worked and name it, then suggest one improvement. Be kind and specific."
+          },
+          {
+            h: "Reflect on your own",
+            body: "Use the rubric to note what you did well and one thing you would change."
+          }
+        ]
+      },
+      template: {
+        filename: "my_reflection.html",
+        code:
+`<!DOCTYPE html>
+<html>
+<body>
+  <h1>My reflection</h1>
+  <p>One thing that worked: ...</p>
+  <p>One thing I would change: ...</p>
+</body>
+</html>`,
+        tasks: [
+          "Present your project.",
+          "Give two classmates specific feedback.",
+          "Note one thing that worked and one to change.",
+          "Complete the class reflection."
+        ]
+      },
+      assessment: [
+        {
+          track: "A", audience: "Both", title: "Project showcase rubric", type: "rubric",
+          criteria: [
+            "Project runs without errors",
+            "Student can explain what the code does",
+            "At least one feature has been customised",
+            "Student can point to and explain one function, loop or event",
+            "Student gives specific feedback to a classmate"
+          ]
+        },
+        {
+          track: "B", audience: "Both", title: "Showcase reflection", type: "form",
+          intro: "Complete after the showcase.",
+          fields: [
+            { label: "What went well in your presentation?" },
+            { label: "One thing you would change", lines: 2 },
+            { label: "One new thing you learned", lines: 2 }
+          ]
+        }
+      ]
+    },
     weeks[9]
   ];
 
