@@ -3384,7 +3384,7 @@ if (number > 50) {
           },
           {
             h: "Set up the file",
-            body: "Put the elements in the HTML and leave the script empty. Run it to confirm the page loads."
+            body: ["Put the elements in the HTML and leave the script empty. Run it to confirm the page loads."]
           }
         ]
       },
@@ -3615,11 +3615,11 @@ if (number > 50) {
         sections: [
           {
             h: "Mark and delete",
-            body: "Clicking a task toggles a done class. A delete button removes the li with item.remove()."
+            body: ["Clicking a task toggles a done class. A delete button removes the li with item.remove()."]
           },
           {
             h: "Save the list",
-            body: "After any change, save an array of task texts with JSON.stringify; on load, read it back and rebuild.",
+            body: ["After any change, save an array of task texts with JSON.stringify; on load, read it back and rebuild."],
             codes: [
               {
                 code:
@@ -3737,7 +3737,7 @@ if (number > 50) {
         sections: [
           {
             h: "From text to number",
-            body: "Input values are strings. Wrap them in Number() to do maths.",
+            body: ["Input values are strings. Wrap them in Number() to do maths."],
             codes: [
               {
                 code:
@@ -3747,7 +3747,7 @@ if (number > 50) {
           },
           {
             h: "Pick the operation",
-            body: "Use buttons or a select, then an if/else to choose what to do."
+            body: ["Use buttons or a select, then an if/else to choose what to do."]
           }
         ]
       },
@@ -3859,7 +3859,7 @@ if (number > 50) {
         sections: [
           {
             h: "Rules and messages",
-            body: "Check one rule at a time, and show a helpful message for the first one that fails.",
+            body: ["Check one rule at a time, and show a helpful message for the first one that fails."],
             codes: [
               {
                 code:
@@ -3869,7 +3869,7 @@ if (number > 50) {
           },
           {
             h: "Stop the reload",
-            body: "In a form, call event.preventDefault() before validating."
+            body: ["In a form, call event.preventDefault() before validating."]
           }
         ]
       },
@@ -3987,7 +3987,7 @@ if (number > 50) {
           },
           {
             h: "Check the keyboard",
-            body: "Click nothing: use Tab and Enter only. If you can finish your task, your project is keyboard-friendly."
+            body: ["Click nothing: use Tab and Enter only. If you can finish your task, your project is keyboard-friendly."]
           }
         ]
       },
@@ -4101,7 +4101,7 @@ if (number > 50) {
           },
           {
             h: "Rehearse",
-            body: "Practise out loud to a partner once. Time yourself — aim for one to two minutes."
+            body: ["Practise out loud to a partner once. Time yourself — aim for one to two minutes."]
           }
         ]
       },
@@ -4190,11 +4190,11 @@ if (number > 50) {
         sections: [
           {
             h: "Give good feedback",
-            body: "Say one thing that worked and name it, then suggest one improvement. Be kind and specific."
+            body: ["Say one thing that worked and name it, then suggest one improvement. Be kind and specific."]
           },
           {
             h: "Reflect on your own",
-            body: "Use the rubric to note what you did well and one thing you would change."
+            body: ["Use the rubric to note what you did well and one thing you would change."]
           }
         ]
       },
