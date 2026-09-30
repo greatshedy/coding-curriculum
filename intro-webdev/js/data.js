@@ -3478,16 +3478,16 @@
         {
           title: "Read the error",
           filename: "debug.html",
-          caption: "Run this and read the console: heading is null because the id is misspelled. Fix the id and run again.",
+          caption: "Run this and read the red error in the console: the id below is misspelled, so heading is null and changing its text fails. Fix the id and run again.",
           code:
 `<!DOCTYPE html>
 <html>
 <body>
   <h1 id="title">Debug me</h1>
   <script>
-    // This line has a typo in the id.
+    // The id below is misspelled, so heading is null.
     let heading = document.getElementById("titel");
-    console.log(heading);
+    heading.textContent = "Fixed!";
   <\/script>
 </body>
 </html>`
@@ -3529,9 +3529,9 @@
   <h1 id="title">Bug hunt</h1>
   <p id="score">Score: 0</p>
   <script>
-    let points = 10
-    let label = document.getElementById("score");
-    label.textContent = "Score: " + points
+    let points = 10;
+    let label = document.getElementById("scoer");
+    label.textContent = "Score: " + points;
     console.log("Points is " + points);
   <\/script>
 </body>
