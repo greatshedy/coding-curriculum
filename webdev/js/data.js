@@ -20,13 +20,12 @@
 (function () {
   "use strict";
 
-  var CHECKLIST_TRACK_A = "Peer pair-check";
+  var PEER_CHECKLIST = "Peer pair-check";
 
   var weeks = [
     /* ================================================================ 1 */
     {
-      n: 1, title: "Meet JavaScript", emoji: "⚡", color: "motion", tracks: "both",
-      concept: "JavaScript is the \"muscles\" that make web pages interactive — HTML builds the page, CSS styles it, and JavaScript makes things happen.",
+      n: 1, title: "Meet JavaScript", emoji: "⚡", color: "motion", concept: "JavaScript is the \"muscles\" that make web pages interactive — HTML builds the page, CSS styles it, and JavaScript makes things happen.",
       objective: "Students understand what JavaScript is, where it lives, and how it connects to their HTML and CSS knowledge.",
       teachingPoints: [
         "JavaScript is the \"muscles\" that make web pages interactive.",
@@ -161,7 +160,7 @@
       },
       assessment: [
         {
-          track: "A", audience: "Both", title: CHECKLIST_TRACK_A, type: "checklist",
+          audience: "Both", title: PEER_CHECKLIST, type: "checklist",
           items: [
             "Does the code run without errors?",
             "Can the code author explain what their code does, in their own words?",
@@ -169,7 +168,7 @@
           ]
         },
         {
-          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
+          audience: "Both", title: "Written quiz", type: "quiz",
           questions: [
             {
               prompt: "Question 1: What are the three ways to add JavaScript to a web page? (Name them.)",
@@ -199,8 +198,7 @@
 
     /* ================================================================ 2 */
     {
-      n: 2, title: "Variables & Data Types", emoji: "📦", color: "looks", tracks: "both",
-      concept: "A variable is a named box you store information in. This week covers let, const and the three basic data types.",
+      n: 2, title: "Variables & Data Types", emoji: "📦", color: "looks", concept: "A variable is a named box you store information in. This week covers let, const and the three basic data types.",
       objective: "Students understand variables as containers for data, and learn the three basic data types: string, number and boolean.",
       teachingPoints: [
         "A variable is a named box you can store information in.",
@@ -348,7 +346,7 @@ console.log(likesIceCream);     // true` }
       },
       assessment: [
         {
-          track: "A", audience: "Both", title: CHECKLIST_TRACK_A, type: "checklist",
+          audience: "Both", title: PEER_CHECKLIST, type: "checklist",
           items: [
             "Does the code run without errors?",
             "Can the code author explain what each variable stores?",
@@ -356,7 +354,7 @@ console.log(likesIceCream);     // true` }
           ]
         },
         {
-          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
+          audience: "Both", title: "Written quiz", type: "quiz",
           questions: [
             {
               prompt: "Question 1: What is the difference between let and const? When would you use each?",
@@ -386,8 +384,7 @@ console.log(quantity);`,
 
     /* ================================================================ 3 */
     {
-      n: 3, title: "Operators", emoji: "➗", color: "operators", tracks: "both",
-      concept: "Arithmetic operators do maths; comparison operators compare two values and return true or false.",
+      n: 3, title: "Operators", emoji: "➗", color: "operators", concept: "Arithmetic operators do maths; comparison operators compare two values and return true or false.",
       objective: "Students learn arithmetic operators (+, −, ×, ÷) and comparison operators (>, <, ===).",
       teachingPoints: [
         "Arithmetic operators do maths.",
@@ -511,7 +508,7 @@ console.log(age <= 14);   // false` }
       },
       assessment: [
         {
-          track: "A", audience: "Both", title: CHECKLIST_TRACK_A, type: "checklist",
+          audience: "Both", title: PEER_CHECKLIST, type: "checklist",
           items: [
             "Does the code run without errors?",
             "Can the author explain what each operator does?",
@@ -519,7 +516,7 @@ console.log(age <= 14);   // false` }
           ]
         },
         {
-          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
+          audience: "Both", title: "Written quiz", type: "quiz",
           questions: [
             {
               prompt: "Question 1: What is the result of each?",
@@ -547,8 +544,7 @@ console.log(x > y);`,
 
     /* ================================================================ 4 */
     {
-      n: 4, title: "Conditionals (if / else)", emoji: "🔀", color: "events", tracks: "both",
-      concept: "An if statement lets your code make decisions: run one block when a condition is true, another when it is false.",
+      n: 4, title: "Conditionals (if / else)", emoji: "🔀", color: "events", concept: "An if statement lets your code make decisions: run one block when a condition is true, another when it is false.",
       objective: "Students learn to write code that makes decisions using if and else.",
       teachingPoints: [
         "if runs code only if a condition is true.",
@@ -694,7 +690,7 @@ if (isRaining) {
       },
       assessment: [
         {
-          track: "A", audience: "Both", title: CHECKLIST_TRACK_A, type: "checklist",
+          audience: "Both", title: PEER_CHECKLIST, type: "checklist",
           items: [
             "Does the code run without errors?",
             "Can you explain what the if condition checks?",
@@ -702,7 +698,7 @@ if (isRaining) {
           ]
         },
         {
-          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
+          audience: "Both", title: "Written quiz", type: "quiz",
           questions: [
             {
               prompt: "Question 1: What does the else keyword do?",
@@ -737,8 +733,7 @@ if (age >= 13) {
 
     /* ================================================================ 5 */
     {
-      n: 5, title: "Loops", emoji: "🔁", color: "control", tracks: "both",
-      concept: "A for loop repeats code a set number of times, so you don't have to write it out over and over.",
+      n: 5, title: "Loops", emoji: "🔁", color: "control", concept: "A for loop repeats code a set number of times, so you don't have to write it out over and over.",
       objective: "Students learn loops to repeat code a set number of times.",
       teachingPoints: [
         "A for loop repeats code a set number of times.",
@@ -861,7 +856,7 @@ for (let i = 2; i <= 10; i = i + 2) {
       },
       assessment: [
         {
-          track: "A", audience: "Both", title: CHECKLIST_TRACK_A, type: "checklist",
+          audience: "Both", title: PEER_CHECKLIST, type: "checklist",
           items: [
             "Does the code run without errors?",
             "Can you explain what the START, CONDITION and STEP parts do?",
@@ -869,7 +864,7 @@ for (let i = 2; i <= 10; i = i + 2) {
           ]
         },
         {
-          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
+          audience: "Both", title: "Written quiz", type: "quiz",
           questions: [
             {
               prompt: "Question 1: How many times will this loop run?",
@@ -900,8 +895,7 @@ for (let i = 2; i <= 10; i = i + 2) {
 
     /* ================================================================ 6 */
     {
-      n: 6, title: "Functions", emoji: "🧰", color: "sound", tracks: "both",
-      concept: "A function is a reusable block of code: write it once, then call it as many times as you like.",
+      n: 6, title: "Functions", emoji: "🧰", color: "sound", concept: "A function is a reusable block of code: write it once, then call it as many times as you like.",
       objective: "Students learn to write reusable blocks of code with functions.",
       teachingPoints: [
         "Functions are reusable blocks of code.",
@@ -1036,7 +1030,7 @@ console.log(result);  // 8` }
       },
       assessment: [
         {
-          track: "A", audience: "Both", title: CHECKLIST_TRACK_A, type: "checklist",
+          audience: "Both", title: PEER_CHECKLIST, type: "checklist",
           items: [
             "Does the code run without errors?",
             "Can the author explain what each parameter does?",
@@ -1044,7 +1038,7 @@ console.log(result);  // 8` }
           ]
         },
         {
-          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
+          audience: "Both", title: "Written quiz", type: "quiz",
           questions: [
             {
               prompt: "Question 1: What is a parameter?",
@@ -1073,8 +1067,7 @@ console.log(meet("Ada"));`
 
     /* ================================================================ 7 */
     {
-      n: 7, title: "Arrays (& Objects for SHS)", emoji: "📚", color: "variables", tracks: "both",
-      concept: "An array is an ordered list of values. Senior High also learns objects — labelled key–value pairs.",
+      n: 7, title: "Arrays (& Objects for SHS)", emoji: "📚", color: "variables", concept: "An array is an ordered list of values. Senior High also learns objects — labelled key–value pairs.",
       objective: "Junior High learn arrays. Senior High learn both arrays and objects.",
       teachingPoints: [
         "Arrays are ordered lists of values.",
@@ -1207,7 +1200,7 @@ console.log(student.likesJS);  // true` }
       },
       assessment: [
         {
-          track: "A", audience: "Both", title: CHECKLIST_TRACK_A, type: "checklist",
+          audience: "Both", title: PEER_CHECKLIST, type: "checklist",
           items: [
             "Does the code run without errors?",
             "Can the author explain what the index number means?",
@@ -1215,7 +1208,7 @@ console.log(student.likesJS);  // true` }
           ]
         },
         {
-          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
+          audience: "Both", title: "Written quiz", type: "quiz",
           questions: [
             {
               prompt: "Question 1: What is the index of the first item in an array?",
@@ -1244,8 +1237,7 @@ console.log(animals[2]);`,
 
     /* ================================================================ 8 */
     {
-      n: 8, title: "Meet the DOM", emoji: "🌐", color: "sensing", tracks: "both",
-      concept: "The DOM is the browser's map of your HTML. JavaScript uses it to find elements and change their text and styles.",
+      n: 8, title: "Meet the DOM", emoji: "🌐", color: "sensing", concept: "The DOM is the browser's map of your HTML. JavaScript uses it to find elements and change their text and styles.",
       objective: "Students learn to use JavaScript to change HTML and CSS on a page.",
       teachingPoints: [
         "The DOM is the browser's map of the HTML page.",
@@ -1401,7 +1393,7 @@ document.getElementById("box").style.backgroundColor = "blue";`
       },
       assessment: [
         {
-          track: "A", audience: "Both", title: CHECKLIST_TRACK_A, type: "checklist",
+          audience: "Both", title: PEER_CHECKLIST, type: "checklist",
           items: [
             "Does the code run without errors?",
             "Can you point to the HTML element and the JS that changes it?",
@@ -1409,7 +1401,7 @@ document.getElementById("box").style.backgroundColor = "blue";`
           ]
         },
         {
-          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
+          audience: "Both", title: "Written quiz", type: "quiz",
           questions: [
             { prompt: "Question 1: What does \"DOM\" stand for?", answer: "Document Object Model." },
             { prompt: "Question 2: What does getElementById() do?", answer: "It finds the element with that ID in the page, so JavaScript can read it or change it." },
@@ -1433,8 +1425,7 @@ document.getElementById("box").style.backgroundColor = "blue";`
 
     /* ================================================================ 9 */
     {
-      n: 9, title: "Planning a project", emoji: "🚧", color: "motion", tracks: "both",
-      concept: "Junior High build one complete interactive element from start to finish. Senior High plan and start a mini-project.",
+      n: 9, title: "Planning a project", emoji: "🚧", color: "motion", concept: "Junior High build one complete interactive element from start to finish. Senior High plan and start a mini-project.",
       teachingPoints: [
         "An event listener \"waits\" for something to happen, such as a click.",
         "Breaking a project into steps makes it much easier to build.",
@@ -1553,7 +1544,7 @@ document.getElementById("box").style.backgroundColor = "blue";`
           },
           assessment: [
             {
-              track: "A", audience: "Both", title: "Project requirements checklist", type: "checklist",
+              audience: "Both", title: "Project requirements checklist", type: "checklist",
               items: [
                 "HTML structure set up with IDs on elements",
                 "CSS styling applied",
@@ -1692,7 +1683,7 @@ document.getElementById("box").style.backgroundColor = "blue";`
           },
           assessment: [
             {
-              track: "A", audience: "Both", title: "Project requirements checklist", type: "checklist",
+              audience: "Both", title: "Project requirements checklist", type: "checklist",
               items: [
                 "HTML structure set up with IDs on elements",
                 "CSS styling applied",
@@ -1709,8 +1700,7 @@ document.getElementById("box").style.backgroundColor = "blue";`
 
     /* ================================================================ 10 */
     {
-      n: 10, title: "Recap & next steps", emoji: "🎉", color: "control", tracks: "both",
-      concept: "Present your project, take the final recap quiz, and reflect on everything you learned.",
+      n: 10, title: "Recap & next steps", emoji: "🎉", color: "control", concept: "Present your project, take the final recap quiz, and reflect on everything you learned.",
       teachingPoints: [
         "Explaining your code out loud shows how well you understand it.",
         "Reflecting on what was hard helps you learn faster next time.",
@@ -1782,7 +1772,7 @@ document.getElementById("box").style.backgroundColor = "blue";`
           },
           assessment: [
             {
-              track: "B", audience: "JHS", title: "Final recap quiz", type: "quiz",
+              audience: "JHS", title: "Final recap quiz", type: "quiz",
               questions: [
                 { prompt: "Question 1: Write a line of code that creates a variable called score and sets it to 95.", answer: "let score = 95;" },
                 { prompt: "Question 2: What is the difference between let and const?", answer: "let can be changed later; const cannot be reassigned." },
@@ -1874,7 +1864,7 @@ if (number > 50) {
           },
           assessment: [
             {
-              track: "B", audience: "SHS", title: "Final project design document", type: "form",
+              audience: "SHS", title: "Final project design document", type: "form",
               intro: "Complete this before the showcase and hand it in with your project.",
               fields: [
                 { label: "Project choice", hint: "To-Do List / Calculator / Form Validator" },
@@ -1889,7 +1879,7 @@ if (number > 50) {
       },
       assessment: [
         {
-          track: "A", audience: "Both", title: "Project showcase rubric", type: "rubric",
+          audience: "Both", title: "Project showcase rubric", type: "rubric",
           criteria: [
             "Project runs without errors",
             "Student can explain what the code does",
@@ -1904,8 +1894,7 @@ if (number > 50) {
   // Reused weeks are repositioned; new weeks are stubs until authored.
   function stub(n, title, emoji, color, goal, concept) {
     return {
-      n: n, title: title, emoji: emoji, color: color, tracks: "both",
-      goal: goal, concept: concept,
+      n: n, title: title, emoji: emoji, color: color, goal: goal, concept: concept,
       objective: "",
       teachingPoints: [],
       timing: [],
@@ -1947,8 +1936,7 @@ if (number > 50) {
   weeks[7].goal = "Find elements on the page and change them with JavaScript.";
 
   var weekArrays = {
-      n: 7, title: "Arrays", emoji: "📚", color: "operators", tracks: "both",
-      concept: "An array is an ordered list of values. You can add to it, read items by their position, and loop through them.",
+      n: 7, title: "Arrays", emoji: "📚", color: "operators", concept: "An array is an ordered list of values. You can add to it, read items by their position, and loop through them.",
       objective: "Students can create an array, read items by index, add items and loop through them.",
       teachingPoints: [
         "An array is an ordered list written with square brackets: let fruits = [\"mango\", \"orange\"];.",
@@ -2042,7 +2030,7 @@ if (number > 50) {
       },
       assessment: [
         {
-          track: "A", audience: "Both", title: CHECKLIST_TRACK_A, type: "checklist",
+          audience: "Both", title: PEER_CHECKLIST, type: "checklist",
           items: [
             "The array logs correct values",
             "push() adds an item",
@@ -2050,7 +2038,7 @@ if (number > 50) {
           ]
         },
         {
-          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
+          audience: "Both", title: "Written quiz", type: "quiz",
           questions: [
             { prompt: "Question 1: Write an array of three colours.", answer: "let colours = [\"red\", \"green\", \"blue\"];" },
             { prompt: "Question 2: What does colours.length give you?", answer: "The number of items in the array." },
@@ -2062,8 +2050,7 @@ if (number > 50) {
   weekArrays.goal = "Store a list of values in an array and loop through them.";
 
   var weekObjects = {
-      n: 8, title: "Objects", emoji: "🧩", color: "looks", tracks: "both",
-      concept: "An object stores labelled values — each item has a key and a value. Objects model real things, like a student with a name and a score.",
+      n: 8, title: "Objects", emoji: "🧩", color: "looks", concept: "An object stores labelled values — each item has a key and a value. Objects model real things, like a student with a name and a score.",
       objective: "Students can create an object with key/value pairs and read its values.",
       teachingPoints: [
         "An object stores labelled values in curly braces: { name: \"Ada\", age: 12 }.",
@@ -2150,7 +2137,7 @@ if (number > 50) {
       },
       assessment: [
         {
-          track: "A", audience: "Both", title: CHECKLIST_TRACK_A, type: "checklist",
+          audience: "Both", title: PEER_CHECKLIST, type: "checklist",
           items: [
             "The object logs correct values",
             "dot notation works",
@@ -2158,7 +2145,7 @@ if (number > 50) {
           ]
         },
         {
-          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
+          audience: "Both", title: "Written quiz", type: "quiz",
           questions: [
             { prompt: "Question 1: Write an object with keys name and score.", answer: "let player = { name: \"Ada\", score: 10 };" },
             { prompt: "Question 2: How do you read the name from an object called player?", answer: "player.name" },
@@ -2173,8 +2160,7 @@ if (number > 50) {
     weeks[0], weeks[1], weeks[2], weeks[3], weeks[4], weeks[5],
     weekArrays, weekObjects,
     {
-      n: 9, title: "Project: build a game", emoji: "🎮", color: "events", tracks: "both",
-      goal: "Build a small game that takes a choice and decides a winner.",
+      n: 9, title: "Project: build a game", emoji: "🎮", color: "events", goal: "Build a small game that takes a choice and decides a winner.",
       concept: "Combine variables, conditionals and functions to build a playable game.",
       objective: "Students build a small console game using variables, conditionals and functions.",
       teachingPoints: [
@@ -2308,7 +2294,7 @@ if (guess === secret) {
       },
       assessment: [
         {
-          track: "A", audience: "Both", title: "Game checklist", type: "checklist",
+          audience: "Both", title: "Game checklist", type: "checklist",
           items: [
             "The game runs without errors",
             "The game uses at least one conditional",
@@ -2317,7 +2303,7 @@ if (guess === secret) {
           ]
         },
         {
-          track: "B", audience: "Both", title: "Written quiz", type: "quiz",
+          audience: "Both", title: "Written quiz", type: "quiz",
           questions: [
             {
               prompt: "Question 1: In your game, what does the secret value represent?",
@@ -2351,8 +2337,7 @@ if (guess === secret) {
       ]
     },
     {
-      n: 10, title: "Revision, assessment, showcase", emoji: "🎉", color: "control", tracks: "both",
-      goal: "Review Term 1 and show what you can build.",
+      n: 10, title: "Revision, assessment, showcase", emoji: "🎉", color: "control", goal: "Review Term 1 and show what you can build.",
       concept: "Recap the core ideas and present a project.",
       objective: "Review Term 1 and present a project.",
       teachingPoints: [
@@ -2457,7 +2442,7 @@ if (guess === secret) {
       },
       assessment: [
         {
-          track: "B", audience: "Both", title: "Final recap quiz", type: "quiz",
+          audience: "Both", title: "Final recap quiz", type: "quiz",
           questions: [
             {
               prompt: "Question 1: What is the difference between let and const?",
@@ -2494,8 +2479,7 @@ if (guess === secret) {
   var term2 = [
     weeks[7],
     {
-      n: 2, title: "Changing text, styles and classes", emoji: "✏️", color: "sensing", tracks: "both",
-      goal: "Change an element's text, style and classes from JavaScript.",
+      n: 2, title: "Changing text, styles and classes", emoji: "✏️", color: "sensing", goal: "Change an element's text, style and classes from JavaScript.",
       concept: "Change what an element says and how it looks using textContent, style and classes.",
       objective: "Students can change an element's text, one style at a time and its CSS classes from JavaScript.",
       teachingPoints: [
@@ -2620,7 +2604,7 @@ if (guess === secret) {
       },
       assessment: [
         {
-          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
+          audience: "Both", title: "Mini-check", type: "quiz",
           questions: [
             { prompt: "Question 1: Which property changes the text inside an element?", answer: "textContent." },
             { prompt: "Question 2: How do you write the CSS property background-color as a JavaScript style property?", answer: "backgroundColor — it is camelCase, with no hyphen." },
@@ -2630,8 +2614,7 @@ if (guess === secret) {
       ]
     },
     {
-      n: 3, title: "Creating and removing elements", emoji: "➕", color: "looks", tracks: "both",
-      goal: "Add new elements and remove ones you no longer need.",
+      n: 3, title: "Creating and removing elements", emoji: "➕", color: "looks", goal: "Add new elements and remove ones you no longer need.",
       concept: "Build new elements in code and add or remove them from the page.",
       objective: "Students can create an element, fill it, add it to the page and remove it again.",
       teachingPoints: [
@@ -2784,7 +2767,7 @@ if (guess === secret) {
       },
       assessment: [
         {
-          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
+          audience: "Both", title: "Mini-check", type: "quiz",
           questions: [
             { prompt: "Question 1: Which method creates a new element in memory?", answer: "document.createElement()." },
             { prompt: "Question 2: Which method adds a created element to a parent on the page?", answer: "parent.appendChild(element)." },
@@ -2794,8 +2777,7 @@ if (guess === secret) {
       ]
     },
     {
-      n: 4, title: "Events: click, input, mouse, keyboard", emoji: "🖱️", color: "events", tracks: "both",
-      goal: "Make the page respond to clicks, typing and key presses.",
+      n: 4, title: "Events: click, input, mouse, keyboard", emoji: "🖱️", color: "events", goal: "Make the page respond to clicks, typing and key presses.",
       concept: "Use event listeners to react to what the user does.",
       objective: "Students can attach event listeners for clicks, typing, the mouse and the keyboard.",
       teachingPoints: [
@@ -2929,7 +2911,7 @@ if (guess === secret) {
       },
       assessment: [
         {
-          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
+          audience: "Both", title: "Mini-check", type: "quiz",
           questions: [
             { prompt: "Question 1: Which method attaches a handler to an event?", answer: "addEventListener()." },
             { prompt: "Question 2: Why do you write the handler without brackets?", answer: "Without brackets you pass the function itself, so it runs later when the event happens. With brackets it would run straight away." },
@@ -2939,8 +2921,7 @@ if (guess === secret) {
       ]
     },
     {
-      n: 5, title: "Forms and validation", emoji: "📝", color: "variables", tracks: "both",
-      goal: "Read form values and check what the user typed.",
+      n: 5, title: "Forms and validation", emoji: "📝", color: "variables", goal: "Read form values and check what the user typed.",
       concept: "Read values from a form and validate them before you use them.",
       objective: "Students can read form values, stop the default submit and validate the input before accepting it.",
       teachingPoints: [
@@ -3091,7 +3072,7 @@ if (guess === secret) {
       },
       assessment: [
         {
-          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
+          audience: "Both", title: "Mini-check", type: "quiz",
           questions: [
             { prompt: "Question 1: Which property holds the text a user typed into an input?", answer: "input.value." },
             { prompt: "Question 2: Why call event.preventDefault() in a submit handler?", answer: "To stop the browser reloading the page (its default behaviour) so your JavaScript can handle the form." },
@@ -3101,8 +3082,7 @@ if (guess === secret) {
       ]
     },
     {
-      n: 6, title: "Event handling patterns, including delegation", emoji: "🧭", color: "sensing", tracks: "both",
-      goal: "Handle events on many elements with one listener.",
+      n: 6, title: "Event handling patterns, including delegation", emoji: "🧭", color: "sensing", goal: "Handle events on many elements with one listener.",
       concept: "Use event delegation so one listener can handle a whole group of elements.",
       objective: "Students can handle events on many elements with one listener using event delegation and closest().",
       teachingPoints: [
@@ -3247,7 +3227,7 @@ if (guess === secret) {
       },
       assessment: [
         {
-          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
+          audience: "Both", title: "Mini-check", type: "quiz",
           questions: [
             { prompt: "Question 1: What is event delegation?", answer: "Attaching one listener to a parent element and letting it handle events that bubble up from its children." },
             { prompt: "Question 2: Why is delegation good for lists?", answer: "One listener covers every item, including items added later, so you write less code and do not rebind on each new item." },
@@ -3257,8 +3237,7 @@ if (guess === secret) {
       ]
     },
     {
-      n: 7, title: "Timers and localStorage", emoji: "⏱️", color: "operators", tracks: "both",
-      goal: "Run code on a schedule and save data in the browser.",
+      n: 7, title: "Timers and localStorage", emoji: "⏱️", color: "operators", goal: "Run code on a schedule and save data in the browser.",
       concept: "Use timers to run code later and localStorage to remember data.",
       objective: "Students can run code on a timer and save and load data with localStorage.",
       teachingPoints: [
@@ -3418,7 +3397,7 @@ if (guess === secret) {
       },
       assessment: [
         {
-          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
+          audience: "Both", title: "Mini-check", type: "quiz",
           questions: [
             { prompt: "Question 1: Which timer repeats, and which one runs once?", answer: "setInterval repeats; setTimeout runs once." },
             { prompt: "Question 2: How do you stop a repeating timer?", answer: "Save the id that setInterval returns, then call clearInterval(id)." },
@@ -3428,8 +3407,7 @@ if (guess === secret) {
       ]
     },
     {
-      n: 8, title: "Modern syntax (arrow functions, template literals, destructuring, map/filter)", emoji: "✨", color: "motion", tracks: "both",
-      goal: "Use modern JavaScript syntax to write cleaner code.",
+      n: 8, title: "Modern syntax (arrow functions, template literals, destructuring, map/filter)", emoji: "✨", color: "motion", goal: "Use modern JavaScript syntax to write cleaner code.",
       concept: "Write shorter code with arrow functions, template literals, destructuring and array methods.",
       objective: "Students can use arrow functions, template literals, destructuring and map/filter to write cleaner code.",
       teachingPoints: [
@@ -3560,7 +3538,7 @@ if (guess === secret) {
       },
       assessment: [
         {
-          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
+          audience: "Both", title: "Mini-check", type: "quiz",
           questions: [
             { prompt: "Question 1: Write the arrow-function form of function (x) { return x + 1; }.", answer: "(x) => x + 1" },
             { prompt: "Question 2: What characters wrap a template literal?", answer: "Backticks: `Hi ${name}`." },
@@ -3570,8 +3548,7 @@ if (guess === secret) {
       ]
     },
     {
-      n: 9, title: "Project: to-do app or calculator", emoji: "📋", color: "control", tracks: "both",
-      goal: "Build and test a small interactive app.",
+      n: 9, title: "Project: to-do app or calculator", emoji: "📋", color: "control", goal: "Build and test a small interactive app.",
       concept: "Combine the DOM, events and forms to build a small app.",
       objective: "Students build a small interactive app using the DOM, events and a state variable.",
       teachingPoints: [
@@ -3758,7 +3735,7 @@ if (guess === secret) {
       },
       assessment: [
         {
-          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
+          audience: "Both", title: "Mini-check", type: "quiz",
           questions: [
             { prompt: "Question 1: Why keep the app's data in a tasks array instead of only drawing it on the page?", answer: "The array is the source of truth; the page is drawn from it. Changing the array and rendering keeps the page and the data in step." },
             { prompt: "Question 2: After you change the state, what must you do so the page shows it?", answer: "Call render() again to redraw the page from the state." },
@@ -3767,7 +3744,7 @@ if (guess === secret) {
           ]
         },
         {
-          track: "A", audience: "Both", title: "App checklist", type: "checklist",
+          audience: "Both", title: "App checklist", type: "checklist",
           items: [
             "The app runs without errors.",
             "It reacts to the user's input (add, click, delete).",
@@ -3778,8 +3755,7 @@ if (guess === secret) {
       ]
     },
     {
-      n: 10, title: "Revision, assessment, showcase", emoji: "🎉", color: "sensing", tracks: "both",
-      goal: "Review Term 2 and showcase your work.",
+      n: 10, title: "Revision, assessment, showcase", emoji: "🎉", color: "sensing", goal: "Review Term 2 and showcase your work.",
       concept: "Recap the term's ideas and present a project.",
       objective: "Students revise Term 2 and present a small piece of work they can explain.",
       teachingPoints: [
@@ -3942,7 +3918,7 @@ if (guess === secret) {
       },
       assessment: [
         {
-          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
+          audience: "Both", title: "Mini-check", type: "quiz",
           questions: [
             { prompt: "Question 1: What does addEventListener do?", answer: "It attaches a function that runs when the given event happens on that element." },
             { prompt: "Question 2: What is event delegation and why is it useful?", answer: "One listener on a parent handles events from its children; it works for items added later and keeps the code short." },
@@ -3958,8 +3934,7 @@ if (guess === secret) {
   // --- Term 3: Modern JavaScript and Real-World Apps ---
   var term3 = [
     {
-      n: 1, title: "JSON and scope", emoji: "🧾", color: "control", tracks: "both",
-      goal: "Work with JSON and understand where variables live.",
+      n: 1, title: "JSON and scope", emoji: "🧾", color: "control", goal: "Work with JSON and understand where variables live.",
       concept: "Read and write JSON, and understand local and global scope.",
       objective: "Convert data to and from JSON, and understand where variables live (scope).",
       teachingPoints: [
@@ -4095,7 +4070,7 @@ if (guess === secret) {
       },
       assessment: [
         {
-          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
+          audience: "Both", title: "Mini-check", type: "quiz",
           questions: [
             { prompt: "Question 1: What does JSON.stringify do?", answer: "It turns a value such as an object or array into JSON text (a string)." },
             { prompt: "Question 2: What does JSON.parse do?", answer: "It takes JSON text and turns it back into a value you can use in your code." },
@@ -4105,8 +4080,7 @@ if (guess === secret) {
       ]
     },
     {
-      n: 2, title: "Promises", emoji: "⏳", color: "motion", tracks: "both",
-      goal: "Understand and use Promises.",
+      n: 2, title: "Promises", emoji: "⏳", color: "motion", goal: "Understand and use Promises.",
       concept: "Handle work that finishes later with Promises.",
       objective: "Understand what a promise represents and chain a simple one.",
       teachingPoints: [
@@ -4231,7 +4205,7 @@ if (guess === secret) {
       },
       assessment: [
         {
-          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
+          audience: "Both", title: "Mini-check", type: "quiz",
           questions: [
             { prompt: "Question 1: What is a promise?", answer: "A placeholder for a value that is not ready yet; it will resolve or reject later." },
             { prompt: "Question 2: Which method runs when a promise resolves?", answer: ".then()" },
@@ -4241,8 +4215,7 @@ if (guess === secret) {
       ]
     },
     {
-      n: 3, title: "async/await", emoji: "⚡", color: "sensing", tracks: "both",
-      goal: "Use async and await to handle asynchronous tasks.",
+      n: 3, title: "async/await", emoji: "⚡", color: "sensing", goal: "Use async and await to handle asynchronous tasks.",
       concept: "Write asynchronous code that reads like ordinary code.",
       objective: "Rewrite promise code with async/await.",
       teachingPoints: [
@@ -4370,7 +4343,7 @@ if (guess === secret) {
       },
       assessment: [
         {
-          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
+          audience: "Both", title: "Mini-check", type: "quiz",
           questions: [
             { prompt: "Question 1: What does the async keyword do to a function?", answer: "It makes the function return a promise, and lets you use await inside it." },
             { prompt: "Question 2: What does await do?", answer: "It pauses the async function until the promise settles, then gives you the resolved value." },
@@ -4380,8 +4353,7 @@ if (guess === secret) {
       ]
     },
     {
-      n: 4, title: "fetch and APIs (offline sample)", emoji: "🌐", color: "operators", tracks: "both",
-      goal: "Fetch data from an API and show it on the page.",
+      n: 4, title: "fetch and APIs (offline sample)", emoji: "🌐", color: "operators", goal: "Fetch data from an API and show it on the page.",
       concept: "Get data from a server with fetch and display it, using an offline sample.",
       objective: "Understand how fetch gets data from an API, using an offline sample.",
       teachingPoints: [
@@ -4540,7 +4512,7 @@ if (guess === secret) {
       },
       assessment: [
         {
-          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
+          audience: "Both", title: "Mini-check", type: "quiz",
           questions: [
             { prompt: "Question 1: What does fetch return?", answer: "A promise that resolves to a response object." },
             { prompt: "Question 2: How do you read JSON from the response?", answer: "Await response.json(), which returns a promise for the parsed data." },
@@ -4550,8 +4522,7 @@ if (guess === secret) {
       ]
     },
     {
-      n: 5, title: "Error handling and debugging with DevTools", emoji: "🐞", color: "events", tracks: "both",
-      goal: "Handle errors and debug with the browser DevTools.",
+      n: 5, title: "Error handling and debugging with DevTools", emoji: "🐞", color: "events", goal: "Handle errors and debug with the browser DevTools.",
       concept: "Catch errors with try/catch and inspect your code with DevTools.",
       objective: "Catch errors in code and use the browser tools to find bugs.",
       teachingPoints: [
@@ -4677,7 +4648,7 @@ if (guess === secret) {
       },
       assessment: [
         {
-          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
+          audience: "Both", title: "Mini-check", type: "quiz",
           questions: [
             { prompt: "Question 1: What does try/catch do?", answer: "It runs risky code and, if it throws, handles the error in catch instead of stopping the program." },
             { prompt: "Question 2: What does throw do?", answer: "It raises your own error with a message, which you can catch." },
@@ -4687,8 +4658,7 @@ if (guess === secret) {
       ]
     },
     {
-      n: 6, title: "Classes and OOP basics", emoji: "🏛️", color: "variables", tracks: "both",
-      goal: "Create classes and objects in JavaScript.",
+      n: 6, title: "Classes and OOP basics", emoji: "🏛️", color: "variables", goal: "Create classes and objects in JavaScript.",
       concept: "Model things with classes, constructors and methods.",
       objective: "Model things with a class and create objects from it.",
       teachingPoints: [
@@ -4809,7 +4779,7 @@ if (guess === secret) {
       },
       assessment: [
         {
-          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
+          audience: "Both", title: "Mini-check", type: "quiz",
           questions: [
             { prompt: "Question 1: What creates an object from a class?", answer: "The new keyword, for example new Student(\"Ada\", 82)." },
             { prompt: "Question 2: What does the constructor do?", answer: "It runs once per object and sets up that object's properties." },
@@ -4819,8 +4789,7 @@ if (guess === secret) {
       ]
     },
     {
-      n: 7, title: "Modules and organising code", emoji: "📦", color: "looks", tracks: "both",
-      goal: "Organise code into reusable modules.",
+      n: 7, title: "Modules and organising code", emoji: "📦", color: "looks", goal: "Organise code into reusable modules.",
       concept: "Split code into modules and import what you need.",
       objective: "Understand splitting code into modules and organising a project.",
       teachingPoints: [
@@ -4939,7 +4908,7 @@ if (guess === secret) {
       },
       assessment: [
         {
-          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
+          audience: "Both", title: "Mini-check", type: "quiz",
           questions: [
             { prompt: "Question 1: What does export do?", answer: "It makes a value available to other files." },
             { prompt: "Question 2: What does import do?", answer: "It brings an exported value from another module into the current file." },
@@ -4949,8 +4918,7 @@ if (guess === secret) {
       ]
     },
     {
-      n: 8, title: "Capstone: plan and build", emoji: "🧱", color: "motion", tracks: "both",
-      goal: "Plan and start building your capstone project.",
+      n: 8, title: "Capstone: plan and build", emoji: "🧱", color: "motion", goal: "Plan and start building your capstone project.",
       concept: "Plan your final project and start building its first features.",
       objective: "Choose a capstone app, plan it, and start building.",
       teachingPoints: [
@@ -5140,7 +5108,7 @@ if (guess === secret) {
       },
       assessment: [
         {
-          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
+          audience: "Both", title: "Mini-check", type: "quiz",
           questions: [
             { prompt: "Question 1: Why keep the scope small?", answer: "A small, finishable scope means you actually get a working app instead of an unfinished big one." },
             { prompt: "Question 2: What is the app's state?", answer: "The data the app works with, for example the expenses array. The page is drawn from it." },
@@ -5150,8 +5118,7 @@ if (guess === secret) {
       ]
     },
     {
-      n: 9, title: "Capstone: build and publish", emoji: "🚀", color: "control", tracks: "both",
-      goal: "Finish and publish your capstone project.",
+      n: 9, title: "Capstone: build and publish", emoji: "🚀", color: "control", goal: "Finish and publish your capstone project.",
       concept: "Complete your project and publish it online.",
       objective: "Finish, test and publish your capstone app.",
       teachingPoints: [
@@ -5360,7 +5327,7 @@ if (guess === secret) {
       },
       assessment: [
         {
-          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
+          audience: "Both", title: "Mini-check", type: "quiz",
           questions: [
             { prompt: "Question 1: Why test the empty case?", answer: "An empty list is the easiest state to break; checking it catches blank screens and errors early." },
             { prompt: "Question 2: How do you save an array in localStorage?", answer: "localStorage.setItem(\"key\", JSON.stringify(array)), and JSON.parse it when loading." },
@@ -5369,7 +5336,7 @@ if (guess === secret) {
           ]
         },
         {
-          track: "A", audience: "Both", title: "Capstone checklist", type: "checklist",
+          audience: "Both", title: "Capstone checklist", type: "checklist",
           items: [
             "The app runs without errors in the console.",
             "It keeps its data in a state variable and renders from it.",
@@ -5380,8 +5347,7 @@ if (guess === secret) {
       ]
     },
     {
-      n: 10, title: "Showcase, assessment, next steps", emoji: "🏆", color: "events", tracks: "both",
-      goal: "Showcase your project and plan your next steps.",
+      n: 10, title: "Showcase, assessment, next steps", emoji: "🏆", color: "events", goal: "Showcase your project and plan your next steps.",
       concept: "Present your project, take the final assessment and look ahead.",
       objective: "Present your capstone and look ahead to what's next.",
       teachingPoints: [
@@ -5569,7 +5535,7 @@ if (guess === secret) {
       },
       assessment: [
         {
-          track: "B", audience: "Both", title: "Mini-check", type: "quiz",
+          audience: "Both", title: "Mini-check", type: "quiz",
           questions: [
             { prompt: "Question 1: What does JSON.parse do?", answer: "It turns JSON text back into a value your code can use." },
             { prompt: "Question 2: What is the difference between a promise and async/await?", answer: "They do the same job: async/await is a cleaner way to write promise code so it reads like ordinary code." },
@@ -5579,7 +5545,7 @@ if (guess === secret) {
           ]
         },
         {
-          track: "A", audience: "Both", title: "Course checklist", type: "checklist",
+          audience: "Both", title: "Course checklist", type: "checklist",
           items: [
             "I can convert data to and from JSON.",
             "I can handle a value that arrives later with a promise or async/await.",
@@ -5604,10 +5570,6 @@ if (guess === secret) {
     endGoal: "By the end of Term 3, every student has built and published a working interactive web app.",
     focus: "Every concept is practised on a page students can run, edit and see working in the browser.",
     philosophy: "Read it, run it, change it. Each week ships a runnable code template.",
-    tracks: [
-      { key: "A", name: "Track A — with system", desc: "Students have laptops. They code along, run the templates, and complete peer pair-check assessments." },
-      { key: "B", name: "Track B — no system", desc: "No laptops required. Students work through the handouts and complete written quizzes and design documents." }
-    ],
     terms: [
       { n: 1, title: "JavaScript Fundamentals", theme: "motion", weeks: term1 },
       { n: 2, title: "The DOM, Events and Interactive Pages", theme: "sensing", weeks: term2 },

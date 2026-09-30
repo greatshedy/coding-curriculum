@@ -19,7 +19,6 @@
       title: title,
       emoji: emoji,
       color: color,
-      tracks: "both",
       goal: goal,
       concept: concept,
       objective: "",
@@ -39,7 +38,6 @@
       title: "How the web works",
       emoji: "🌐",
       color: "motion",
-      tracks: "both",
       goal: "Create your first web page and see it in a browser.",
       concept:
         "A web page is a text file written in HTML. The browser reads the HTML and draws the page. CSS is a second file that tells the browser how the page should look.",
@@ -152,7 +150,6 @@
       },
       assessment: [
         {
-          track: "A",
           audience: "JSS 1 & JSS 2",
           title: "Mini-check",
           type: "quiz",
@@ -181,7 +178,6 @@
       title: "Headings and paragraphs",
       emoji: "🔤",
       color: "looks",
-      tracks: "both",
       goal: "Build an About Me page and style its text.",
       concept:
         "Headings show the importance of text and paragraphs group sentences. CSS can change a page's colours, fonts, size and alignment.",
@@ -319,7 +315,6 @@
       },
       assessment: [
         {
-          track: "A",
           audience: "JSS 1 & JSS 2",
           title: "Mini-check",
           type: "quiz",
@@ -346,7 +341,6 @@
       title: "Links and images",
       emoji: "🔗",
       color: "sensing",
-      tracks: "both",
       goal: "Add a styled photo and working links to your page.",
       concept:
         "Links move people between pages and images bring pictures onto a page. CSS can set an image's width, add a border and round its corners.",
@@ -475,7 +469,6 @@
       },
       assessment: [
         {
-          track: "A",
           audience: "JSS 1 & JSS 2",
           title: "Mini-check",
           type: "quiz",
@@ -502,7 +495,6 @@
       title: "Lists",
       emoji: "📋",
       color: "control",
-      tracks: "both",
       goal: "Make a tidy, styled list page.",
       concept:
         "Lists group items together: unordered lists use bullets, ordered lists use numbers, and lists can be nested. CSS controls their spacing and markers.",
@@ -640,7 +632,6 @@
       },
       assessment: [
         {
-          track: "A",
           audience: "JSS 1 & JSS 2",
           title: "Mini-check",
           type: "quiz",
@@ -666,7 +657,6 @@
       title: "Containers and the box model",
       emoji: "📦",
       color: "operators",
-      tracks: "both",
       goal: "Build and measure a profile card.",
       concept:
         "Every element is a box. The box model is content, padding, border and margin. Containers such as div, span and section group your content.",
@@ -794,7 +784,6 @@
       },
       assessment: [
         {
-          track: "A",
           audience: "JSS 1 & JSS 2",
           title: "Mini-check",
           type: "quiz",
@@ -820,7 +809,6 @@
       title: "Semantic layout",
       emoji: "🧱",
       color: "events",
-      tracks: "both",
       goal: "Structure and theme a whole page.",
       concept:
         "Semantic tags such as header, nav, main and footer describe each part of a page. Backgrounds, classes and a colour theme tie the page together.",
@@ -998,7 +986,6 @@
       },
       assessment: [
         {
-          track: "A",
           audience: "JSS 1 & JSS 2",
           title: "Mini-check",
           type: "quiz",
@@ -1022,7 +1009,6 @@
       title: "Tables",
       emoji: "🧮",
       color: "variables",
-      tracks: "both",
       goal: "Build a styled class timetable.",
       concept:
         "Tables arrange information into rows and columns. CSS can add borders, spacing and striped rows to make a table easy to read.",
@@ -1185,7 +1171,6 @@
       },
       assessment: [
         {
-          track: "A",
           audience: "JSS 1 & JSS 2",
           title: "Mini-check",
           type: "quiz",
@@ -1209,7 +1194,6 @@
       title: "Forms",
       emoji: "📝",
       color: "motion",
-      tracks: "both",
       goal: "Build a styled registration form.",
       concept:
         "Forms let people type information into a page. Labels describe each field, inputs collect the answer, and buttons submit it.",
@@ -1358,7 +1342,6 @@
       },
       assessment: [
         {
-          track: "A",
           audience: "JSS 1 & JSS 2",
           title: "Mini-check",
           type: "quiz",
@@ -1386,7 +1369,6 @@
       title: "Project: My School page",
       emoji: "🌟",
       color: "looks",
-      tracks: "both",
       goal: "Plan and build a multi-section page of your own.",
       concept:
         "Put everything together: a structured, styled multi-section page about your school or yourself.",
@@ -1682,7 +1664,6 @@
       },
       assessment: [
         {
-          track: "A",
           audience: "JSS 1 & JSS 2",
           title: "Mini-check",
           type: "quiz",
@@ -1711,7 +1692,6 @@
           ],
         },
         {
-          track: "A",
           audience: "JSS 1 & JSS 2",
           title: "Project checklist",
           type: "checklist",
@@ -1729,7 +1709,6 @@
       title: "Revision and showcase",
       emoji: "🏆",
       color: "sensing",
-      tracks: "both",
       goal: "Review the term and show your project.",
       concept:
         "Look back over Term 1, check your understanding, and present your project to the class.",
@@ -1910,7 +1889,6 @@
       },
       assessment: [
         {
-          track: "A",
           audience: "JSS 1 & JSS 2",
           title: "Mini-check",
           type: "quiz",
@@ -1952,7 +1930,6 @@
       title: "Flexbox navigation",
       emoji: "↔️",
       color: "motion",
-      tracks: "both",
       goal: "Lay out a navigation bar with Flexbox.",
       concept:
         "Flexbox arranges items in a row or column and spaces them neatly. It is the modern way to build a navigation bar.",
@@ -2102,7 +2079,6 @@
       },
       assessment: [
         {
-          track: "A",
           audience: "JSS 1 & JSS 2",
           title: "Mini-check",
           type: "quiz",
@@ -2130,7 +2106,6 @@
       title: "Cards with Flexbox",
       emoji: "🃏",
       color: "looks",
-      tracks: "both",
       goal: "Build a row of cards that wrap on small screens.",
       concept:
         "Flex containers can wrap their items, add gaps, and line cards up in a neat row.",
@@ -2301,7 +2276,6 @@
       },
       assessment: [
         {
-          track: "A",
           audience: "JSS 1 & JSS 2",
           title: "Mini-check",
           type: "quiz",
@@ -2328,7 +2302,6 @@
       title: "Positioning",
       emoji: "📍",
       color: "sensing",
-      tracks: "both",
       goal: "Make a sticky header and a badge on a card.",
       concept:
         "Positioning controls where an element sits: relative, absolute, fixed and sticky each behave differently.",
@@ -2503,7 +2476,6 @@
       },
       assessment: [
         {
-          track: "A",
           audience: "JSS 1 & JSS 2",
           title: "Mini-check",
           type: "quiz",
@@ -2529,7 +2501,6 @@
       title: "Photo gallery with Grid",
       emoji: "🖼️",
       color: "operators",
-      tracks: "both",
       goal: "Build a photo gallery with CSS Grid.",
       concept:
         "CSS Grid arranges items into rows and columns at the same time, perfect for galleries and page layouts.",
@@ -2694,7 +2665,6 @@
       },
       assessment: [
         {
-          track: "A",
           audience: "JSS 1 & JSS 2",
           title: "Mini-check",
           type: "quiz",
@@ -2720,7 +2690,6 @@
       title: "Media queries",
       emoji: "📱",
       color: "control",
-      tracks: "both",
       goal: "Make a gallery adapt to phone, tablet and desktop.",
       concept:
         "A media query applies CSS only when the screen matches a condition, so one page can look good everywhere.",
@@ -2871,7 +2840,6 @@
       },
       assessment: [
         {
-          track: "A",
           audience: "JSS 1 & JSS 2",
           title: "Mini-check",
           type: "quiz",
@@ -2900,7 +2868,6 @@
       title: "Responsive images",
       emoji: "🖥️",
       color: "events",
-      tracks: "both",
       goal: "Convert a page to a mobile-first design.",
       concept:
         "Mobile-first means styling for the smallest screen first, then adding rules for larger screens.",
@@ -3062,7 +3029,6 @@
       },
       assessment: [
         {
-          track: "A",
           audience: "JSS 1 & JSS 2",
           title: "Mini-check",
           type: "quiz",
@@ -3089,7 +3055,6 @@
       title: "Typography and web fonts",
       emoji: "✍️",
       color: "variables",
-      tracks: "both",
       goal: "Give a page a clear type system.",
       concept:
         "Font choice, size, weight, line height and hierarchy make text easy and pleasant to read.",
@@ -3236,7 +3201,6 @@
       },
       assessment: [
         {
-          track: "A",
           audience: "JSS 1 & JSS 2",
           title: "Mini-check",
           type: "quiz",
@@ -3264,7 +3228,6 @@
       title: "Styled, validated forms",
       emoji: "🔒",
       color: "looks",
-      tracks: "both",
       goal: "Build a friendly, validated contact form.",
       concept:
         "Input types and attributes such as required and pattern guide the user, and CSS states show focus, hover and errors.",
@@ -3444,7 +3407,6 @@
       },
       assessment: [
         {
-          track: "A",
           audience: "JSS 1 & JSS 2",
           title: "Mini-check",
           type: "quiz",
@@ -3471,7 +3433,6 @@
       title: "Project: responsive landing page",
       emoji: "🌟",
       color: "motion",
-      tracks: "both",
       goal: "Build and present a responsive landing page.",
       concept:
         "Design and build a landing page for a school club, local shop or event that works on every screen.",
@@ -3676,7 +3637,6 @@
       },
       assessment: [
         {
-          track: "A",
           audience: "JSS 1 & JSS 2",
           title: "Mini-check",
           type: "quiz",
@@ -3704,7 +3664,6 @@
           ],
         },
         {
-          track: "A",
           audience: "JSS 1 & JSS 2",
           title: "Project checklist",
           type: "checklist",
@@ -3722,7 +3681,6 @@
       title: "Revision and showcase",
       emoji: "🏆",
       color: "sensing",
-      tracks: "both",
       goal: "Review the term and show your project.",
       concept:
         "Look back over Term 2, check your understanding, and present your project to the class.",
@@ -3898,7 +3856,6 @@
       },
       assessment: [
         {
-          track: "A",
           audience: "JSS 1 & JSS 2",
           title: "Mini-check",
           type: "quiz",
@@ -3937,7 +3894,6 @@
       title: "Transitions and details",
       emoji: "✨",
       color: "looks",
-      tracks: "both",
       goal: "Build an expandable FAQ with smooth effects.",
       concept:
         "The button, details and summary tags build interactive pieces, and CSS transitions make changes feel smooth.",
@@ -4122,7 +4078,6 @@
       },
       assessment: [
         {
-          track: "A",
           audience: "JSS 1 & JSS 2",
           title: "Mini-check",
           type: "quiz",
@@ -4150,7 +4105,6 @@
       title: "Media and animation",
       emoji: "🎞️",
       color: "events",
-      tracks: "both",
       goal: "Add an animated hero and a video.",
       concept:
         "Audio, video and embedded media bring a page to life. Keyframe animations can move elements on their own.",
@@ -4303,7 +4257,6 @@
       },
       assessment: [
         {
-          track: "A",
           audience: "JSS 1 & JSS 2",
           title: "Mini-check",
           type: "quiz",
@@ -4332,7 +4285,6 @@
       title: "CSS variables and themes",
       emoji: "🎨",
       color: "variables",
-      tracks: "both",
       goal: "Make light and dark themes with variables.",
       concept:
         "CSS variables store values you reuse. Switch a few variables and the whole page changes theme.",
@@ -4464,7 +4416,6 @@
       },
       assessment: [
         {
-          track: "A",
           audience: "JSS 1 & JSS 2",
           title: "Mini-check",
           type: "quiz",
@@ -4492,7 +4443,6 @@
       title: "Accessibility",
       emoji: "♿",
       color: "sensing",
-      tracks: "both",
       goal: "Audit and fix a page for accessibility.",
       concept:
         "Good HTML and CSS help everyone: alt text, labels, heading order, contrast, visible focus and reduced motion.",
@@ -4665,7 +4615,6 @@
       },
       assessment: [
         {
-          track: "A",
           audience: "JSS 1 & JSS 2",
           title: "Mini-check",
           type: "quiz",
@@ -4693,7 +4642,6 @@
       title: "Validation and DevTools",
       emoji: "🔧",
       color: "operators",
-      tracks: "both",
       goal: "Debug a broken page with the browser tools.",
       concept:
         "Clean, valid markup is easier to fix. Browser Developer Tools show the structure and styles of any page.",
@@ -4825,7 +4773,6 @@
       },
       assessment: [
         {
-          track: "A",
           audience: "JSS 1 & JSS 2",
           title: "Mini-check",
           type: "quiz",
@@ -4855,7 +4802,6 @@
       title: "Publishing your page",
       emoji: "🚀",
       color: "control",
-      tracks: "both",
       goal: "Prepare your files to put a page online.",
       concept:
         "A tidy project folder and correct linking make a site ready to publish. Publishing puts your work on the web.",
@@ -4976,7 +4922,6 @@
       },
       assessment: [
         {
-          track: "A",
           audience: "JSS 1 & JSS 2",
           title: "Mini-check",
           type: "quiz",
@@ -5005,7 +4950,6 @@
       title: "Capstone: plan",
       emoji: "🗺️",
       color: "motion",
-      tracks: "both",
       goal: "Wireframe and plan your capstone site.",
       concept:
         "Choose a topic, sketch the layout, list the pages, and pick colours, fonts and components.",
@@ -5140,7 +5084,6 @@
       },
       assessment: [
         {
-          track: "A",
           audience: "JSS 1 & JSS 2",
           title: "Mini-check",
           type: "quiz",
@@ -5168,7 +5111,6 @@
       title: "Capstone: build",
       emoji: "🏗️",
       color: "looks",
-      tracks: "both",
       goal: "Build your capstone site.",
       concept:
         "Build the multi-page structure and style it responsively.",
@@ -5357,7 +5299,6 @@
       },
       assessment: [
         {
-          track: "A",
           audience: "JSS 1 & JSS 2",
           title: "Mini-check",
           type: "quiz",
@@ -5385,7 +5326,6 @@
       title: "Capstone: test and publish",
       emoji: "✅",
       color: "sensing",
-      tracks: "both",
       goal: "Test and publish your capstone.",
       concept:
         "Validate, check accessibility, polish, then publish and test on a phone.",
@@ -5550,7 +5490,6 @@
       },
       assessment: [
         {
-          track: "A",
           audience: "JSS 1 & JSS 2",
           title: "Mini-check",
           type: "quiz",
@@ -5576,7 +5515,6 @@
           ],
         },
         {
-          track: "A",
           audience: "JSS 1 & JSS 2",
           title: "Capstone checklist",
           type: "checklist",
@@ -5594,7 +5532,6 @@
       title: "Showcase",
       emoji: "🏆",
       color: "events",
-      tracks: "both",
       goal: "Present your capstone to the class.",
       concept:
         "Show your finished site and reflect on what you learned across the three terms.",
@@ -5763,7 +5700,6 @@
       },
       assessment: [
         {
-          track: "A",
           audience: "JSS 1 & JSS 2",
           title: "Mini-check",
           type: "quiz",
@@ -5808,13 +5744,6 @@
       "HTML and CSS taught together: build it, style it, see it, change it. No JavaScript needed.",
     philosophy:
       "Read it, build it, style it, change it. Every week ships a runnable page students can edit and see working.",
-    tracks: [
-      {
-        key: "A",
-        name: "Track A — JSS 1 & JSS 2",
-        desc: "HTML and CSS taught as a pair, every week. One lesson page everyone shares: read it, run it, build it, check it.",
-      },
-    ],
     terms: [
       { n: 1, title: "Build and Style a Page", theme: "motion", weeks: term1 },
       {
