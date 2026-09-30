@@ -3932,86 +3932,1870 @@
   ];
 
   var term3 = [
-    week(
-      1,
-      "Transitions and details",
-      "✨",
-      "looks",
-      "Build an expandable FAQ with smooth effects.",
-      "The button, details and summary tags build interactive pieces, and CSS transitions make changes feel smooth.",
-    ),
-    week(
-      2,
-      "Media and animation",
-      "🎞️",
-      "events",
-      "Add an animated hero and a video.",
-      "Audio, video and embedded media bring a page to life. Keyframe animations can move elements on their own.",
-    ),
-    week(
-      3,
-      "CSS variables and themes",
-      "🎨",
-      "variables",
-      "Make light and dark themes with variables.",
-      "CSS variables store values you reuse. Switch a few variables and the whole page changes theme.",
-    ),
-    week(
-      4,
-      "Accessibility",
-      "♿",
-      "sensing",
-      "Audit and fix a page for accessibility.",
-      "Good HTML and CSS help everyone: alt text, labels, heading order, contrast, visible focus and reduced motion.",
-    ),
-    week(
-      5,
-      "Validation and DevTools",
-      "🔧",
-      "operators",
-      "Debug a broken page with the browser tools.",
-      "Clean, valid markup is easier to fix. Browser Developer Tools show the structure and styles of any page.",
-    ),
-    week(
-      6,
-      "Publishing your page",
-      "🚀",
-      "control",
-      "Prepare your files to put a page online.",
-      "A tidy project folder and correct linking make a site ready to publish. Publishing puts your work on the web.",
-    ),
-    week(
-      7,
-      "Capstone: plan",
-      "🗺️",
-      "motion",
-      "Wireframe and plan your capstone site.",
-      "Choose a topic, sketch the layout, list the pages, and pick colours, fonts and components.",
-    ),
-    week(
-      8,
-      "Capstone: build",
-      "🏗️",
-      "looks",
-      "Build your capstone site.",
-      "Build the multi-page structure and style it responsively.",
-    ),
-    week(
-      9,
-      "Capstone: test and publish",
-      "✅",
-      "sensing",
-      "Test and publish your capstone.",
-      "Validate, check accessibility, polish, then publish and test on a phone.",
-    ),
-    week(
-      10,
-      "Showcase",
-      "🏆",
-      "events",
-      "Present your capstone to the class.",
-      "Show your finished site and reflect on what you learned across the three terms.",
-    ),
+    {
+      n: 1,
+      title: "Transitions and details",
+      emoji: "✨",
+      color: "looks",
+      tracks: "both",
+      goal: "Build an expandable FAQ with smooth effects.",
+      concept:
+        "The button, details and summary tags build interactive pieces, and CSS transitions make changes feel smooth.",
+      objective: "Build an expandable FAQ with smooth hover effects.",
+      teachingPoints: [
+        "The <button> tag makes a real clickable control that a keyboard and a screen reader can use.",
+        "The <details> and <summary> tags build a native expander that opens and closes with no JavaScript.",
+        "The transition property animates a change smoothly, for example a background colour on hover.",
+      ],
+      timing: [
+        { label: "Welcome", mins: 3 },
+        { label: "Live demo", mins: 5 },
+        { label: "Buttons and details", mins: 8 },
+        { label: "Activity", mins: 15 },
+        { label: "Share", mins: 4 },
+      ],
+      liveDemo: [
+        {
+          title: "A school FAQ with an expander and a smooth button",
+          filename: "faq.html",
+          caption:
+            "Each question opens with details and summary. The button changes colour smoothly on hover.",
+          code: `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>School FAQ</title>
+  <style>
+    body {
+      font-family: system-ui, Arial, sans-serif;
+      color: #1f2a44;
+      background: #ffffff;
+      line-height: 1.5;
+      padding: 16px;
+    }
+    h1 {
+      font-size: 24px;
+    }
+    details {
+      border: 1px solid #d0d7e2;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 10px;
+    }
+    summary {
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .btn {
+      padding: 10px 16px;
+      border: 0;
+      border-radius: 8px;
+      background: #1f6feb;
+      color: #ffffff;
+      font-size: 16px;
+      transition: background 0.2s;
+    }
+    .btn:hover {
+      background: #1250a8;
+    }
+  </style>
+</head>
+<body>
+  <h1>School FAQ</h1>
+
+  <details>
+    <summary>When does school start?</summary>
+    <p>School starts at 8 in the morning.</p>
+  </details>
+
+  <details>
+    <summary>What should I bring?</summary>
+    <p>Bring your books, a pencil and a water bottle.</p>
+  </details>
+
+  <button class="btn">Ask a question</button>
+</body>
+</html>`,
+        },
+      ],
+      commonMistakes: [
+        "Removing the focus outline from a button. Something that can be clicked should also show where the keyboard is. Keep or replace the outline, do not delete it.",
+        "Animating too many properties at once. One calm change, such as a background colour, looks better than a page that jumps around.",
+        "Using a <div> for something you click. A <div> is not a real button, so use <button> for a control.",
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Native expanders",
+            body: [
+              "The <details> tag makes a box that opens and closes. The <summary> is the line you click.",
+              "This works with no JavaScript. It also works with the keyboard.",
+            ],
+            codes: [
+              {
+                label: "faq.html",
+                code: "<details>\n  <summary>When is the test?</summary>\n  <p>The test is on Friday morning.</p>\n</details>",
+              },
+            ],
+          },
+          {
+            h: "Smooth changes",
+            body: [
+              "The transition property makes a change happen slowly instead of all at once.",
+              "The rule below fades the button background on hover. Keep the change small so it feels calm.",
+            ],
+            codes: [
+              {
+                label: "styles.css",
+                code: ".btn {\n  background: #1f6feb;\n  transition: background 0.2s;\n}\n\n.btn:hover {\n  background: #1250a8;\n}",
+              },
+            ],
+          },
+        ],
+      },
+      template: {
+        filename: "faq.html",
+        code: `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Class FAQ</title>
+  <style>
+    body {
+      font-family: system-ui, Arial, sans-serif;
+      color: #1f2a44;
+      background: #ffffff;
+      line-height: 1.5;
+      padding: 16px;
+    }
+    h1 {
+      font-size: 24px;
+    }
+    details {
+      border: 1px solid #d0d7e2;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 10px;
+    }
+    summary {
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .btn {
+      padding: 10px 16px;
+      border: 0;
+      border-radius: 8px;
+      background: #1f6feb;
+      color: #ffffff;
+      transition: background 0.2s;
+    }
+    .btn:hover {
+      background: #1250a8;
+    }
+  </style>
+</head>
+<body>
+  <h1>Class FAQ</h1>
+
+  <details>
+    <summary>When is the test?</summary>
+    <p>The test is on Friday morning.</p>
+  </details>
+
+  <details>
+    <summary>Where is the library?</summary>
+    <p>The library is beside the science lab.</p>
+  </details>
+
+  <button class="btn">Ask a question</button>
+</body>
+</html>`,
+        core: [
+          "Add a third FAQ item with its own details and summary.",
+          "Add a hover transition to the button.",
+          "Change the transition speed and watch how the change feels.",
+        ],
+        stretch: [
+          "Animate a card's box-shadow on hover.",
+          "Style the summary so it looks like a heading.",
+        ],
+      },
+      assessment: [
+        {
+          track: "A",
+          audience: "JSS 1 & JSS 2",
+          title: "Mini-check",
+          type: "quiz",
+          questions: [
+            {
+              prompt: "Which tags build an expander?",
+              answer: "The <details> tag with a <summary> inside it.",
+            },
+            {
+              prompt: "What does the transition property do?",
+              answer:
+                "It animates a change smoothly, such as a colour fading on hover.",
+            },
+            {
+              prompt: "Which is better for a click, a <button> or a <div>?",
+              answer:
+                "A <button>. It works with the keyboard and is announced by screen readers.",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      n: 2,
+      title: "Media and animation",
+      emoji: "🎞️",
+      color: "events",
+      tracks: "both",
+      goal: "Add an animated hero and a video.",
+      concept:
+        "Audio, video and embedded media bring a page to life. Keyframe animations can move elements on their own.",
+      objective: "Add an animated hero and a video to a page.",
+      teachingPoints: [
+        "The <video> tag with the controls attribute embeds a video the reader can play and pause.",
+        "The @keyframes rule and the animation property move an element on their own without JavaScript.",
+        "Size media to fit its box with width and max-width so it never overflows.",
+      ],
+      timing: [
+        { label: "Welcome", mins: 3 },
+        { label: "Live demo", mins: 5 },
+        { label: "Media and animation", mins: 8 },
+        { label: "Activity", mins: 15 },
+        { label: "Share", mins: 4 },
+      ],
+      liveDemo: [
+        {
+          title: "An animated hero above a school video",
+          filename: "media.html",
+          caption:
+            "The hero floats gently with a keyframe animation. The video has controls and fits its box.",
+          code: `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Our School Band</title>
+  <style>
+    body {
+      font-family: system-ui, Arial, sans-serif;
+      color: #1f2a44;
+      background: #ffffff;
+      line-height: 1.5;
+      padding: 16px;
+    }
+    .hero {
+      text-align: center;
+      padding: 24px;
+      border-radius: 12px;
+      background: #eaf1ff;
+      animation: float 2s infinite;
+    }
+    @keyframes float {
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+    video {
+      width: 100%;
+      max-width: 360px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <h1>Our School Band</h1>
+    <p>Watch our performance from the last assembly.</p>
+  </div>
+
+  <video src="clip.mp4" controls></video>
+</body>
+</html>`,
+        },
+      ],
+      commonMistakes: [
+        "Video with no controls. Without the controls attribute the reader cannot play, pause or change the volume. Always add controls.",
+        "An animation that never stops. A movement that repeats forever distracts people. Keep it small, or stop it on hover.",
+        "Media overflowing its box. A large video or image can push the page sideways. Set width: 100% and max-width to keep it inside.",
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Embedding media",
+            body: [
+              "The <video> tag puts a video on the page. The src points to the video file.",
+              "Always add controls so the reader can play, pause and change the volume.",
+            ],
+            codes: [
+              { label: "media.html", code: '<video src="clip.mp4" controls></video>' },
+            ],
+          },
+          {
+            h: "Keyframe animations",
+            body: [
+              "A @keyframes rule describes the steps of an animation. The animation property runs it.",
+              "This hero floats up and down. Use infinite only for a small, calm movement.",
+            ],
+            codes: [
+              {
+                label: "styles.css",
+                code: "@keyframes float {\n  50% {\n    transform: translateY(-10px);\n  }\n}\n\n.hero {\n  animation: float 2s infinite;\n}",
+              },
+            ],
+          },
+        ],
+      },
+      template: {
+        filename: "media.html",
+        code: `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Media Page</title>
+  <style>
+    body {
+      font-family: system-ui, Arial, sans-serif;
+      color: #1f2a44;
+      background: #ffffff;
+      line-height: 1.5;
+      padding: 16px;
+    }
+    .hero {
+      text-align: center;
+      padding: 24px;
+      border-radius: 12px;
+      background: #eaf1ff;
+      animation: float 2s infinite;
+    }
+    @keyframes float {
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+    video {
+      width: 100%;
+      max-width: 360px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <h1>My Media Page</h1>
+    <p>Add a short line about your video here.</p>
+  </div>
+
+  <video src="clip.mp4" controls></video>
+</body>
+</html>`,
+        core: [
+          "Add a video with the controls attribute.",
+          "Add a keyframe animation to the hero.",
+          "Size the media so it fits its box on a small screen.",
+        ],
+        stretch: [
+          "Add a second animation, such as a fading caption.",
+          "Pause the animation when the reader hovers over the hero.",
+        ],
+      },
+      assessment: [
+        {
+          track: "A",
+          audience: "JSS 1 & JSS 2",
+          title: "Mini-check",
+          type: "quiz",
+          questions: [
+            {
+              prompt: "Which attribute shows the video controls?",
+              answer:
+                'The controls attribute, as in <video src="clip.mp4" controls></video>.',
+            },
+            {
+              prompt: "What builds a keyframe animation?",
+              answer:
+                "The @keyframes rule together with the animation property.",
+            },
+            {
+              prompt: "Why size media to fit?",
+              answer:
+                "So a large video or image does not overflow its box on a small screen.",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      n: 3,
+      title: "CSS variables and themes",
+      emoji: "🎨",
+      color: "variables",
+      tracks: "both",
+      goal: "Make light and dark themes with variables.",
+      concept:
+        "CSS variables store values you reuse. Switch a few variables and the whole page changes theme.",
+      objective: "Make light and dark themes with CSS variables.",
+      teachingPoints: [
+        "A CSS variable is a name that starts with two dashes, such as --ink, and holds a value.",
+        "We use a variable by wrapping its name in var(), for example color: var(--ink).",
+        "Variables set on :root are available on the whole page, so changing them changes the theme.",
+      ],
+      timing: [
+        { label: "Welcome", mins: 3 },
+        { label: "Live demo", mins: 5 },
+        { label: "Variables and themes", mins: 8 },
+        { label: "Activity", mins: 15 },
+        { label: "Share", mins: 4 },
+      ],
+      liveDemo: [
+        {
+          title: "One page with a light and a dark theme",
+          filename: "theme.html",
+          caption:
+            "The :root variables set the light theme. The .dark class changes them to a dark theme.",
+          code: `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Light and Dark Theme</title>
+  <style>
+    :root {
+      --ink: #1f2a44;
+      --paper: #ffffff;
+      --accent: #1f6feb;
+    }
+    .dark {
+      --ink: #f2f5fa;
+      --paper: #121826;
+      --accent: #6ea8ff;
+    }
+    body {
+      font-family: system-ui, Arial, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.5;
+      padding: 16px;
+    }
+    h1 {
+      color: var(--accent);
+    }
+  </style>
+</head>
+<body class="dark">
+  <h1>My Study Page</h1>
+  <p>This page uses variables for its colours.</p>
+  <p>Change the class on the body to switch theme.</p>
+</body>
+</html>`,
+        },
+      ],
+      commonMistakes: [
+        "A typo in a variable name. --ink and var(--innk) do not match, so the style stops working. Check the spelling on both sides.",
+        "Defining a variable but not using var(). Writing color: --ink does nothing. You must write color: var(--ink).",
+        "Hard-coding colours instead of variables. If the colour is written in five places, you must change all five. Use a variable and change one place.",
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Variables",
+            body: [
+              "A CSS variable starts with two dashes. You define it once and reuse it.",
+              "Use var() to put the value somewhere. Put shared variables on :root.",
+            ],
+            codes: [
+              {
+                label: "styles.css",
+                code: ":root {\n  --ink: #1f2a44;\n}\n\np {\n  color: var(--ink);\n}",
+              },
+            ],
+          },
+          {
+            h: "Themes",
+            body: [
+              "A theme is a different set of variable values. Add a class with new values and use it on the body.",
+              "The rule below makes a dark theme. Switch the class to switch the look.",
+            ],
+            codes: [
+              {
+                label: "dark theme",
+                code: ".dark {\n  --ink: #f2f5fa;\n  --paper: #121826;\n}",
+              },
+            ],
+          },
+        ],
+      },
+      template: {
+        filename: "theme.html",
+        code: `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>My Theme</title>
+  <style>
+    :root {
+      --ink: #1f2a44;
+      --paper: #ffffff;
+    }
+    body {
+      font-family: system-ui, Arial, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.5;
+      padding: 16px;
+    }
+  </style>
+</head>
+<body>
+  <h1>My Theme Page</h1>
+  <p>This page is ready for a light and a dark theme.</p>
+</body>
+</html>`,
+        core: [
+          "Define two variables and use them in the page.",
+          "Add a dark theme with a class on the body.",
+          "Switch the class and check that the whole page changes.",
+        ],
+        stretch: [
+          "Add a third variable for spacing.",
+          "Theme a card with the same variables.",
+        ],
+      },
+      assessment: [
+        {
+          track: "A",
+          audience: "JSS 1 & JSS 2",
+          title: "Mini-check",
+          type: "quiz",
+          questions: [
+            {
+              prompt: "How do you define a CSS variable?",
+              answer:
+                "Write a name that starts with two dashes, such as --ink, and give it a value.",
+            },
+            {
+              prompt: "How do you use a CSS variable?",
+              answer: "Wrap the name in var(), for example color: var(--ink).",
+            },
+            {
+              prompt: "Where is :root useful?",
+              answer:
+                "It is the whole page, so variables set there are available everywhere.",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      n: 4,
+      title: "Accessibility",
+      emoji: "♿",
+      color: "sensing",
+      tracks: "both",
+      goal: "Audit and fix a page for accessibility.",
+      concept:
+        "Good HTML and CSS help everyone: alt text, labels, heading order, contrast, visible focus and reduced motion.",
+      objective: "Audit and fix a page for accessibility.",
+      teachingPoints: [
+        "An image needs alt text and an input needs a label, so everyone knows what they are.",
+        "Headings go in order and landmarks such as header, nav and main group the page.",
+        "Good contrast and a visible focus outline make a page easy to read and use with the keyboard.",
+      ],
+      timing: [
+        { label: "Welcome", mins: 3 },
+        { label: "Live demo", mins: 5 },
+        { label: "Accessible HTML and CSS", mins: 8 },
+        { label: "Activity", mins: 15 },
+        { label: "Share", mins: 4 },
+      ],
+      liveDemo: [
+        {
+          title: "A form with alt text, labels and a focus outline",
+          filename: "a11y_fix.html",
+          caption:
+            "The image has alt text, each input has a label, and the focus outline is easy to see.",
+          code: `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Accessible Form</title>
+  <style>
+    body {
+      font-family: system-ui, Arial, sans-serif;
+      color: #1f2a44;
+      background: #ffffff;
+      line-height: 1.5;
+      padding: 16px;
+    }
+    label {
+      display: block;
+      margin-top: 12px;
+      font-weight: bold;
+    }
+    input {
+      font-size: 16px;
+      padding: 8px;
+      border: 1px solid #6b7280;
+      border-radius: 6px;
+    }
+    a:focus,
+    input:focus,
+    button:focus {
+      outline: 3px solid #1f6feb;
+      outline-offset: 2px;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none;
+        transition: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Join the Reading Club</h1>
+  <p>Fill this short form to join.</p>
+
+  <img src="books.jpg" alt="A stack of books on a wooden desk">
+
+  <label for="name">Your name</label>
+  <input id="name" type="text">
+
+  <label for="myclass">Your class</label>
+  <input id="myclass" type="text">
+
+  <button>Send</button>
+</body>
+</html>`,
+        },
+      ],
+      commonMistakes: [
+        "A placeholder instead of a label. A placeholder disappears as soon as you type, so it is not a label. Add a real <label> for every input.",
+        "Low contrast between text and background. Light grey text on white is hard to read. Use dark text on a light background, or the reverse.",
+        "Removing the focus outline. Some people use only the keyboard, and the outline shows where they are. Never set outline: none without a replacement.",
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Accessible HTML",
+            body: [
+              "Accessible HTML gives every piece of content a clear name. Images need alt text and inputs need labels.",
+              "Use headings in order and group the page with landmarks such as header, nav and main.",
+            ],
+            codes: [
+              {
+                label: "image alt",
+                code: '<img src="books.jpg" alt="A stack of books on a desk">',
+              },
+              {
+                label: "input label",
+                code: '<label for="name">Your name</label>\n<input id="name" type="text">',
+              },
+            ],
+          },
+          {
+            h: "Accessible CSS",
+            body: [
+              "Good contrast makes text easy to read. Dark text on a light background is a safe choice.",
+              "Keep the focus outline visible. Some people leave out the mouse and use the keyboard.",
+            ],
+            codes: [
+              {
+                label: "styles.css",
+                code: "body {\n  color: #1f2a44;\n  background: #ffffff;\n}\n\n@media (prefers-reduced-motion: reduce) {\n  * {\n    animation: none;\n  }\n}",
+              },
+            ],
+          },
+        ],
+      },
+      template: {
+        filename: "a11y_fix.html",
+        code: `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Make It Accessible</title>
+  <style>
+    body {
+      font-family: system-ui, Arial, sans-serif;
+      color: #1f2a44;
+      background: #ffffff;
+      line-height: 1.5;
+      padding: 16px;
+    }
+    label {
+      display: block;
+      margin-top: 12px;
+      font-weight: bold;
+    }
+    input {
+      font-size: 16px;
+      padding: 8px;
+      border: 1px solid #6b7280;
+      border-radius: 6px;
+    }
+    input:focus,
+    button:focus {
+      outline: 3px solid #1f6feb;
+    }
+  </style>
+</head>
+<body>
+  <h1>School Shop</h1>
+  <h3>Place your order</h3>
+
+  <img src="shop.jpg">
+
+  <input type="text" placeholder="Your name">
+
+  <button>Order</button>
+</body>
+</html>`,
+        core: [
+          "Add alt text to the image.",
+          "Add a label to the input.",
+          "Fix the heading order so it does not skip a level.",
+          "Keep the focus outline visible.",
+        ],
+        stretch: [
+          "Raise the contrast between the text and the background.",
+          "Add a reduced-motion media query.",
+        ],
+      },
+      assessment: [
+        {
+          track: "A",
+          audience: "JSS 1 & JSS 2",
+          title: "Mini-check",
+          type: "quiz",
+          questions: [
+            {
+              prompt: "Why should you label an input?",
+              answer:
+                "A label tells everyone, including screen reader users, what the input is for.",
+            },
+            {
+              prompt: "Why keep focus outlines?",
+              answer:
+                "They show which element has the keyboard focus, so people who do not use a mouse can navigate.",
+            },
+            {
+              prompt: "What should alt text describe?",
+              answer: "What the image shows, in a short sentence.",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      n: 5,
+      title: "Validation and DevTools",
+      emoji: "🔧",
+      color: "operators",
+      tracks: "both",
+      goal: "Debug a broken page with the browser tools.",
+      concept:
+        "Clean, valid markup is easier to fix. Browser Developer Tools show the structure and styles of any page.",
+      objective: "Debug a broken page using the browser's tools.",
+      teachingPoints: [
+        "Valid, indented markup is easier to read and easier to fix.",
+        "DevTools shows the real HTML and the CSS that the browser applied.",
+        "The Elements panel reveals tags the browser added or repaired when a tag was missing.",
+      ],
+      timing: [
+        { label: "Welcome", mins: 3 },
+        { label: "Live demo", mins: 5 },
+        { label: "Validate and inspect", mins: 8 },
+        { label: "Activity", mins: 15 },
+        { label: "Share", mins: 4 },
+      ],
+      liveDemo: [
+        {
+          title: "A page with a missing closing tag",
+          filename: "broken.html",
+          caption:
+            "The paragraph has no closing tag. In DevTools you can see where the browser had to guess.",
+          code: `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Broken Page</title>
+  <style>
+    body {
+      font-family: system-ui, Arial, sans-serif;
+      color: #1f2a44;
+      background: #ffffff;
+      line-height: 1.5;
+      padding: 16px;
+    }
+    .card {
+      border: 1px solid #d0d7e2;
+      border-radius: 8px;
+      padding: 12px;
+    }
+  </style>
+</head>
+<body>
+  <h1>My Project</h1>
+  <div class="card">
+    <p>This card has a missing closing tag.
+  </div>
+</body>
+</html>`,
+        },
+      ],
+      commonMistakes: [
+        "Guessing instead of inspecting. Do not change random things. Right-click the problem, click Inspect, and read what the browser built.",
+        "Ignoring an unbalanced tag. Every opened tag needs a closing tag. One missing </p> or </div> can move everything else.",
+        "Blaming CSS for an HTML problem. If a whole block looks wrong, check the HTML first. The browser may be repairing a broken tag.",
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Clean markup",
+            body: [
+              "Tag pairs must match. Every <p> needs its </p>, and every <div> needs its </div>.",
+              "Indent each level so you can see the structure at a glance.",
+            ],
+            codes: [
+              {
+                label: "tidy.html",
+                code: '<div class="card">\n  <h2>Title</h2>\n  <p>Some text.</p>\n</div>',
+              },
+            ],
+          },
+          {
+            h: "Using DevTools",
+            body: [
+              "The browser can show you the real page it built. This is the best way to find a problem.",
+            ],
+            list: [
+              "Right-click the part of the page you want to check, then click Inspect.",
+              "The Elements panel shows the real HTML the browser built.",
+              "The Styles panel shows which CSS rules are applied, and which are crossed out.",
+              "If a tag is missing in your file but shows in the panel, the browser repaired it.",
+            ],
+          },
+        ],
+      },
+      template: {
+        filename: "broken.html",
+        code: `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Fix This Page</title>
+  <style>
+    body {
+      font-family: system-ui, Arial, sans-serif;
+      color: #1f2a44;
+      background: #ffffff;
+      line-height: 1.5;
+      padding: 16px;
+    }
+    .title {
+      color: #1f6feb;
+    }
+    .tittle {
+      color: #b00020;
+    }
+    .card {
+      border: 1px solid #d0d7e2;
+      border-radius: 8px;
+      padding: 12px;
+    }
+  </style>
+</head>
+<body>
+  <h1 class="title">My Page</h1>
+  <div class="card">
+    <p>This paragraph has a missing closing tag.
+  </div>
+</body>
+</html>`,
+        core: [
+          "Use DevTools to find the unclosed tag.",
+          "Close the tag and check the card looks right again.",
+          "Tidy the indentation so the structure is easy to read.",
+        ],
+        stretch: [
+          "Find a style that does not apply and fix it so it works.",
+        ],
+      },
+      assessment: [
+        {
+          track: "A",
+          audience: "JSS 1 & JSS 2",
+          title: "Mini-check",
+          type: "quiz",
+          questions: [
+            {
+              prompt: "What does the Elements panel show?",
+              answer:
+                "The real HTML the browser built, including any tags it added or fixed.",
+            },
+            {
+              prompt: "Why tidy your indentation?",
+              answer:
+                "Neatly indented markup is easier to read, so a missing tag is easier to spot.",
+            },
+            {
+              prompt:
+                "A tag is not closing, so the layout looks wrong. What is the likely problem?",
+              answer:
+                "A missing closing tag, which the browser then has to guess and repair.",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      n: 6,
+      title: "Publishing your page",
+      emoji: "🚀",
+      color: "control",
+      tracks: "both",
+      goal: "Prepare your files to put a page online.",
+      concept:
+        "A tidy project folder and correct linking make a site ready to publish. Publishing puts your work on the web.",
+      objective: "Prepare your files to put a page online.",
+      teachingPoints: [
+        "Keep every file in one tidy project folder, with images in their own folder.",
+        "Use relative links, such as href=\"about.html\", so links keep working after you move the folder.",
+        "Publishing copies your files to a web host, such as GitHub Pages, so other people can open them.",
+      ],
+      timing: [
+        { label: "Welcome", mins: 3 },
+        { label: "Live demo", mins: 5 },
+        { label: "Project files", mins: 8 },
+        { label: "Activity", mins: 15 },
+        { label: "Share", mins: 4 },
+      ],
+      liveDemo: [
+        {
+          title: "A page with correct relative links",
+          filename: "ready.html",
+          caption:
+            "The stylesheet, the image and the page link all use relative paths, so the page will work once published.",
+          code: `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Ready to Publish</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: system-ui, Arial, sans-serif;
+      color: #1f2a44;
+      background: #ffffff;
+      line-height: 1.5;
+      padding: 16px;
+    }
+    img {
+      width: 100%;
+      max-width: 320px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome</h1>
+  <img src="images/school.jpg" alt="The front of our school">
+  <p>Visit the <a href="about.html">About page</a>.</p>
+</body>
+</html>`,
+        },
+      ],
+      commonMistakes: [
+        "An absolute local path, such as C:\\Users\\Ada\\site\\styles.css. A path from your computer will not work on the web. Use a relative path instead.",
+        "A missing file. The page points to an image that is not in the folder, so it shows a broken icon. Check that every file is really there.",
+        "Capitalised filenames. Some servers treat School.JPG and school.jpg as different files. Use lowercase names to be safe.",
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Get your files ready",
+            body: [
+              "Keep every file in one project folder. Put images in an images folder.",
+              "Use lowercase names with no spaces, so links do not break on the web.",
+            ],
+            list: [
+              'Use relative links, such as href="about.html" and src="images/school.jpg".',
+              "Check that every file a page points to is really there.",
+              "Open the page and test every link before you publish.",
+            ],
+          },
+          {
+            h: "Publishing (teacher demo)",
+            body: [
+              "Publishing copies your files to a web host so other people can open them. It needs the internet.",
+              "The teacher will show these steps. You can build your page offline and publish later.",
+            ],
+            list: [
+              "Sign in to the hosting site (GitHub Pages).",
+              "Create a project and upload your files.",
+              "Turn on the publishing option in the settings.",
+              "Open the link it gives you and test the page.",
+            ],
+          },
+        ],
+      },
+      template: {
+        filename: "ready.html",
+        code: `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>My Site</title>
+  <link rel="stylesheet" href="C:\\Users\\Ada\\site\\styles.css">
+  <style>
+    body {
+      font-family: system-ui, Arial, sans-serif;
+      color: #1f2a44;
+      background: #ffffff;
+      line-height: 1.5;
+      padding: 16px;
+    }
+  </style>
+</head>
+<body>
+  <h1>My Site</h1>
+  <img src="C:\\Users\\Ada\\site\\images\\School.JPG" alt="My school gate">
+  <p>Visit the <a href="C:\\Users\\Ada\\site\\About.html">About page</a>.</p>
+</body>
+</html>`,
+        core: [
+          "Fix the broken relative links.",
+          "Change the capitalised filenames to lowercase.",
+          "Check that every file sits inside the project folder.",
+        ],
+        stretch: [
+          "Write out the steps you would use to publish this page.",
+        ],
+      },
+      assessment: [
+        {
+          track: "A",
+          audience: "JSS 1 & JSS 2",
+          title: "Mini-check",
+          type: "quiz",
+          questions: [
+            {
+              prompt: "Why use relative links?",
+              answer:
+                "They point to files inside your project folder, so the links keep working when you move the folder or publish it.",
+            },
+            {
+              prompt: "Why use lowercase filenames?",
+              answer:
+                "Some servers treat School.JPG and school.jpg as different files, so a capital letter can break a link.",
+            },
+            {
+              prompt: "Does publishing your page need the internet?",
+              answer:
+                "Yes. Publishing uploads your files to a web host, which needs the internet. You can build the page offline and publish later.",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      n: 7,
+      title: "Capstone: plan",
+      emoji: "🗺️",
+      color: "motion",
+      tracks: "both",
+      goal: "Wireframe and plan your capstone site.",
+      concept:
+        "Choose a topic, sketch the layout, list the pages, and pick colours, fonts and components.",
+      objective: "Wireframe and plan your capstone site.",
+      teachingPoints: [
+        "Choose a topic and an audience, so you know what the site is for and who will read it.",
+        "Sketch the layout and list the pages before you write any code.",
+        "Pick two colours, one font and the components you will reuse, such as a nav, cards and a footer.",
+      ],
+      timing: [
+        { label: "Welcome", mins: 3 },
+        { label: "Live demo", mins: 5 },
+        { label: "Plan and sketch", mins: 8 },
+        { label: "Activity", mins: 15 },
+        { label: "Share", mins: 4 },
+      ],
+      liveDemo: [
+        {
+          title: "A wireframe drawn with labelled blocks",
+          filename: "plan.html",
+          caption:
+            "Each dashed box is a part of the future page. The labels say what goes in each part.",
+          code: `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Capstone Plan</title>
+  <style>
+    body {
+      font-family: system-ui, Arial, sans-serif;
+      color: #1f2a44;
+      background: #ffffff;
+      line-height: 1.5;
+      padding: 16px;
+    }
+    .block {
+      border: 2px dashed #94a3b8;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 10px;
+      text-align: center;
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+  <h1>My Capstone Plan</h1>
+  <div class="block">Header: site name and navigation</div>
+  <div class="block">Hero: one big picture and a welcome line</div>
+  <div class="block">About: who I am and what the site is for</div>
+  <div class="block">Gallery: three photos with captions</div>
+  <div class="block">Footer: contact note</div>
+</body>
+</html>`,
+        },
+      ],
+      commonMistakes: [
+        "Starting to code with no plan. You end up changing things again and again. Decide the topic and pages first.",
+        "Too many pages. Two or three pages is enough to show your skills. Keep it small and finish it well.",
+        "No colour or font decisions. If you do not choose your colours and font now, the pages will not match.",
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Plan your capstone",
+            list: [
+              "Topic and audience: what is the site about, and who is it for?",
+              "Pages: write the name of each page you will make. Two or three is enough.",
+              "Layout sketch: draw boxes on paper for the header, main part and footer.",
+              "Colours: choose two colours, one dark and one light.",
+              "Font: choose one font for the whole site.",
+            ],
+          },
+          {
+            h: "Wireframe with blocks",
+            body: [
+              "A wireframe is a rough layout drawn with boxes. You can build it with plain HTML blocks first.",
+              "Label each block so you know what goes there before you style it.",
+            ],
+            codes: [
+              {
+                label: "plan.html",
+                code: '<div class="block">Header: name and nav</div>\n<div class="block">Hero: big picture</div>\n<div class="block">Gallery: three photos</div>\n<div class="block">Footer: contact note</div>',
+              },
+            ],
+          },
+        ],
+      },
+      template: {
+        filename: "plan.html",
+        code: `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>My Capstone Plan</title>
+  <style>
+    body {
+      font-family: system-ui, Arial, sans-serif;
+      color: #1f2a44;
+      background: #ffffff;
+      line-height: 1.5;
+      padding: 16px;
+    }
+    .block {
+      border: 2px dashed #94a3b8;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 10px;
+      text-align: center;
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+  <h1>My Capstone Plan</h1>
+  <div class="block">Header: write your site name and nav</div>
+  <div class="block">Hero: write your welcome line</div>
+  <div class="block">Section 1</div>
+  <div class="block">Section 2</div>
+  <div class="block">Footer</div>
+</body>
+</html>`,
+        core: [
+          "Choose your topic and write it at the top.",
+          "Sketch the layout using the blocks.",
+          "List two or three pages you will make.",
+          "Pick two colours and one font.",
+        ],
+        stretch: [
+          "Add a component list, such as nav, cards and footer.",
+        ],
+      },
+      assessment: [
+        {
+          track: "A",
+          audience: "JSS 1 & JSS 2",
+          title: "Mini-check",
+          type: "quiz",
+          questions: [
+            {
+              prompt: "Why plan before you code?",
+              answer:
+                "A plan decides the topic, pages and look first, so you do not waste time changing your mind while coding.",
+            },
+            {
+              prompt: "How many pages is sensible for this capstone?",
+              answer: "Two or three pages is enough to show your skills.",
+            },
+            {
+              prompt: "Name two design decisions to make in your plan.",
+              answer:
+                "For example, two colours and one font. You could also list your pages and components.",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      n: 8,
+      title: "Capstone: build",
+      emoji: "🏗️",
+      color: "looks",
+      tracks: "both",
+      goal: "Build your capstone site.",
+      concept:
+        "Build the multi-page structure and style it responsively.",
+      objective: "Build your capstone site's structure and responsive styling.",
+      teachingPoints: [
+        "Build each page and link them together with a nav.",
+        "Reuse your theme variables so every page looks the same.",
+        "Add a media query so the layout works on a small screen.",
+      ],
+      timing: [
+        { label: "Welcome", mins: 3 },
+        { label: "Live demo", mins: 4 },
+        { label: "Build", mins: 20 },
+        { label: "Present", mins: 5 },
+        { label: "Wrap", mins: 3 },
+      ],
+      liveDemo: [
+        {
+          title: "A capstone page with a nav, sections and a responsive layout",
+          filename: "capstone.html",
+          caption:
+            "The nav links the pages, the cards use flexbox, and the media query stacks them on a phone.",
+          code: `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>My Capstone</title>
+  <style>
+    :root {
+      --ink: #1f2a44;
+      --paper: #ffffff;
+      --accent: #1f6feb;
+    }
+    body {
+      font-family: system-ui, Arial, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.5;
+      margin: 0;
+    }
+    header {
+      padding: 16px;
+      background: var(--accent);
+    }
+    nav a {
+      color: #ffffff;
+      margin-right: 12px;
+    }
+    main {
+      padding: 16px;
+    }
+    .cards {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .card {
+      flex: 1 1 200px;
+      border: 1px solid #d0d7e2;
+      border-radius: 8px;
+      padding: 12px;
+    }
+    footer {
+      padding: 16px;
+      color: #64748b;
+    }
+    @media (max-width: 600px) {
+      .cards {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+  <main>
+    <h1>Welcome to my capstone</h1>
+    <p>This site is about the food of Nigeria.</p>
+    <div class="cards">
+      <div class="card">Jollof rice</div>
+      <div class="card">Pounded yam</div>
+      <div class="card">Suya</div>
+    </div>
+  </main>
+  <footer>Made by Ada at Green Field Secondary School.</footer>
+</body>
+</html>`,
+        },
+      ],
+      commonMistakes: [
+        "Broken internal links. A nav link points to a page name that does not match the file. Check each href against the real filename.",
+        "Unstyled sections. A new section with no styles looks wrong beside the rest. Give it the same colours and spacing.",
+        "Ignoring small screens. A wide row of cards overflows on a phone. Add a media query to stack them.",
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Build checklist",
+            list: [
+              "A nav with a working link to every page.",
+              "A header with your site name.",
+              "Two or three sections with headings and text.",
+              "A footer with a short note.",
+              "The same stylesheet and variables on every page.",
+            ],
+          },
+          {
+            h: "Make it responsive",
+            body: [
+              "A media query applies CSS only when the screen matches a condition.",
+              "Stack wide rows into a column on a small screen so nothing overflows.",
+            ],
+            codes: [
+              {
+                label: "styles.css",
+                code: "@media (max-width: 600px) {\n  .cards {\n    flex-direction: column;\n  }\n}",
+              },
+            ],
+          },
+        ],
+      },
+      template: {
+        filename: "capstone.html",
+        code: `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>My Capstone</title>
+  <style>
+    :root {
+      --ink: #1f2a44;
+      --paper: #ffffff;
+      --accent: #1f6feb;
+    }
+    body {
+      font-family: system-ui, Arial, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.5;
+      margin: 0;
+    }
+    header {
+      padding: 16px;
+      background: var(--accent);
+    }
+    nav a {
+      color: #ffffff;
+      margin-right: 12px;
+    }
+    main {
+      padding: 16px;
+    }
+    footer {
+      padding: 16px;
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+  <main>
+    <h1>My Capstone</h1>
+    <p>Write your first section here.</p>
+  </main>
+  <footer>Made by me.</footer>
+</body>
+</html>`,
+        core: [
+          "Build the main page structure with a header, main part and footer.",
+          "Link the nav to your pages.",
+          "Add a responsive media query.",
+        ],
+        stretch: [
+          "Add a second page and link it from the nav.",
+        ],
+      },
+      assessment: [
+        {
+          track: "A",
+          audience: "JSS 1 & JSS 2",
+          title: "Mini-check",
+          type: "quiz",
+          questions: [
+            {
+              prompt: "How do you link one page to another?",
+              answer:
+                'Use an <a> tag with a relative href, such as <a href="about.html">.',
+            },
+            {
+              prompt: "How do you keep the theme consistent across pages?",
+              answer: "Reuse the same CSS variables and stylesheet on every page.",
+            },
+            {
+              prompt: "How do you make the layout responsive?",
+              answer:
+                "Add a media query, for example @media (max-width: 600px), and change the layout inside it.",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      n: 9,
+      title: "Capstone: test and publish",
+      emoji: "✅",
+      color: "sensing",
+      tracks: "both",
+      goal: "Test and publish your capstone.",
+      concept:
+        "Validate, check accessibility, polish, then publish and test on a phone.",
+      objective: "Test, polish and publish your capstone.",
+      teachingPoints: [
+        "Validate the HTML so every tag is correct and properly closed.",
+        "Check accessibility: alt text, labels and a visible focus outline.",
+        "Polish spacing and contrast, then publish and test the page on a phone.",
+      ],
+      timing: [
+        { label: "Welcome", mins: 3 },
+        { label: "Live demo", mins: 5 },
+        { label: "Test and polish", mins: 8 },
+        { label: "Activity", mins: 15 },
+        { label: "Share", mins: 4 },
+      ],
+      liveDemo: [
+        {
+          title: "A page that passes the checks",
+          filename: "checklist_run.html",
+          caption:
+            "The HTML is valid, every image has alt text, and the focus outline is easy to see.",
+          code: `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Test and Publish</title>
+  <style>
+    body {
+      font-family: system-ui, Arial, sans-serif;
+      color: #1f2a44;
+      background: #ffffff;
+      line-height: 1.5;
+      padding: 16px;
+    }
+    nav a {
+      color: #1250a8;
+      margin-right: 12px;
+    }
+    a:focus,
+    button:focus {
+      outline: 3px solid #1f6feb;
+      outline-offset: 2px;
+    }
+    .card {
+      border: 1px solid #d0d7e2;
+      border-radius: 8px;
+      padding: 12px;
+    }
+    img {
+      width: 100%;
+      max-width: 320px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+  </nav>
+  <h1>My Capstone is Ready</h1>
+  <img src="images/school.jpg" alt="The front of our school">
+  <div class="card">
+    <p>Every image has alt text. Every link works.</p>
+  </div>
+  <button>Contact me</button>
+</body>
+</html>`,
+        },
+      ],
+      commonMistakes: [
+        "Not testing on a narrow screen. A page that looks fine on a laptop can overflow on a phone. Test at 600px wide.",
+        "Low contrast. Light text on a light background is hard to read. Check the colours one more time.",
+        "Broken links after moving files. Moving a page or image without updating its link breaks it. Test every link again.",
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Test checklist",
+            list: [
+              "Validate the HTML and fix any errors.",
+              "Every image has alt text.",
+              "Every input has a label.",
+              "The focus outline is visible on links and buttons.",
+              "The page works at 600px wide, like a phone.",
+            ],
+          },
+          {
+            h: "Publish",
+            body: [
+              "When the page passes your checks, it is ready to publish. You can build and test offline, then publish when you have the internet.",
+            ],
+            list: [
+              "Check every file is in the project folder with lowercase names.",
+              "Upload the files to the host (GitHub Pages).",
+              "Open the published link and test it again on a phone.",
+            ],
+          },
+        ],
+      },
+      template: {
+        filename: "capstone.html",
+        code: `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>My Capstone</title>
+  <style>
+    :root {
+      --ink: #1f2a44;
+      --paper: #ffffff;
+      --accent: #1f6feb;
+    }
+    body {
+      font-family: system-ui, Arial, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.5;
+      margin: 0;
+    }
+    header {
+      padding: 16px;
+      background: var(--accent);
+    }
+    nav a {
+      color: #ffffff;
+      margin-right: 12px;
+    }
+    main {
+      padding: 16px;
+    }
+    footer {
+      padding: 16px;
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+  <main>
+    <h1>My Capstone</h1>
+    <p>Finish the last details of your site here.</p>
+  </main>
+  <footer>Made by me.</footer>
+</body>
+</html>`,
+        core: [
+          "Fix any validation issues you find.",
+          "Check the alt text and the labels.",
+          "Test the page at 600px wide.",
+        ],
+        stretch: [
+          "Improve one accessibility item.",
+          "Add a favicon note in the head.",
+        ],
+      },
+      assessment: [
+        {
+          track: "A",
+          audience: "JSS 1 & JSS 2",
+          title: "Mini-check",
+          type: "quiz",
+          questions: [
+            {
+              prompt: "What tool checks your HTML for mistakes?",
+              answer: "An HTML validator.",
+            },
+            {
+              prompt: "Name two accessibility checks for your capstone.",
+              answer:
+                "For example, alt text on every image and a label on every input.",
+            },
+            {
+              prompt: "Why test at 600px wide?",
+              answer: "It shows how the page looks on a phone.",
+            },
+            {
+              prompt: "What can break links after you move your files?",
+              answer:
+                "Moving files out of the project folder, or changing a filename so it no longer matches the link.",
+            },
+          ],
+        },
+        {
+          track: "A",
+          audience: "JSS 1 & JSS 2",
+          title: "Capstone checklist",
+          type: "checklist",
+          items: [
+            "The site runs in the browser with no broken links or images.",
+            "The layout is responsive and works at 600px wide.",
+            "Every image has alt text and every input has a label.",
+            "The site is published, or the files are ready to publish.",
+          ],
+        },
+      ],
+    },
+    {
+      n: 10,
+      title: "Showcase",
+      emoji: "🏆",
+      color: "events",
+      tracks: "both",
+      goal: "Present your capstone to the class.",
+      concept:
+        "Show your finished site and reflect on what you learned across the three terms.",
+      objective: "Present your capstone and reflect on the three terms.",
+      teachingPoints: [
+        "Present what your site does and how you built it.",
+        "Reflect on your progress, from your first HTML page to this capstone.",
+        "Celebrate the work: share one thing you are proud of.",
+      ],
+      timing: [
+        { label: "Welcome", mins: 3 },
+        { label: "Recap", mins: 8 },
+        { label: "Present", mins: 18 },
+        { label: "Feedback", mins: 4 },
+        { label: "Wrap", mins: 2 },
+      ],
+      liveDemo: [
+        {
+          title: "A finished capstone page",
+          filename: "showcase.html",
+          caption:
+            "A complete page that brings together HTML structure, CSS variables, a keyframe animation and accessibility.",
+          code: `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Food of Nigeria</title>
+  <style>
+    :root {
+      --ink: #1f2a44;
+      --paper: #ffffff;
+      --accent: #1f6feb;
+    }
+    body {
+      font-family: system-ui, Arial, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.5;
+      margin: 0;
+    }
+    header {
+      padding: 24px;
+      text-align: center;
+      background: var(--accent);
+      color: #ffffff;
+      animation: glow 3s infinite;
+    }
+    @keyframes glow {
+      50% {
+        background: #1250a8;
+      }
+    }
+    main {
+      padding: 16px;
+    }
+    img {
+      width: 100%;
+      max-width: 320px;
+      border-radius: 8px;
+    }
+    footer {
+      padding: 16px;
+      text-align: center;
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Food of Nigeria</h1>
+    <p>A capstone site by Ada</p>
+  </header>
+  <main>
+    <h2>Jollof rice</h2>
+    <img src="images/jollof.jpg" alt="A plate of jollof rice">
+    <p>A dish I love to share with my family.</p>
+  </main>
+  <footer>Made with HTML and CSS.</footer>
+</body>
+</html>`,
+        },
+      ],
+      commonMistakes: [
+        "No demo. If the site is not open, the class cannot see your work. Have the page running before you talk.",
+        "Unable to explain a choice. Be ready to say why you picked a colour, a font or a layout.",
+        "Running over time. Practise so you keep to your turn and leave time for questions.",
+      ],
+      handout: {
+        sections: [
+          {
+            h: "Presentation script",
+            list: [
+              "Say what your site is about and who it is for.",
+              "Show one page and point out the header, sections and footer.",
+              "Explain one choice, such as why you picked a colour or a font.",
+              "Name one tag or CSS rule and say what it does.",
+            ],
+          },
+          {
+            h: "Reflection prompts",
+            list: [
+              "What did you find easy this term?",
+              "What was hard, and how did you solve it?",
+              "Compare your first page in Term 1 with this capstone.",
+              "What will you build next?",
+            ],
+          },
+        ],
+      },
+      template: {
+        filename: "showcase.html",
+        code: `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>My Showcase</title>
+  <style>
+    :root {
+      --ink: #1f2a44;
+      --paper: #ffffff;
+      --accent: #1f6feb;
+    }
+    body {
+      font-family: system-ui, Arial, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.5;
+      margin: 0;
+    }
+    header {
+      padding: 24px;
+      text-align: center;
+      background: var(--accent);
+      color: #ffffff;
+    }
+    main {
+      padding: 16px;
+    }
+    footer {
+      padding: 16px;
+      text-align: center;
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>My Capstone</h1>
+    <p>Write your site name here</p>
+  </header>
+  <main>
+    <h2>One highlight</h2>
+    <img src="images/photo.jpg" alt="Describe your photo here">
+    <p>Write one sentence about this part of your site.</p>
+  </main>
+  <footer>Made with HTML and CSS.</footer>
+</body>
+</html>`,
+        core: [
+          "Fix the final issue in your site.",
+          "Be ready to explain one section and the tags it uses.",
+        ],
+        stretch: [
+          "Add one polish you are proud of, such as a transition or an animation.",
+        ],
+      },
+      assessment: [
+        {
+          track: "A",
+          audience: "JSS 1 & JSS 2",
+          title: "Mini-check",
+          type: "quiz",
+          questions: [
+            {
+              prompt: "What is the difference between a transition and an animation?",
+              answer:
+                "A transition animates a change after an event, such as hover. An animation runs on its own and can repeat.",
+            },
+            {
+              prompt: "Why use CSS variables?",
+              answer:
+                "They store a value you reuse, so one change updates the whole page.",
+            },
+            {
+              prompt: "Name two accessibility basics.",
+              answer:
+                "For example, alt text on images and visible focus outlines. Labels on inputs also count.",
+            },
+            {
+              prompt: "What does an HTML validator check?",
+              answer: "That your tags are correct and properly closed.",
+            },
+            {
+              prompt: "Why prepare your files before publishing?",
+              answer:
+                "A tidy folder with relative links means the page works once it is online.",
+            },
+          ],
+        },
+      ],
+    },
   ];
 
   window.INTRO_CURRICULUM = {
